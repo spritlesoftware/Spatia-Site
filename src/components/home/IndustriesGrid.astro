@@ -1,0 +1,158 @@
+---
+import logisticsImg  from '../../assets/Logistics.png';
+import defenseImg    from '../../assets/Defense.png';
+import inspectionImg from '../../assets/Inspection.png';
+import roboticsImg   from '../../assets/Robotics.png';
+---
+
+<section class="py-10 md:py-[120px] bg-white">
+  <div class="px-4 sm:px-8 lg:px-16">
+
+    <!-- Section heading -->
+    <h2
+      class="font-inter font-bold text-sp-heading leading-[1.1] tracking-[-0.02em] mb-8 md:mb-12 reveal"
+      style="font-size: clamp(24px, 3.2vw, 48px);"
+    >
+      Wherever Machines Need Awareness
+    </h2>
+
+    <!-- Asymmetric grid -->
+    <div class="industries-grid reveal reveal-delay-1 grid gap-3 sm:gap-4">
+
+      <!-- Logistics — spans both rows, left column -->
+      <div class="card logistics group relative overflow-hidden rounded-2xl cursor-pointer">
+        <img
+          src={logisticsImg.src}
+          alt="Logistics"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+        <div class="absolute top-5 left-5">
+          <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-white/90">Logistics</span>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-5">
+          <p class="text-[16px] font-semibold text-white leading-snug mb-3">
+            Understanding environments<br />that change daily.
+          </p>
+          <div class="flex justify-end">
+            <div class="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center group-hover:bg-white/20 transition-colors duration-300">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Defense — top right (spans two right columns) -->
+      <div class="card defense group relative overflow-hidden rounded-2xl cursor-pointer">
+        <img
+          src={defenseImg.src}
+          alt="Defense"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent"></div>
+        <div class="absolute top-5 left-5">
+          <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-white/90">Defense</span>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-5">
+          <p class="text-[16px] font-semibold text-white leading-snug mb-3">
+            Operating where maps<br />cannot be assumed.
+          </p>
+          <div class="flex justify-end">
+            <div class="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center group-hover:bg-white/20 transition-colors duration-300">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inspection — bottom middle -->
+      <div class="card inspection group relative overflow-hidden rounded-2xl cursor-pointer">
+        <img
+          src={inspectionImg.src}
+          alt="Inspection"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+        <div class="absolute top-5 left-5">
+          <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-white/90">Inspection</span>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-5">
+          <p class="text-[16px] font-semibold text-white leading-snug mb-3">
+            Interpreting complex<br />environments.
+          </p>
+          <div class="flex justify-end">
+            <div class="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center group-hover:bg-white/20 transition-colors duration-300">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Robotics — bottom right -->
+      <div class="card robotics group relative overflow-hidden rounded-2xl cursor-pointer">
+        <img
+          src={roboticsImg.src}
+          alt="Robotics"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+        <div class="absolute top-5 left-5">
+          <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-white/90">Robotics</span>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-5">
+          <p class="text-[16px] font-semibold text-white leading-snug mb-3">
+            Navigation, manipulation,<br />interaction.
+          </p>
+          <div class="flex justify-end">
+            <div class="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center group-hover:bg-white/20 transition-colors duration-300">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Desktop: 3-col asymmetric grid */
+  @media (min-width: 1024px) {
+    .industries-grid {
+      grid-template-columns: 1.15fr 1fr 1fr;
+      grid-template-rows: 300px 240px;
+    }
+    .card.logistics  { grid-column: 1; grid-row: 1 / 3; }
+    .card.defense    { grid-column: 2 / 4; grid-row: 1; }
+    .card.inspection { grid-column: 2; grid-row: 2; }
+    .card.robotics   { grid-column: 3; grid-row: 2; }
+  }
+
+  /* Tablet: 2-col */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .industries-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .card { height: 240px; }
+  }
+
+  /* Mobile: 1-col */
+  @media (max-width: 639px) {
+    .industries-grid {
+      grid-template-columns: 1fr;
+    }
+    .card { height: 220px; }
+  }
+</style>

@@ -1,0 +1,144 @@
+---
+import spatiaLogo from '../../assets/Spatia-txt-logo.png';
+
+const steps = [
+  {
+    label: 'Environment',
+    icon: `<svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="4"  cy="4"  r="1.6" fill="currentColor"/>
+      <circle cx="12" cy="4"  r="1.6" fill="currentColor"/>
+      <circle cx="20" cy="4"  r="1.6" fill="currentColor"/>
+      <circle cx="4"  cy="12" r="1.6" fill="currentColor"/>
+      <circle cx="12" cy="12" r="1.6" fill="currentColor"/>
+      <circle cx="20" cy="12" r="1.6" fill="currentColor"/>
+      <circle cx="4"  cy="20" r="1.6" fill="currentColor"/>
+      <circle cx="12" cy="20" r="1.6" fill="currentColor"/>
+      <circle cx="20" cy="20" r="1.6" fill="currentColor"/>
+    </svg>`,
+  },
+  {
+    label: 'Understanding',
+    icon: `<svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+      <line x1="12" y1="22.08" x2="12" y2="12"/>
+    </svg>`,
+  },
+  {
+    label: 'Action',
+    icon: `<svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="22" y1="2" x2="11" y2="13"/>
+      <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+    </svg>`,
+  },
+];
+
+const connector = `<svg width="80" height="14" viewBox="0 0 80 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: -7px;">
+  <line x1="2" y1="7" x2="66" y2="7" stroke="#D1D5DB" stroke-width="1.5" stroke-dasharray="3.5 3.5" stroke-linecap="round"/>
+  <polyline points="62,3 70,7 62,11" stroke="#D1D5DB" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`;
+---
+
+<section class="py-16 md:py-[120px] bg-white">
+  <div class="px-4 sm:px-8 lg:px-16">
+
+    <!-- Centered header -->
+    <div class="text-center mb-16 reveal">
+      <h2
+        class="font-inter font-bold text-sp-heading leading-[1.1] tracking-[-0.02em]"
+        style="font-size: clamp(26px, 3vw, 44px);"
+      >
+        Understanding Comes Before Action
+      </h2>
+    </div>
+
+    <!-- Desktop: horizontal row -->
+    <div class="hidden md:flex items-start justify-center gap-6 reveal reveal-delay-2">
+
+      <!-- Environment -->
+      <div class="flex flex-col items-center">
+        <div class="w-[104px] h-[104px] rounded-xl bg-[#E3EFEF] flex items-center justify-center mb-4 flex-shrink-0" style="color: #1E686E;">
+          <Fragment set:html={steps[0].icon} />
+        </div>
+        <p class="text-[10.5px] font-bold uppercase tracking-[0.12em] text-sp-heading leading-snug text-center">
+          {steps[0].label}
+        </p>
+      </div>
+
+      <!-- Connector -->
+      <div class="flex-shrink-0 flex items-start pt-[45px] w-[80px]">
+        <Fragment set:html={connector} />
+      </div>
+
+      <!-- Spatia logo -->
+      <div class="flex flex-col items-center">
+        <div class="w-[104px] h-[104px] rounded-xl bg-[#E3EFEF] flex items-center justify-center mb-4 flex-shrink-0 p-2">
+          <img src={spatiaLogo.src} class="w-full h-auto object-contain" alt="Spatia" />
+        </div>
+        <p class="text-[10.5px] font-bold uppercase tracking-[0.12em] text-sp-heading leading-snug text-center">
+          Spatia
+        </p>
+      </div>
+
+      <!-- Connector -->
+      <div class="flex-shrink-0 flex items-start pt-[45px] w-[80px]">
+        <Fragment set:html={connector} />
+      </div>
+
+      <!-- Understanding -->
+      <div class="flex flex-col items-center">
+        <div class="w-[104px] h-[104px] rounded-xl bg-[#E3EFEF] flex items-center justify-center mb-4 flex-shrink-0" style="color: #1E686E;">
+          <Fragment set:html={steps[1].icon} />
+        </div>
+        <p class="text-[10.5px] font-bold uppercase tracking-[0.12em] text-sp-heading leading-snug text-center">
+          {steps[1].label}
+        </p>
+      </div>
+
+      <!-- Connector -->
+      <div class="flex-shrink-0 flex items-start pt-[45px] w-[80px]">
+        <Fragment set:html={connector} />
+      </div>
+
+      <!-- Action -->
+      <div class="flex flex-col items-center">
+        <div class="w-[104px] h-[104px] rounded-xl bg-[#E3EFEF] flex items-center justify-center mb-4 flex-shrink-0" style="color: #1E686E;">
+          <Fragment set:html={steps[2].icon} />
+        </div>
+        <p class="text-[10.5px] font-bold uppercase tracking-[0.12em] text-sp-heading leading-snug text-center">
+          {steps[2].label}
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Mobile: vertical list -->
+    <div class="flex md:hidden flex-col items-center gap-8 reveal reveal-delay-2">
+      {[
+        { label: steps[0].label, icon: steps[0].icon, isLogo: false },
+        { label: 'Spatia', icon: '', isLogo: true },
+        { label: steps[1].label, icon: steps[1].icon, isLogo: false },
+        { label: steps[2].label, icon: steps[2].icon, isLogo: false },
+      ].map((item, i, arr) => (
+        <>
+          <div class="flex flex-col items-center text-center">
+            <div class="w-[104px] h-[104px] rounded-xl bg-[#E3EFEF] flex items-center justify-center mb-3 p-2" style="color: #1E686E;">
+              {item.isLogo
+                ? <img src={spatiaLogo.src} class="w-full h-auto object-contain" alt="Spatia" />
+                : <Fragment set:html={item.icon} />
+              }
+            </div>
+            <p class="text-[10.5px] font-bold uppercase tracking-[0.12em] text-sp-heading">{item.label}</p>
+          </div>
+          {i < arr.length - 1 && (
+            <svg width="14" height="32" viewBox="0 0 14 32" fill="none">
+              <line x1="7" y1="2" x2="7" y2="22" stroke="#D1D5DB" stroke-width="1.5" stroke-dasharray="3.5 3.5" stroke-linecap="round"/>
+              <polyline points="3,18 7,26 11,18" stroke="#D1D5DB" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          )}
+        </>
+      ))}
+    </div>
+
+  </div>
+</section>

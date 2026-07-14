@@ -1,0 +1,58 @@
+---
+import logisticsImg from '../../assets/Logistics.png';
+import defenseImg from '../../assets/Defense.png';
+import inspectionImg from '../../assets/Inspection.png';
+import roboticsImg from '../../assets/Robotics.png';
+
+const industries = [
+  {
+    label: 'Logistics',
+    description:
+      'Optimization through fluid spatial orchestration. Beyond paths, we enable understanding of dynamic floor flow.',
+    image: logisticsImg,
+  },
+  {
+    label: 'Defense',
+    description:
+      'Absolute reliability in chaotic, unmapped theaters. Strategic awareness is the primary advantage.',
+    image: defenseImg,
+  },
+  {
+    label: 'Inspection',
+    description:
+      'Precision diagnostics at scale. Understanding the microscopic variance within macroscopic systems.',
+    image: inspectionImg,
+  },
+  {
+    label: 'Advanced Robotics',
+    description:
+      'The bridge between software intent and physical dexterity. Context is the key to collaboration.',
+    image: roboticsImg,
+  },
+];
+---
+
+<section class="py-16 md:py-[120px] bg-surface-container-low" data-purpose="industry-applications">
+  <div class="px-4 sm:px-8 lg:px-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        industries.map((item) => (
+          <div class="group cursor-pointer">
+            <div class="aspect-[4/3] rounded-lg overflow-hidden mb-6">
+              <img
+                src={item.image.src}
+                alt={item.label}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                loading="lazy"
+              />
+            </div>
+            <h4 class="text-headline-md font-headline-md text-primary mb-2">{item.label}</h4>
+            <p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+              {item.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

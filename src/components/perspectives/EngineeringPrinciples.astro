@@ -1,0 +1,66 @@
+---
+const principles = [
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>`,
+    title: 'Divide & Conquer',
+    description: 'Break large systems into smaller, verifiable problems. Composability is the foundation of reliable physical AI.',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>`,
+    title: 'Iterate Continuously',
+    description: 'Real systems evolve every day. Ship fast, observe reality, refine the model. The loop never ends.',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>`,
+    title: 'Understand Reality',
+    description: 'Build for the real world, not the benchmark. The physical environment is the test suite that matters.',
+  },
+] as const;
+---
+
+<div class="bg-white py-16 lg:py-20">
+  <div class="max-w-[760px] mx-auto px-8 lg:px-0">
+
+    <!-- Label -->
+    <div class="flex items-center gap-3 mb-10 reveal">
+      <div class="w-8 h-px" style="background: #1F7A5A;"></div>
+      <span class="text-[10px] font-semibold tracking-[0.22em] uppercase" style="color: #1F7A5A;">Engineering Principles</span>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+      {principles.map((p, i) => (
+        <div
+          class:list={[
+            'group relative flex flex-col gap-4 p-6 rounded-[20px] border cursor-default',
+            'transition-all duration-400 ease-out reveal',
+            `reveal-delay-${i + 1}`,
+          ]}
+          style="border-color: #E8ECEF; background: #FFFFFF;"
+          onmouseover="this.style.borderColor='#1F7A5A'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(31,122,90,0.10)'"
+          onmouseout="this.style.borderColor='#E8ECEF'; this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+        >
+          <!-- Icon -->
+          <div
+            class="w-10 h-10 rounded-[10px] flex items-center justify-center flex-shrink-0 transition-colors duration-300"
+            style="background: #EEF8F2; color: #1F7A5A;"
+            set:html={p.icon}
+          ></div>
+
+          <!-- Title -->
+          <h4 class="text-[#111827] font-semibold text-[15px] tracking-[-0.01em]">{p.title}</h4>
+
+          <!-- Description -->
+          <p class="text-[#667085] text-[13px] leading-[1.7]">{p.description}</p>
+
+          <!-- Bottom accent -->
+          <div
+            class="absolute bottom-0 left-4 right-4 h-[2px] rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-400"
+            style="background: #1F7A5A;"
+          ></div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</div>

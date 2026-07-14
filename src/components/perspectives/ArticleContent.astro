@@ -1,0 +1,261 @@
+---
+import { Image } from 'astro:assets';
+import EngineeringPrinciples from './EngineeringPrinciples.astro';
+import PullQuote from './PullQuote.astro';
+import ArticleImg from '../../assets/Secondary_Img.png';
+
+interface Props {
+  paragraphs: string[];
+  pullQuote: string;
+}
+
+const { paragraphs, pullQuote } = Astro.props;
+
+// Split paragraphs: first 2 before principles, rest after
+const before = paragraphs.slice(0, 2);
+const after = paragraphs.slice(2);
+---
+
+<section class="bg-white relative">
+
+  <!-- Sticky share buttons (desktop only) -->
+  <div class="hidden xl:block fixed left-8 top-0 bottom-0 pointer-events-none z-40" id="share-sidebar">
+    <div class="sticky top-1/2 -translate-y-1/2 flex flex-col items-center gap-3 pointer-events-auto opacity-0 transition-opacity duration-500" id="share-buttons">
+
+      <!-- Share label -->
+      <span
+        class="text-[9px] font-semibold tracking-[0.2em] uppercase mb-1"
+        style="color: #667085; writing-mode: vertical-rl; transform: rotate(180deg);"
+      >Share</span>
+
+      <!-- LinkedIn -->
+      <button
+        class="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2]"
+        style="border-color: #E8ECEF; color: #667085;"
+        title="Share on LinkedIn"
+        onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank')"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </button>
+
+      <!-- Twitter / X -->
+      <button
+        class="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2]"
+        style="border-color: #E8ECEF; color: #667085;"
+        title="Share on X"
+        onclick="window.open('https://x.com/intent/tweet?url=' + encodeURIComponent(window.location.href), '_blank')"
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.259 5.631ZM17.083 20h1.833L7.084 4.126H5.117Z"/>
+        </svg>
+      </button>
+
+      <!-- Copy link -->
+      <button
+        class="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2]"
+        style="border-color: #E8ECEF; color: #667085;"
+        title="Copy link"
+        id="copy-link-btn"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </svg>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Article content -->
+  <div class="max-w-[760px] mx-auto px-8 lg:px-0 py-16 lg:py-20">
+
+    <!-- First half: paragraphs 0–1 -->
+    {before.map((para, i) => (
+      <p
+        class:list={[
+          'text-[#111827] leading-[1.9] mb-8 reveal',
+          i === 0 ? 'drop-cap' : '',
+          `reveal-delay-${i + 1}`,
+        ]}
+        style="font-size: 20px;"
+      >
+        {para}
+      </p>
+    ))}
+
+    <!-- Subtle section divider -->
+    <div class="flex items-center gap-4 my-10 reveal">
+      <div class="h-px flex-1" style="background: #E8ECEF;"></div>
+      <div class="w-1.5 h-1.5 rounded-full" style="background: #1F7A5A;"></div>
+      <div class="h-px flex-1" style="background: #E8ECEF;"></div>
+    </div>
+
+  </div>
+
+  <!-- Engineering Principles (full-width) -->
+  <EngineeringPrinciples />
+
+  <!-- Pull Quote -->
+  <PullQuote quote={pullQuote} />
+
+  <!-- Article image break -->
+  <div class="max-w-[760px] mx-auto px-8 lg:px-0 pb-10 reveal">
+    <div class="rounded-[20px] overflow-hidden" style="aspect-ratio: 16/9;">
+      <Image
+        src={ArticleImg}
+        alt="Spatia spatial intelligence in action"
+        class="w-full h-full object-cover"
+        width={760}
+        height={427}
+      />
+    </div>
+    <p class="text-center text-[12px] mt-3" style="color: #667085;">
+      Spatial intelligence deployed in real industrial environments.
+    </p>
+  </div>
+
+  <!-- Second half: paragraphs 2+ -->
+  <div class="max-w-[760px] mx-auto px-8 lg:px-0 pb-20">
+    {after.map((para, i) => (
+      <p
+        class:list={['text-[#111827] leading-[1.9] mb-8 reveal', `reveal-delay-${i + 1}`]}
+        style="font-size: 20px;"
+      >
+        {para}
+      </p>
+    ))}
+
+    <!-- Article end marker -->
+    <div class="flex items-center gap-4 pt-4 reveal">
+      <div class="h-px flex-1" style="background: #E8ECEF;"></div>
+      <div
+        class="px-4 py-1.5 rounded-full text-[10px] font-semibold tracking-[0.18em] uppercase"
+        style="color: #1F7A5A; background: #EEF8F2;"
+      >
+        End of Article
+      </div>
+      <div class="h-px flex-1" style="background: #E8ECEF;"></div>
+    </div>
+
+    <!-- Mobile share row (hidden on xl where sidebar is shown) -->
+    <div class="xl:hidden mt-10 pt-8 border-t reveal" style="border-color: #E8ECEF;">
+      <p class="text-[11px] font-semibold tracking-[0.18em] uppercase mb-4" style="color: #667085;">Share this article</p>
+      <div class="flex items-center gap-3">
+
+        <!-- LinkedIn -->
+        <button
+          id="mobile-linkedin-btn"
+          class="flex items-center gap-2 px-4 py-2.5 rounded-full border text-[13px] font-medium transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2]"
+          style="border-color: #E8ECEF; color: #374151;"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+          LinkedIn
+        </button>
+
+        <!-- X / Twitter -->
+        <button
+          id="mobile-twitter-btn"
+          class="flex items-center gap-2 px-4 py-2.5 rounded-full border text-[13px] font-medium transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2]"
+          style="border-color: #E8ECEF; color: #374151;"
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.259 5.631ZM17.083 20h1.833L7.084 4.126H5.117Z"/>
+          </svg>
+          X
+        </button>
+
+        <!-- Copy link -->
+        <button
+          id="mobile-copy-btn"
+          class="flex items-center gap-2 px-4 py-2.5 rounded-full border text-[13px] font-medium transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2]"
+          style="border-color: #E8ECEF; color: #374151;"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+          <span id="mobile-copy-label">Copy link</span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<style>
+  .drop-cap::first-letter {
+    float: left;
+    font-size: 4.6em;
+    line-height: 0.78;
+    font-weight: 700;
+    color: #1F7A5A;
+    padding-right: 0.12em;
+    margin-top: 0.06em;
+  }
+</style>
+
+<script>
+  // Show share buttons after scrolling past hero
+  const shareButtons = document.getElementById('share-buttons');
+  if (shareButtons) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          shareButtons.style.opacity = '1';
+        } else {
+          shareButtons.style.opacity = '0';
+        }
+      },
+      { threshold: 0.1 }
+    );
+    const articleSection = document.querySelector('section.bg-white.relative');
+    if (articleSection) observer.observe(articleSection);
+  }
+
+  // Desktop copy link
+  const copyBtn = document.getElementById('copy-link-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(window.location.href).catch(() => {});
+      const orig = copyBtn.innerHTML;
+      copyBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F7A5A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+      setTimeout(() => { copyBtn.innerHTML = orig; }, 1800);
+    });
+  }
+
+  // Mobile share buttons
+  const url = encodeURIComponent(window.location.href);
+
+  document.getElementById('mobile-linkedin-btn')?.addEventListener('click', () => {
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank');
+  });
+
+  document.getElementById('mobile-twitter-btn')?.addEventListener('click', () => {
+    window.open('https://x.com/intent/tweet?url=' + url, '_blank');
+  });
+
+  const mobileCopyBtn = document.getElementById('mobile-copy-btn');
+  const mobileCopyLabel = document.getElementById('mobile-copy-label');
+  mobileCopyBtn?.addEventListener('click', async () => {
+    await navigator.clipboard.writeText(window.location.href).catch(() => {});
+    if (mobileCopyLabel) {
+      mobileCopyLabel.textContent = 'Copied!';
+      mobileCopyBtn.style.borderColor = '#1F7A5A';
+      mobileCopyBtn.style.color = '#1F7A5A';
+      setTimeout(() => {
+        mobileCopyLabel.textContent = 'Copy link';
+        mobileCopyBtn.style.borderColor = '';
+        mobileCopyBtn.style.color = '';
+      }, 1800);
+    }
+  });
+</script>

@@ -1,0 +1,36 @@
+---
+---
+
+<section class="py-10 md:py-[120px] bg-surface-container-low" data-purpose="reality-model">
+  <div class="px-4 sm:px-8 lg:px-16 grid md:grid-cols-2 gap-8 md:gap-20 items-center">
+    <div>
+      <h2 class="text-headline-lg font-headline-lg text-primary mb-6 md:mb-10 leading-tight">
+        Understanding requires a continuously evolving model of reality.
+      </h2>
+      <p class="text-body-lg font-body-lg text-on-surface-variant max-w-md">
+        The physical world is not static. People move. Objects move. Conditions change.
+        Understanding must evolve alongside the environment.
+      </p>
+    </div>
+
+    <!-- Orbital diagram — pure CSS -->
+    <div class="relative flex justify-center items-center mt-4 md:mt-0">
+      <div class="relative w-full aspect-square max-w-[240px] sm:max-w-xs md:max-w-lg mx-auto">
+        <!-- Outer ring -->
+        <div class="absolute inset-0 rounded-full border border-primary/10"></div>
+        <!-- Mid ring -->
+        <div class="absolute inset-[15%] rounded-full border border-secondary/20"></div>
+        <!-- Inner ring -->
+        <div class="absolute inset-[35%] rounded-full border border-primary/15"></div>
+        <!-- Core -->
+        <div class="absolute inset-[45%] rounded-full bg-secondary/30"></div>
+        <!-- Orbiting dot -->
+        <div class="absolute inset-0 rounded-full animate-spin" style="animation-duration: 8s;">
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-secondary"></div>
+        </div>
+        <!-- Scale ring -->
+        <div class="absolute inset-0 rounded-full border border-primary/5 scale-110"></div>
+      </div>
+    </div>
+  </div>
+</section>

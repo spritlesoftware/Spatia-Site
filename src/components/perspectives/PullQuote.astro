@@ -1,0 +1,37 @@
+---
+interface Props {
+  quote: string;
+}
+
+const { quote } = Astro.props;
+---
+
+<div class="max-w-[760px] mx-auto px-8 lg:px-0 py-10 reveal">
+  <div
+    class="relative rounded-[20px] p-8 lg:p-12"
+    style="
+      background: #FFFFFF;
+      border: 1px solid #E8ECEF;
+      border-left: 4px solid #1F7A5A;
+      box-shadow: 0 8px 32px rgba(31,122,90,0.06);
+    "
+  >
+    <!-- Decorative quotation mark -->
+    <div
+      class="absolute top-6 right-8 font-bold select-none pointer-events-none"
+      style="font-size: 72px; color: #EEF8F2; line-height: 1;"
+      aria-hidden="true"
+    >
+      &rdquo;
+    </div>
+
+    <blockquote>
+      <p
+        class="text-[#111827] font-medium leading-[1.6] relative z-10"
+        style="font-size: clamp(20px, 2vw, 26px);"
+      >
+        &ldquo;{quote}&rdquo;
+      </p>
+    </blockquote>
+  </div>
+</div>

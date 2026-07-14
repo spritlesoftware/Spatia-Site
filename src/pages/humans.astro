@@ -1,0 +1,33 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/shared/Navbar.astro';
+import Footer from '@components/shared/Footer.astro';
+import HumansHero from '@components/humans/HumansHero.astro';
+import LeadershipGrid from '@components/humans/LeadershipGrid.astro';
+import FeaturedStory from '@components/humans/FeaturedStory.astro';
+import InsightsTimeline from '@components/humans/InsightsTimeline.astro';
+import ValuesSection from '@components/humans/ValuesSection.astro';
+import TeamPhilosophy from '@components/humans/TeamPhilosophy.astro';
+import StatisticsSection from '@components/humans/StatisticsSection.astro';
+import JoinMissionCTA from '@components/humans/JoinMissionCTA.astro';
+---
+
+<Layout
+  title="Humans | Spatia"
+  description="Meet the engineers, researchers and builders shaping the future of intelligent machines at Spatia."
+>
+  <Navbar activeLink="humans" />
+
+  <main>
+    <HumansHero />
+    <LeadershipGrid />
+    <FeaturedStory />
+    <InsightsTimeline />
+    <ValuesSection />
+    <TeamPhilosophy />
+    <StatisticsSection />
+    <JoinMissionCTA />
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,94 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  name: string;
+  role: string;
+  image: ImageMetadata;
+  yearsAtSpatia: string;
+  openingParagraph: string;
+}
+
+const { name, role, image, yearsAtSpatia, openingParagraph } = Astro.props;
+---
+
+<section class="bg-white py-20 lg:py-28">
+  <div class="max-w-[1280px] mx-auto px-8 lg:px-16">
+    <div class="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-12 lg:gap-20 items-start">
+
+      <!-- Left: Author identity -->
+      <div class="flex flex-col items-start gap-6 reveal">
+        <!-- Portrait -->
+        <div class="relative">
+          <div class="w-[120px] h-[120px] rounded-[20px] overflow-hidden ring-1 ring-[#E8ECEF]">
+            <Image
+              src={image}
+              alt={name}
+              class="w-full h-full object-cover object-top"
+              width={120}
+              height={120}
+            />
+          </div>
+          <!-- Green accent dot -->
+          <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#1F7A5A] border-2 border-white"></div>
+        </div>
+
+        <!-- Role chip -->
+        <div>
+          <span
+            class="inline-block text-[10px] font-semibold tracking-[0.2em] uppercase px-3 py-1.5 rounded-full"
+            style="color: #1F7A5A; background: #EEF8F2;"
+          >
+            {role}
+          </span>
+        </div>
+
+        <!-- Name -->
+        <div>
+          <h2 class="text-[#111827] font-bold text-[22px] tracking-[-0.02em] leading-none">{name}</h2>
+          <p class="text-[#667085] text-[13px] mt-1.5">{yearsAtSpatia}</p>
+        </div>
+
+        <!-- Divider -->
+        <div class="w-12 h-px bg-[#E8ECEF]"></div>
+
+        <!-- Meta label -->
+        <p class="text-[11px] font-semibold text-[#1F7A5A] tracking-[0.18em] uppercase">Author's Perspective</p>
+      </div>
+
+      <!-- Right: Opening editorial paragraph -->
+      <div class="reveal reveal-delay-2">
+        <!-- Decorative quotation mark -->
+        <div
+          class="font-bold leading-none mb-4 select-none"
+          style="font-size: 96px; color: #EEF8F2; line-height: 0.7; margin-top: -8px;"
+          aria-hidden="true"
+        >
+          &ldquo;
+        </div>
+
+        <!-- Opening paragraph with green left border -->
+        <div
+          class="pl-6 py-1"
+          style="border-left: 3px solid #1F7A5A;"
+        >
+          <p
+            class="text-[#111827] font-medium leading-[1.75]"
+            style="font-size: clamp(20px, 2.2vw, 26px);"
+          >
+            {openingParagraph}
+          </p>
+        </div>
+
+        <!-- Subtle divider below -->
+        <div class="mt-10 flex items-center gap-4">
+          <div class="h-px flex-1 bg-[#E8ECEF]"></div>
+          <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#667085]">Full Perspective Below</span>
+          <div class="h-px flex-1 bg-[#E8ECEF]"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

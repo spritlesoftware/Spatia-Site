@@ -1,0 +1,158 @@
+---
+const faqs = [
+  {
+    question: 'How quickly will you reply?',
+    answer: 'We read every message personally and respond within 1–2 business days. If your inquiry is time-sensitive, mention it in your message and we\'ll prioritise it.',
+  },
+  {
+    question: 'Do you accept research collaborations?',
+    answer: 'Yes, actively. We partner with universities, research labs, and independent researchers working at the frontier of autonomous systems, Physical AI, and machine perception. Reach out with your research area and we\'ll find a way to collaborate.',
+  },
+  {
+    question: 'Can I request a demo?',
+    answer: 'Absolutely. Send us a short description of your use case and deployment context. We\'ll schedule a focused technical demonstration with engineers  not a sales presentation.',
+  },
+  {
+    question: 'Can startups partner with Spatia?',
+    answer: 'We work with companies of all sizes. If you\'re building something meaningful in the autonomy space  regardless of your funding stage  we want to hear about it.',
+  },
+  {
+    question: 'Do you offer internships?',
+    answer: 'We run internship programmes for engineering and research roles throughout the year. Email us with your background, what you\'re working on, and what you\'d like to learn. We take student applicants seriously.',
+  },
+];
+---
+
+<section class="py-[120px]" style="background: #FAFBFC;">
+  <div class="max-w-[1280px] mx-auto px-8 md:px-16">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+      <!-- Left: Label + heading -->
+      <div class="lg:col-span-4 reveal lg:sticky" style="top: 120px;">
+        <span class="section-label block mb-6" style="color: #1F7A5A;">FAQ</span>
+        <h2
+          class="font-bold text-[#111827] leading-[1.08] tracking-[-0.03em]"
+          style="font-size: clamp(32px, 3.5vw, 48px);"
+        >
+          Common<br>questions.
+        </h2>
+        <p class="mt-5 text-[15px] leading-[1.8]" style="color: #667085; max-width: 300px;">
+          Can't find what you're looking for? Just email us - we reply to everything.
+        </p>
+        <a
+          href="mailto:spatia@spritle.com"
+          class="inline-flex items-center gap-2 mt-8 text-[14px] font-semibold transition-colors duration-200 hover:opacity-70"
+          style="color: #1F7A5A;"
+        >
+          spatia@spritle.com
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Right: Accordion -->
+      <div class="lg:col-span-8 reveal reveal-delay-2">
+        <div id="faq-list" class="flex flex-col">
+          {faqs.map((faq, i) => (
+            <div
+              class="faq-item"
+              style={`border-top: 1px solid #E6EAF0;${i === faqs.length - 1 ? ' border-bottom: 1px solid #E6EAF0;' : ''}`}
+            >
+              <button
+                class="faq-trigger w-full flex items-center justify-between gap-6 py-7 text-left"
+                aria-expanded={i === 0 ? 'true' : 'false'}
+                type="button"
+              >
+                <span class="text-[17px] font-semibold tracking-[-0.01em] text-[#111827] leading-[1.4]">
+                  {faq.question}
+                </span>
+                <!-- Plus/Minus icon -->
+                <div class="faq-icon flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300" style="border: 1px solid #E6EAF0; color: #667085;">
+                  <svg class="faq-plus" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                    <line x1="12" y1="5" x2="12" y2="19"/>
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                  </svg>
+                  <svg class="faq-minus hidden" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                  </svg>
+                </div>
+              </button>
+
+              <div
+                class="faq-panel overflow-hidden"
+                style={`height: ${i === 0 ? 'auto' : '0'}; transition: height 0.38s cubic-bezier(0.16, 1, 0.3, 1);`}
+              >
+                <div class="pb-7 pr-14">
+                  <p class="text-[15px] leading-[1.85]" style="color: #667085;">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-trigger:hover .faq-icon {
+    border-color: rgba(31, 122, 90, 0.3);
+    color: #1F7A5A;
+    background: #EEF8F2;
+  }
+
+  .faq-trigger[aria-expanded="true"] .faq-icon {
+    border-color: #1F7A5A;
+    background: #1F7A5A;
+    color: #ffffff !important;
+  }
+
+  .faq-trigger[aria-expanded="true"] .faq-plus { display: none; }
+  .faq-trigger[aria-expanded="true"] .faq-minus { display: block; }
+  .faq-trigger[aria-expanded="false"] .faq-plus { display: block; }
+  .faq-trigger[aria-expanded="false"] .faq-minus { display: none; }
+
+  .faq-trigger[aria-expanded="true"] > span {
+    color: #1F7A5A;
+  }
+</style>
+
+<script>
+  // Initialize first item open
+  const items = document.querySelectorAll<HTMLElement>('.faq-item');
+
+  items.forEach((item, i) => {
+    const trigger = item.querySelector<HTMLButtonElement>('.faq-trigger');
+    const panel   = item.querySelector<HTMLElement>('.faq-panel');
+    if (!trigger || !panel) return;
+
+    // Set first item open
+    if (i === 0) {
+      panel.style.height = panel.scrollHeight + 'px';
+    }
+
+    trigger.addEventListener('click', () => {
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+      // Close all
+      items.forEach((it) => {
+        const t = it.querySelector<HTMLButtonElement>('.faq-trigger');
+        const p = it.querySelector<HTMLElement>('.faq-panel');
+        if (!t || !p) return;
+        t.setAttribute('aria-expanded', 'false');
+        p.style.height = '0';
+      });
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        trigger.setAttribute('aria-expanded', 'true');
+        panel.style.height = panel.scrollHeight + 'px';
+      }
+    });
+  });
+</script>

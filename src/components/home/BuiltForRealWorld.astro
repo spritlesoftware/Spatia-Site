@@ -1,0 +1,45 @@
+---
+import robotArmImg from '../../assets/Secondary_Img.png';
+---
+
+<section class="py-16 md:py-[120px] bg-white">
+  <div class="px-4 sm:px-8 lg:px-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-center">
+
+      <!-- ── LEFT: Text ───────────────────────────────────── -->
+      <div class="reveal">
+        <!-- Heading -->
+        <h2
+          class="font-inter font-bold text-sp-heading leading-[1.1] tracking-[-0.02em] mb-8"
+          style="font-size: clamp(32px, 3.6vw, 52px);"
+        >
+          Built for environments<br />
+          where assumptions fail.
+        </h2>
+
+        <!-- Body copy -->
+        <div class="space-y-1.5 text-[16px] text-sp-body leading-[1.75]">
+          <p>The physical world does not stay still.</p>
+          <p>People move. Objects move.</p>
+          <p>Conditions change.</p>
+          <p>Spatia was built to understand it.</p>
+        </div>
+      </div>
+
+      <!-- ── RIGHT: Image ─────────────────────────────────── -->
+      <div class="reveal reveal-delay-2">
+        <div class="relative rounded-2xl overflow-hidden group">
+          <img
+            src={robotArmImg.src}
+            alt="Spatia robotic arm system"
+            class="w-full h-auto object-cover rounded-2xl transition-transform duration-700 group-hover:scale-[1.02]"
+            loading="lazy"
+          />
+          <!-- Very subtle gradient overlay -->
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-black/5 to-transparent pointer-events-none"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

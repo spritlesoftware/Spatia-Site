@@ -1,0 +1,22 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/shared/Navbar.astro';
+import Footer from '@components/shared/Footer.astro';
+import Hero from '@components/home/Hero.astro';
+import BuiltForRealWorld from '@components/home/BuiltForRealWorld.astro';
+import DiagramSection from '@components/home/DiagramSection.astro';
+import IndustriesGrid from '@components/home/IndustriesGrid.astro';
+import CTASection from '@components/home/CTASection.astro';
+---
+
+<Layout title="Spatia">
+  <Navbar />
+  <main>
+    <Hero />
+    <BuiltForRealWorld />
+    <DiagramSection />
+    <IndustriesGrid />
+<CTASection />
+  </main>
+  <Footer />
+</Layout>

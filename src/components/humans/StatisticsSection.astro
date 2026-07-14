@@ -1,0 +1,84 @@
+---
+const stats = [
+  { label: 'Research Engineers', value: 15, suffix: '+' },
+  { label: 'Countries',          value: 6,   suffix: ''  },
+  { label: 'Projects Delivered', value: 120, suffix: '+' },
+  { label: 'Years Building AI',  value: 12,  suffix: '+' },
+] as const;
+---
+
+<section class="bg-white py-24 lg:py-32 border-t border-sp-border" id="stats">
+  <div class="max-w-container mx-auto px-8 lg:px-16">
+
+    <!-- Section label -->
+    <div class="flex items-center gap-3 mb-12 reveal">
+      <div class="w-8 h-px bg-sp-green"></div>
+      <span class="section-label">By the Numbers</span>
+    </div>
+
+    <!-- Stats grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+      {stats.map((stat, i) => (
+        <div
+          class:list={[
+            'group p-8 lg:p-10 rounded-[24px] border border-sp-border bg-white',
+            'transition-all duration-500 ease-out',
+            'hover:border-sp-green hover:shadow-[0_16px_48px_rgba(30,104,110,0.07)]',
+            'reveal',
+            `reveal-delay-${i + 1}`,
+          ]}
+        >
+          <!-- Animated number -->
+          <div
+            class="font-inter font-bold text-sp-heading leading-none mb-3 tabular-nums"
+            style="font-size: clamp(40px, 5vw, 64px); letter-spacing: -0.03em;"
+            data-counter-target={stat.value}
+            data-counter-suffix={stat.suffix}
+          >
+            {stat.value}{stat.suffix}
+          </div>
+          <p class="text-sp-body text-[14px] leading-[1.5] font-medium">{stat.label}</p>
+
+          <!-- Expanding accent bar -->
+          <div class="mt-6 w-8 h-0.5 bg-sp-green rounded-full transition-all duration-500 group-hover:w-16"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function animateCounter(el: HTMLElement) {
+    const target = parseInt(el.dataset.counterTarget ?? '0', 10);
+    const suffix = el.dataset.counterSuffix ?? '';
+    const duration = 1800;
+    const startTime = performance.now();
+
+    // Ease-out cubic
+    const ease = (t: number) => 1 - Math.pow(1 - t, 3);
+
+    function tick(now: number) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      el.textContent = `${Math.round(ease(progress) * target)}${suffix}`;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target as HTMLElement);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.6 }
+  );
+
+  document.querySelectorAll<HTMLElement>('[data-counter-target]').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

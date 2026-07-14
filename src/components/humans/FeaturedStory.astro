@@ -1,0 +1,92 @@
+---
+import { Image } from 'astro:assets';
+import featuredImg from '../../assets/02.png';
+---
+
+<section class="bg-white py-24 lg:py-32">
+  <div class="max-w-container mx-auto px-8 lg:px-16">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+      <!-- Left: Cinematic image -->
+      <div class="relative rounded-[24px] overflow-hidden reveal group" style="box-shadow: 0 32px 80px rgba(0,0,0,0.12);">
+        <div class="overflow-hidden" style="aspect-ratio: 3/2;">
+          <Image
+            src={featuredImg}
+            alt="Featured story-the humans behind Spatia"
+            class="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+            width={640}
+            height={427}
+          />
+        </div>
+        <!-- Subtle green tint overlay -->
+        <div
+          class="absolute inset-0 pointer-events-none"
+          style="background: linear-gradient(135deg, rgba(30,104,110,0.07) 0%, transparent 55%);"
+          aria-hidden="true"
+        ></div>
+      </div>
+
+      <!-- Right: Editorial text -->
+      <div class="reveal reveal-delay-2">
+        <!-- Label -->
+        <div class="flex items-center gap-3 mb-10">
+          <div class="w-8 h-px bg-sp-green"></div>
+          <span class="section-label">Featured Story</span>
+        </div>
+
+        <!-- Title -->
+        <h2
+          class="font-inter font-bold text-sp-heading tracking-[-0.025em] leading-[1.1] mb-8"
+          style="font-size: clamp(32px, 3.5vw, 52px);"
+        >
+          The world<br />doesn&rsquo;t explain<br />itself.
+        </h2>
+
+        <!-- Supporting copy -->
+        <p class="text-[18px] text-sp-body leading-[1.75] mb-10">
+          After years at the intersection of robotics and cognitive science, our research team built the framework that powers Spatia&rsquo;s core understanding engine-challenging the assumption that machine intelligence is merely computational.
+        </p>
+
+        <!-- CTA -->
+        <a
+          href="#"
+          class="inline-flex items-center gap-3 px-7 py-4 rounded-[12px] font-semibold text-[15px] transition-all duration-300 group/btn mb-10"
+          style="background-color: #111827; color: #ffffff;"
+          onmouseover="this.style.backgroundColor='#000000'"
+          onmouseout="this.style.backgroundColor='#111827'"
+        >
+          Read Full Story
+          <svg
+            width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+            class="transition-transform duration-200 group-hover/btn:translate-x-0.5"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+
+        <!-- Story meta -->
+        <div class="pt-8 border-t border-sp-border flex items-center gap-8">
+          <div class="flex items-center gap-2 text-sp-body">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span class="text-[13px]">8 min read</span>
+          </div>
+          <div class="flex items-center gap-2 text-sp-body">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <span class="text-[13px]">March 2026</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
