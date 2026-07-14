@@ -1,0 +1,40 @@
+---
+import h2rHeroImg from '../../assets/H2R-Hero.png';
+---
+
+<header
+  class="relative h-screen flex items-center pt-24 overflow-hidden"
+  style={`background-image: url('${h2rHeroImg.src}'); background-size: cover; background-position: center; background-repeat: no-repeat;`}
+  data-purpose="h2r-hero"
+>
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-black/40 z-0 pointer-events-none"></div>
+
+  <div class="relative z-10 w-full px-4 sm:px-8 lg:px-16">
+    <h1 class="font-bold text-on-primary leading-[1.08] tracking-[-0.04em] mb-6" style="font-size: clamp(36px, 7vw, 72px);">
+      Conversations<br />
+      <span class="text-white">about understanding.</span>
+    </h1>
+
+    <p class="font-body-lg text-body-lg text-on-primary/70 mb-10 max-w-md">
+      Exploring the intersection of human and machine intelligence through long-form inquiry.
+    </p>
+
+    <div class="flex flex-wrap gap-4">
+      <a
+        href="#library"
+        class="px-6 sm:px-10 py-4 sm:py-5 bg-white text-black rounded-[10px] font-label-sm text-label-sm hover:bg-white/90 active:scale-95 transition-all flex items-center gap-2"
+      >
+        <span class="material-symbols-outlined text-[18px]">library_books</span>
+        Explore Library
+      </a>
+      <a
+        href="#stories"
+        class="px-6 sm:px-10 py-4 sm:py-5 border border-on-primary/25 text-on-primary rounded-[10px] font-label-sm text-label-sm hover:bg-on-primary/10 transition-all flex items-center gap-2"
+      >
+        <span class="material-symbols-outlined text-[18px]">auto_stories</span>
+        Latest Stories
+      </a>
+    </div>
+  </div>
+</header>

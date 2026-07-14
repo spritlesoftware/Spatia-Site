@@ -1,0 +1,61 @@
+---
+interface Props {
+  quote: string;
+  attribution: string;
+}
+
+const { quote, attribution } = Astro.props;
+---
+
+<section class="relative overflow-hidden" style="background: #1F7A5A;">
+  <!-- Engineering grid overlay -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    "
+    aria-hidden="true"
+  ></div>
+
+  <!-- Radial glow (top right) -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background: radial-gradient(ellipse 55% 55% at 85% 15%, rgba(255,255,255,0.06) 0%, transparent 70%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative max-w-[1280px] mx-auto px-8 lg:px-16 py-24 lg:py-32 text-center">
+
+    <!-- Decorative quotation mark -->
+    <div
+      class="font-bold text-white/10 leading-none select-none mb-4 reveal"
+      style="font-size: clamp(96px, 14vw, 160px); line-height: 0.8;"
+      aria-hidden="true"
+    >
+      &ldquo;
+    </div>
+
+    <!-- Quote -->
+    <blockquote class="reveal reveal-delay-2">
+      <p
+        class="text-white font-medium italic leading-[1.45] max-w-[820px] mx-auto"
+        style="font-size: clamp(24px, 3.2vw, 40px);"
+      >
+        {quote}
+      </p>
+
+      <!-- Attribution -->
+      <footer class="mt-8">
+        <cite
+          class="text-white/50 not-italic text-[12px] font-semibold tracking-[0.2em] uppercase"
+        >
+          {attribution}
+        </cite>
+      </footer>
+    </blockquote>
+
+  </div>
+</section>

@@ -1,0 +1,86 @@
+---
+const values = [
+  {
+    title: 'Think Deeply',
+    description: 'Understanding before automation. We believe that intelligence without genuine comprehension is a shortcut that leads nowhere worth going.',
+    iconPath: 'M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83',
+    iconType: 'path',
+  },
+  {
+    title: 'Build Carefully',
+    description: 'Engineering with responsibility. Every system we deploy must be worthy of the environments it operates in and the humans it works alongside.',
+    iconPath: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
+    iconType: 'path',
+  },
+  {
+    title: 'Move Together',
+    description: 'Collaboration over hierarchy. The challenges at the frontier of physical AI are too complex and too consequential for any single perspective.',
+    iconPath: '',
+    iconType: 'people',
+  },
+] as const;
+---
+
+<section class="bg-white py-24 lg:py-32">
+  <div class="max-w-container mx-auto px-8 lg:px-16">
+
+    <!-- Header -->
+    <div class="mb-16 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-8 h-px bg-sp-green"></div>
+        <span class="section-label">What We Stand For</span>
+      </div>
+      <h2
+        class="font-inter font-bold text-sp-heading tracking-[-0.025em] leading-[1.1]"
+        style="font-size: clamp(32px, 3.5vw, 52px);"
+      >
+        Principles that shape<br />every decision we make.
+      </h2>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Think Deeply -->
+      <div class="group relative p-8 lg:p-10 rounded-[24px] border border-sp-border bg-white cursor-default transition-all duration-500 ease-out hover:border-sp-green hover:shadow-[0_16px_48px_rgba(30,104,110,0.08)] reveal reveal-delay-1 overflow-hidden">
+        <div class="w-12 h-12 rounded-[12px] bg-sp-green-light flex items-center justify-center mb-8 transition-colors duration-300 group-hover:bg-sp-green text-sp-green group-hover:text-white">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+          </svg>
+        </div>
+        <h3 class="text-sp-heading font-bold text-[20px] mb-4 tracking-[-0.01em]">Think Deeply</h3>
+        <p class="text-sp-body text-[16px] leading-[1.7]">Understanding before automation. We believe that intelligence without genuine comprehension is a shortcut that leads nowhere worth going.</p>
+        <div class="absolute bottom-0 left-8 right-8 h-[2px] rounded-full bg-sp-green scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+      </div>
+
+      <!-- Build Carefully -->
+      <div class="group relative p-8 lg:p-10 rounded-[24px] border border-sp-border bg-white cursor-default transition-all duration-500 ease-out hover:border-sp-green hover:shadow-[0_16px_48px_rgba(30,104,110,0.08)] reveal reveal-delay-2 overflow-hidden">
+        <div class="w-12 h-12 rounded-[12px] bg-sp-green-light flex items-center justify-center mb-8 transition-colors duration-300 group-hover:bg-sp-green text-sp-green group-hover:text-white">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3 class="text-sp-heading font-bold text-[20px] mb-4 tracking-[-0.01em]">Build Carefully</h3>
+        <p class="text-sp-body text-[16px] leading-[1.7]">Engineering with responsibility. Every system we deploy must be worthy of the environments it operates in and the humans it works alongside.</p>
+        <div class="absolute bottom-0 left-8 right-8 h-[2px] rounded-full bg-sp-green scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+      </div>
+
+      <!-- Move Together -->
+      <div class="group relative p-8 lg:p-10 rounded-[24px] border border-sp-border bg-white cursor-default transition-all duration-500 ease-out hover:border-sp-green hover:shadow-[0_16px_48px_rgba(30,104,110,0.08)] reveal reveal-delay-3 overflow-hidden">
+        <div class="w-12 h-12 rounded-[12px] bg-sp-green-light flex items-center justify-center mb-8 transition-colors duration-300 group-hover:bg-sp-green text-sp-green group-hover:text-white">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3 class="text-sp-heading font-bold text-[20px] mb-4 tracking-[-0.01em]">Move Together</h3>
+        <p class="text-sp-body text-[16px] leading-[1.7]">Collaboration over hierarchy. The challenges at the frontier of physical AI are too complex and too consequential for any single perspective.</p>
+        <div class="absolute bottom-0 left-8 right-8 h-[2px] rounded-full bg-sp-green scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+      </div>
+
+    </div>
+  </div>
+</section>

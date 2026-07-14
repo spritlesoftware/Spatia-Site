@@ -1,0 +1,189 @@
+---
+---
+
+<section id="understanding" class="py-16 md:py-[120px] bg-surface-container-lowest" data-purpose="narrative-comparison">
+  <div class="px-4 sm:px-8 lg:px-16 text-center mb-12 md:mb-24">
+    <h2 class="text-headline-lg font-headline-lg text-primary">
+      Seeing is easy.<br />Understanding is hard.
+    </h2>
+  </div>
+
+  <div class="px-4 sm:px-8 lg:px-16 grid md:grid-cols-2 gap-8">
+
+    <!-- ── Left: Raw Data ──────────────────────────────────────── -->
+    <div class="bg-white rounded-lg p-6 md:p-10 border border-outline-variant">
+      <div class="mb-6">
+        <span class="font-mono-technical text-mono-technical uppercase tracking-widest text-on-surface-variant/60">
+          01 / RAW DATA
+        </span>
+        <h3 class="text-[28px] font-semibold tracking-tight mt-2 text-primary">Noise and Complexity.</h3>
+      </div>
+
+      <div class="aspect-video rounded-[8px] mb-6 overflow-hidden border border-outline-variant/30">
+        <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+          <defs>
+            <pattern id="grid-raw" width="36" height="36" patternUnits="userSpaceOnUse">
+              <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#c8d2dc" stroke-width="0.55"/>
+            </pattern>
+            <filter id="blob-blur" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="32"/>
+            </filter>
+          </defs>
+
+          <!-- Background -->
+          <rect width="800" height="450" fill="#ecf0f5"/>
+          <rect width="800" height="450" fill="url(#grid-raw)"/>
+
+          <!-- Blobs (soft purple) -->
+          <circle cx="188" cy="195" r="112" fill="#a8b0cc" opacity="0.42" filter="url(#blob-blur)"/>
+          <circle cx="548" cy="168" r="96"  fill="#a8b0cc" opacity="0.36" filter="url(#blob-blur)"/>
+
+          <!-- Detection box 1-left -->
+          <rect x="55" y="88" width="205" height="165" fill="none" stroke="#8696a8" stroke-width="1.4" stroke-dasharray="7 4"/>
+          <polyline points="55,110 55,88 77,88"   fill="none" stroke="#8696a8" stroke-width="2.2" fill-opacity="0"/>
+          <polyline points="238,88 260,88 260,110" fill="none" stroke="#8696a8" stroke-width="2.2" fill-opacity="0"/>
+          <polyline points="55,231 55,253 77,253"  fill="none" stroke="#8696a8" stroke-width="2.2" fill-opacity="0"/>
+          <polyline points="238,253 260,253 260,231" fill="none" stroke="#8696a8" stroke-width="2.2" fill-opacity="0"/>
+
+          <!-- Detection box 2-middle -->
+          <rect x="298" y="120" width="192" height="148" fill="none" stroke="#8696a8" stroke-width="1.4" stroke-dasharray="7 4"/>
+          <polyline points="298,140 298,120 318,120" fill="none" stroke="#8696a8" stroke-width="2.2" fill-opacity="0"/>
+          <polyline points="468,120 490,120 490,140" fill="none" stroke="#8696a8" stroke-width="2.2" fill-opacity="0"/>
+          <polyline points="298,248 298,268 318,268" fill="none" stroke="#8696a8" stroke-width="2.2" fill-opacity="0"/>
+          <polyline points="468,268 490,268 490,248" fill="none" stroke="#8696a8" stroke-width="2.2" fill-opacity="0"/>
+
+          <!-- Detection box 3-right -->
+          <rect x="502" y="55" width="230" height="162" fill="none" stroke="#8696a8" stroke-width="1.4" stroke-dasharray="7 4"/>
+          <polyline points="502,75 502,55 522,55"   fill="none" stroke="#8696a8" stroke-width="2.2" fill-opacity="0"/>
+          <polyline points="710,55 732,55 732,75"   fill="none" stroke="#8696a8" stroke-width="2.2" fill-opacity="0"/>
+          <polyline points="502,197 502,217 522,217" fill="none" stroke="#8696a8" stroke-width="2.2" fill-opacity="0"/>
+          <polyline points="710,217 732,217 732,197" fill="none" stroke="#8696a8" stroke-width="2.2" fill-opacity="0"/>
+
+          <!-- Noisy waveform-upper -->
+          <polyline
+            points="0,195 22,195 32,174 42,220 52,166 62,228 72,184 82,212 92,168 102,226 112,188 122,219 132,173 142,213 152,195 162,168 172,220 182,186 192,228 202,180 212,210 222,196 232,170 242,218 252,188 262,207 272,176 282,220 292,194 302,206 312,172 322,218 332,188 342,208 352,178 362,220 372,195 382,204 392,174 402,218 412,190 422,206 432,176 442,220 452,190 462,208 472,178 482,220 492,195 502,205 512,172 522,218 532,188 542,208 552,178 562,220 572,196 582,204 592,174 602,218 612,190 622,206 632,178 642,220 652,192 662,208 672,176 682,220 692,194 702,206 720,195 760,195 800,195"
+            fill="none" stroke="#8696a8" stroke-width="1.4"
+          />
+
+          <!-- Smooth wave 1 -->
+          <path d="M0,308 Q100,288 200,316 Q300,340 400,308 Q500,278 600,312 Q700,336 800,308"
+            fill="none" stroke="#a8b8c8" stroke-width="1.2"/>
+          <!-- Smooth wave 2 -->
+          <path d="M0,334 Q100,314 200,342 Q300,364 400,334 Q500,304 600,338 Q700,360 800,334"
+            fill="none" stroke="#bcc8d6" stroke-width="1.0"/>
+
+          <!-- Noisy waveform-bottom (smaller amplitude) -->
+          <polyline
+            points="0,400 22,400 30,390 38,412 46,386 54,416 62,396 70,410 78,388 86,416 94,400 102,412 110,390 118,410 126,400 134,388 142,412 150,396 158,416 166,390 174,408 182,400 190,388 198,412 206,396 214,408 222,390 230,414 238,400 246,408 254,390 262,412 270,397 278,408 286,390 294,414 302,400 310,408 318,390 326,412 334,396 342,408 350,390 358,414 366,400 374,406 382,390 390,412 398,397 406,408 414,390 422,413 430,398 438,408 446,392 454,413 462,400 470,406 478,390 486,412 494,397 502,408 510,390 518,413 526,398 534,408 542,392 550,413 558,400 566,406 574,390 582,412 590,398 598,408 606,390 614,413 622,398 630,408 638,392 646,414 654,400 662,406 670,390 678,413 686,398 694,408 710,400 750,400 800,400"
+            fill="none" stroke="#8696a8" stroke-width="1.2"
+          />
+
+          <!-- Watermark -->
+          <text x="16" y="438" font-family="monospace" font-size="10" fill="#8696a8" letter-spacing="1.5">FRAME_0042 • 1920×1080 • RAW_SENSOR_OUTPUT</text>
+        </svg>
+      </div>
+
+      <p class="text-body-md font-body-md text-on-surface-variant">
+        Traditional systems process pixels. They see shapes but lack the semantic bridge to meaning.
+      </p>
+    </div>
+
+    <!-- ── Right: Understanding ────────────────────────────────── -->
+    <div class="bg-white rounded-lg p-6 md:p-10 border border-outline-variant">
+      <div class="mb-6">
+        <span class="font-mono-technical text-mono-technical uppercase tracking-widest text-on-surface-variant/60">
+          UNDERSTANDING
+        </span>
+        <h3 class="text-[28px] font-semibold tracking-tight mt-2 text-black">Context and Meaning.</h3>
+      </div>
+
+      <div class="aspect-video rounded-[8px] mb-6 overflow-hidden border border-outline-variant/30">
+        <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+          <defs>
+            <pattern id="grid-sem" width="36" height="36" patternUnits="userSpaceOnUse">
+              <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#c8d2dc" stroke-width="0.55"/>
+            </pattern>
+          </defs>
+
+          <!-- Background -->
+          <rect width="800" height="450" fill="#ecf0f5"/>
+          <rect width="800" height="450" fill="url(#grid-sem)"/>
+
+          <!--
+            Logarithmic spiral-center (430, 220), r = 175 * 0.65^(θ/180°)
+            Points sampled every 22.5° from θ=0 to θ=1080° (3 full turns)
+          -->
+          <polyline
+            points="
+              605,220 583,284 542,332 487,359 430,361 379,344 340,310 318,266 316,220
+              330,179 358,148 393,130 430,127 464,139 489,161 503,190 505,220
+              496,247 478,268 455,279 430,281 408,274 391,259 382,240 381,220
+              387,202 399,189 414,181 430,180 445,185 455,195 461,207 462,220
+              458,231 450,240 440,245 430,245 421,242 414,236 410,228 410,220
+              412,213 417,207 423,203 430,203 436,205 441,209 443,215 443,220
+            "
+            fill="none" stroke="#1E686E" stroke-width="1.8"
+          />
+
+          <!-- ── Hexagon small-top left ──────────────────────── -->
+          <!-- center (155,68), radius 34, pointy-top -->
+          <polygon points="155,34 184,51 184,85 155,102 126,85 126,51"
+            fill="none" stroke="#1E686E" stroke-width="1.3"/>
+          <circle cx="155" cy="68" r="4" fill="#1E686E"/>
+
+          <!-- ── Hexagon large-top right ──────────────────────── -->
+          <!-- outer: center (658,78), radius 62, pointy-top -->
+          <polygon points="658,16 712,47 712,110 658,141 604,110 604,47"
+            fill="none" stroke="#1E686E" stroke-width="1.4"/>
+          <!-- inner: radius 42 -->
+          <polygon points="658,36 694,57 694,99 658,120 622,99 622,57"
+            fill="none" stroke="#1E686E" stroke-width="0.9" opacity="0.65"/>
+          <!-- center dot -->
+          <circle cx="658" cy="78" r="6" fill="#1E686E"/>
+          <!-- outer vertex nodes -->
+          <circle cx="658" cy="16"  r="3" fill="#1E686E"/>
+          <circle cx="712" cy="47"  r="3" fill="#1E686E"/>
+          <circle cx="712" cy="110" r="3" fill="#1E686E"/>
+          <circle cx="658" cy="141" r="3" fill="#1E686E"/>
+          <circle cx="604" cy="110" r="3" fill="#1E686E"/>
+          <circle cx="604" cy="47"  r="3" fill="#1E686E"/>
+
+          <!-- ── Triangle-bottom left ──────────────────────────── -->
+          <polygon points="185,378 275,250 365,378"
+            fill="none" stroke="#1E686E" stroke-width="1.3"/>
+          <!-- altitude (apex → base, dashed) -->
+          <line x1="275" y1="250" x2="275" y2="378"
+            stroke="#1E686E" stroke-width="0.9" stroke-dasharray="4 3"/>
+          <!-- median (base-left → midpoint of opposite side, dashed) -->
+          <line x1="185" y1="378" x2="320" y2="314"
+            stroke="#1E686E" stroke-width="0.9" stroke-dasharray="4 3"/>
+          <circle cx="275" cy="250" r="5"   fill="#1E686E"/>
+          <circle cx="185" cy="378" r="3"   fill="#1E686E"/>
+          <circle cx="365" cy="378" r="3"   fill="#1E686E"/>
+
+          <!-- ── Diamond-bottom right ──────────────────────────── -->
+          <polygon points="638,288 690,326 638,364 586,326"
+            fill="none" stroke="#1E686E" stroke-width="1.3"/>
+          <circle cx="638" cy="288" r="3.5" fill="#1E686E"/>
+          <circle cx="690" cy="326" r="3.5" fill="#1E686E"/>
+          <circle cx="638" cy="364" r="3.5" fill="#1E686E"/>
+          <circle cx="586" cy="326" r="3.5" fill="#1E686E"/>
+
+          <!-- Scattered accent dots -->
+          <circle cx="506" cy="314" r="3"   fill="#1E686E" opacity="0.45"/>
+          <circle cx="446" cy="188" r="2.5" fill="#1E686E" opacity="0.4"/>
+          <circle cx="566" cy="200" r="2"   fill="#1E686E" opacity="0.38"/>
+          <circle cx="356" cy="318" r="2"   fill="#1E686E" opacity="0.35"/>
+
+          <!-- Watermark -->
+          <text x="16" y="438" font-family="monospace" font-size="10" fill="#8696a8" letter-spacing="1.5">SPATIAL_MODEL_v2 • PERSISTENT_SCENE_GRAPH • LIVE</text>
+        </svg>
+      </div>
+
+      <p class="text-body-md font-body-md text-on-surface-variant">
+        Spatia translates environment fluctuations into actionable, persistent models of reality.
+      </p>
+    </div>
+
+  </div>
+</section>

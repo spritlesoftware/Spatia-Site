@@ -1,0 +1,184 @@
+---
+import portraitImg from '../../assets/Pooja-GTM.jpg';
+
+const features = [
+  {
+    title: 'Fast Responses',
+    description: 'We read every message carefully and get back to you within 1–2 business days no automated filters, no gatekeeping.',
+    iconPath: `<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6" fill="none"/><polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>`,
+  },
+  {
+    title: 'Real Engineering Team',
+    description: 'Your message reaches people who build the system not a sales layer. Expect depth, not pitch decks.',
+    iconPath: `<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
+  },
+  {
+    title: 'Confidential Conversations',
+    description: 'Everything you share stays between us. NDAs are available on request. Your ideas are safe here.',
+    iconPath: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
+  },
+];
+---
+
+<section class="py-[120px]" style="background: #FAFBFC;">
+  <div class="max-w-[1280px] mx-auto px-8 md:px-16">
+
+    <!-- Section label -->
+    <div class="reveal mb-16">
+      <span class="section-label" style="color: #1F7A5A;">WHY REACH OUT</span>
+    </div>
+
+    <!-- Split layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+
+      <!-- ── LEFT: Portrait + Quote ── -->
+      <div class="lg:col-span-5 reveal">
+        <div class="relative">
+
+          <!-- Portrait image -->
+          <div
+            class="portrait-wrap relative overflow-hidden rounded-[24px]"
+            style="aspect-ratio: 4/5; border: 1px solid #E6EAF0;"
+          >
+            <img
+              src={portraitImg.src}
+              alt="Spatia Growth Team"
+              class="w-full h-full object-cover object-top portrait-img"
+              loading="lazy"
+              decoding="async"
+            />
+            <!-- Subtle green overlay -->
+            <div
+              class="absolute inset-0 pointer-events-none"
+              style="background: linear-gradient(180deg, transparent 50%, rgba(31,122,90,0.12) 100%);"
+            ></div>
+          </div>
+
+          <!-- Quote card (overlapping bottom of image) -->
+          <div
+            class="relative mt-[-80px] mx-4 rounded-[20px] p-7"
+            style="background: rgba(255,255,255,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid #E6EAF0; box-shadow: 0 8px 40px rgba(17,24,39,0.08);"
+          >
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 mb-5">
+              <div class="w-2 h-2 rounded-full" style="background: #1F7A5A;"></div>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #1F7A5A;">
+                Growth Team
+              </span>
+            </div>
+
+            <!-- Quote mark -->
+            <div class="mb-2" aria-hidden="true">
+              <svg width="28" height="20" viewBox="0 0 28 20" fill="none">
+                <path d="M0 20V12.4C0 5.2 3.8 1.2 11.4 0l1.4 2.2C9.4 3 7.4 5 6.8 8.4H12V20H0zm16 0V12.4C16 5.2 19.8 1.2 27.4 0l1.4 2.2c-3.4.8-5.4 2.8-6 6.2H28V20H16z" fill="rgba(31,122,90,0.15)"/>
+              </svg>
+            </div>
+
+            <blockquote class="text-[17px] font-medium leading-[1.65] tracking-[-0.01em] text-[#111827] mb-5">
+              "We know you're busy.<br>
+              The fact that you're here<br>
+              tells us enough."
+            </blockquote>
+
+            <!-- Attribution -->
+            <div class="flex items-center gap-3 pt-4" style="border-top: 1px solid #E6EAF0;">
+              <div>
+                <p class="text-[14px] font-semibold tracking-[-0.01em] text-[#111827]">Pooja</p>
+                <p class="text-[12px]" style="color: #667085;">Growth, Spatia</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── RIGHT: Feature cards ── -->
+      <div class="lg:col-span-7 flex flex-col justify-center">
+
+        <!-- Section heading -->
+        <div class="reveal reveal-delay-1 mb-10">
+          <h2
+            class="font-bold text-[#111827] leading-[1.08] tracking-[-0.03em]"
+            style="font-size: clamp(32px, 3.5vw, 48px);"
+          >
+            A conversation<br>
+            worth having.
+          </h2>
+          <p class="mt-4 text-[16px] leading-[1.75]" style="color: #667085; max-width: 440px;">
+            We built Spatia to be the company we wished existed when we started. That starts with how we communicate.
+          </p>
+        </div>
+
+        <!-- Feature cards -->
+        <div class="flex flex-col gap-5">
+
+          <!-- Fast Responses -->
+          <div class="reveal feature-card rounded-[20px] p-7 flex gap-5 items-start" style="transition-delay: 0.08s; background: #ffffff; border: 1px solid #E6EAF0;">
+            <div class="feature-icon flex-shrink-0 w-11 h-11 rounded-[12px] flex items-center justify-center" style="background: #EEF8F2;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E686E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-[16px] font-semibold tracking-[-0.01em] text-[#111827] mb-1.5">{features[0].title}</h3>
+              <p class="text-[14px] leading-[1.75]" style="color: #667085;">{features[0].description}</p>
+            </div>
+          </div>
+
+          <!-- Real Engineering Team -->
+          <div class="reveal feature-card rounded-[20px] p-7 flex gap-5 items-start" style="transition-delay: 0.16s; background: #ffffff; border: 1px solid #E6EAF0;">
+            <div class="feature-icon flex-shrink-0 w-11 h-11 rounded-[12px] flex items-center justify-center" style="background: #EEF8F2;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E686E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-[16px] font-semibold tracking-[-0.01em] text-[#111827] mb-1.5">{features[1].title}</h3>
+              <p class="text-[14px] leading-[1.75]" style="color: #667085;">{features[1].description}</p>
+            </div>
+          </div>
+
+          <!-- Confidential Conversations -->
+          <div class="reveal feature-card rounded-[20px] p-7 flex gap-5 items-start" style="transition-delay: 0.24s; background: #ffffff; border: 1px solid #E6EAF0;">
+            <div class="feature-icon flex-shrink-0 w-11 h-11 rounded-[12px] flex items-center justify-center" style="background: #EEF8F2;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E686E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-[16px] font-semibold tracking-[-0.01em] text-[#111827] mb-1.5">{features[2].title}</h3>
+              <p class="text-[14px] leading-[1.75]" style="color: #667085;">{features[2].description}</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .portrait-img {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .portrait-wrap:hover .portrait-img {
+    transform: scale(1.03);
+  }
+
+  .feature-card {
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
+  }
+  .feature-card:hover {
+    border-color: rgba(31, 122, 90, 0.2);
+    box-shadow: 0 8px 32px rgba(31, 122, 90, 0.06);
+    transform: translateX(4px);
+  }
+  .feature-card:hover .feature-icon {
+    background: rgba(31, 122, 90, 0.1);
+  }
+</style>

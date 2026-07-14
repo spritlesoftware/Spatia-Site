@@ -1,0 +1,299 @@
+---
+const articles = [
+  {
+    date: 'Apr 24, 2024',
+    title: 'The Geometry of Perception',
+    description: 'How spatial understanding shapes the way machines see the world.',
+    readTime: '8 min read',
+    category: 'Research',
+  },
+  {
+    date: 'Apr 24, 2024',
+    title: 'Kinetic Language',
+    description: 'Exploring how movement becomes a medium for communication.',
+    readTime: '6 min read',
+    category: 'Engineering',
+  },
+  {
+    date: 'Apr 24, 2024',
+    title: 'Layers of Thought',
+    description: "Reasoning in machines isn't linear-it's layered.",
+    readTime: '10 min read',
+    category: 'Research',
+  },
+  {
+    date: 'Mar 15, 2024',
+    title: 'Trust in Autonomous Systems',
+    description: 'Building systems that humans can rely on-not just technically, but intuitively.',
+    readTime: '7 min read',
+    category: 'Featured',
+  },
+  {
+    date: 'Feb 28, 2024',
+    title: 'The Interface Between Worlds',
+    description: 'Where physical reality meets the digital model-designing for the gap.',
+    readTime: '9 min read',
+    category: 'Engineering',
+  },
+];
+
+const filters = ['All Topics', 'Featured', 'Research', 'Engineering'];
+---
+
+<section id="library" class="py-[120px] bg-white">
+  <div class="max-w-[1280px] mx-auto px-8 md:px-16">
+
+    <!-- Header row -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14 reveal">
+      <div>
+        <p class="section-label mb-3">Deeper Insights</p>
+        <h2
+          style="font-size: clamp(36px, 4vw, 48px); font-weight: 700; letter-spacing: -0.03em; color: #101828; line-height: 1.1;"
+        >
+          Library
+        </h2>
+      </div>
+
+      <!-- Filter pills -->
+      <div class="flex flex-wrap items-center gap-2" role="tablist" aria-label="Article filters">
+        {filters.map((pill, i) => (
+          <button
+            role="tab"
+            aria-selected={i === 0 ? 'true' : 'false'}
+            data-filter={pill === 'All Topics' ? 'all' : pill}
+            class:list={['lib-pill', i === 0 && 'lib-pill--active']}
+          >
+            {pill}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Article list -->
+    <div id="h2r-article-list">
+      {articles.map((article, i) => (
+        <div
+          class={`lib-row reveal reveal-delay-${Math.min(i + 1, 5)}`}
+          data-category={article.category}
+        >
+          <a href="#" class="lib-row__inner group">
+            <!-- Date -->
+            <span class="lib-row__date">{article.date}</span>
+
+            <!-- Green dot indicator -->
+            <span class="lib-row__dot" aria-hidden="true"></span>
+
+            <!-- Title + description -->
+            <div class="lib-row__text">
+              <span class="lib-row__title">{article.title}</span>
+              <span class="lib-row__desc">{article.description}</span>
+            </div>
+
+            <!-- Read time -->
+            <span class="lib-row__time">{article.readTime}</span>
+
+            <!-- Arrow -->
+            <span class="lib-row__arrow" aria-hidden="true">
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom divider + View All button -->
+    <div
+      class="mt-0 pt-10 flex justify-center reveal"
+      style="border-top: 1px solid #E8ECEF;"
+    >
+      <a
+        href="#"
+        class="inline-flex items-center gap-2 px-6 py-3.5 border border-[#E8ECEF] text-[#667085] rounded-md text-[14px] font-medium hover:bg-gray-50 hover:border-[#101828] hover:text-[#101828] active:scale-[0.98] transition-all duration-200"
+      >
+        View All Articles
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* ── Filter Pills ──────────────────────────────────────── */
+  .lib-pill {
+    padding: 9px 20px;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid #E8ECEF;
+    background: #ffffff;
+    color: #667085;
+    cursor: pointer;
+    transition: border-color 0.18s, color 0.18s, background 0.18s;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .lib-pill:hover {
+    border-color: #101828;
+    color: #101828;
+  }
+  .lib-pill--active {
+    background: #101828;
+    color: #ffffff;
+    border-color: #101828;
+  }
+  .lib-pill--active:hover {
+    background: #1a2534;
+    border-color: #1a2534;
+    color: #ffffff;
+  }
+
+  /* ── Article Rows ──────────────────────────────────────── */
+  .lib-row__inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 16px;
+    border-top: 1px solid #E8ECEF;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background 0.2s;
+    margin: 0 -16px;
+  }
+  .lib-row__inner:hover {
+    background: #FAFAFA;
+  }
+  .lib-row__inner:hover .lib-row__title {
+    color: #1E686E;
+  }
+  .lib-row__inner:hover .lib-row__arrow {
+    background: #1E686E;
+    border-color: #1E686E;
+    color: #ffffff;
+    transform: translateX(2px);
+  }
+
+  .lib-row__date {
+    flex-shrink: 0;
+    width: 88px;
+    font-size: 12px;
+    color: #9CA3AF;
+    letter-spacing: 0.02em;
+    display: none;
+  }
+
+  .lib-row__dot {
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #1E686E;
+  }
+
+  .lib-row__text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .lib-row__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #101828;
+    letter-spacing: -0.01em;
+    transition: color 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .lib-row__desc {
+    font-size: 13px;
+    color: #9CA3AF;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .lib-row__time {
+    flex-shrink: 0;
+    font-size: 12px;
+    color: #9CA3AF;
+    letter-spacing: 0.02em;
+    display: none;
+  }
+
+  .lib-row__arrow {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #E8ECEF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9CA3AF;
+    transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
+  }
+
+  /* Responsive: show date and read time on larger screens */
+  @media (min-width: 640px) {
+    .lib-row__time {
+      display: block;
+    }
+  }
+  @media (min-width: 768px) {
+    .lib-row__date {
+      display: block;
+    }
+    .lib-row__title {
+      font-size: 17px;
+    }
+    .lib-row__desc {
+      font-size: 14px;
+    }
+  }
+</style>
+
+<script>
+  (function initLibraryFilter() {
+    const pills = document.querySelectorAll<HTMLButtonElement>('.lib-pill');
+    const rows = document.querySelectorAll<HTMLElement>('.lib-row');
+
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const filter = pill.dataset.filter ?? 'all';
+
+        // Update active pill
+        pills.forEach((p) => {
+          p.classList.remove('lib-pill--active');
+          p.setAttribute('aria-selected', 'false');
+        });
+        pill.classList.add('lib-pill--active');
+        pill.setAttribute('aria-selected', 'true');
+
+        // Show / hide rows
+        rows.forEach((row) => {
+          const cat = row.dataset.category ?? '';
+          const show = filter === 'all' || cat === filter;
+          row.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  })();
+</script>

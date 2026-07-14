@@ -1,0 +1,155 @@
+---
+---
+
+<section class="py-[120px]" style="background: #FAFAFA;">
+  <div class="max-w-[1280px] mx-auto px-8 md:px-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+      <!-- Left: Editorial text -->
+      <div class="reveal">
+        <p class="section-label mb-6">Our Perspective</p>
+        <h2
+          style="font-size: clamp(36px, 4.2vw, 54px); font-weight: 700; letter-spacing: -0.03em; color: #101828; line-height: 1.08;"
+        >
+          The Ethics<br />of Autonomy
+        </h2>
+        <p
+          class="mt-6"
+          style="font-size: 17px; line-height: 1.82; color: #667085; max-width: 440px;"
+        >
+          As machines gain the ability to act, we must ensure they are aligned
+          with human values, transparency, and responsibility.
+        </p>
+        <p
+          class="mt-4"
+          style="font-size: 17px; line-height: 1.82; color: #667085; max-width: 440px;"
+        >
+          The question is not whether autonomous systems can act - it's whether
+          they should, and how we guide them when they do.
+        </p>
+        <div class="mt-10">
+          <a
+            href="#"
+            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-md text-[14px] font-semibold tracking-tight active:scale-[0.98] transition-all duration-200"
+            style="background-color: #111827; color: #ffffff;"
+            onmouseover="this.style.backgroundColor='#000000'"
+            onmouseout="this.style.backgroundColor='#111827'"
+          >
+            Explore Our View
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Animated particle canvas -->
+      <div class="reveal reveal-delay-2">
+        <div
+          class="relative rounded-[24px] overflow-hidden"
+          style="aspect-ratio: 4 / 3; background: #0B1E20;"
+        >
+          <canvas id="h2r-particle-canvas" class="absolute inset-0 w-full h-full"></canvas>
+          <!-- Inner vignette for depth -->
+          <div
+            class="absolute inset-0 pointer-events-none"
+            style="background: radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(11,26,18,0.55) 100%);"
+          ></div>
+          <!-- Subtle scan line at bottom for editorial feel -->
+          <div
+            class="absolute bottom-0 left-0 right-0 pointer-events-none"
+            style="height: 1px; background: rgba(30,104,110,0.3);"
+          ></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  (function initH2RParticles() {
+    const canvas = document.getElementById('h2r-particle-canvas') as HTMLCanvasElement;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+    if (!ctx) return;
+
+    let W = 0;
+    let H = 0;
+    let dpr = window.devicePixelRatio || 1;
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      W = rect.width;
+      H = rect.height;
+      dpr = window.devicePixelRatio || 1;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    resize();
+
+    const resizeObs = new ResizeObserver(resize);
+    resizeObs.observe(canvas);
+
+    const COLS = 64;
+    const ROWS = 42;
+    let t = 0;
+
+    function easeInOut(x: number) {
+      return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      for (let i = 0; i < COLS; i++) {
+        for (let j = 0; j < ROWS; j++) {
+          const nx = i / (COLS - 1);
+          const ny = j / (ROWS - 1);
+
+          const x = nx * W;
+          const baseY = ny * H;
+
+          // Layered sine waves for organic flow
+          const w1 = Math.sin(nx * 6.2 + t * 0.9) * (H * 0.07);
+          const w2 = Math.sin(ny * 5.0 + t * 0.55 + nx * 3.1) * (H * 0.05);
+          const w3 = Math.cos(nx * 4.0 + ny * 3.5 + t * 0.7) * (H * 0.035);
+
+          const y = baseY + w1 + w2 + w3;
+
+          // Only draw if within canvas bounds
+          if (y < 0 || y > H) continue;
+
+          // Intensity: peaks at mid-height rows, tapers at edges
+          const edgeFadeY = 1 - Math.abs(ny - 0.5) * 1.6;
+          const edgeFadeX = 1 - Math.abs(nx - 0.5) * 0.6;
+          const waveVal = (Math.sin(nx * 5.5 + ny * 4.2 + t * 1.1) * 0.5 + 0.5);
+
+          const alpha = Math.max(0, Math.min(1, edgeFadeY * edgeFadeX * (0.18 + waveVal * 0.72)));
+
+          // Green palette: darker base → brighter peaks
+          const brightness = Math.floor(55 + waveVal * 110);
+          const r = Math.floor(5 + waveVal * 22);
+          const g = brightness;
+          const b = Math.floor(28 + waveVal * 42);
+
+          // Vary dot radius slightly for texture
+          const radius = 0.9 + waveVal * 1.1;
+
+          ctx.beginPath();
+          ctx.arc(x, y, radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
+          ctx.fill();
+        }
+      }
+
+      t += 0.018;
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  })();
+</script>

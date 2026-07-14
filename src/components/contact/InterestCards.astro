@@ -1,0 +1,236 @@
+---
+const cards = [
+  {
+    id: 'robots',
+    title: 'Deploying Robots',
+    description: "Integrate Spatia's perception stack into your robotic system or fleet. Let's talk about your deployment requirements.",
+  },
+  {
+    id: 'physical-ai',
+    title: 'Building Physical AI',
+    description: "You're building the next generation of embodied intelligence and want to connect with a team that understands your vision.",
+  },
+  {
+    id: 'research',
+    title: 'Research & Academia',
+    description: 'We collaborate with researchers and academics working at the frontier of autonomous systems and machine understanding.',
+  },
+  {
+    id: 'partnerships',
+    title: 'Partnerships',
+    description: 'Explore strategic alliances that push the boundary of what autonomous systems can perceive, decide, and do.',
+  },
+  {
+    id: 'team',
+    title: 'Join the Team',
+    description: "We're building a team of people who believe machines can truly understand the world. Bring your craft and your curiosity.",
+  },
+] as const;
+---
+
+<section id="interests" class="py-[120px] bg-white">
+  <div class="max-w-[1280px] mx-auto px-8 md:px-16">
+
+    <!-- Section header -->
+    <div class="mb-16 reveal">
+      <span class="section-label block mb-4">WHAT BRINGS YOU HERE</span>
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <h2
+          class="font-bold text-[#111827] leading-[1.08] tracking-[-0.03em]"
+          style="font-size: clamp(34px, 4vw, 52px);"
+        >
+          Select your<br>interest area.
+        </h2>
+        <p class="text-[15px] leading-[1.75]" style="color: #667085; max-width: 340px;">
+          We tailor every conversation to your specific context. Choose what resonates.
+        </p>
+      </div>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="interest-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-5">
+
+      <!-- Card 1: Deploying Robots -->
+      <a
+        href={`mailto:spatia@spritle.com?subject=Deploying%20Robots`}
+        class="interest-card reveal lg:col-span-2 relative rounded-[24px] flex flex-col p-8 cursor-pointer no-underline"
+        style="transition-delay: 0s;"
+        aria-label="Contact about: Deploying Robots"
+      >
+        <div class="relative z-10 flex flex-col h-full">
+          <div class="icon-wrap w-12 h-12 rounded-[14px] flex items-center justify-center mb-7" style="background: #EEF8F2;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E686E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="2"/>
+              <rect x="9" y="9" width="6" height="6"/>
+              <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M19 9h3M2 15h3M19 15h3"/>
+            </svg>
+          </div>
+          <h3 class="text-[19px] font-semibold tracking-[-0.02em] text-[#111827] mb-3">{cards[0].title}</h3>
+          <p class="text-[14px] leading-[1.75] flex-1" style="color: #667085;">{cards[0].description}</p>
+          <div class="mt-7 flex justify-end">
+            <div class="arrow-btn w-9 h-9 rounded-full flex items-center justify-center" style="border: 1px solid #E2E6EA; color: #9CA3AF;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7"/><path d="M10 7h7v7"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2: Building Physical AI -->
+      <a
+        href={`mailto:spatia@spritle.com?subject=Building%20Physical%20AI`}
+        class="interest-card reveal lg:col-span-2 relative rounded-[24px] flex flex-col p-8 cursor-pointer no-underline"
+        style="transition-delay: 0.06s;"
+        aria-label="Contact about: Building Physical AI"
+      >
+        <div class="relative z-10 flex flex-col h-full">
+          <div class="icon-wrap w-12 h-12 rounded-[14px] flex items-center justify-center mb-7" style="background: #EEF8F2;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E686E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 class="text-[19px] font-semibold tracking-[-0.02em] text-[#111827] mb-3">{cards[1].title}</h3>
+          <p class="text-[14px] leading-[1.75] flex-1" style="color: #667085;">{cards[1].description}</p>
+          <div class="mt-7 flex justify-end">
+            <div class="arrow-btn w-9 h-9 rounded-full flex items-center justify-center" style="border: 1px solid #E2E6EA; color: #9CA3AF;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7"/><path d="M10 7h7v7"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3: Research & Academia -->
+      <a
+        href={`mailto:spatia@spritle.com?subject=Research%20%26%20Academia`}
+        class="interest-card reveal lg:col-span-2 relative rounded-[24px] flex flex-col p-8 cursor-pointer no-underline"
+        style="transition-delay: 0.12s;"
+        aria-label="Contact about: Research & Academia"
+      >
+        <div class="relative z-10 flex flex-col h-full">
+          <div class="icon-wrap w-12 h-12 rounded-[14px] flex items-center justify-center mb-7" style="background: #EEF8F2;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E686E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              <line x1="9" y1="7" x2="15" y2="7"/>
+              <line x1="9" y1="11" x2="15" y2="11"/>
+            </svg>
+          </div>
+          <h3 class="text-[19px] font-semibold tracking-[-0.02em] text-[#111827] mb-3">{cards[2].title}</h3>
+          <p class="text-[14px] leading-[1.75] flex-1" style="color: #667085;">{cards[2].description}</p>
+          <div class="mt-7 flex justify-end">
+            <div class="arrow-btn w-9 h-9 rounded-full flex items-center justify-center" style="border: 1px solid #E2E6EA; color: #9CA3AF;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7"/><path d="M10 7h7v7"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 4: Partnerships (centered row start) -->
+      <a
+        href={`mailto:spatia@spritle.com?subject=Partnerships`}
+        class="interest-card reveal lg:col-span-2 relative rounded-[24px] flex flex-col p-8 cursor-pointer no-underline"
+        style="transition-delay: 0.18s;"
+        aria-label="Contact about: Partnerships"
+      >
+        <div class="relative z-10 flex flex-col h-full">
+          <div class="icon-wrap w-12 h-12 rounded-[14px] flex items-center justify-center mb-7" style="background: #EEF8F2;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E686E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 class="text-[19px] font-semibold tracking-[-0.02em] text-[#111827] mb-3">{cards[3].title}</h3>
+          <p class="text-[14px] leading-[1.75] flex-1" style="color: #667085;">{cards[3].description}</p>
+          <div class="mt-7 flex justify-end">
+            <div class="arrow-btn w-9 h-9 rounded-full flex items-center justify-center" style="border: 1px solid #E2E6EA; color: #9CA3AF;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7"/><path d="M10 7h7v7"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 5: Join the Team -->
+      <a
+        href={`mailto:spatia@spritle.com?subject=Join%20the%20Team`}
+        class="interest-card reveal lg:col-span-2 relative rounded-[24px] flex flex-col p-8 cursor-pointer no-underline"
+        style="transition-delay: 0.24s;"
+        aria-label="Contact about: Join the Team"
+      >
+        <div class="relative z-10 flex flex-col h-full">
+          <div class="icon-wrap w-12 h-12 rounded-[14px] flex items-center justify-center mb-7" style="background: #EEF8F2;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E686E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <line x1="19" y1="8" x2="19" y2="14"/>
+              <line x1="22" y1="11" x2="16" y2="11"/>
+            </svg>
+          </div>
+          <h3 class="text-[19px] font-semibold tracking-[-0.02em] text-[#111827] mb-3">{cards[4].title}</h3>
+          <p class="text-[14px] leading-[1.75] flex-1" style="color: #667085;">{cards[4].description}</p>
+          <div class="mt-7 flex justify-end">
+            <div class="arrow-btn w-9 h-9 rounded-full flex items-center justify-center" style="border: 1px solid #E2E6EA; color: #9CA3AF;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7"/><path d="M10 7h7v7"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .interest-card {
+    background: #ffffff;
+    border: 1px solid #E6EAF0;
+    min-height: 300px;
+    transition:
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.3s ease;
+  }
+
+  .interest-card:hover {
+    transform: translateY(-3px) scale(1.01);
+    border-color: #D1D5DB;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.07), 0 4px 12px rgba(0, 0, 0, 0.04);
+  }
+
+  .arrow-btn {
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+
+  .interest-card:hover .arrow-btn {
+    border-color: #9CA3AF;
+    background: #F4F6F8;
+  }
+
+  /* Desktop: center the last 2 cards */
+  @media (min-width: 1024px) {
+    .interest-grid > *:nth-child(4) {
+      grid-column: 2 / span 2;
+    }
+  }
+
+  /* Tablet: last card centered */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .interest-grid > *:nth-child(5) {
+      grid-column: 1 / -1;
+      max-width: calc(50% - 10px);
+      margin: 0 auto;
+    }
+  }
+</style>

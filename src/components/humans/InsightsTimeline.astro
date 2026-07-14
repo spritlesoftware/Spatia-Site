@@ -1,0 +1,96 @@
+---
+const milestones = [
+  {
+    year: '2019',
+    name: 'Prabakaran',
+    position: 'VP Engineering',
+    quote: 'We built the first real-time spatial map of a warehouse floor. That was the moment we understood what spatial intelligence really means.',
+  },
+  {
+    year: '2020',
+    name: 'Surendran',
+    position: 'CTO & Co Founder',
+    quote: 'The shift from path-planning to intent-modelling changed everything. We stopped building tools and started building minds.',
+  },
+  {
+    year: '2021',
+    name: 'Mohan kumar',
+    position: 'Principal SE 2 ',
+    quote: 'Ten researchers across six countries. Diversity of perspective became the core of our methodology-not a nicety, a necessity.',
+  },
+  {
+    year: '2022',
+    name: 'Balaji',
+    position: 'CEO',
+    quote: 'We asked ourselves one question: does the machine understand, or does it merely respond? The answer became our entire company.',
+  },
+  {
+    year: '2024',
+    name: 'Pooja',
+    position: 'Growth',
+    quote: 'Every partner we engaged came back to the same question: how do we know the machine actually understands? That question drives us every day.',
+  },
+] as const;
+---
+
+<section class="bg-white py-24 lg:py-32 overflow-hidden" id="timeline">
+  <div class="max-w-container mx-auto px-8 lg:px-16">
+
+    <!-- Section header -->
+    <div class="mb-20 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-8 h-px bg-sp-green"></div>
+        <span class="section-label">Our Journey</span>
+      </div>
+      <h2
+        class="font-inter font-bold text-sp-heading tracking-[-0.025em] leading-[1.1]"
+        style="font-size: clamp(32px, 3.5vw, 52px);"
+      >
+        The evolution of<br />a team and a mission.
+      </h2>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative max-w-2xl mx-auto">
+
+      <!-- Vertical connecting line -->
+      <div
+        class="absolute left-[19px] lg:left-[23px] top-0 bottom-0 w-px"
+        style="background: linear-gradient(to bottom, transparent 0%, #E8ECEB 8%, #E8ECEB 92%, transparent 100%);"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Milestones -->
+      <ol class="flex flex-col gap-12 lg:gap-14">
+        {milestones.map((m, i) => (
+          <li class:list={['relative flex gap-8 lg:gap-12 items-start reveal', `reveal-delay-${Math.min(i + 1, 5)}`]}>
+
+            <!-- Dot -->
+            <div class="flex-shrink-0 w-10 lg:w-12 flex justify-center pt-1">
+              <div class="w-4 h-4 rounded-full bg-sp-green border-4 border-white shadow-[0_0_0_1px_#E8ECEB] z-10 flex-shrink-0"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 pb-2">
+              <!-- Year badge -->
+              <span class="inline-block text-sp-green font-bold text-[11px] tracking-[0.14em] mb-4">{m.year}</span>
+
+              <!-- Quote -->
+              <blockquote class="text-sp-heading font-medium text-[17px] lg:text-[19px] leading-[1.65] mb-6">
+                &ldquo;{m.quote}&rdquo;
+              </blockquote>
+
+              <!-- Person -->
+              <div>
+                <p class="text-sp-heading font-semibold text-[14px]">{m.name}</p>
+                <p class="text-sp-body text-[12px]">{m.position}</p>
+              </div>
+            </div>
+
+          </li>
+        ))}
+      </ol>
+    </div>
+
+  </div>
+</section>

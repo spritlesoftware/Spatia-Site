@@ -1,0 +1,325 @@
+﻿---
+import type { ImageMetadata } from 'astro';
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/shared/Navbar.astro';
+import Footer from '@components/shared/Footer.astro';
+
+import PerspectiveHero from '@components/perspectives/PerspectiveHero.astro';
+import AuthorIntro from '@components/perspectives/AuthorIntro.astro';
+import EditorialQuote from '@components/perspectives/EditorialQuote.astro';
+import ArticleContent from '@components/perspectives/ArticleContent.astro';
+import AuthorCard from '@components/perspectives/AuthorCard.astro';
+import RelatedPerspectives from '@components/perspectives/RelatedPerspectives.astro';
+import NewsletterSection from '@components/perspectives/NewsletterSection.astro';
+import FinalCTA from '@components/perspectives/FinalCTA.astro';
+
+// Static image imports these ARE accessible inside getStaticPaths
+import BalajiImg from '../../assets/Balaji.png';
+import SurendranImg from '../../assets/Surendran.png';
+import MohankumarImg from '../../assets/Mohankumar.jpg';
+import PrabakaranImg from '../../assets/Prabakaran.png';
+import PoojaImg from '../../assets/Pooja-GTM.jpg';
+import RoboticsImg from '../../assets/Robotics.png';
+import TechHeroImg from '../../assets/Technology-Hero.png';
+import EditorialImg from '../../assets/02.png';
+import LogisticsImg from '../../assets/Logistics.png';
+import DefenseImg from '../../assets/Defense.png';
+
+interface Perspective {
+  slug: string;
+  number: string;
+  role: string;
+  name: string;
+  image: ImageMetadata;
+  heroImage: ImageMetadata;
+  heroTitle: string;
+  heroSubtitle: string;
+  readTime: string;
+  publishedDate: string;
+  yearsAtSpatia: string;
+  linkedin: string;
+  bio: string;
+  openingParagraph: string;
+  editorialQuote: string;
+  editorialQuoteRef: string;
+  articleBody: string[];
+  pullQuote: string;
+  recentArticles: { title: string; href: string }[];
+}
+
+interface RelatedItem {
+  slug: string;
+  name: string;
+  role: string;
+  heroTitle: string;
+  readTime: string;
+  image: ImageMetadata;
+}
+
+// getStaticPaths must be self-contained; data is defined here so it's in scope.
+// Static image imports (above) ARE accessible inside this function.
+export function getStaticPaths() {
+  const all: Perspective[] = [
+    {
+      slug: 'balaji',
+      number: '01',
+      role: 'CEO',
+      name: 'Balaji',
+      image: BalajiImg,
+      heroImage: TechHeroImg,
+      heroTitle: "The world doesn't explain itself.",
+      heroSubtitle: 'How a personal loss shaped a mission to make machines understand the world around them',
+      readTime: '6 min read',
+      publishedDate: 'January 2026',
+      yearsAtSpatia: '6 years at Spatia',
+      linkedin: '#',
+      bio: "Balaji is the CEO and co-founder of Spatia. He leads the company's vision for spatial intelligence as the foundational layer of physical AI driven by a belief that machines must understand the world before they can make it safer for the people working in it.",
+      openingParagraph: "Automation is not new. It started in the Stone Age, when we first picked up tools to make hard work easier. Ever since I became an adult, I've wanted to make this world better not just for me, but for everyone. One memory changed the direction of my work entirely.",
+      editorialQuote: "A machine that doesn't understand its environment can't reliably help the people working alongside it. That's what we're solving at Spatia.",
+      editorialQuoteRef: 'Balaji, CEO',
+      articleBody: [
+        "My maternal uncle lost his leg while working in a factory. A momentary distraction was all it took. The machine couldn't recognize what was happening. I still remember the struggles he went through afterward not just physically, but emotionally. Body shaming. The loss of confidence. The changes it brought to his daily life. That was the day safety stopped being just a word. It became personal. That's how Seewise.AI was born. Not as a product idea. As a cause. A way to make the world a little better.",
+        "Over the years, Seewise exposed us to the realities many workers face every day handling life-threatening tasks, repeating the same motions and the same risks day after day, working around toxic chemicals often without knowing the long-term consequences. Many of us are fortunate enough to never see this side of work. We spend our days in offices and high-rise buildings, far removed from factory floors where these risks are real. Some people can't stand near a foundry molding area for even five minutes. For others, it's their everyday environment.",
+        "Today, everyone is talking about humanoids and robots that look almost human. It's fascinating. But there's something important that often gets overlooked. These robots don't come plug-and-play. The moment they're switched on, they don't know left from right. They don't know the top from bottom. They don't know what's safe and what's dangerous. Whether it's a foundry, a warehouse, or an engine assembly line, they have to learn how to understand the environment around them.",
+        "That's spatial understanding. And in many ways, it's the same problem I saw on that factory floor years ago just at a much larger scale. A machine that doesn't understand its environment can't reliably help the people working alongside it. That's what we're solving at Spatia. Machines should understand the environments they operate in. They should improve safety, maintain quality, and increase productivity at scale.",
+        "It's a difficult problem. That's exactly why it's worth solving. For everyone still standing on the factory floor today.",
+      ],
+      pullQuote: "A machine that doesn't understand its environment can't reliably help the people working alongside it.",
+      recentArticles: [
+        { title: 'The Case for World Models in Robotics', href: '#' },
+        { title: 'Physical AI as Critical Infrastructure', href: '#' },
+      ],
+    },
+    {
+      slug: 'surendran',
+      number: '02',
+      role: 'CTO & Co-Founder',
+      name: 'Surendran',
+      image: SurendranImg,
+      heroImage: EditorialImg,
+      heroTitle: 'Most failures begin with assumptions.',
+      heroSubtitle: "How intent-modelling replaced path-planning as Spatia's core paradigm",
+      readTime: '7 min read',
+      publishedDate: 'February 2026',
+      yearsAtSpatia: '6 years at Spatia',
+      linkedin: '#',
+      bio: "Surendran is the CTO and Co-Founder of Spatia. He architected the intent-modelling framework at the core of Spatia's spatial intelligence stack, a shift that redefined how the company thinks about autonomous navigation.",
+      openingParagraph: "Most failures begin with assumptions. We've all seen robots before but what we're seeing today feels fundamentally different. We're entering the era of Physical AI, and the question that matters isn't what a robot can do. It's whether it actually understands the world it's moving through.",
+      editorialQuote: "More information doesn't automatically create understanding. A camera can see an object. That doesn't mean the machine understands what the object means.",
+      editorialQuoteRef: 'Surendran, CTO & Co-Founder',
+      articleBody: [
+        "Many of us grew up watching movies where robots could do almost everything a human could: I, Robot, The Terminator, Wall-E. Outside of movies, I've spent years seeing robots in manufacturing facilities, warehouses, and airports. They've been around for a long time. But what we're seeing today feels different. We're entering the era of Physical AI.",
+        "When I talk about robots, I'm not only talking about humanoids. A robot could be a six-axis arm on a factory floor. It could be a mobile platform moving through a warehouse. It could be any machine capable of interacting with the physical world. What matters is the intelligence behind it. For nearly two decades, we've been building software systems and that experience taught us an important lesson: intelligence isn't just about collecting information. It's about understanding it.",
+        "One of the easiest ways to make a robot look intelligent is to place it in an environment that never changes. The route stays the same. The objects stay where they are. The conditions remain predictable. In those environments, robots can perform extremely well. The challenge begins when reality changes. A pallet gets moved. A person walks into the workspace. An object appears where it wasn't expected. A path becomes blocked. Suddenly, the assumptions the machine was relying on are no longer true. That's where many systems struggle.",
+        "People often think autonomy is a sensing problem. Add more cameras. Add more sensors. Collect more data. Those things help, but more information doesn't automatically create understanding. A camera can see an object. That doesn't mean the machine understands what the object means, how it affects the environment, or what action should happen next. The physical world is constantly changing. Objects move. People move. Environments evolve. The machine's understanding has to evolve with them continuously. Not every few minutes. Not every few seconds. Continuously.",
+        "That's what makes Physical AI so exciting. The challenge isn't simply helping machines see the world. It's helping them understand the world as it changes around them. As intelligence moves into the physical world, robots will increasingly take on repetitive tasks in highly unstructured environments, work that today still depends heavily on people. For that future to become reality, machines need more than perception. They need understanding. And that's exactly the problem we're working on.",
+      ],
+      pullQuote: "The challenge isn't simply helping machines see the world. It's helping them understand the world as it changes around them.",
+      recentArticles: [
+        { title: 'Intent-Modelling: A New Paradigm', href: '#' },
+        { title: 'The Architecture of Spatial Understanding', href: '#' },
+      ],
+    },
+    {
+      slug: 'prabakaran',
+      number: '03',
+      role: 'VP Engineering',
+      name: 'Prabakaran',
+      image: PrabakaranImg,
+      heroImage: RoboticsImg,
+      heroTitle: "Reality doesn't stay still.",
+      heroSubtitle: 'Why physical AI systems must be designed for the infinite edge case',
+      readTime: '5 min read',
+      publishedDate: 'March 2026',
+      yearsAtSpatia: '5 years at Spatia',
+      linkedin: '#',
+      bio: 'Prabakaran leads engineering at Spatia, overseeing the development of spatial intelligence systems deployed across logistics, manufacturing, and defense environments. He has spent his career at the intersection of robotics, computer vision, and real-time systems.',
+      openingParagraph: "One engineering lesson has followed me through every project I've worked on: divide and conquer. No matter how large the problem feels, break it into smaller pieces. Solve one piece. Then the next. Simple in theory but reality has a habit of introducing problems nobody planned for.",
+      editorialQuote: "Engineering isn't about using the newest technology. It's about solving problems. Sometimes the simplest solution creates the biggest impact.",
+      editorialQuoteRef: 'Prabakaran, VP Engineering',
+      articleBody: [
+        "Every engineering team knows this feeling. The design looks good. The architecture makes sense. The tests pass. The demo works. Then the system meets the real world. A process changes. Equipment moves. A new requirement appears. Someone uses the system in a way nobody expected. Suddenly the challenge isn't building something that works it's building something that keeps working.",
+        "I've seen projects that looked incredible during planning. One in particular felt like a breakthrough. The idea was strong. The technology was exciting. Everything pointed in the right direction. Then reality slowly pulled it apart. The team drifted from the original vision. The focus shifted toward technology decisions instead of customer problems. We started solving for sophistication instead of simplicity. Eventually the project dissolved. That experience stayed with me because engineering isn't about using the newest technology. It's about solving problems.",
+        "People often assume engineering is about complexity. I've never seen it that way. Good engineering reduces complexity. It removes friction. It minimizes effort. It helps people accomplish something more effectively than they could before. Finding that simplicity is usually the hardest part. That's where the craft lives.",
+        "That's also why Physical AI is interesting to me. The environments these systems operate in are constantly changing. Warehouses change. Factories change. People move. Objects move. The world doesn't pause so a machine can catch up. The challenge isn't helping machines perform well in controlled conditions the challenge is helping them continue performing when conditions stop being controlled. That's a very different problem, and it becomes more important as autonomous systems move into the real world.",
+        "Engineering gets interesting when you solve a problem you've experienced yourself. Because experience creates understanding. And understanding usually leads to better solutions. The same idea applies to autonomous systems. Seeing the world isn't enough. The machine has to understand it. And that understanding has to evolve as the world changes around it. Because reality doesn't stay still.",
+      ],
+      pullQuote: "The challenge isn't helping machines perform well in controlled conditions. The challenge is helping them continue performing when conditions stop being controlled.",
+      recentArticles: [
+        { title: 'Building Real-Time Spatial Maps at Scale', href: '#' },
+        { title: 'Why Simulation Is Never Enough', href: '#' },
+      ],
+    },
+    {
+      slug: 'mohankumar',
+      number: '04',
+      role: 'Principal Software Engineer',
+      name: 'Mohan Kumar',
+      image: MohankumarImg,
+      heroImage: LogisticsImg,
+      heroTitle: 'Seeing is not understanding.',
+      heroSubtitle: 'Why context is the missing layer in autonomous systems',
+      readTime: '5 min read',
+      publishedDate: 'April 2026',
+      yearsAtSpatia: '4 years at Spatia',
+      linkedin: '#',
+      bio: 'Mohan Kumar is a Principal Software Engineer at Spatia, where he leads the development of the spatial reasoning and perception stack. He works at the intersection of computer vision, probabilistic inference, and real-time systems.',
+      openingParagraph: "One of the first engineering problems I worked on seemed straightforward establish raw socket communication with a Universal Robot. The challenge wasn't moving information from one place to another. The challenge was understanding exactly how that information should be interpreted. A small mistake in packing or unpacking data could change everything. The information was there. The understanding wasn't.",
+      editorialQuote: "Observation captures moments. Understanding connects those moments together. The physical world isn't a collection of isolated frames it's continuous.",
+      editorialQuoteRef: 'Mohan Kumar, Principal Software Engineer',
+      articleBody: [
+        "I've seen versions of this same problem throughout my career. Information by itself rarely tells the full story. Context does. That's true for people. It's true for software. And increasingly, it's true for autonomous systems. A camera can see a room the less obvious question is whether it understands what it's looking at.",
+        "Imagine walking into a warehouse. You immediately recognize pathways, equipment, people, and obstacles. You understand which areas are accessible, which routes are blocked, and which objects matter. You don't consciously calculate any of this it simply happens. Now imagine taking a photograph of that same warehouse. The image contains all the information. But the photograph doesn't understand any of it. That's the difference between seeing and understanding.",
+        "Machines today are incredibly good at collecting information. Cameras capture images. Sensors capture measurements. Systems process enormous amounts of data every second. The challenge is rarely the lack of information. The challenge is making sense of it. What is this object? Why does it matter? How does it relate to everything around it? Has something changed? Should the machine respond differently because of that change? Those questions require context. And context is where things become difficult.",
+        "A detection might tell a machine that something exists. Understanding helps determine whether that thing matters. A camera might observe a person entering a space. Understanding helps determine how that changes the machine's behavior. Observation captures moments understanding connects those moments together. The physical world isn't a collection of isolated frames. It's continuous. Objects move. People move. Environments change. The machine has to maintain context across time, understand relationships, and understand what remains true even when the environment evolves.",
+        "I've always found that the interesting part begins when issues arise. That's usually when assumptions get challenged. That's usually when deeper understanding becomes necessary. The future of autonomy won't be defined by systems that collect the most information. It will be defined by systems that understand the information they already have. Because seeing is only the first step. Understanding comes next.",
+      ],
+      pullQuote: "The future of autonomy won't be defined by systems that collect the most information. It will be defined by systems that understand the information they already have.",
+      recentArticles: [
+        { title: 'Probabilistic Spatial Reasoning at Scale', href: '#' },
+        { title: 'Why Diversity Is a Technical Requirement', href: '#' },
+      ],
+    },
+    {
+      slug: 'pooja',
+      number: '05',
+      role: 'Growth',
+      name: 'Pooja',
+      image: PoojaImg,
+      heroImage: DefenseImg,
+      heroTitle: 'Every breakthrough becomes ordinary.',
+      heroSubtitle: 'Why the technologies that matter most eventually disappear into everyday life',
+      readTime: '4 min read',
+      publishedDate: 'May 2026',
+      yearsAtSpatia: '3 years at Spatia',
+      linkedin: '#',
+      bio: 'Pooja leads Growth at Spatia, working with enterprise partners across logistics, defense, and manufacturing to deploy spatial intelligence at scale. She focuses on the human side of AI adoption how people decide whether a technology truly matters.',
+      openingParagraph: "I've always been more interested in people than technology. Not because technology isn't important but because people decide whether technology matters. History is full of breakthroughs that felt impossible before becoming completely normal.",
+      editorialQuote: "The technologies that matter most eventually become invisible. They become infrastructure. They become assumptions. They become part of how the world works.",
+      editorialQuoteRef: 'Pooja, Growth',
+      articleBody: [
+        "The internet changed how the world communicates. Smartphones changed how people access information. Today, most of us barely think about either. The technologies that reshape society rarely stay remarkable for long they become ordinary. That's what makes them successful. The technologies that matter most eventually become invisible.",
+        "When people talk about Physical AI today, they often focus on the machines themselves. The robots. The demonstrations. The capabilities. That's natural it's what happens whenever a new technology emerges. But the more interesting question is what happens next. What happens when robots stop being interesting? What happens when they become expected?",
+        "I think we're moving toward a future where intelligent machines become part of everyday life in much the same way the internet became part of everyday life. Not because people suddenly become obsessed with robots the opposite. Because they stop thinking about them entirely. The technology fades into the background. The value remains. That's the pattern history keeps repeating.",
+        "What excites me most about Physical AI isn't the technology itself. It's what people get back because of it. Time. Energy. Attention. The opportunity to focus on more human things creativity, craft, art, exploration, connection. The work only people can do. If intelligent machines can take on repetitive physical work, people gain the freedom to spend more time being human.",
+        "Physical AI will be one of the most difficult problems to solve. It may also become one of the most important. And like every important technology before it, one day it may feel completely ordinary. That's usually how you know a breakthrough succeeded.",
+      ],
+      pullQuote: "That's the pattern history keeps repeating. The technologies that matter most eventually become invisible. That's usually how you know a breakthrough succeeded.",
+      recentArticles: [
+        { title: 'Building Trust in Autonomous Systems', href: '#' },
+        { title: 'The Human Side of Physical AI Deployment', href: '#' },
+      ],
+    },
+  ];
+
+  return all.map((perspective, idx) => {
+    const remaining = all.filter((p) => p.slug !== perspective.slug);
+    // Rotate by author index so each article shows a different trio
+    const offset = idx % remaining.length;
+    const rotated = [...remaining.slice(offset), ...remaining.slice(0, offset)];
+    const related: RelatedItem[] = rotated.slice(0, 3).map((p) => ({
+      slug: p.slug,
+      name: p.name,
+      role: p.role,
+      heroTitle: p.heroTitle,
+      readTime: p.readTime,
+      image: p.image,
+    }));
+
+    return {
+      params: { slug: perspective.slug },
+      props: { perspective, related },
+    };
+  });
+}
+
+type Props = { perspective: Perspective; related: RelatedItem[] };
+const { perspective, related } = Astro.props;
+---
+
+<Layout
+  title={`${perspective.name}: ${perspective.heroTitle} | Spatia Perspectives`}
+  description={perspective.openingParagraph}
+  ogImage={perspective.heroImage.src}
+  ogType="article"
+>
+  <Navbar activeLink="humans" />
+
+  <!-- Reading progress bar -->
+  <div
+    aria-hidden="true"
+    style="position:fixed;top:0;left:0;right:0;height:2px;z-index:9999;pointer-events:none;"
+  >
+    <div
+      id="reading-progress"
+      style="height:100%;background:#1F7A5A;transform:scaleX(0);transform-origin:left;transition:transform 0.08s linear;"
+    ></div>
+  </div>
+
+  <main>
+    <!-- Section 1: Editorial Hero -->
+    <PerspectiveHero
+      heroTitle={perspective.heroTitle}
+      heroSubtitle={perspective.heroSubtitle}
+      role={perspective.role}
+      number={perspective.number}
+      readTime={perspective.readTime}
+      publishedDate={perspective.publishedDate}
+    />
+
+    <!-- Section 2: Author Introduction -->
+    <AuthorIntro
+      name={perspective.name}
+      role={perspective.role}
+      image={perspective.image}
+      yearsAtSpatia={perspective.yearsAtSpatia}
+      openingParagraph={perspective.openingParagraph}
+    />
+
+    <!-- Section 3: Editorial Quote -->
+    <EditorialQuote
+      quote={perspective.editorialQuote}
+      attribution={perspective.editorialQuoteRef}
+    />
+
+    <!-- Sections 4–6: Article + Engineering Principles + Pull Quote -->
+    <ArticleContent
+      paragraphs={perspective.articleBody}
+      pullQuote={perspective.pullQuote}
+    />
+
+    <!-- Section 7: Author Card -->
+    <AuthorCard
+      name={perspective.name}
+      role={perspective.role}
+      image={perspective.image}
+      yearsAtSpatia={perspective.yearsAtSpatia}
+      linkedin={perspective.linkedin}
+      bio={perspective.bio}
+    />
+
+    <!-- Section 8: Related Perspectives -->
+    <RelatedPerspectives perspectives={related} />
+
+    <!-- Section 9: Newsletter -->
+    <NewsletterSection />
+
+    <!-- Section 10: Final CTA -->
+    <FinalCTA />
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const bar = document.getElementById('reading-progress');
+  if (bar) {
+    const update = () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = total > 0 ? Math.min(window.scrollY / total, 1) : 0;
+      bar.style.transform = `scaleX(${progress})`;
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+</script>

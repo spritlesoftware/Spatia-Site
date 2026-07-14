@@ -1,0 +1,64 @@
+---
+---
+
+<section class="relative bg-white py-32 lg:py-48 overflow-hidden">
+  <!-- Radial green glow -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background: radial-gradient(ellipse at 50% 52%, rgba(30,104,110,0.055) 0%, transparent 62%);"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Engineering grid -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="opacity: 0.02; background-image: linear-gradient(#111827 1px, transparent 1px), linear-gradient(to right, #111827 1px, transparent 1px); background-size: 64px 64px;"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative max-w-container mx-auto px-8 lg:px-16 text-center">
+
+    <!-- Label -->
+    <div class="flex items-center justify-center gap-3 mb-12 reveal">
+      <div class="w-8 h-px bg-sp-green"></div>
+      <span class="section-label">Team Philosophy</span>
+      <div class="w-8 h-px bg-sp-green"></div>
+    </div>
+
+    <!-- Large headline -->
+    <h2
+      class="font-inter font-bold text-sp-heading tracking-[-0.03em] leading-[1.08] mb-10 reveal reveal-delay-1"
+      style="font-size: clamp(40px, 5.5vw, 72px);"
+    >
+      The future of<br />
+      autonomy depends<br />
+      on <em class="not-italic text-sp-green">understanding.</em>
+    </h2>
+
+    <!-- Supporting copy -->
+    <p class="text-[18px] text-sp-body leading-[1.75] max-w-[540px] mx-auto mb-12 reveal reveal-delay-2">
+      We believe machines capable of genuine physical intelligence must develop a model of the world that is rich, contextual, and continuously updated-not just a map, but a living <em class="not-italic text-sp-green">understanding.</em>
+    </p>
+
+    <!-- CTA -->
+    <div class="reveal reveal-delay-3">
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-3 px-8 py-4 rounded-[12px] font-semibold text-[15px] text-white transition-all duration-300 group"
+        style="background-color: #111827;"
+        onmouseover="this.style.backgroundColor='#000000'"
+        onmouseout="this.style.backgroundColor='#111827'"
+      >
+        Explore Opportunities
+        <svg
+          width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+          class="transition-transform duration-200 group-hover:translate-x-0.5"
+        >
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

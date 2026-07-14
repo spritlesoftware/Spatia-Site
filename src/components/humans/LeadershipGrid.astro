@@ -1,0 +1,126 @@
+---
+import { Image } from 'astro:assets';
+import BalajiImg from '../../assets/Balaji.png';
+import SurendranImg from '../../assets/Surendran.png';
+import MohankumarImg from '../../assets/Mohankumar.jpg';
+import PrabakaranImg from '../../assets/Prabakaran.png';
+import PoojaImg from '../../assets/Pooja-GTM.jpg';
+
+const team = [
+  {
+    name: 'Balaji',
+    role: 'CEO',
+    slug: 'balaji',
+    quote: 'Machines that understand their surroundings are not tools they are collaborators.',
+    image: BalajiImg,
+  },
+  {
+    name: 'Surendran',
+    role: 'CTO & Co Founder',
+    slug: 'surendran',
+    quote: 'The gap between perception and action is where the real engineering challenge lives.',
+    image: SurendranImg,
+  },
+  {
+    name: 'Prabakaran',
+    role: 'VP Engineering',
+    slug: 'prabakaran',
+    quote: 'We design for the edge case, because reality is nothing but edge cases.',
+    image: PrabakaranImg,
+  },
+  {
+    name: 'Mohan kumar',
+    role: 'Principal SE 2 ',
+    slug: 'mohankumar',
+    quote: 'Every algorithm we write is a theory about the physical world.',
+    image: MohankumarImg,
+  },
+  {
+    name: 'Pooja',
+    role: 'Growth',
+    slug: 'pooja',
+    quote: 'The best intelligence is the kind you never have to explain.',
+    image: PoojaImg,
+  },
+] as const;
+---
+
+<section class="bg-white py-24 lg:py-32" id="team">
+  <div class="max-w-container mx-auto px-8 lg:px-16">
+
+    <!-- Section header -->
+    <div class="mb-16 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-8 h-px bg-sp-green"></div>
+        <span class="section-label">Leadership</span>
+      </div>
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <h2
+          class="font-inter font-bold text-sp-heading leading-[1.1] tracking-[-0.025em]"
+          style="font-size: clamp(36px, 4vw, 52px);"
+        >
+          The minds behind<br />Spatia&rsquo;s mission.
+        </h2>
+        <p class="text-[16px] text-sp-body leading-[1.7] max-w-[360px] lg:text-right">
+          Built on deep expertise, genuine curiosity, and the conviction that intelligent machines must first understand their world.
+        </p>
+      </div>
+    </div>
+
+    <!-- Uniform grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+      {team.map((person, i) => (
+        <a
+          href={`/perspectives/${person.slug}`}
+          class:list={[
+            'group relative rounded-[24px] overflow-hidden flex flex-col',
+            'border border-sp-border bg-white cursor-pointer no-underline',
+            'transition-all duration-500 ease-out hover:border-sp-green',
+            'hover:shadow-[0_20px_56px_rgba(30,104,110,0.10)]',
+            'reveal',
+            `reveal-delay-${Math.min(i + 1, 5)}`,
+          ]}
+        >
+          <!-- Portrait -->
+          <div class="overflow-hidden h-[280px] flex-shrink-0">
+            <Image
+              src={person.image}
+              alt={`${person.name}, ${person.role}`}
+              class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+              width={280}
+              height={280}
+            />
+          </div>
+
+          <!-- Card content -->
+          <div class="p-5 flex flex-col flex-1">
+            <p class="section-label mb-1.5" style="font-size: 10px;">{person.role}</p>
+            <h3 class="text-sp-heading font-semibold text-[15px] mb-3 tracking-[-0.01em]">{person.name}</h3>
+            <p class="text-sp-body text-[13px] leading-[1.7] mb-4 flex-1">
+              &ldquo;{person.quote}&rdquo;
+            </p>
+            <div class="flex items-center justify-between group/cta">
+              <span class="text-sp-green text-[11px] font-bold tracking-[0.06em]">Read Story</span>
+              <div class="w-8 h-8 rounded-full bg-sp-green-light flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover/cta:bg-sp-green">
+                <svg
+                  width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                  class="text-sp-green group-hover/cta:text-white transition-colors duration-300"
+                >
+                  <path d="M7 17L17 7"/>
+                  <path d="M10 7h7v7"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom accent bar -->
+          <div
+            class="absolute bottom-0 left-0 right-0 h-[2px] bg-sp-green scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+          ></div>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>

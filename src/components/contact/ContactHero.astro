@@ -1,0 +1,64 @@
+---
+---
+
+<section
+  id="contact-hero"
+  class="relative flex flex-col items-center justify-center overflow-hidden bg-white pt-24"
+  style="min-height: 100svh;"
+>
+  <!-- Animated grid -->
+  <div class="hero-grid absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Radial green glow -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background: radial-gradient(ellipse 100% 65% at 50% 30%, rgba(31,122,90,0.07) 0%, rgba(31,122,90,0.03) 45%, transparent 70%);"
+    aria-hidden="true"
+  ></div>
+
+  <!-- ── Content ── -->
+  <div class="relative z-10 w-full max-w-[1280px] mx-auto px-8 md:px-16 text-center flex flex-col items-center py-20 md:py-28">
+
+    <!-- Label with flanking lines -->
+    <div class="reveal flex items-center justify-center gap-4 mb-10">
+      <div style="width: 32px; height: 1px; background: rgba(31,122,90,0.45);"></div>
+      <span class="section-label" style="color: #1F7A5A; letter-spacing: 0.2em;">LET'S BUILD THE FUTURE</span>
+      <div style="width: 32px; height: 1px; background: rgba(31,122,90,0.45);"></div>
+    </div>
+
+    <!-- Heading -->
+    <h1
+      class="reveal reveal-delay-1 font-bold text-[#111827] leading-[1.03] tracking-[-0.04em] mb-8"
+      style="font-size: clamp(52px, 7.5vw, 96px);"
+    >
+      What are you<br>
+      <em class="not-italic" style="color: #1F7A5A;">building?</em>
+    </h1>
+
+    <!-- Description -->
+    <p
+      class="reveal reveal-delay-2 leading-[1.85]"
+      style="font-size: clamp(16px, 1.8vw, 18px); color: #667085; max-width: 560px;"
+    >
+      We're interested in understanding ambitious ideas in Physical&nbsp;AI,
+      robotics, autonomous systems, and intelligent machines.
+    </p>
+
+  </div>
+</section>
+
+<style>
+  /* Animated grid */
+  .hero-grid {
+    background-image:
+      linear-gradient(rgba(31, 122, 90, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(31, 122, 90, 0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    animation: gridDrift 60s linear infinite;
+  }
+
+  @keyframes gridDrift {
+    from { background-position: 0 0; }
+    to   { background-position: 80px 80px; }
+  }
+</style>

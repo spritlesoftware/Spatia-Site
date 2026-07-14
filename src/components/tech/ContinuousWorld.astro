@@ -1,0 +1,79 @@
+---
+import continuityImg from '../../assets/continuity.png';
+---
+
+<section
+  class="py-24 bg-white"
+  data-purpose="continuous-world-narrative"
+>
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Text block -->
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-5xl font-bold text-[#0d1117] leading-[1.15] tracking-tight mb-5">
+        Most systems understand moments.<br />The real world is continuous.
+      </h2>
+      <p class="text-gray-400 text-[15px] leading-relaxed max-w-lg mx-auto">
+        A snapshot is not understanding. A detection is not understanding. Understanding persists as
+        the world changes.
+      </p>
+    </div>
+
+    <!-- Filmstrip container -->
+    <div class="relative rounded-2xl overflow-hidden bg-[#0d1117]">
+      <!-- Filmstrip image-wide, reduced height -->
+      <div class="relative" style="height: 280px;">
+        <img
+          src={continuityImg.src}
+          alt="Continuous spatial understanding across multiple scenes"
+          class="w-full h-full object-cover object-center block"
+        />
+        <!-- Teal sine-wave overlay -->
+        <svg
+          class="absolute inset-0 w-full h-full pointer-events-none"
+          viewBox="0 0 1200 280"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <defs>
+            <filter id="wave-glow" x="-20%" y="-100%" width="140%" height="300%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- Glow halo -->
+          <path
+            d="M0,140 C150,90 300,190 450,140 C600,90 750,190 900,140 C1050,90 1150,190 1200,140"
+            stroke="#1E686E"
+            stroke-width="10"
+            fill="none"
+            stroke-linecap="round"
+            opacity="0.25"
+            filter="url(#wave-glow)"
+          />
+          <!-- Main wave -->
+          <path
+            d="M0,140 C150,90 300,190 450,140 C600,90 750,190 900,140 C1050,90 1150,190 1200,140"
+            stroke="#1E686E"
+            stroke-width="2"
+            fill="none"
+            stroke-linecap="round"
+            opacity="0.9"
+          />
+        </svg>
+      </div>
+
+      <!-- Bottom labels row -->
+      <div class="flex justify-between items-center px-6 py-4">
+        <span class="text-[#1E686E] text-[10px] font-semibold tracking-[0.18em] uppercase">
+          Implications
+        </span>
+        <span class="text-gray-500 text-[10px] font-semibold tracking-[0.18em] uppercase">
+          Industry Applications
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

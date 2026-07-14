@@ -1,0 +1,117 @@
+---
+---
+
+<section class="py-16 lg:py-20 bg-white">
+  <div class="max-w-[1280px] mx-auto px-8 lg:px-16">
+
+    <div
+      class="relative overflow-hidden rounded-[28px] reveal"
+      style="background: #111827;"
+    >
+      <!-- Engineering grid -->
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="
+          background-image:
+            linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+          background-size: 48px 48px;
+        "
+        aria-hidden="true"
+      ></div>
+
+      <!-- Green glow -->
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background: radial-gradient(ellipse 50% 80% at 85% 50%, rgba(31,122,90,0.22) 0%, transparent 60%);"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-10 items-center p-10 lg:p-16">
+
+        <!-- Left: Copy -->
+        <div>
+          <!-- Label -->
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-8 h-px" style="background: #1F7A5A;"></div>
+            <span class="text-[10px] font-semibold tracking-[0.22em] uppercase" style="color: #1F7A5A;">Join Spatia</span>
+          </div>
+
+          <!-- Heading -->
+          <h2
+            class="text-white font-bold leading-[1.05] tracking-[-0.03em] mb-6"
+            style="font-size: clamp(28px, 3.5vw, 48px);"
+          >
+            Ready to build<br />Physical AI?
+          </h2>
+
+          <!-- Description -->
+          <p class="text-white/60 text-[17px] leading-[1.7] mb-10 max-w-[380px]">
+            We're looking for engineers, researchers, and builders who want to work on some of the hardest problems in autonomous systems.
+          </p>
+
+          <!-- CTA button -->
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-3 px-7 py-4 rounded-[14px] text-white text-[15px] font-semibold tracking-[0.01em] transition-all duration-200 group"
+            style="background: #1F7A5A;"
+            onmouseover="this.style.background='#175E44'; this.style.transform='translateY(-1px)'"
+            onmouseout="this.style.background='#1F7A5A'; this.style.transform='translateY(0)'"
+          >
+            Explore Opportunities
+            <svg
+              width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+              class="transition-transform duration-200 group-hover:translate-x-0.5"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Right: Glass illustration -->
+        <div class="hidden lg:flex justify-center items-center" aria-hidden="true">
+          <div class="relative w-[280px] h-[280px]">
+
+            <!-- Outer glass ring -->
+            <div
+              class="absolute inset-0 rounded-full"
+              style="
+                background: rgba(255,255,255,0.03);
+                border: 1px solid rgba(255,255,255,0.08);
+                backdrop-filter: blur(4px);
+              "
+            ></div>
+
+            <!-- Mid ring -->
+            <div
+              class="absolute inset-8 rounded-full"
+              style="
+                background: rgba(31,122,90,0.12);
+                border: 1px solid rgba(31,122,90,0.25);
+              "
+            ></div>
+
+            <!-- Inner glow circle -->
+            <div
+              class="absolute inset-16 rounded-full flex items-center justify-center"
+              style="background: rgba(31,122,90,0.25); box-shadow: 0 0 60px rgba(31,122,90,0.35);"
+            >
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+
+            <!-- Floating accent dots -->
+            <div class="absolute top-4 right-8 w-2 h-2 rounded-full" style="background: #1F7A5A; opacity: 0.5;"></div>
+            <div class="absolute bottom-8 left-4 w-3 h-3 rounded-full" style="background: #1F7A5A; opacity: 0.3;"></div>
+            <div class="absolute top-1/2 -right-2 w-1.5 h-1.5 rounded-full" style="background: rgba(255,255,255,0.3);"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

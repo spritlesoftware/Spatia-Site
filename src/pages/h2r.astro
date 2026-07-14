@@ -1,0 +1,25 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/shared/Navbar.astro';
+import Footer from '@components/shared/Footer.astro';
+import H2RHero from '@components/h2r/H2RHero.astro';
+import FeaturedStories from '@components/h2r/FeaturedStories.astro';
+import EditorialHighlight from '@components/h2r/EditorialHighlight.astro';
+import KnowledgeLibrary from '@components/h2r/KnowledgeLibrary.astro';
+import PhilosophySection from '@components/h2r/PhilosophySection.astro';
+---
+
+<Layout
+  title="H2R | Spatia"
+  description="Exploring the intersection of human and machine intelligence through long-form inquiry."
+>
+  <Navbar activeLink="h2r" />
+  <main>
+    <H2RHero />
+    <FeaturedStories />
+    <EditorialHighlight />
+    <KnowledgeLibrary />
+    <PhilosophySection />
+  </main>
+  <Footer />
+</Layout>

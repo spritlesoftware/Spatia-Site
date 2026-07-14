@@ -1,0 +1,27 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/shared/Navbar.astro';
+import Footer from '@components/shared/Footer.astro';
+import ContactHero from '@components/contact/ContactHero.astro';
+import InterestCards from '@components/contact/InterestCards.astro';
+import WhyContactUs from '@components/contact/WhyContactUs.astro';
+import ContactMethods from '@components/contact/ContactMethods.astro';
+import FAQSection from '@components/contact/FAQSection.astro';
+import FinalCTA from '@components/contact/FinalCTA.astro';
+---
+
+<Layout
+  title="Contact | Spatia"
+  description="Start a conversation with Spatia. We build Physical AI, robotics, and autonomous systems that understand the world."
+>
+  <Navbar />
+  <main>
+    <ContactHero />
+    <InterestCards />
+    <WhyContactUs />
+    <ContactMethods />
+    <FAQSection />
+    <FinalCTA />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,74 @@
+---
+import whereAmImg    from '../../assets/where_am.png';
+import surroundsImg  from '../../assets/01.png';
+import changedImg    from '../../assets/changed.png';
+---
+
+<style>
+  .number-outline {
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.22);
+    color: transparent;
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 1;
+    font-weight: 700;
+  }
+</style>
+
+<section class="py-16 md:py-[120px]" data-purpose="three-questions">
+  <div class="px-4 sm:px-8 lg:px-16">
+    <h2 class="text-headline-lg font-headline-lg text-primary mb-10 md:mb-32 max-w-xl">
+      Every autonomous system must answer three questions.
+    </h2>
+
+    <!-- Question 01 -->
+    <div class="grid md:grid-cols-2 gap-10 md:gap-20 items-center mb-16 md:mb-40">
+      <div>
+        <span class="number-outline">01</span>
+        <h3 class="text-[32px] md:text-[48px] lg:text-[56px] font-bold tracking-tight leading-[1.1] mt-2 mb-6 text-primary">
+          Where am I?
+        </h3>
+        <p class="text-body-lg font-body-lg text-on-surface-variant max-w-md">
+          Absolute positioning is a prerequisite. Spatia provides sub-centimeter spatial awareness
+          even in GPS-denied environments.
+        </p>
+      </div>
+      <div class="rounded-lg overflow-hidden aspect-[4/3]">
+        <img src={whereAmImg.src} alt="Spatial Positioning" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- Question 02 -->
+    <div class="grid md:grid-cols-2 gap-10 md:gap-20 items-center mb-16 md:mb-40">
+      <div class="order-2 md:order-1 rounded-lg overflow-hidden aspect-[4/3]">
+        <img src={surroundsImg.src} alt="Environmental Awareness" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="order-1 md:order-2">
+        <span class="number-outline">02</span>
+        <h3 class="text-[32px] md:text-[48px] lg:text-[56px] font-bold tracking-tight leading-[1.1] mt-2 mb-6 text-primary">
+          What surrounds me?
+        </h3>
+        <p class="text-body-lg font-body-lg text-on-surface-variant max-w-md">
+          Environmental awareness isn't just about obstacles; it's about identifying actors, intent,
+          and long-term structures.
+        </p>
+      </div>
+    </div>
+
+    <!-- Question 03 -->
+    <div class="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
+      <div>
+        <span class="number-outline">03</span>
+        <h3 class="text-[32px] md:text-[48px] lg:text-[56px] font-bold tracking-tight leading-[1.1] mt-2 mb-6 text-primary">
+          What changed?
+        </h3>
+        <p class="text-body-lg font-body-lg text-on-surface-variant max-w-md">
+          Autonomy thrives on Delta. Recognizing what has shifted since the last observation creates
+          true operational intelligence.
+        </p>
+      </div>
+      <div class="rounded-lg overflow-hidden aspect-[4/3]">
+        <img src={changedImg.src} alt="Change Detection" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
