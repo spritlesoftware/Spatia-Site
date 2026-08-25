@@ -79,6 +79,22 @@ const posts = (await getCollection('blog'))
       ))}
     </div>
 
+    <!-- View all link -->
+    <div class="mt-14 reveal">
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-2.5 text-[15px] font-semibold tracking-[-0.01em] transition-colors duration-200"
+        style="color: #1E686E;"
+        onmouseover="this.style.color='#165255'"
+        onmouseout="this.style.color='#1E686E'"
+      >
+        View all stories
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
   </div>
 </section>
 
