@@ -1,0 +1,131 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/shared/Navbar.astro';
+import Footer from '@components/shared/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<Layout
+  title="Blog | Spatia"
+  description="Stories, deep dives, and insights from the team building spatial intelligence for the physical world."
+>
+  <Navbar />
+  <main>
+
+    <!-- Hero -->
+    <section class="pt-36 pb-16 bg-white">
+      <div class="max-w-[1280px] mx-auto px-8 md:px-16">
+        <p class="section-label mb-4 reveal">Blog</p>
+        <h1
+          class="text-sp-heading font-bold tracking-[-0.03em] reveal reveal-delay-1"
+          style="font-size: clamp(40px, 5vw, 64px); line-height: 1.05;"
+        >
+          Ideas worth understanding.
+        </h1>
+        <p
+          class="mt-5 text-sp-body leading-[1.7] max-w-[520px] reveal reveal-delay-2"
+          style="font-size: 18px;"
+        >
+          Stories, deep dives, and insights from the team building spatial intelligence for the physical world.
+        </p>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="max-w-[1280px] mx-auto px-8 md:px-16">
+      <div class="h-px" style="background: #E8ECEF;"></div>
+    </div>
+
+    <!-- Blog grid -->
+    <section class="py-16 bg-white">
+      <div class="max-w-[1280px] mx-auto px-8 md:px-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-14">
+          {posts.map((post, i) => (
+            <a
+              href={`/blog/${post.id.replace(/\.md$/, '')}`}
+              class={`group block reveal reveal-delay-${(i % 3) + 1}`}
+            >
+              <!-- Image -->
+              <div class="rounded-[20px] overflow-hidden mb-6" style="aspect-ratio: 16/10;">
+                <img
+                  src={post.data.image}
+                  alt={post.data.imageAlt}
+                  class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                />
+              </div>
+
+              <!-- Meta -->
+              <div class="flex items-center gap-3 mb-3">
+                <p class="section-label">{post.data.category}</p>
+                <span style="color: #D1D5DB; font-size: 10px;">·</span>
+                <span style="font-size: 13px; color: #9CA3AF;">{post.data.readTime}</span>
+              </div>
+
+              <!-- Title -->
+              <h2
+                class="text-sp-heading font-semibold tracking-[-0.02em] group-hover:text-sp-green transition-colors duration-200"
+                style="font-size: 24px; line-height: 1.25;"
+              >
+                {post.data.title}
+              </h2>
+
+              <!-- Description -->
+              <p
+                class="mt-3 text-sp-body leading-[1.7]"
+                style="font-size: 15px;"
+              >
+                {post.data.description}
+              </p>
+
+              <!-- Read more -->
+              <div class="mt-5 flex items-center gap-2 text-sp-green opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span class="text-[13px] font-semibold tracking-[0.02em]">Read article</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-white">
+      <div class="max-w-[1280px] mx-auto px-8 md:px-16 text-center">
+        <div class="h-px mb-16" style="background: #E8ECEF;"></div>
+        <p class="section-label mb-5 reveal">Stay informed</p>
+        <h2
+          class="text-sp-heading font-bold tracking-[-0.03em] mb-5 reveal reveal-delay-1"
+          style="font-size: clamp(32px, 3.5vw, 48px); line-height: 1.1;"
+        >
+          Want to learn more about<br class="hidden md:block" /> spatial intelligence?
+        </h2>
+        <p
+          class="text-sp-body leading-[1.7] max-w-[480px] mx-auto mb-10 reveal reveal-delay-2"
+          style="font-size: 17px;"
+        >
+          Follow our work as we build systems that help machines understand the world around them.
+        </p>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-md text-[16px] font-semibold transition-all duration-200 active:scale-[0.98] reveal reveal-delay-3"
+          style="background-color: #111827; color: #ffffff;"
+          onmouseover="this.style.backgroundColor='#000000'"
+          onmouseout="this.style.backgroundColor='#111827'"
+        >
+          Get in touch
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
