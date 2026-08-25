@@ -9,7 +9,7 @@ const blog = defineCollection({
     readTime: z.string(),
     image: z.string(),
     imageAlt: z.string(),
-    date: z.string(),
+    date: z.coerce.date(),
     featured: z.boolean().default(false),
   }),
 });
