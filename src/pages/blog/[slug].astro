@@ -1,0 +1,343 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/shared/Navbar.astro';
+import Footer from '@components/shared/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/\.md$/, '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const allPosts = (await getCollection('blog'))
+  .filter((p) => p.id !== post.id)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const related = allPosts.slice(0, 2);
+
+const dateFormatted = new Date(post.data.date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Layout
+  title={`${post.data.title} | Spatia Blog`}
+  description={post.data.description}
+  ogImage={post.data.image}
+  ogType="article"
+>
+  <Navbar />
+
+  <!-- Reading progress bar -->
+  <div
+    aria-hidden="true"
+    style="position:fixed;top:0;left:0;right:0;height:2px;z-index:9999;pointer-events:none;"
+  >
+    <div
+      id="reading-progress"
+      style="height:100%;background:#1E686E;transform:scaleX(0);transform-origin:left;transition:transform 0.08s linear;"
+    ></div>
+  </div>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden bg-white pt-32 pb-12 lg:pt-40 lg:pb-16">
+      <div class="max-w-[760px] mx-auto px-8">
+
+        <!-- Back link -->
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-sp-body hover:text-sp-heading text-[11px] font-semibold tracking-[0.15em] uppercase transition-colors duration-200 mb-10 reveal"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 5l-7 7 7 7"/>
+          </svg>
+          All articles
+        </a>
+
+        <!-- Category -->
+        <p class="section-label mb-5 reveal reveal-delay-1">{post.data.category}</p>
+
+        <!-- Title -->
+        <h1
+          class="text-sp-heading font-bold tracking-[-0.03em] reveal reveal-delay-1"
+          style="font-size: clamp(36px, 4.5vw, 56px); line-height: 1.08;"
+        >
+          {post.data.title}
+        </h1>
+
+        <!-- Subtitle -->
+        <p
+          class="mt-5 text-sp-body leading-[1.7] max-w-[560px] reveal reveal-delay-2"
+          style="font-size: 18px;"
+        >
+          {post.data.description}
+        </p>
+
+        <!-- Meta -->
+        <div class="flex flex-wrap items-center gap-3 mt-8 reveal reveal-delay-3">
+          <span class="text-[12px] font-semibold tracking-[0.08em] text-sp-body">{dateFormatted}</span>
+          <span style="color: #D1D5DB; font-size: 10px;">·</span>
+          <span class="text-[12px] font-medium tracking-[0.04em] text-[#9CA3AF]">{post.data.readTime}</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Hero image -->
+    <section class="bg-white pb-10">
+      <div class="max-w-[760px] mx-auto px-8 lg:px-0 reveal">
+        <div class="rounded-[16px] overflow-hidden" style="aspect-ratio: 2/1;">
+          <img
+            src={post.data.image}
+            alt={post.data.imageAlt}
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Article content -->
+    <section class="bg-white relative">
+
+      <!-- Sticky share buttons (desktop) -->
+      <div class="hidden xl:block fixed left-8 top-0 bottom-0 pointer-events-none z-40">
+        <div class="sticky top-1/2 -translate-y-1/2 flex flex-col items-center gap-3 pointer-events-auto opacity-0 transition-opacity duration-500" id="share-buttons">
+          <span
+            class="text-[9px] font-semibold tracking-[0.2em] uppercase mb-1"
+            style="color: #667085; writing-mode: vertical-rl; transform: rotate(180deg);"
+          >Share</span>
+          <button
+            class="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200 hover:border-[#1E686E] hover:bg-[#EEF8F2]"
+            style="border-color: #E8ECEF; color: #667085;"
+            title="Share on LinkedIn"
+            onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank')"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </button>
+          <button
+            class="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200 hover:border-[#1E686E] hover:bg-[#EEF8F2]"
+            style="border-color: #E8ECEF; color: #667085;"
+            title="Share on X"
+            onclick="window.open('https://x.com/intent/tweet?url=' + encodeURIComponent(window.location.href), '_blank')"
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.259 5.631ZM17.083 20h1.833L7.084 4.126H5.117Z"/>
+            </svg>
+          </button>
+          <button
+            class="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200 hover:border-[#1E686E] hover:bg-[#EEF8F2]"
+            style="border-color: #E8ECEF; color: #667085;"
+            title="Copy link"
+            id="copy-link-btn"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Markdown body -->
+      <div class="max-w-[760px] mx-auto px-8 lg:px-0 py-12 lg:py-16 blog-content">
+        <Content />
+      </div>
+
+    </section>
+
+    <!-- Related articles -->
+    {related.length > 0 && (
+      <section class="py-16 bg-white">
+        <div class="max-w-[1280px] mx-auto px-8 md:px-16">
+          <div class="h-px mb-16" style="background: #E8ECEF;"></div>
+          <p class="section-label mb-10 reveal">Continue reading</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {related.map((r, i) => (
+              <a
+                href={`/blog/${r.id.replace(/\.md$/, '')}`}
+                class={`group block reveal reveal-delay-${i + 1}`}
+              >
+                <div class="rounded-[20px] overflow-hidden mb-5" style="aspect-ratio: 16/10;">
+                  <img
+                    src={r.data.image}
+                    alt={r.data.imageAlt}
+                    class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                </div>
+                <p class="section-label mb-2">{r.data.category}</p>
+                <h3
+                  class="text-sp-heading font-semibold tracking-[-0.02em] group-hover:text-sp-green transition-colors duration-200"
+                  style="font-size: 22px; line-height: 1.3;"
+                >
+                  {r.data.title}
+                </h3>
+                <p class="mt-2 text-sp-body" style="font-size: 14px; line-height: 1.7;">
+                  {r.data.description}
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+  </main>
+  <Footer />
+</Layout>
+
+<style is:global>
+  /* Article typography */
+  .blog-content h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #111827;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .blog-content h3 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #111827;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .blog-content p {
+    font-size: 19px;
+    line-height: 1.85;
+    color: #374151;
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-content strong {
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .blog-content blockquote {
+    border-left: 3px solid #1E686E;
+    padding-left: 1.5rem;
+    margin: 2.5rem 0;
+    font-style: italic;
+  }
+
+  .blog-content blockquote p {
+    font-size: 20px;
+    color: #1E686E;
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  .blog-content ul,
+  .blog-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .blog-content li {
+    font-size: 19px;
+    line-height: 1.85;
+    color: #374151;
+    margin-bottom: 0.5rem;
+  }
+
+  .blog-content code {
+    background: #F3F4F6;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  .blog-content pre {
+    background: #111827;
+    color: #E5E7EB;
+    padding: 1.25rem;
+    border-radius: 12px;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-content pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+
+  /* First paragraph drop cap */
+  .blog-content > p:first-of-type::first-letter {
+    float: left;
+    font-size: 4.2em;
+    line-height: 0.78;
+    font-weight: 700;
+    color: #1E686E;
+    padding-right: 0.1em;
+    margin-top: 0.06em;
+  }
+
+  /* End of article marker */
+  .blog-content > *:last-child::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: #1E686E;
+    border-radius: 50%;
+    margin: 3rem auto 0;
+  }
+</style>
+
+<script>
+  // Reading progress
+  const bar = document.getElementById('reading-progress');
+  if (bar) {
+    const update = () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = total > 0 ? Math.min(window.scrollY / total, 1) : 0;
+      bar.style.transform = `scaleX(${progress})`;
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+
+  // Show share buttons on scroll
+  const shareButtons = document.getElementById('share-buttons');
+  if (shareButtons) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        shareButtons.style.opacity = entry.isIntersecting ? '1' : '0';
+      },
+      { threshold: 0.1 }
+    );
+    const hero = document.querySelector('section.relative');
+    if (hero) observer.observe(hero);
+  }
+
+  // Copy link
+  const copyBtn = document.getElementById('copy-link-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(window.location.href).catch(() => {});
+      const orig = copyBtn.innerHTML;
+      copyBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E686E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+      setTimeout(() => { copyBtn.innerHTML = orig; }, 1800);
+    });
+  }
+</script>

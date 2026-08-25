@@ -1,0 +1,67 @@
+media: media
+
+content:
+  - name: blog
+    label: Blog
+    type: collection
+    path: src/content/blog
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      fields: [title, category, date, readTime]
+      primary: title
+      sort: date
+      order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: description
+        label: Description
+        type: text
+        required: true
+
+      - name: category
+        label: Category
+        type: string
+        required: true
+        description: "Section label (e.g. Shared Ideas, Behind the Work, Deep Dive, Industry)"
+
+      - name: readTime
+        label: Read Time
+        type: string
+        required: true
+        description: "e.g. 5 min read"
+
+      - name: image
+        label: Hero Image URL
+        type: string
+        required: true
+        description: "External URL (Unsplash) or path to uploaded media"
+
+      - name: imageAlt
+        label: Image Alt Text
+        type: string
+        required: true
+
+      - name: date
+        label: Publication Date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+
+      - name: featured
+        label: Featured
+        type: boolean
+        description: "Show this post in the Featured Stories section on H2R"
+
+      - name: body
+        label: Body
+        type: rich-text
+
+settings:
+  content:
+    merge: true
