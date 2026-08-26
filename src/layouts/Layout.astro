@@ -4,6 +4,7 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  keywords?: string;
   ogImage?: string;
   ogType?: string;
 }
@@ -11,6 +12,7 @@ interface Props {
 const {
   title = 'Spatia — The world makes sense to people.',
   description = 'Spatia gives autonomous systems the ability to understand the environments they operate in.',
+  keywords,
   ogImage,
   ogType = 'website',
 } = Astro.props;
@@ -28,6 +30,7 @@ const ogImageUrl = ogImage
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
     <title>{title}</title>
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" href="/favicon.png" />

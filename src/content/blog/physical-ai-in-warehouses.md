@@ -2,11 +2,15 @@
 title: "Physical AI in Warehouses"
 description: "How autonomous systems are transforming warehouse operations and why spatial understanding is the key to making it work at scale."
 category: "Industry"
+blogType: "business"
 readTime: "7 min read"
 image: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=900&q=85&fit=crop&crop=center"
 imageAlt: "Modern warehouse interior with automated systems"
 date: "2026-08-05"
 featured: false
+seoTitle: "Physical AI in Warehouses: Autonomy at Scale"
+seoDescription: "How autonomous systems are transforming warehouse operations and why spatial understanding is the key to making it work at scale."
+keywords: "physical AI, warehouse automation, autonomous systems, spatial intelligence, logistics"
 ---
 
 Warehouses are among the most dynamic environments in the world. Forklifts move through narrow aisles. Workers carry items between zones. Pallets are loaded and unloaded constantly. The layout changes daily, sometimes hourly. For autonomous systems, this isn't just a challenge — it's the defining problem.
