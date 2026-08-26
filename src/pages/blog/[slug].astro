@@ -28,8 +28,9 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('en-US', {
 ---
 
 <Layout
-  title={`${post.data.title} | Spatia Blog`}
-  description={post.data.description}
+  title={`${post.data.seoTitle} | Spatia Blog`}
+  description={post.data.seoDescription}
+  keywords={post.data.keywords}
   ogImage={post.data.image}
   ogType="article"
 >

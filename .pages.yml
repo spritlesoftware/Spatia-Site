@@ -8,7 +8,7 @@ content:
     format: yaml-frontmatter
     filename: "{primary}.md"
     view:
-      fields: [title, category, date, readTime]
+      fields: [title, category, blogType, date, readTime]
       primary: title
       sort: date
       order: desc
@@ -27,7 +27,18 @@ content:
         label: Category
         type: string
         required: true
-        description: "Section label (e.g. Shared Ideas, Behind the Work, Deep Dive, Industry)"
+        description: "Display label shown on the card (e.g. Shared Ideas, Behind the Work, Deep Dive, Industry)"
+
+      - name: blogType
+        label: Section
+        type: select
+        required: true
+        default: tech
+        description: "Which H2R section this post appears under"
+        options:
+          values:
+            - { value: tech, label: Tech Blogs }
+            - { value: business, label: Business Blogs }
 
       - name: readTime
         label: Read Time
@@ -57,6 +68,23 @@ content:
         label: Featured
         type: boolean
         description: "Show this post in the Featured Stories section on H2R"
+
+      - name: seoTitle
+        label: SEO Title
+        type: string
+        required: true
+        description: "Title used for the browser tab & search results (aim for 50–60 characters)"
+
+      - name: seoDescription
+        label: SEO Description
+        type: text
+        required: true
+        description: "Meta description shown in search results (aim for 140–160 characters)"
+
+      - name: keywords
+        label: SEO Keywords
+        type: string
+        description: "Comma-separated keywords (optional), e.g. spatial AI, robotics, perception"
 
       - name: body
         label: Body
