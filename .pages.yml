@@ -69,6 +69,23 @@ content:
         type: boolean
         description: "Show this post in the Featured Stories section on H2R"
 
+      - name: seoTitle
+        label: SEO Title
+        type: string
+        required: true
+        description: "Title used for the browser tab & search results (aim for 50–60 characters)"
+
+      - name: seoDescription
+        label: SEO Description
+        type: text
+        required: true
+        description: "Meta description shown in search results (aim for 140–160 characters)"
+
+      - name: keywords
+        label: SEO Keywords
+        type: string
+        description: "Comma-separated keywords (optional), e.g. spatial AI, robotics, perception"
+
       - name: body
         label: Body
         type: rich-text

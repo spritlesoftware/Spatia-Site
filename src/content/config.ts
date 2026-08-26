@@ -12,6 +12,11 @@ const blog = defineCollection({
     imageAlt: z.string(),
     date: z.coerce.date(),
     featured: z.boolean().default(false),
+
+    // SEO
+    seoTitle: z.string(),
+    seoDescription: z.string(),
+    keywords: z.string().optional(),
   }),
 });
 

@@ -11,6 +11,9 @@ image: https://images.pexels.com/photos/35280311/pexels-photo-35280311.jpeg?_gl=
 imageAlt: dvanced robotics system in operation
 date: 2026-08-25
 featured: false
+seoTitle: "Beyond Perception: Machines That Understand the World"
+seoDescription: "How Spatia builds autonomous systems that interpret change, understand context, and make decisions in the physical world — beyond perception."
+keywords: "spatial intelligence, physical AI, autonomous systems, machine perception, robotics"
 ---
 # Beyond Perception: Building Machines That Understand the World
 
