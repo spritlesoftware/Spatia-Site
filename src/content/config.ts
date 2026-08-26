@@ -23,14 +23,12 @@ const blog = defineCollection({
       keywords: z.string().optional(),
     })
     // Resolve to a single `image` value the rest of the site reads.
+    // Upload wins over remote URL; falls back to a placeholder so a missing
+    // image never breaks the whole build.
     .transform((data) => ({
       ...data,
-      image: data.imageUpload ?? data.imageUrl ?? '',
-    }))
-    .refine((data) => data.image.length > 0, {
-      message: 'A hero image is required: set either "Hero Image URL" or upload a "Hero Image".',
-      path: ['image'],
-    }),
+      image: data.imageUpload || data.imageUrl || '/media/placeholder.svg',
+    })),
 });
 
 export const collections = { blog };
