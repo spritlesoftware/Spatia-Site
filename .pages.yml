@@ -1,4 +1,6 @@
-media: media
+media:
+  input: public/media
+  output: /media
 
 content:
   - name: blog
@@ -47,10 +49,10 @@ content:
         description: "e.g. 5 min read"
 
       - name: image
-        label: Hero Image URL
-        type: string
+        label: Hero Image
+        type: image
         required: true
-        description: "External URL (Unsplash) or path to uploaded media"
+        description: "Upload a hero image from your computer, or pick one from the media library"
 
       - name: imageAlt
         label: Image Alt Text
