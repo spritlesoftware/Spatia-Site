@@ -48,11 +48,15 @@ content:
         required: true
         description: "e.g. 5 min read"
 
-      - name: image
-        label: Hero Image
+      - name: imageUrl
+        label: Hero Image URL (remote)
+        type: string
+        description: "Paste an external image URL (e.g. Unsplash). Leave blank if uploading below."
+
+      - name: imageUpload
+        label: Hero Image (upload)
         type: image
-        required: true
-        description: "Upload a hero image from your computer, or pick one from the media library"
+        description: "Upload from your computer or pick from the media library. Takes priority over the URL above."
 
       - name: imageAlt
         label: Image Alt Text

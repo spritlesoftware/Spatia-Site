@@ -4,7 +4,7 @@ description: "We bring together people who ask better questions, challenge assum
 category: "Shared Ideas"
 blogType: "business"
 readTime: "5 min read"
-image: "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=900&q=85&fit=crop&crop=center"
+imageUrl: "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=900&q=85&fit=crop&crop=center"
 imageAlt: "Team discussion in a modern research facility"
 date: "2026-06-15"
 featured: true
