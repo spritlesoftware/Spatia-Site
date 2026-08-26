@@ -8,6 +8,9 @@ image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=900&q=85&
 imageAlt: "Advanced robotics system in operation"
 date: "2026-07-01"
 featured: true
+seoTitle: "Inside the System: How We Build Intelligent Machines"
+seoDescription: "A closer look at how Spatia designs, builds, and refines intelligent systems that perceive, reason, and act in the real world."
+keywords: "intelligent systems, spatial AI, engineering, perception, reasoning"
 ---
 
 Every autonomous system faces the same fundamental challenge: the world doesn't stay still. A path that was clear five seconds ago might be blocked now. An object that was stationary is now moving. The environment evolves continuously, and the machine's understanding has to evolve with it.
