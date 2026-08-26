@@ -6,6 +6,7 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     category: z.string(),
+    blogType: z.enum(['tech', 'business']).default('tech'),
     readTime: z.string(),
     image: z.string(),
     imageAlt: z.string(),

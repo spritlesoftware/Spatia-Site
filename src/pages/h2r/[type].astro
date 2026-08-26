@@ -1,0 +1,140 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/shared/Navbar.astro';
+import Footer from '@components/shared/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const LABELS = { tech: 'Tech Blogs', business: 'Business Blogs' } as const;
+
+export async function getStaticPaths() {
+  return [{ params: { type: 'tech' } }, { params: { type: 'business' } }];
+}
+
+const { type } = Astro.params as { type: 'tech' | 'business' };
+
+const posts = (await getCollection('blog'))
+  .filter((p) => p.data.blogType === type)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+// Representative post drives the hero title/description — same as the H2R section card.
+const hero = posts.find((p) => p.data.featured) ?? posts[0];
+const section = {
+  label: LABELS[type],
+  heading: hero?.data.title ?? LABELS[type],
+  blurb: hero?.data.description ?? '',
+};
+
+const fmtDate = (d: Date) =>
+  new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<Layout
+  title={`${section.label} | H2R | Spatia`}
+  description={section.blurb}
+>
+  <Navbar activeLink="h2r" />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-white pt-40 pb-16 lg:pt-48 lg:pb-20 border-b border-sp-border">
+      <div class="max-w-container mx-auto px-8 lg:px-16 reveal">
+        <a
+          href="/h2r"
+          class="inline-flex items-center gap-2 text-sp-body hover:text-sp-heading text-[11px] font-semibold tracking-[0.15em] uppercase transition-colors duration-200 mb-10"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 5l-7 7 7 7"/>
+          </svg>
+          Back to H2R
+        </a>
+
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-px bg-sp-green"></div>
+          <span class="section-label">{section.label}</span>
+        </div>
+        <h1
+          class="font-inter font-bold text-sp-heading leading-[1.1] tracking-[-0.025em]"
+          style="font-size: clamp(36px, 5vw, 64px);"
+        >
+          {section.heading}
+        </h1>
+        <p class="text-[17px] text-sp-body leading-[1.7] max-w-[560px] mt-6">
+          {section.blurb}
+        </p>
+      </div>
+    </section>
+
+    <!-- Post grid -->
+    <section class="bg-white py-20 lg:py-28">
+      <div class="max-w-container mx-auto px-8 lg:px-16">
+        {posts.length === 0 ? (
+          <p class="text-sp-body text-[16px]">No stories published in this section yet — check back soon.</p>
+        ) : (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {posts.map((post, i) => (
+              <a
+                href={`/blog/${post.id.replace(/\.md$/, '')}`}
+                class={`group block bg-white border border-[#E8ECEF] rounded-[24px] overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 reveal reveal-delay-${Math.min(i + 1, 5)}`}
+              >
+                <div class="relative overflow-hidden" style="height: 220px;">
+                  <img
+                    src={post.data.image}
+                    alt={post.data.imageAlt}
+                    class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                    loading="lazy"
+                  />
+                  <div
+                    class="absolute bottom-0 left-0 right-0 pointer-events-none"
+                    style="height: 80px; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.12));"
+                  ></div>
+                </div>
+
+                <div class="p-7">
+                  <div class="flex items-center gap-3 mb-3">
+                    <p class="section-label">{post.data.category}</p>
+                    <span style="color: #D1D5DB; font-size: 10px;">·</span>
+                    <span style="font-size: 12px; color: #9CA3AF;">{fmtDate(post.data.date)}</span>
+                  </div>
+                  <h3
+                    style="font-size: 22px; font-weight: 600; letter-spacing: -0.02em; color: #101828; line-height: 1.25;"
+                  >
+                    {post.data.title}
+                  </h3>
+                  <p class="mt-3" style="font-size: 15px; line-height: 1.7; color: #667085;">
+                    {post.data.description}
+                  </p>
+
+                  <div class="mt-6 flex items-center justify-between">
+                    <span style="font-size: 13px; color: #9CA3AF; letter-spacing: 0.02em;">
+                      {post.data.readTime}
+                    </span>
+                    <span class="blog-arrow-btn w-10 h-10 rounded-full border border-[#E8ECEF] flex items-center justify-center transition-all duration-300">
+                      <svg
+                        width="15" height="15" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                        class="blog-arrow-icon transition-colors duration-300"
+                      >
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .blog-arrow-icon { color: #101828; }
+  a.group:hover .blog-arrow-btn {
+    background-color: #1E686E;
+    border-color: #1E686E;
+  }
+  a.group:hover .blog-arrow-icon { color: #ffffff !important; }
+</style>
