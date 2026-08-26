@@ -1,12 +1,40 @@
 ---
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog'))
-  .filter((post) => post.data.featured)
-  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const byType = (type: 'tech' | 'business') => allPosts.filter((p) => p.data.blogType === type);
+
+// Representative post for each section card: prefer a featured one, else the latest.
+const pick = (type: 'tech' | 'business') => {
+  const posts = byType(type);
+  return posts.find((p) => p.data.featured) ?? posts[0];
+};
+
+const sections = [
+  {
+    key: 'tech',
+    label: 'Tech Blogs',
+    blurb: 'Engineering notes, systems, and research on how machines perceive and reason.',
+    href: '/h2r/tech',
+    count: byType('tech').length,
+    hero: pick('tech'),
+  },
+  {
+    key: 'business',
+    label: 'Business Blogs',
+    blurb: 'Industry perspectives, applications, and the value spatial intelligence unlocks.',
+    href: '/h2r/business',
+    count: byType('business').length,
+    hero: pick('business'),
+  },
+];
 ---
 
 <section id="stories" class="py-[120px] bg-white">
+  <span id="library" class="block relative" style="top: -96px;" aria-hidden="true"></span>
   <div class="max-w-[1280px] mx-auto px-8 md:px-16">
 
     <!-- Section header -->
@@ -14,66 +42,56 @@ const posts = (await getCollection('blog'))
       <p class="section-label">Featured Stories</p>
     </div>
 
-    <!-- Cards grid -->
+    <!-- Section entry cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {posts.map((post, i) => (
+      {sections.map((section, i) => (
         <a
-          href={`/blog/${post.id.replace(/\.md$/, '')}`}
-          class={`group block bg-white border border-[#E8ECEF] rounded-[24px] overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 reveal reveal-delay-${i + 1}`}
+          href={section.href}
+          class={`group relative block rounded-[24px] overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_70px_rgba(0,0,0,0.14)] reveal reveal-delay-${i + 1}`}
+          style="min-height: 420px;"
+          aria-label={`Browse ${section.label}`}
         >
-          <!-- Card image with zoom on hover -->
-          <div class="relative overflow-hidden" style="height: 288px;">
+          <!-- Background image -->
+          {section.hero && (
             <img
-              src={post.data.image}
-              alt={post.data.imageAlt}
-              class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+              src={section.hero.data.image}
+              alt={section.hero.data.imageAlt}
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+              loading="lazy"
             />
-            <!-- Subtle dark vignette at bottom of image -->
-            <div
-              class="absolute bottom-0 left-0 right-0 pointer-events-none"
-              style="height: 80px; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.12));"
-            ></div>
-          </div>
+          )}
+          <!-- Gradient scrim -->
+          <div
+            class="absolute inset-0"
+            style="background: linear-gradient(to top, rgba(10,15,24,0.92) 0%, rgba(10,15,24,0.55) 42%, rgba(10,15,24,0.15) 100%);"
+          ></div>
 
-          <!-- Card body -->
-          <div class="p-8 md:p-9">
-            <p class="section-label mb-3">{post.data.category}</p>
+          <!-- Content -->
+          <div class="relative z-10 h-full flex flex-col justify-end p-9">
+            <span
+              class="self-start text-[11px] font-semibold tracking-[0.16em] uppercase px-3 py-1.5 rounded-full mb-4"
+              style="color: #ffffff; background: rgba(30,104,110,0.9); backdrop-filter: blur(4px);"
+            >
+              {section.count} {section.count === 1 ? 'story' : 'stories'}
+            </span>
             <h3
-              style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em; color: #101828; line-height: 1.2;"
+              class="text-white"
+              style="font-size: 30px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15;"
             >
-              {post.data.title}
+              {section.hero?.data.title}
             </h3>
-            <p
-              class="mt-3"
-              style="font-size: 15px; line-height: 1.75; color: #667085;"
-            >
-              {post.data.description}
+            <p class="mt-3 max-w-[380px]" style="font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.82);">
+              {section.hero?.data.description}
             </p>
 
-            <!-- Footer row: read time + arrow button -->
-            <div class="mt-7 flex items-center justify-between">
-              <span style="font-size: 13px; color: #9CA3AF; letter-spacing: 0.02em;">
-                {post.data.readTime}
-              </span>
-              <!-- Circular arrow button -->
-              <span
-                class="h2r-arrow-btn w-10 h-10 rounded-full border border-[#E8ECEF] flex items-center justify-center transition-all duration-300"
-              >
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="h2r-arrow-icon transition-colors duration-300"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </span>
-            </div>
+            <span
+              class="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-white transition-all duration-300 group-hover:gap-3"
+            >
+              Explore section
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
           </div>
         </a>
       ))}
@@ -97,19 +115,3 @@ const posts = (await getCollection('blog'))
 
   </div>
 </section>
-
-<style>
-  /* Default arrow color */
-  .h2r-arrow-icon {
-    color: #101828;
-  }
-
-  /* Card hover: fill green button, white arrow */
-  a.group:hover .h2r-arrow-btn {
-    background-color: #1E686E;
-    border-color: #1E686E;
-  }
-  a.group:hover .h2r-arrow-icon {
-    color: #ffffff !important;
-  }
-</style>

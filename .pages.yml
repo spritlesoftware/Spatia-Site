@@ -8,7 +8,7 @@ content:
     format: yaml-frontmatter
     filename: "{primary}.md"
     view:
-      fields: [title, category, date, readTime]
+      fields: [title, category, blogType, date, readTime]
       primary: title
       sort: date
       order: desc
@@ -27,7 +27,18 @@ content:
         label: Category
         type: string
         required: true
-        description: "Section label (e.g. Shared Ideas, Behind the Work, Deep Dive, Industry)"
+        description: "Display label shown on the card (e.g. Shared Ideas, Behind the Work, Deep Dive, Industry)"
+
+      - name: blogType
+        label: Section
+        type: select
+        required: true
+        default: tech
+        description: "Which H2R section this post appears under"
+        options:
+          values:
+            - { value: tech, label: Tech Blogs }
+            - { value: business, label: Business Blogs }
 
       - name: readTime
         label: Read Time

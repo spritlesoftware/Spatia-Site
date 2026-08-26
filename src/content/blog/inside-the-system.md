@@ -2,6 +2,7 @@
 title: "Inside The System"
 description: "A closer look at how we design, build, and refine intelligent systems that perceive, reason, and act in the real world."
 category: "Behind the Work"
+blogType: "tech"
 readTime: "8 min read"
 image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=900&q=85&fit=crop&crop=center"
 imageAlt: "Advanced robotics system in operation"
