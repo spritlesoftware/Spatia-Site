@@ -4,7 +4,7 @@ description: "A closer look at how we design, build, and refine intelligent syst
 category: "Behind the Work"
 blogType: "tech"
 readTime: "8 min read"
-image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=900&q=85&fit=crop&crop=center"
+imageUrl: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=900&q=85&fit=crop&crop=center"
 imageAlt: "Advanced robotics system in operation"
 date: "2026-07-01"
 featured: true
