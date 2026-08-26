@@ -4,7 +4,7 @@ description: "How autonomous systems are transforming warehouse operations and w
 category: "Industry"
 blogType: "business"
 readTime: "7 min read"
-image: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=900&q=85&fit=crop&crop=center"
+imageUrl: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=900&q=85&fit=crop&crop=center"
 imageAlt: "Modern warehouse interior with automated systems"
 date: "2026-08-05"
 featured: false

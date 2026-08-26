@@ -7,7 +7,7 @@ description: Autonomous systems don't operate in static environments. They must
 category: Behind the Work
 blogType: tech
 readTime: 8 min read
-image: https://images.pexels.com/photos/35280311/pexels-photo-35280311.jpeg?_gl=1*2no9sv*_ga*MTg1NDg0NTM0Ny4xNzgwMDI5NjYy*_ga_8JE65Q40S6*czE3ODc2NDM2MzYkbzEyJGcxJHQxNzg3NjQzNjc0JGoyMiRsMCRoMA..
+imageUrl: https://images.pexels.com/photos/35280311/pexels-photo-35280311.jpeg?_gl=1*2no9sv*_ga*MTg1NDg0NTM0Ny4xNzgwMDI5NjYy*_ga_8JE65Q40S6*czE3ODc2NDM2MzYkbzEyJGcxJHQxNzg3NjQzNjc0JGoyMiRsMCRoMA..
 imageAlt: dvanced robotics system in operation
 date: 2026-08-25
 featured: false
