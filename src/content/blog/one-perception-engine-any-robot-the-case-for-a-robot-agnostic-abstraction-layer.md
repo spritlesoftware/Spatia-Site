@@ -5,7 +5,7 @@ description: "One Perception Engine, Any Robot: The Case for a Robot-Agnostic
   Abstraction Layer"
 category: Spatia robotics
 blogType: tech
-readTime: 7 minutes read
+readTime: 7 mins
 imageAlt: spatia spatial intelligence  Robot-Agnostic Perception
 date: 2026-08-26
 featured: false
