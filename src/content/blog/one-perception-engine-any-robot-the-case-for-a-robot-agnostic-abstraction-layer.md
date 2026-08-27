@@ -1,6 +1,5 @@
 ---
-title: "One Perception Engine, Any Robot: The Case for a Robot-Agnostic
-  Abstraction Layer"
+title: One Perception Engine, Any Robot
 description: "One Perception Engine, Any Robot: The Case for a Robot-Agnostic
   Abstraction Layer"
 category: Spatia robotics
