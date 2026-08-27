@@ -1,5 +1,5 @@
 ---
-title: One Perception Engine, Any Robot
+title: What Happens When Your Second Robot Doesn't Speak the Same Language?
 description: "One Perception Engine, Any Robot: The Case for a Robot-Agnostic
   Abstraction Layer"
 category: Spatia robotics
@@ -19,11 +19,13 @@ keywords: robot-agnostic automation, industrial perception layer, 6D pose
   deployment, industrial robotics architecture
 imageUpload: /media/spatia-robotic-ai-intelligence.png
 ---
-If you own robot deployment decisions at an OEM or Tier 1, you already know the question that matters more than any accuracy benchmark: **what happens to this system the day we add a second robot brand??**
+If you're deploying robots across an OEM or Tier 1 environment, one question matters beyond accuracy benchmarks:
 
-Most vision and perception stacks fail that question quietly. Not because the pose estimation is wrong, but because the software was never actually separable from the robot it was first integrated with. This post is about the architectural decision we made to avoid that failure mode, and the evidence that it holds, including where it doesn't yet.
+**What happens when you add a second robot brand?**
 
-At Spatia, we build the perception and execution stack that teaches industrial robots to handle new parts the moment a CAD file is uploaded, without months of reprogramming or custom fixtures. That system has to work across whichever robot an OEM already has on the floor, which is the whole subject of this post.
+Most vision and perception stacks fail that question quietly. Not because the pose estimation is wrong, but because the software was never actually separable from the robot it was first integrated with. 
+
+At Spatia, we're building a perception and execution stack designed to work across the robot platforms already present on the factory floor.That system has to work across whichever robot an OEM already has on the floor, which is the whole subject of this post.
 
 **Where lock-in actually lives in the stack**
 
