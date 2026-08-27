@@ -21,8 +21,6 @@ imageUpload: /media/spatia-robotic-ai-intelligence.png
 ---
 If you own robot deployment decisions at an OEM or Tier 1, you already know the question that matters more than any accuracy benchmark: **what happens to this system the day we add a second robot brand??**
 
-![](/media/spatia-robotic-ai-intelligence.png)
-
 Most vision and perception stacks fail that question quietly. Not because the pose estimation is wrong, but because the software was never actually separable from the robot it was first integrated with. This post is about the architectural decision we made to avoid that failure mode, and the evidence that it holds, including where it doesn't yet.
 
 At Spatia, we build the perception and execution stack that teaches industrial robots to handle new parts the moment a CAD file is uploaded, without months of reprogramming or custom fixtures. That system has to work across whichever robot an OEM already has on the floor, which is the whole subject of this post.
