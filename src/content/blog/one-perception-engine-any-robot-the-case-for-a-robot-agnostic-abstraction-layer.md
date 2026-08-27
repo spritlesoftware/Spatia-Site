@@ -18,9 +18,12 @@ keywords: robot-agnostic automation, industrial perception layer, 6D pose
   Flexiv robot integration, robot vendor lock-in, industrial robot abstraction
   layer, automotive SOP automation, robot execution engine, mixed robot fleet
   deployment, industrial robotics architecture
+imageUpload: /media/spatia-robotic-ai-intelligence.png
 ---
 ```markdown
 If you own robot deployment decisions at an OEM or Tier 1, you already know the question that matters more than any accuracy benchmark: **what happens to this system the day we add a second robot brand?**
+
+![Alt text](https://example.com)
 
 Most vision and perception stacks fail that question quietly. Not because the pose estimation is wrong, but because the software was never actually separable from the robot it was first integrated with. This post is about the architectural decision we made to avoid that failure mode, and the evidence that it holds, including where it doesn't yet.
 
@@ -41,7 +44,7 @@ That line is usually quoted for its humor, but there's a real point buried in it
 
 Our pipeline is six layers: Input (CAD ingestion, synthetic view generation), Perception (RGB-D capture, segmentation, 6D pose), Registration (hand-eye calibration, grasp offset, frame transform), Reach & Act (IK, planning, execution, verification), Transit & Complete, and Reliability & Monitoring running alongside all of it.
 
-[IMAGE PLACEHOLDER 2 - This is the natural place for the six-layer architecture diagram (the one already built for the architecture overview doc). Reuse or adapt that SVG here so the reader can see the layers instead of just reading the list. This is probably the single most useful visual in the post for a technical reader.]
+![Alt text](https://example.com)
 
 The boundary that matters for this post sits between Registration and Reach & Act. Everything upstream of that line, CAD ingestion, pose estimation, the entire perception pipeline, operates in object and camera space. It has no dependency on which robot is executing the action. It never queries a robot SDK, never assumes a control loop timing model, never encodes a specific controller's coordinate conventions. The output of everything upstream is a deterministic 6D pose: a geometric fact, not a robot instruction.
 
@@ -58,7 +61,7 @@ We validated against two robots that are structurally different at the control l
 - **Universal Robots**, communicating over RTDE, a real time data exchange protocol with UR's specific timing and state model.
 - **Flexiv**, communicating over RDK, with built in force sensing at the controller level, a materially different control paradigm than UR's, not just a different vendor's version of the same thing.
 
-[IMAGE PLACEHOLDER 3 - A simple two-column comparison graphic or short table graphic showing UR (RTDE) vs Flexiv (RDK, force sensing) side by side, with a shared "Perception Layer" bar spanning across the top of both to visually reinforce that one engine feeds two very different execution paths. This works well as a supporting visual right after this bullet list.]
+![Alt text](https://example.com)
 
 Getting perception, calibration, and grasp/action definition to carry over unmodified across both, with only the Reach & Act driver changing, is what tells us the boundary is real rather than something that happens to work for one robot family and would need to be reopened for the next.
 
