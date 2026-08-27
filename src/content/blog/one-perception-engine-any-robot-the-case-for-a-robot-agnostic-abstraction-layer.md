@@ -20,7 +20,7 @@ keywords: robot-agnostic automation, industrial perception layer, 6D pose
   deployment, industrial robotics architecture
 imageUpload: /media/spatia-robotic-ai-intelligence.png
 ---
-If you own robot deployment decisions at an OEM or Tier 1, you already know the question that matters more than any accuracy benchmark: **what happens to this system the day we add a second robot brand?**
+If you own robot deployment decisions at an OEM or Tier 1, you already know the question that matters more than any accuracy benchmark: **what happens to this system the day we add a second robot brand??**
 
 ![](/media/spatia-robotic-ai-intelligence.png)
 
