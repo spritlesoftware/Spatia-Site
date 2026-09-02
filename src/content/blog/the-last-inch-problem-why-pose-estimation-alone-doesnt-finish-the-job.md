@@ -42,6 +42,8 @@ None of that is "finding." All of it is what happens in the last inch of travel,
 
 Tolerances tighten as the robot gets closer to the target. A pose estimate that's accurate to a couple of millimeters is more than good enough to *approach* a part. It is not good enough to *seat* that part into a fixture with a 0.2mm clearance. The margin for error shrinks exactly when the consequences of error grow - a bad approach just means a retry; a bad insertion can damage the part, the fixture, or the end effector.
 
+![](</media/margin for error shrinkin.png>)
+
 Contact changes the physics. The moment the gripper touches the part, you've left the world of pure vision and entered a world of forces, compliance, and small unplanned movements. A part that looked perfectly positioned a second ago can shift the instant it's grasped or pressed into place. Pose estimation, on its own, has nothing to say about that - it's a snapshot, not a feedback loop for contact.
 
 It's where automation quietly fails today. A huge share of "robot picks the part but can't reliably place it" problems in real deployments aren't perception failures - they're last-inch failures. The part was found correctly. It just wasn't *finished* correctly.
@@ -58,10 +60,14 @@ The instinct is often to reach for a fancier perception model. That's the wrong 
 
 **Failure attribution** - when something does go wrong in that last inch, the system needs to say *why*: was it a calibration drift, an occluded view, a grasp offset, or an unexpected part shift on contact? A system that can only say "it failed" without saying where forces every failure to be debugged as a mystery instead of a known category.
 
+![](</media/Failure-mode diagram.png>)
+
 This is why "the last inch" belongs on the list of things a serious industrial automation platform has to own, not outsource to hope. Finding an object is a necessary condition for automation. It was never a sufficient one.
 
 ## The real measure of a manipulation platform
 
 The honest test of a pick-and-place, fastening, dispensing, or bin-picking system isn't "can it locate the part." Every credible vendor can do that today. The test is: what happens in the half-second after the gripper makes contact? Does the system have any awareness of what actually happened, or is it just trusting a trajectory that was planned before it knew what the world would do?
+
+![](/media/last.png)
 
 Perception gets the robot to the doorway. What happens in the last inch decides whether it actually walks through - and the single biggest factor in that last inch is whether the robot can *feel* what it's doing. That's the subject of Part 2: force control, and why it varies so much from one robot platform to the next.
