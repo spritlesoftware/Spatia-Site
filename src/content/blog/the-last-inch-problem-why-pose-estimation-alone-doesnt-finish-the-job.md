@@ -1,7 +1,6 @@
 ---
-title: Your Robot Can Find the Part. It Still Can't Do the Job
-description: Pose estimation can tell a robot exactly where a part is - but
-  locating it is only the first inch of the job.
+title: The Robot Found the Part. Now What?
+description: Why the hardest part of industrial automation starts after perception.
 category: Spatia robotics
 blogType: tech
 readTime: 6 min read
@@ -43,7 +42,7 @@ Tolerances tighten as the robot gets closer to the target. A pose estimate that'
 
 Contact changes the physics. The moment the gripper touches the part, you've left the world of pure vision and entered a world of forces, compliance, and small unplanned movements. A part that looked perfectly positioned a second ago can shift the instant it's grasped or pressed into place. Pose estimation, on its own, has nothing to say about that - it's a snapshot, not a feedback loop for contact.
 
-It's where automation quietly fails today. A huge share of "robot picks the part but can't reliably place it" problems in real deployments aren't perception failures - they're last-inch failures. The part was found correctly. It just wasn't *finished* correctly.
+It's where automation quietly fails today. In many real deployments, the problem isn't that the robot couldn't find the part. It's that the robot couldn't reliably finish the task once contact began.The part was found correctly. It just wasn't *finished* correctly.
 
 ## Solving the last inch is an architecture problem, not a bigger model
 
@@ -63,7 +62,7 @@ This is why "the last inch" belongs on the list of things a serious industrial a
 
 ## The real measure of a manipulation platform
 
-The honest test of a pick-and-place, fastening, dispensing, or bin-picking system isn't "can it locate the part." Every credible vendor can do that today. The test is: what happens in the half-second after the gripper makes contact? Does the system have any awareness of what actually happened, or is it just trusting a trajectory that was planned before it knew what the world would do?
+The honest test of a pick-and-place, fastening, dispensing, or bin-picking system isn't "can it locate the part." For many structured industrial environments, locating the part is no longer the most interesting question. The test is: what happens in the half-second after the gripper makes contact? Does the system have any awareness of what actually happened, or is it just trusting a trajectory that was planned before it knew what the world would do?
 
 ![](/media/last.png)
 
