@@ -17,6 +17,7 @@ seoDescription: Why pose estimation alone can't finish an assembly task - and
 keywords: robotics,industrial-automation, manufacturing, pose-estimation,
   robotic-manipulation, computer-vision, automotive-manufacturing robot-arms,
   assembly-automation
+imageUpload: /media/Hero image — the last inch.png
 ---
 ### Part 1 of 2
 
