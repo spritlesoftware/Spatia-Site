@@ -18,7 +18,6 @@ keywords: robotics,industrial-automation, manufacturing, pose-estimation,
   robotic-manipulation, computer-vision, automotive-manufacturing robot-arms,
   assembly-automation
 ---
-# The Last Inch Problem: Why Pose Estimation Alone Doesn't Finish the Job
 ### Part 1 of 2
 
 Ask most people what the hard part of robotic automation is, and they'll say "finding the object." Get a camera to see the part, figure out where it is in 3D space, and the robot can just... grab it. Done.
