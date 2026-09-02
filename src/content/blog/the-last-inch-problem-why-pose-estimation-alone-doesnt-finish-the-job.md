@@ -3,8 +3,7 @@ title: Your Robot Can Find the Part. It Still Can't Do the Job
 description: Pose estimation can tell a robot exactly where a part is - but
   locating it is only the first inch of the job. This post breaks down why the
   final inch of contact, insertion, and alignment is where most robotic
-  manipulation deployments actually fail, and what a platform needs
-  architecturally to close that gap
+  manipulation deployments actually fail.
 category: Spatia robotics
 blogType: tech
 readTime: 6 min read
