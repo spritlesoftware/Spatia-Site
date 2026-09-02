@@ -64,24 +64,3 @@ This is why "the last inch" belongs on the list of things a serious industrial a
 The honest test of a pick-and-place, fastening, dispensing, or bin-picking system isn't "can it locate the part." Every credible vendor can do that today. The test is: what happens in the half-second after the gripper makes contact? Does the system have any awareness of what actually happened, or is it just trusting a trajectory that was planned before it knew what the world would do?
 
 Perception gets the robot to the doorway. What happens in the last inch decides whether it actually walks through - and the single biggest factor in that last inch is whether the robot can *feel* what it's doing. That's the subject of Part 2: force control, and why it varies so much from one robot platform to the next.
-
----
-
-## AI image generation prompts
-
-Plug these into Midjourney, DALL·E, or Stable Diffusion. Adjust style keywords to match your brand.
-
-**1. Hero image - the last inch**
-> A robotic gripper arm carefully seating a small precision metal part into a tight-tolerance fixture on an industrial workbench, extreme close-up on the point of contact, soft focused factory background, photorealistic, dramatic side lighting emphasizing the tiny gap between part and fixture, no text or logos
-
-**2. Diagram concept - margin for error shrinking on approach**
-> A minimalist technical illustration showing a robotic arm's trajectory as a line approaching a target, with a wide translucent error-margin cone at the start narrowing to almost nothing right at the target point, flat vector style, blue gradient, white background, no text
-
-**3. Contact moment - physics change**
-> Macro photograph of a robotic gripper's fingers making first contact with a metal component, visible tiny deformation or pressure indicator, dramatic studio lighting, shallow depth of field, photorealistic industrial product photography, neutral dark background
-
-**4. Failure-mode diagram**
-> A clean flat-design flowchart illustration with a single central node labeled with a warning icon (no text needed) branching into four smaller icon nodes representing calibration, occlusion, misalignment, and unexpected movement, minimalist icon style, blue and orange accent colors, white background
-
-**5. Closing image - the finished assembly**
-> A wide shot of a modern automotive-style assembly line with a robotic arm completing a precise insertion task, clean and well-lit factory environment, other robotic stations visible in soft focus in the background, photorealistic, optimistic and orderly composition, no text or logos
