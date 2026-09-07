@@ -10,7 +10,7 @@ readTime: 6 min read
 imageUpload: /media/ChatGPT Image Sep 7, 2026, 05_50_18 PM 2.png
 imageAlt: Spatia
 date: 2026-09-07
-featured: true
+featured: false
 seoTitle: Why We Didn’t Build on a VLA ( And When You Actually Should )
 seoDescription: Why Spatia chose a modular robotics architecture over a VLA, and
   when Vision-Language-Action models make sense for Physical AI and industrial
@@ -19,7 +19,6 @@ keywords: VLA, Vision-Language-Action, Physical AI, industrial robotics,
   robotics AI, robot perception, spatial AI, modular robotics, robotic
   automation, robot control, edge AI, 3D vision, robot intelligence
 ---
-  
 **In Physical AI, the best architecture isn't necessarily the most sophisticated one. It's the one that fits the problem.**
 
 If you've been anywhere near robotics or Physical AI recently, you've probably heard the acronym VLA  Vision-Language-Action. The idea is compelling: a model takes visual and language inputs and learns to translate them into actions. Instead of building separate systems for perception, reasoning, planning, and action, a VLA attempts to learn the relationship between what a robot sees, what it is asked to do, and how it should respond.
