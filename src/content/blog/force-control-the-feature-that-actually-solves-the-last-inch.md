@@ -22,7 +22,7 @@ imageUpload: /media/fc-Hero image.png
 ---
 ### Part 2 of 2 - continued from "The Last Inch Problem"
 
-In Part 1, we made the case that pose estimation gets a robot *to* a part but has nothing to say about what happens once contact begins - and that this gap, the last inch, is where most real-world manipulation failures actually happen. This post is about the feature that closes that gap: force control, and why it looks so different from one robot platform to the next.
+[In Part 1](https://www.spatia.sg/blog/the-last-inch-problem-why-pose-estimation-alone-doesnt-finish-the-job/), we made the case that pose estimation gets a robot *to* a part but has nothing to say about what happens once contact begins - and that this gap, the last inch, is where most real-world manipulation failures actually happen. This post is about the feature that closes that gap: force control, and why it looks so different from one robot platform to the next.
 
 ![](</media/fc-Hero image.png>)
 
