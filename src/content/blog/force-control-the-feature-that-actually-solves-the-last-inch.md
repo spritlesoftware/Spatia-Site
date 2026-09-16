@@ -24,8 +24,6 @@ imageUpload: /media/fc-Hero image.png
 
 [In Part 1](https://www.spatia.sg/blog/the-last-inch-problem-why-pose-estimation-alone-doesnt-finish-the-job/), we made the case that pose estimation gets a robot *to* a part but has nothing to say about what happens once contact begins - and that this gap, the last inch, is where most real-world manipulation failures actually happen. This post is about the feature that closes that gap: force control, and why it looks so different from one robot platform to the next.
 
-![](</media/fc-Hero image.png>)
-
 ## What force control actually means
 
 A robot with force control isn't just executing a pre-planned trajectory and hoping it works. It's continuously sensing resistance - through torque sensors in the joints, a force/torque sensor at the wrist, or both - and adjusting its motion in response. That lets it do things pure position control can't:
