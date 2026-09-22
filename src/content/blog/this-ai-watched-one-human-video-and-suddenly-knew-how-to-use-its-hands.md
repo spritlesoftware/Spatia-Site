@@ -7,7 +7,7 @@ description: "Every robot deployed today lives with the same limitation: it only
   real world. "
 category: Spatia robotics
 blogType: tech
-readTime: ~4-5 min
+readTime: ~4-5 min read
 imageAlt: In-Context Learning for Robots
 date: 2026-09-22
 featured: false
