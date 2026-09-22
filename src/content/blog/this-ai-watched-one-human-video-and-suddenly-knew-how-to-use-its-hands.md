@@ -4,9 +4,7 @@ description: "Every robot deployed today lives with the same limitation: it only
   knows what it was trained on. Change the object, change the lighting, change
   the task slightly, and performance can fall apart. The traditional fix -
   collect more data, retrain, redeploy - doesn't scale to the messiness of the
-  real world. A new paper on GPT-Policy (Cheng, Yi, Fang, et al., from Morphi
-  Robot and collaborators) asks a more interesting question: what if a robot
-  could just learn from what's in front of it, the same way people do?"
+  real world. "
 category: Spatia robotics
 blogType: tech
 readTime: ~4-5 min
@@ -24,6 +22,8 @@ keywords: n-context learning robotics, VLM robot control, robot adaptation
   dynamic environment automation, general-purpose AI agents for robots
 ---
 ## What "in-context learning" means for a robot
+
+A new paper on GPT-Policy (Cheng, Yi, Fang, et al., from Morphi Robot and collaborators) asks a more interesting question: what if a robot could just learn from what's in front of it, the same way people do?
 
 In language models, in-context learning is the ability to pick up a new pattern from examples given in the prompt, without updating any weights. The GPT-Policy authors extend this idea to physical robots: can a general-purpose vision-language model (VLM) - something like GPT-6 Astra - watch a demonstration, read a goal image, or remember what it just tried, and turn that into correct robot actions on the spot?
 
