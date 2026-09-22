@@ -20,6 +20,7 @@ keywords: n-context learning robotics, VLM robot control, robot adaptation
   without retraining, zero-shot robot learning, vision-language-action models,
   GPT-Policy, robotic manipulation AI, demonstration-conditioned robot control,
   dynamic environment automation, general-purpose AI agents for robots
+imageUpload: /media/incontext-learning-spatia-1.png
 ---
 ## What "in-context learning" means for a robot
 
