@@ -1,0 +1,135 @@
+---
+import MediaSlot from './MediaSlot.astro';
+import type { AssetId } from './assets';
+
+interface Chip {
+  label: string;
+  line?: string;
+  asset?: AssetId;
+}
+
+interface Props {
+  number: string;
+  title: string;
+  tagline: string;
+  body: string;
+  main: AssetId[];
+  chips?: Chip[];
+  badge?: { label: string; tone: 'early' | 'soon' };
+  cta: { label: string; href: string };
+  /** Alternate the media block between left and right. */
+  flip?: boolean;
+}
+
+const { number, title, tagline, body, main, chips = [], badge, cta, flip = false } = Astro.props;
+
+const badgeTone = {
+  early: 'border-sp-green/30 bg-sp-green-light text-sp-green',
+  soon: 'border-sp-border bg-[#F3F4F6] text-sp-body',
+};
+---
+
+<article class="border-t border-sp-border py-14 first:border-t-0 md:py-20">
+  <div
+    class:list={[
+      'grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-12',
+      flip && 'lg:[&>*:first-child]:order-2',
+    ]}
+  >
+
+    <!-- Copy -->
+    <div class="lg:col-span-5">
+      <div class="mb-4 flex flex-wrap items-center gap-3">
+        <span class="font-mono text-[12px] font-semibold tracking-[0.1em] text-sp-green/70">
+          {number}
+        </span>
+        {
+          badge && (
+            <span
+              class:list={[
+                'rounded-full border px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.08em]',
+                badgeTone[badge.tone],
+              ]}
+            >
+              {badge.label}
+            </span>
+          )
+        }
+      </div>
+
+      <h3
+        class="mb-3 font-inter font-bold leading-[1.15] tracking-[-0.025em] text-sp-heading"
+        style="font-size: clamp(23px, 2.6vw, 34px);"
+      >
+        {title}
+      </h3>
+
+      <p class="mb-4 text-[15px] font-medium leading-[1.6] text-sp-green">{tagline}</p>
+      <p class="text-[14px] leading-[1.75] text-sp-body">{body}</p>
+
+      <a
+        href={cta.href}
+        class="mt-7 inline-flex items-center justify-center rounded-md px-6 py-3 text-[14px] font-semibold text-white transition-all duration-200 active:scale-[0.98]"
+        style="background-color: #111827;"
+        onmouseover="this.style.backgroundColor='#000000'"
+        onmouseout="this.style.backgroundColor='#111827'"
+      >
+        {cta.label}
+        <span class="ml-2" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+
+    <!-- Media -->
+    <div class="lg:col-span-7">
+      <div
+        class:list={[
+          'grid gap-4',
+          main.length > 1 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1',
+        ]}
+      >
+        {
+          main.map((id) => (
+            <MediaSlot
+              id={id}
+              ratio="16 / 10"
+              class="rounded-[20px] border border-sp-border"
+            />
+          ))
+        }
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Chips: own full-width row beneath the two-column grid -->
+  {
+    chips.length > 0 && (
+      <div class="mt-10 lg:mt-12">
+        <div
+          class:list={[
+            'grid gap-3',
+            chips.some((c) => c.asset)
+              ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5'
+              : 'grid-cols-1',
+          ]}
+        >
+          {chips.map((chip) =>
+            chip.asset ? (
+              <div class="rounded-[16px] border border-sp-border bg-white p-2">
+                <MediaSlot id={chip.asset} ratio="4 / 3" class="rounded-[10px]" />
+                <p class="mt-2 px-1 text-[12.5px] font-semibold text-sp-heading">{chip.label}</p>
+                {chip.line && <p class="px-1 text-[11.5px] leading-snug text-sp-body">{chip.line}</p>}
+              </div>
+            ) : (
+              <div class="flex flex-wrap gap-2">
+                <span class="rounded-full border border-sp-border bg-white px-3.5 py-1.5 text-[12.5px] font-medium text-sp-body">
+                  {chip.label}
+                </span>
+              </div>
+            )
+          )}
+        </div>
+      </div>
+    )
+  }
+</article>

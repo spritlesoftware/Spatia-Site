@@ -1,0 +1,48 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/shared/Navbar.astro';
+import Footer from '@components/home-1/HomeFooter.astro';
+import AnnouncementBar from '@components/home-1/AnnouncementBar.astro';
+import Hero from '@components/home-1/Hero.astro';
+import BuiltForStrip from '@components/home-1/BuiltForStrip.astro';
+import KeyNumbers from '@components/home-1/KeyNumbers.astro';
+import Advantages from '@components/home-1/Advantages.astro';
+import PlatformIntro from '@components/home-1/PlatformIntro.astro';
+import Solutions from '@components/home-1/Solutions.astro';
+import HowItWorks from '@components/home-1/HowItWorks.astro';
+import Comparison from '@components/home-1/Comparison.astro';
+import Proof from '@components/home-1/Proof.astro';
+import ConversionBand from '@components/home-1/ConversionBand.astro';
+import BrochurePartners from '@components/home-1/BrochurePartners.astro';
+import ContactForm from '@components/home-1/ContactForm.astro';
+import { hasAsset, mediaUrl } from '@components/home-1/assets';
+
+// Only advertise a social image that actually exists, otherwise the
+// Layout default is used.
+const ogImage = hasAsset('A21') ? mediaUrl('A21') : undefined;
+---
+
+<Layout
+  title="Spatia AssembleX | Physical AI for Manufacturing"
+  description="Physical AI for manufacturing. CAD-native perception for cognitive assembly and dynamic inspection with no training data or custom fixtures."
+  keywords="physical AI manufacturing, CAD-based pose estimation, zero-shot 6D pose, robot bin picking, dynamic inspection, fixtureless robot picking"
+  ogImage={ogImage}
+>
+  <Navbar />
+  <main class="pt-24">
+    <AnnouncementBar />
+    <Hero />
+    <BuiltForStrip />
+    <KeyNumbers />
+    <Advantages />
+    <PlatformIntro />
+    <Solutions />
+    <HowItWorks />
+    <Comparison />
+    <Proof />
+    <ConversionBand />
+    <BrochurePartners />
+    <ContactForm />
+  </main>
+  <Footer />
+</Layout>

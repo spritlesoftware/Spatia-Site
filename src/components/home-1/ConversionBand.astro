@@ -1,0 +1,34 @@
+---
+import MediaSlot from './MediaSlot.astro';
+---
+
+<section class="bg-white py-10 md:py-20">
+  <div class="px-4 sm:px-8 lg:px-16">
+    <div class="reveal relative overflow-hidden rounded-[24px] bg-sp-heading">
+
+      <!-- Optional background loop, sits behind the copy -->
+      <div class="pointer-events-none absolute inset-0 opacity-25" aria-hidden="true">
+        <MediaSlot id="A19" ratio="16 / 9" class="h-full w-full" fit="contain" />
+      </div>
+
+      <div class="relative z-10 px-6 py-14 text-center sm:px-12 md:py-20">
+        <h2
+          class="mx-auto mb-4 max-w-[30rem] font-inter font-bold leading-[1.12] tracking-[-0.025em] text-white"
+          style="font-size: clamp(24px, 2.9vw, 40px);"
+        >
+          Send us a part. See it handled.
+        </h2>
+        <p class="mx-auto mb-8 max-w-[28rem] text-[14.5px] leading-[1.7] text-white/70">
+          Share a CAD file and your use case. We'll show you how it runs on your part.
+        </p>
+        <a
+          href="/contact?interest=send-a-part"
+          class="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-[14px] font-semibold text-sp-heading transition-all duration-200 active:scale-[0.98] hover:bg-white/90"
+        >
+          Send us your part
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

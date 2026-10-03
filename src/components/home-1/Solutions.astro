@@ -1,0 +1,63 @@
+---
+import SolutionBlock from './SolutionBlock.astro';
+---
+
+<section id="solutions" class="bg-white py-16 md:py-[120px]">
+  <div class="px-4 sm:px-8 lg:px-16">
+
+    <div class="reveal mb-4 max-w-[40rem]">
+      <h2
+        class="mb-4 font-inter font-bold leading-[1.1] tracking-[-0.025em] text-sp-heading"
+        style="font-size: clamp(26px, 3vw, 44px);"
+      >
+        Our focus in manufacturing
+      </h2>
+      <p class="text-[15px] leading-[1.7] text-sp-body">
+        Two solutions and one platform, all running on Spatia AssembleX.
+      </p>
+    </div>
+
+    <SolutionBlock
+      number="01"
+      title="Cognitive Assembly"
+      tagline="Automate the handling that feeds your assembly line."
+      body="Cognitive Assembly finds parts in bins, trays and on conveyors, decides how to handle each one, and completes the task at the pace of your line, driven straight from your CAD models."
+      main={['A04']}
+      chips={[
+        { label: 'Pick', line: 'Reach into bins and trays without fixtures.', asset: 'A05' },
+        { label: 'Sort', line: 'Recognize parts and route each one.', asset: 'A06' },
+        { label: 'Stack', line: 'Build ordered layers from random infeed.', asset: 'A07' },
+        { label: 'Load', line: 'Feed machines and downstream stations.', asset: 'A08' },
+        { label: 'Place', line: 'Set parts at the target with alignment corrections.', asset: 'A09' },
+      ]}
+      cta={{ label: 'Explore Cognitive Assembly', href: '/cognitive-assembly' }}
+    />
+
+    <SolutionBlock
+      number="02"
+      title="Dynamic Inspection: Vernier"
+      tagline="Compare every part to its CAD, in motion."
+      body="Vernier runs on Spatia AssembleX to check live parts against their design geometry and flag deviations, including on moving parts."
+      main={['A10', 'A11']}
+      chips={[
+        { label: 'Dimensional checks' },
+        { label: 'Deviation flagging' },
+        { label: 'Conveyor-tracked parts' },
+      ]}
+      badge={{ label: 'Early access', tone: 'early' }}
+      cta={{ label: 'Join the early-access list', href: '/contact?interest=vernier' }}
+      flip
+    />
+
+    <SolutionBlock
+      number="03"
+      title="Zero-CAD platform"
+      tagline="No CAD model? Start anyway."
+      body="For parts without a usable CAD file, a separate platform learns objects directly from the scene."
+      main={['A12']}
+      badge={{ label: 'Coming soon', tone: 'soon' }}
+      cta={{ label: 'Talk to us', href: '/contact?interest=zero-cad' }}
+    />
+
+  </div>
+</section>

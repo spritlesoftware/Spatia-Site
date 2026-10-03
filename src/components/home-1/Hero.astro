@@ -1,0 +1,59 @@
+---
+import MediaSlot from './MediaSlot.astro';
+---
+
+<section class="relative overflow-hidden bg-white">
+  <div class="px-4 sm:px-8 lg:px-16">
+    <div
+      class="grid grid-cols-1 items-center gap-10 pb-16 pt-12 md:pb-20 md:pt-16 lg:grid-cols-12 lg:gap-14"
+    >
+
+      <!-- Copy -->
+      <div class="lg:col-span-5">
+        <p class="section-label mb-5">Physical AI for manufacturing</p>
+
+        <h1
+          class="font-inter font-bold leading-[1.08] tracking-[-0.03em] text-sp-heading"
+          style="font -size: clamp(32px, 4.4vw, 58px);"
+        >
+          Robots that see, adapt and inspect on the factory floor.
+        </h1>
+
+        <p class="mt-6 max-w-[30rem] text-[16px] leading-[1.7] text-sp-body">
+          CAD-native perception for assembly and dynamic inspection. No training data. No custom
+          fixtures.
+        </p>
+
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center rounded-md px-6 py-3 text-[14px] font-semibold text-white transition-all duration-200 active:scale-[0.98]"
+            style="background-color: #111827;"
+            onmouseover="this.style.backgroundColor='#000000'"
+            onmouseout="this.style.backgroundColor='#111827'"
+          >
+            Book a demo
+          </a>
+          <a
+            href="#solutions"
+            class="inline-flex items-center justify-center rounded-md border border-sp-border px-6 py-3 text-[14px] font-semibold text-sp-heading transition-colors duration-200 hover:border-sp-green/40 hover:text-sp-green"
+          >
+            Explore solutions
+          </a>
+        </div>
+      </div>
+
+      <!-- Media -->
+      <div class="lg:col-span-7">
+        <MediaSlot
+          id="A01"
+          eager
+          ratio="16 / 10"
+          class="rounded-[24px] border border-sp-border"
+          fallback="/Spatia_hero_video.mp4"
+        />
+      </div>
+
+    </div>
+  </div>
+</section>

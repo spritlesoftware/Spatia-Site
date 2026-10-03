@@ -1,0 +1,33 @@
+---
+const stats = [
+  { value: '0', label: 'Training images needed per new part' },
+  { value: '600&ndash;1000', label: 'Synthetic views generated per part from CAD', raw: true },
+  { value: '1', label: 'Robot-agnostic layer between perception and motion' },
+];
+---
+
+<section class="bg-sp-heading py-16 md:py-20">
+  <div class="px-4 sm:px-8 lg:px-16">
+    <div class="reveal grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
+      {
+        stats.map((stat) => (
+          <div class="text-center md:border-l md:border-white/10 first:md:border-l-0">
+            <p
+              class="font-inter font-bold leading-none tracking-[-0.03em] text-white"
+              style="font-size: clamp(44px, 6vw, 72px);"
+            >
+              {stat.raw ? <span set:html={stat.value} /> : stat.value}
+            </p>
+            <p class="mx-auto mt-4 max-w-[16rem] text-[13.5px] leading-[1.6] text-white/65">
+              {stat.label}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="mt-12 text-center text-[12px] text-white/45">
+      Validated in simulation. Real-rig validation in progress.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,72 @@
+---
+import { ASSETS, hasAsset, mediaUrl } from './assets';
+
+const brochureReady = hasAsset('A20');
+---
+
+<section class="bg-white pb-16 md:pb-[120px]">
+  <div class="px-4 sm:px-8 lg:px-16">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+
+      <!-- Block A: brochure -->
+      <div class="reveal flex flex-col rounded-[24px] border border-sp-border p-7 sm:p-9">
+        <h3
+          class="mb-3 font-inter font-bold leading-[1.15] tracking-[-0.02em] text-sp-heading"
+          style="font-size: clamp(20px, 2.1vw, 27px);"
+        >
+          Dive deeper
+        </h3>
+        <p class="mb-7 flex-1 text-[14px] leading-[1.7] text-sp-body">
+          Download the overview of Spatia AssembleX, Cognitive Assembly and Vernier.
+        </p>
+
+        {
+          brochureReady ? (
+            <a
+              href={mediaUrl('A20')}
+              download
+              class="inline-flex w-fit items-center gap-2 rounded-md px-6 py-3 text-[14px] font-semibold text-white transition-all duration-200 active:scale-[0.98]"
+              style="background-color: #111827;"
+              onmouseover="this.style.backgroundColor='#000000'"
+              onmouseout="this.style.backgroundColor='#111827'"
+            >
+              Download brochure
+              <span aria-hidden="true">&darr;</span>
+            </a>
+          ) : (
+            <span
+              class="inline-flex w-fit cursor-not-allowed items-center gap-2 rounded-md border border-dashed border-sp-border px-6 py-3 text-[14px] font-semibold text-sp-body/50"
+              title={`Awaiting ${ASSETS.A20.file}`}
+            >
+              Download brochure
+              <span class="font-mono text-[10px] font-medium tracking-[0.08em] text-sp-body/50">
+                {ASSETS.A20.id}
+              </span>
+            </span>
+          )
+        }
+      </div>
+
+      <!-- Block B: integrators -->
+      <div class="reveal reveal-delay-1 flex flex-col rounded-[24px] border border-sp-border p-7 sm:p-9">
+        <h3
+          class="mb-3 font-inter font-bold leading-[1.15] tracking-[-0.02em] text-sp-heading"
+          style="font-size: clamp(20px, 2.1vw, 27px);"
+        >
+          For system integrators
+        </h3>
+        <p class="mb-7 flex-1 text-[14px] leading-[1.7] text-sp-body">
+          Reuse one CAD-native vision stack across robot brands and customer projects.
+        </p>
+        <a
+          href="/contact?interest=partner"
+          class="inline-flex w-fit items-center gap-2 rounded-md border border-sp-border px-6 py-3 text-[14px] font-semibold text-sp-heading transition-colors duration-200 hover:border-sp-green/40 hover:text-sp-green"
+        >
+          Become a partner
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

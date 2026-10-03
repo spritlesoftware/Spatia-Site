@@ -64,12 +64,23 @@ const ogImageUrl = ogImage
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Scroll-reveal is opt-in via JS; never leave content hidden without it -->
+    <noscript>
+      <style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
   </head>
   <body>
     <slot />
 
     <script>
-      // Scroll reveal
+      // Scroll reveal. threshold 0 so tall sections always register, rather
+      // than never reaching a 12% intersection and staying at opacity 0.
       const revealObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -79,10 +90,22 @@ const ogImageUrl = ogImage
             }
           });
         },
-        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+        { threshold: 0, rootMargin: '0px 0px -8% 0px' }
       );
 
-      document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+      const revealTargets = document.querySelectorAll('.reveal');
+      revealTargets.forEach((el) => revealObserver.observe(el));
+
+      // Failsafe: if the observer never reports, show the content anyway
+      // rather than leaving the section permanently invisible.
+      window.setTimeout(() => {
+        revealTargets.forEach((el) => {
+          if (!el.classList.contains('is-visible')) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight) el.classList.add('is-visible');
+          }
+        });
+      }, 1200);
 
       // Navbar scroll shadow
       const navbar = document.getElementById('navbar');

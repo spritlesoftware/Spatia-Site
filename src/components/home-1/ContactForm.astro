@@ -1,0 +1,100 @@
+---
+const interests = ['Cognitive Assembly', 'Vernier', 'Zero-CAD platform', 'Partnership'];
+const sources = ['Search', 'Event', 'Referral', 'LinkedIn', 'Other'];
+
+const field =
+  'w-full rounded-lg border border-sp-border bg-white px-4 py-3 text-[14px] text-sp-heading outline-none transition-colors duration-150 placeholder:text-sp-body/50 focus:border-sp-green/60';
+---
+
+<section class="bg-white pb-16 md:pb-[120px]">
+  <div class="px-4 sm:px-8 lg:px-16">
+    <div class="reveal mx-auto max-w-[44rem] rounded-[24px] border border-sp-border p-7 sm:p-10">
+
+      <h2
+        class="mb-2 font-inter font-bold leading-[1.12] tracking-[-0.025em] text-sp-heading"
+        style="font-size: clamp(24px, 2.6vw, 36px);"
+      >
+        Request a demo
+      </h2>
+      <p class="mb-8 text-[14px] leading-[1.7] text-sp-body">
+        Tell us about the part and the cell you want to automate.
+      </p>
+
+      <form class="grid grid-cols-1 gap-4 sm:grid-cols-2" method="post" action="#" novalidate>
+        <div>
+          <label for="c-name" class="mb-1.5 block text-[12.5px] font-semibold text-sp-heading">
+            Name
+          </label>
+          <input id="c-name" name="name" type="text" autocomplete="name" required class={field} />
+        </div>
+
+        <div>
+          <label for="c-email" class="mb-1.5 block text-[12.5px] font-semibold text-sp-heading">
+            Work email
+          </label>
+          <input
+            id="c-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            class={field}
+          />
+        </div>
+
+        <div>
+          <label for="c-company" class="mb-1.5 block text-[12.5px] font-semibold text-sp-heading">
+            Company
+          </label>
+          <input
+            id="c-company"
+            name="company"
+            type="text"
+            autocomplete="organization"
+            required
+            class={field}
+          />
+        </div>
+
+        <div>
+          <label for="c-interest" class="mb-1.5 block text-[12.5px] font-semibold text-sp-heading">
+            Interest
+          </label>
+          <select id="c-interest" name="interest" class={field}>
+            {interests.map((item) => <option value={item}>{item}</option>)}
+          </select>
+        </div>
+
+        <div class="sm:col-span-2">
+          <label for="c-message" class="mb-1.5 block text-[12.5px] font-semibold text-sp-heading">
+            Message
+          </label>
+          <textarea id="c-message" name="message" rows={4} class={`${field} resize-y`}></textarea>
+        </div>
+
+        <div class="sm:col-span-2">
+          <label for="c-source" class="mb-1.5 block text-[12.5px] font-semibold text-sp-heading">
+            How did you hear about us?
+          </label>
+          <select id="c-source" name="source" class={field}>
+            {sources.map((item) => <option value={item}>{item}</option>)}
+          </select>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 sm:col-span-2">
+          <button
+            type="submit"
+            class="rounded-md px-6 py-3 text-[14px] font-semibold text-white transition-all duration-200 active:scale-[0.98]"
+            style="background-color: #111827;"
+          >
+            Request a demo
+          </button>
+          <p class="text-[12px] text-sp-body/60">
+            Form is not connected to a backend yet.
+          </p>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>

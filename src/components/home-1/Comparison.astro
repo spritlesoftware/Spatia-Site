@@ -1,0 +1,83 @@
+---
+const rows = [
+  { label: 'New part', typical: 'Collect images, label, retrain', spatia: 'Start from CAD' },
+  {
+    label: 'Output',
+    typical: 'Opaque prediction',
+    spatia: 'Exact 6D pose with traceable failure causes',
+  },
+  {
+    label: 'Compute',
+    typical: 'Heavy GPU or foundation-model inference',
+    spatia: 'Runs on industrial edge hardware',
+  },
+  {
+    label: 'Robots',
+    typical: "Tied to one vendor's ecosystem",
+    spatia: 'One vision stack designed for multiple robot brands',
+  },
+];
+---
+
+<section class="bg-white py-16 md:py-[120px]">
+  <div class="px-4 sm:px-8 lg:px-16">
+
+    <h2
+      class="reveal mx-auto mb-12 max-w-[36rem] text-center font-inter font-bold leading-[1.12] tracking-[-0.025em] text-sp-heading md:mb-16"
+      style="font-size: clamp(24px, 2.8vw, 40px);"
+    >
+      Built for the factory floor, not the demo stage
+    </h2>
+
+    <div class="reveal overflow-hidden rounded-[24px] border border-sp-border">
+      <table class="w-full border-collapse text-left">
+
+        <thead>
+          <tr>
+            <th
+              scope="col"
+              class="w-[22%] bg-white px-4 py-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-sp-body/60 sm:px-6"
+            >
+              <span class="sr-only">Category</span>
+            </th>
+            <th
+              scope="col"
+              class="w-[39%] bg-[#F7FAFA] px-4 py-4 text-[12.5px] font-semibold text-sp-body sm:px-6"
+            >
+              Typical AI vision
+            </th>
+            <th
+              scope="col"
+              class="w-[39%] bg-sp-green-light px-4 py-4 text-[12.5px] font-semibold text-sp-green sm:px-6"
+            >
+              Spatia AssembleX
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {
+            rows.map((row) => (
+              <tr class="border-t border-sp-border">
+                <th
+                  scope="row"
+                  class="bg-white px-4 py-5 align-top text-[12.5px] font-semibold text-sp-heading sm:px-6"
+                >
+                  {row.label}
+                </th>
+                <td class="bg-[#F7FAFA] px-4 py-5 align-top text-[13.5px] leading-[1.6] text-sp-body sm:px-6">
+                  {row.typical}
+                </td>
+                <td class="bg-sp-green-light/50 px-4 py-5 align-top text-[13.5px] font-medium leading-[1.6] text-sp-heading sm:px-6">
+                  {row.spatia}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+</section>

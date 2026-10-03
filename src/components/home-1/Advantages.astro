@@ -1,0 +1,56 @@
+---
+const advantages = [
+  {
+    title: 'Start from CAD',
+    body: 'Your existing CAD model is the only input a new part needs. No image collection, no labeling, no retraining.',
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
+  },
+  {
+    title: 'Fixture-free',
+    body: 'The system locates the actual part in real time, reducing or removing custom jigs and fixtures.',
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/><line x1="2.5" y1="12" x2="21.5" y2="12" stroke-dasharray="3 3"/></svg>`,
+  },
+  {
+    title: 'Robot-agnostic',
+    body: 'One vision stack designed to work across robot brands, so perception is reusable as your fleet grows.',
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21h14"/><rect x="7" y="10" width="10" height="8" rx="1.6"/><path d="M12 10V6.5"/><circle cx="12" cy="4.2" r="1.5"/><path d="M9.5 14v2.5M14.5 14v2.5"/></svg>`,
+  },
+  {
+    title: 'Debuggable, not a black box',
+    body: 'The output is an explicit 6D pose. When something fails, the cause is traceable: calibration, occlusion, lighting or grasp.',
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="1.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22.5" y2="12"/></svg>`,
+  },
+];
+---
+
+<section class="bg-white py-16 md:py-[120px]">
+  <div class="px-4 sm:px-8 lg:px-16">
+
+    <h2
+      class="reveal mb-12 text-center font-inter font-bold leading-[1.1] tracking-[-0.02em] text-sp-heading md:mb-16"
+      style="font-size: clamp(26px, 3vw, 44px);"
+    >
+      Why manufacturers choose us
+    </h2>
+
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        advantages.map((card) => (
+          <div class="reveal rounded-[24px] border border-sp-border bg-white p-7 transition-colors duration-200 hover:border-sp-green/30">
+            <div
+              class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-sp-green-light"
+              style="color: #1E686E;"
+            >
+              <Fragment set:html={card.icon} />
+            </div>
+            <h3 class="mb-2.5 text-[16px] font-semibold leading-snug tracking-[-0.01em] text-sp-heading">
+              {card.title}
+            </h3>
+            <p class="text-[13.5px] leading-[1.7] text-sp-body">{card.body}</p>
+          </div>
+        ))
+      }
+    </div>
+
+  </div>
+</section>

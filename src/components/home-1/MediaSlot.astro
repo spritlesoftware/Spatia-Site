@@ -1,0 +1,150 @@
+---
+import { ASSETS, hasAsset, mediaUrl, posterFor, type AssetId } from './assets';
+
+interface Props {
+  /** Manifest ID from the asset table, e.g. "A01". */
+  id: AssetId;
+  /** CSS aspect-ratio for the slot. */
+  ratio?: string;
+  /** Above the fold: skip lazy-loading. */
+  eager?: boolean;
+  fit?: 'cover' | 'contain';
+  class?: string;
+  /**
+   * Already-shipped file to show until the manifest asset exists.
+   * The manifest asset takes over automatically the moment it is added,
+   * so the fallback is only a bridge, never a second source of truth.
+   */
+  fallback?: string;
+}
+
+const { id, ratio = '16 / 9', eager = false, fit = 'cover', class: className = '', fallback } = Astro.props;
+
+const asset = ASSETS[id];
+const shipped = hasAsset(id);
+const wantsVideo = asset.kind === 'video';
+
+// Videos always emit a real <video> pointed at the manifest path, so the
+// structure is final and dropping the file in is all that is needed. Still
+// images fall back to a neutral box until their file exists.
+const src = shipped ? mediaUrl(id) : (fallback ?? (wantsVideo ? mediaUrl(id) : undefined));
+const ready = Boolean(src);
+const poster = shipped ? posterFor(id) : undefined;
+const isVideo = ready && /\.(mp4|webm|mov)$/i.test(src!);
+const label = asset.desc;
+/** Still outstanding: surface which file this slot is waiting on. */
+const pending = ready && !shipped;
+---
+
+<div
+  class:list={[
+    'relative overflow-hidden bg-sp-green-light/35',
+    className,
+  ]}
+  style={`aspect-ratio: ${ratio};`}
+  data-media={id}
+>
+  {
+    ready && isVideo && (
+      <video
+        class="absolute inset-0 h-full w-full"
+        class:list={[fit === 'contain' ? 'object-contain' : 'object-cover']}
+        {...eager ? { src } : { 'data-src': src }}
+        poster={poster}
+        muted
+        loop
+        playsinline
+        autoplay
+        preload={eager ? 'metadata' : 'none'}
+        aria-label={label}
+      />
+    )
+  }
+
+  {
+    ready && !isVideo && (
+      <img
+        src={src}
+        alt={label}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        class="absolute inset-0 h-full w-full"
+        class:list={[fit === 'contain' ? 'object-contain' : 'object-cover']}
+      />
+    )
+  }
+
+  {
+    !ready && (
+      <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5 border border-dashed border-sp-green/30 px-4 text-center">
+        <span
+          class="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-sp-green"
+        >
+          {asset.id}
+        </span>
+        <span class="text-[12px] font-medium leading-snug text-sp-heading/80">{label}</span>
+        <span class="font-mono text-[10px] text-sp-body/70">{asset.file}</span>
+      </div>
+    )
+  }
+
+  {
+    pending && (
+      <span
+        class="pointer-events-none absolute left-2.5 top-2.5 z-10 flex max-w-[calc(100%-1.25rem)] items-center gap-1.5 rounded-full border border-white/20 bg-black/55 px-2.5 py-1 backdrop-blur-sm"
+      >
+        <span class="font-mono text-[9.5px] font-semibold tracking-[0.1em] text-white/90">
+          {asset.id}
+        </span>
+        <span class="truncate font-mono text-[9.5px] text-white/55">{asset.file}</span>
+      </span>
+    )
+  }
+</div>
+
+<script>
+  // Shared by every MediaSlot on the page. Astro bundles this once.
+  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const reduceMotion = () => motionQuery.matches;
+
+  function load(video: HTMLVideoElement) {
+    if (video.dataset.hydrated) return;
+    video.dataset.hydrated = '1';
+
+    const deferred = video.getAttribute('data-src');
+    if (deferred) {
+      video.setAttribute('src', deferred);
+      video.removeAttribute('data-src');
+    }
+
+    if (!reduceMotion()) video.play().catch(() => {});
+  }
+
+  // Below-the-fold clips only fetch once they are close to the viewport.
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        load(entry.target as HTMLVideoElement);
+        observer.unobserve(entry.target);
+      }
+    },
+    { rootMargin: '300px 0px' }
+  );
+
+  document.querySelectorAll<HTMLVideoElement>('video[data-src]').forEach((v) => observer.observe(v));
+
+  // Autoplay is emitted for every clip, then suppressed for visitors who ask
+  // for reduced motion. The poster frame remains as the static fallback.
+  const applyMotionPreference = () => {
+    document.querySelectorAll<HTMLVideoElement>('video').forEach((video) => {
+      if (reduceMotion()) {
+        video.removeAttribute('autoplay');
+        video.pause();
+      }
+    });
+  };
+
+  applyMotionPreference();
+  motionQuery.addEventListener('change', applyMotionPreference);
+</script>

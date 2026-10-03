@@ -1,0 +1,74 @@
+---
+import MediaSlot from './MediaSlot.astro';
+import type { AssetId } from './assets';
+
+const steps: { n: number; title: string; body: string; asset: AssetId }[] = [
+  {
+    n: 1,
+    title: 'Upload',
+    body: "Drop in your part's CAD model. The system generates reference views automatically.",
+    asset: 'A13',
+  },
+  {
+    n: 2,
+    title: 'Define',
+    body: 'Set the grasp offset relative to the part and connect your camera and robot.',
+    asset: 'A14',
+  },
+  {
+    n: 3,
+    title: 'Run',
+    body: "The system finds each part's exact position and orientation and the robot handles it.",
+    asset: 'A15',
+  },
+];
+---
+
+<section class="bg-[#F7FAFA] py-16 md:py-[120px]">
+  <div class="px-4 sm:px-8 lg:px-16">
+
+    <div class="reveal mb-12 text-center md:mb-16">
+      <h2
+        class="mb-4 font-inter font-bold leading-[1.1] tracking-[-0.025em] text-sp-heading"
+        style="font-size: clamp(26px, 3vw, 44px);"
+      >
+        From CAD to cell in three steps
+      </h2>
+      <a
+        href="/technology"
+        class="inline-flex items-center text-[14px] font-semibold text-sp-green transition-colors duration-150 hover:text-sp-heading"
+      >
+        See the technology
+        <span class="ml-1.5" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+
+    <ol class="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-6">
+      {
+        steps.map((step) => (
+          <li class="reveal">
+            <MediaSlot
+              id={step.asset}
+              ratio="16 / 10"
+              class="rounded-[20px] border border-sp-border"
+            />
+            <div class="mt-5 flex items-baseline gap-2.5">
+              <span class="font-mono text-[12px] font-semibold text-sp-green/70">
+                {step.n}.
+              </span>
+              <h3 class="text-[17px] font-semibold tracking-[-0.015em] text-sp-heading">
+                {step.title}
+              </h3>
+            </div>
+            <p class="mt-2 text-[13.5px] leading-[1.7] text-sp-body">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="reveal mt-14 text-center text-[14px] font-medium text-sp-heading/80">
+      No training step. Designed so a new part goes live the same day.
+    </p>
+
+  </div>
+</section>
