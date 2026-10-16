@@ -49,11 +49,12 @@ Update the existing **Home** page only. Do not change the Technology page yet. B
 
 ## 2. Hero
 
-**Eyebrow:** Physical AI for manufacturing
+**Eyebrow:** Spatial Intelligence for manufacturing - 1
 
 **H1:** Robots that see, adapt and inspect on the factory floor.
 
 **Subhead:** CAD-native perception for assembly and dynamic inspection. No training data. No custom fixtures.
+No CAD? We’ll take it from there.
 
 **Primary CTA:** Book a demo → `/contact`
 **Secondary CTA:** Explore solutions → `#solutions`
@@ -259,8 +260,8 @@ Keep existing legal links.
 
 ## SEO
 
-- **Title:** Spatia AssembleX | Physical AI for Manufacturing
-- **Meta description:** Physical AI for manufacturing. CAD-native perception for cognitive assembly and dynamic inspection with no training data or custom fixtures.
+- **Title:** Spatia AssembleX | Spatial Intelligence for Manufacturing
+- **Meta description:** Spatial Intelligence for manufacturing. CAD-native perception for cognitive assembly and dynamic inspection with no training data or custom fixtures.
 - **Primary keywords:** physical AI manufacturing, CAD-based pose estimation, zero-shot 6D pose, robot bin picking, dynamic inspection, fixtureless robot picking
 - **Social share image:** `[MEDIA: A21]` 1200x630
 
