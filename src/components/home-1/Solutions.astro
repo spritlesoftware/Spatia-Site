@@ -24,11 +24,11 @@ import SolutionBlock from './SolutionBlock.astro';
       body="Cognitive Assembly finds parts in bins, trays and on conveyors, decides how to handle each one, and completes the task at the pace of your line, driven straight from your CAD models."
       main={['A04']}
       chips={[
-        { label: 'Pick', line: 'Reach into bins and trays without fixtures.', asset: 'A05' },
-        { label: 'Sort', line: 'Recognize parts and route each one.', asset: 'A06' },
-        { label: 'Stack', line: 'Build ordered layers from random infeed.', asset: 'A07' },
-        { label: 'Load', line: 'Feed machines and downstream stations.', asset: 'A08' },
-        { label: 'Place', line: 'Set parts at the target with alignment corrections.', asset: 'A09' },
+        { label: 'Pick', line: 'Reach into bins and trays without fixtures.', scene: 'pick' },
+        { label: 'Sort', line: 'Recognize parts and route each one.', scene: 'sort' },
+        { label: 'Stack', line: 'Build ordered layers from random infeed.', scene: 'stack' },
+        { label: 'Load', line: 'Feed machines and downstream stations.', scene: 'load' },
+        { label: 'Place', line: 'Set parts at the target with alignment corrections.', scene: 'place' },
       ]}
       cta={{ label: 'Explore Cognitive Assembly', href: '/cognitive-assembly' }}
     />
