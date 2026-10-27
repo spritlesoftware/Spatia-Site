@@ -105,30 +105,25 @@ const badgeTone = {
   {
     chips.length > 0 && (
       <div class="mt-10 lg:mt-12">
-        <div
-          class:list={[
-            'grid gap-3',
-            chips.some((c) => c.asset)
-              ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5'
-              : 'grid-cols-1',
-          ]}
-        >
-          {chips.map((chip) =>
-            chip.asset ? (
+        {chips.some((c) => c.asset) ? (
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            {chips.map((chip) => (
               <div class="rounded-[16px] border border-sp-border bg-white p-2">
-                <MediaSlot id={chip.asset} ratio="4 / 3" class="rounded-[10px]" />
+                {chip.asset && <MediaSlot id={chip.asset} ratio="4 / 3" class="rounded-[10px]" />}
                 <p class="mt-2 px-1 text-[12.5px] font-semibold text-sp-heading">{chip.label}</p>
                 {chip.line && <p class="px-1 text-[11.5px] leading-snug text-sp-body">{chip.line}</p>}
               </div>
-            ) : (
-              <div class="flex flex-wrap gap-2">
-                <span class="rounded-full border border-sp-border bg-white px-3.5 py-1.5 text-[12.5px] font-medium text-sp-body">
-                  {chip.label}
-                </span>
-              </div>
-            )
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div class="flex flex-wrap gap-2.5">
+            {chips.map((chip) => (
+              <span class="rounded-full border border-sp-border bg-white px-3.5 py-1.5 text-[12.5px] font-medium text-sp-body">
+                {chip.label}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     )
   }

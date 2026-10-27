@@ -144,15 +144,15 @@ const after = paragraphs.slice(2);
     <!-- Mobile share row (hidden on xl where sidebar is shown) -->
     <div class="xl:hidden mt-10 pt-8 border-t reveal" style="border-color: #E8ECEF;">
       <p class="text-[11px] font-semibold tracking-[0.18em] uppercase mb-4" style="color: #667085;">Share this article</p>
-      <div class="flex items-center gap-3">
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
 
         <!-- LinkedIn -->
         <button
           id="mobile-linkedin-btn"
-          class="flex items-center gap-2 px-4 py-2.5 rounded-full border text-[13px] font-medium transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2]"
+          class="inline-flex items-center justify-center gap-2 h-[38px] px-3.5 sm:px-4 rounded-full border text-[12.5px] sm:text-[13px] font-medium transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2] whitespace-nowrap flex-shrink-0"
           style="border-color: #E8ECEF; color: #374151;"
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
             <rect x="2" y="9" width="4" height="12"/>
             <circle cx="4" cy="4" r="2"/>
@@ -163,10 +163,10 @@ const after = paragraphs.slice(2);
         <!-- X / Twitter -->
         <button
           id="mobile-twitter-btn"
-          class="flex items-center gap-2 px-4 py-2.5 rounded-full border text-[13px] font-medium transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2]"
+          class="inline-flex items-center justify-center gap-2 h-[38px] px-3.5 sm:px-4 rounded-full border text-[12.5px] sm:text-[13px] font-medium transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2] whitespace-nowrap flex-shrink-0"
           style="border-color: #E8ECEF; color: #374151;"
         >
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.259 5.631ZM17.083 20h1.833L7.084 4.126H5.117Z"/>
           </svg>
           X
@@ -175,14 +175,14 @@ const after = paragraphs.slice(2);
         <!-- Copy link -->
         <button
           id="mobile-copy-btn"
-          class="flex items-center gap-2 px-4 py-2.5 rounded-full border text-[13px] font-medium transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2]"
+          class="inline-flex items-center justify-center gap-2 h-[38px] px-3.5 sm:px-4 rounded-full border text-[12.5px] sm:text-[13px] font-medium transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2] whitespace-nowrap flex-shrink-0"
           style="border-color: #E8ECEF; color: #374151;"
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
             <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
             <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
           </svg>
-          <span id="mobile-copy-label">Copy link</span>
+          <span id="mobile-copy-label" class="whitespace-nowrap">Copy link</span>
         </button>
 
       </div>

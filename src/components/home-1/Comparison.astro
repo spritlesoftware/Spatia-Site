@@ -29,9 +29,9 @@ const rows = [
       Built for the factory floor, not the demo stage
     </h2>
 
-    <div class="reveal overflow-hidden rounded-[24px] border border-sp-border">
-      <table class="w-full border-collapse text-left">
-
+    <!-- Desktop / Tablet Table View -->
+    <div class="reveal hidden md:block overflow-x-auto rounded-[24px] border border-sp-border">
+      <table class="w-full min-w-[600px] border-collapse text-left">
         <thead>
           <tr>
             <th
@@ -75,8 +75,39 @@ const rows = [
             ))
           }
         </tbody>
-
       </table>
+    </div>
+
+    <!-- Mobile Card View (< md) -->
+    <div class="reveal md:hidden space-y-4">
+      {
+        rows.map((row) => (
+          <div class="rounded-[20px] border border-sp-border bg-white p-5 shadow-sm">
+            <span class="inline-block px-3 py-1 rounded-full bg-gray-100 text-[11px] font-semibold uppercase tracking-[0.1em] text-sp-heading mb-3.5">
+              {row.label}
+            </span>
+            <div class="space-y-2.5">
+              <div class="rounded-xl bg-[#F7FAFA] p-3.5 border border-sp-border/60">
+                <p class="text-[11px] font-semibold uppercase tracking-wider text-sp-body/70 mb-1">
+                  Typical AI vision
+                </p>
+                <p class="text-[13px] leading-[1.6] text-sp-body">
+                  {row.typical}
+                </p>
+              </div>
+              <div class="rounded-xl bg-sp-green-light/60 p-3.5 border border-sp-green/20">
+                <p class="text-[11px] font-semibold uppercase tracking-wider text-sp-green mb-1 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-sp-green"></span>
+                  Spatia AssembleX
+                </p>
+                <p class="text-[13px] font-medium leading-[1.6] text-sp-heading">
+                  {row.spatia}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
     </div>
 
   </div>
