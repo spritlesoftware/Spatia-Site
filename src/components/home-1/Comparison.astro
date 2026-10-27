@@ -1,22 +1,36 @@
 ---
 const rows = [
-  { label: 'New part', typical: 'Collect images, label, retrain', spatia: 'Start from CAD' },
+  {
+    label: 'New part',
+    typical: 'Collect images, label, retrain',
+    spatia: 'Start from CAD',
+    typicalArt: `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="38" y="16" width="52" height="40" rx="4" opacity=".35"/><rect x="30" y="24" width="52" height="40" rx="4" opacity=".6"/><rect x="22" y="32" width="52" height="40" rx="4"/><polyline points="26 68 40 54 50 62 58 56 70 68"/><circle cx="60" cy="44" r="3.5"/><path d="M56 84h30l6 7-6 7H56z"/><circle cx="62" cy="91" r="1.6"/><path d="M98 52a15 15 0 1 1-5-11"/><polyline points="94 34 94 42 86 42"/></svg>`,
+    spatiaArt: `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M60 18 94 37 60 56 26 37z"/><path d="M26 37v38l34 19V56"/><path d="M94 37v38L60 94"/><path d="M60 56 26 75M60 56l34 19" stroke-dasharray="2 4" opacity=".45"/><circle cx="60" cy="18" r="2.2" fill="currentColor"/><circle cx="26" cy="37" r="2.2" fill="currentColor"/><circle cx="94" cy="37" r="2.2" fill="currentColor"/><circle cx="60" cy="56" r="2.2" fill="currentColor"/><circle cx="26" cy="75" r="2.2" fill="currentColor"/><circle cx="94" cy="75" r="2.2" fill="currentColor"/><circle cx="60" cy="94" r="2.2" fill="currentColor"/><path d="M20 80l34 19M20 77v6M54 96v6" opacity=".5"/></svg>`,
+  },
   {
     label: 'Output',
     typical: 'Opaque prediction',
     spatia: 'Exact 6D pose with traceable failure causes',
+    typicalArt: `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="28" y="22" width="64" height="64" rx="10" fill="currentColor" fill-opacity=".08"/><path d="M52 46a8 8 0 1 1 11 7.4c-2 .9-3 2.4-3 4.6v2"/><circle cx="60" cy="68" r="1.6" fill="currentColor"/><path d="M8 54h20M92 54h20" stroke-dasharray="3 4"/><text x="60" y="106" fill="currentColor" stroke="none" font-size="10" font-family="ui-monospace, monospace" text-anchor="middle" letter-spacing="1">CONF 0.73</text></svg>`,
+    spatiaArt: `<svg viewBox="0 0 120 120" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><g stroke="currentColor" opacity=".55"><path d="M60 46 80 57 60 68 40 57z"/><path d="M40 57v18l20 11V68M80 57v18L60 86"/></g><line x1="60" y1="68" x2="60" y2="20" stroke="#60A5FA"/><polyline points="55 26 60 20 65 26" stroke="#60A5FA"/><line x1="60" y1="68" x2="102" y2="90" stroke="#F87171"/><polyline points="94 91 102 90 98 83" stroke="#F87171"/><line x1="60" y1="68" x2="18" y2="90" stroke="#5FD3A5"/><polyline points="22 83 18 90 26 91" stroke="#5FD3A5"/><circle cx="60" cy="68" r="3" fill="currentColor" stroke="none"/><path d="M76 30a20 20 0 0 1 8 10" stroke="currentColor" stroke-dasharray="2 3"/><text x="60" y="112" fill="currentColor" stroke="none" font-size="9" font-family="ui-monospace, monospace" text-anchor="middle" letter-spacing="1">X Y Z · RX RY RZ</text></svg>`,
   },
   {
     label: 'Compute',
     typical: 'Heavy GPU or foundation-model inference',
     spatia: 'Runs on industrial edge hardware',
+    typicalArt: `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M40 16c3-4 6 4 9 0s6 4 9 0M62 16c3-4 6 4 9 0s6 4 9 0" opacity=".6"/><rect x="22" y="28" width="76" height="22" rx="3"/><rect x="22" y="54" width="76" height="22" rx="3"/><rect x="22" y="80" width="76" height="22" rx="3"/><circle cx="84" cy="39" r="6"/><circle cx="84" cy="65" r="6"/><circle cx="84" cy="91" r="6"/><path d="M30 36v6M35 36v6M40 36v6M30 62v6M35 62v6M40 62v6M30 88v6M35 88v6M40 88v6"/></svg>`,
+    spatiaArt: `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="38" y="38" width="44" height="44" rx="7"/><rect x="49" y="49" width="22" height="22" rx="3" fill="currentColor" fill-opacity=".18"/><path d="M48 38v-10M56 38v-10M64 38v-10M72 38v-10M48 82v10M56 82v10M64 82v10M72 82v10M38 48H28M38 56H28M38 64H28M38 72H28M82 48h10M82 56h10M82 64h10M82 72h10"/><circle cx="60" cy="60" r="3" fill="currentColor"/><text x="60" y="112" fill="currentColor" stroke="none" font-size="9" font-family="ui-monospace, monospace" text-anchor="middle" letter-spacing="1">EDGE</text></svg>`,
   },
   {
     label: 'Robots',
     typical: "Tied to one vendor's ecosystem",
     spatia: 'One vision stack designed for multiple robot brands',
+    typicalArt: `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M26 100h36"/><rect x="34" y="92" width="20" height="8" rx="2"/><path d="M44 92V70l26-22 16 14"/><circle cx="44" cy="70" r="4"/><circle cx="70" cy="48" r="4"/><path d="M86 62l-4 8M86 62l8 4"/><rect x="80" y="20" width="22" height="16" rx="3"/><path d="M85 20v-4a6 6 0 0 1 12 0v4"/><circle cx="91" cy="28" r="1.6" fill="currentColor"/></svg>`,
+    spatiaArt: `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><g class="cmp-flow" stroke-dasharray="3 4" opacity=".7"><path d="M60 60 30 40M60 60 90 40M60 60v28"/></g><circle cx="60" cy="60" r="11" fill="currentColor" fill-opacity=".15"/><circle cx="60" cy="60" r="4" fill="currentColor"/><g transform="translate(24 30) scale(1.6)" stroke-width="1"><path d="M-8 8h16M0 8V0l7-7 4 3"/><circle cx="0" cy="0" r="1.8"/></g><g transform="translate(96 30) scale(-1.6 1.6)" stroke-width="1"><path d="M-8 8h16M0 8V0l7-7 4 3"/><circle cx="0" cy="0" r="1.8"/></g><g transform="translate(60 98) scale(1.6)" stroke-width="1"><path d="M-8 8h16M0 8V0l7-7 4 3"/><circle cx="0" cy="0" r="1.8"/></g></svg>`,
   },
 ];
+
+const pad = (i: number) => String(i + 1).padStart(2, '0');
 ---
 
 <section class="bg-white py-16 md:py-[120px]">
@@ -29,86 +43,258 @@ const rows = [
       Built for the factory floor, not the demo stage
     </h2>
 
-    <!-- Desktop / Tablet Table View -->
-    <div class="reveal hidden md:block overflow-x-auto rounded-[24px] border border-sp-border">
-      <table class="w-full min-w-[600px] border-collapse text-left">
-        <thead>
-          <tr>
-            <th
-              scope="col"
-              class="w-[22%] bg-white px-4 py-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-sp-body/60 sm:px-6"
-            >
-              <span class="sr-only">Category</span>
-            </th>
-            <th
-              scope="col"
-              class="w-[39%] bg-[#F7FAFA] px-4 py-4 text-[12.5px] font-semibold text-sp-body sm:px-6"
-            >
-              Typical AI vision
-            </th>
-            <th
-              scope="col"
-              class="w-[39%] bg-sp-green-light px-4 py-4 text-[12.5px] font-semibold text-sp-green sm:px-6"
-            >
-              Spatia AssembleX
-            </th>
-          </tr>
-        </thead>
+    <div
+      class="reveal relative isolate overflow-hidden rounded-[28px] bg-[#0B1618] shadow-[0_40px_100px_-40px_rgba(30,104,110,0.6)] lg:grid lg:grid-cols-[300px_1fr]"
+      data-cmp
+    >
+      <!-- Ambient layers -->
+      <div class="cmp-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -right-32 -top-32 -z-10 h-96 w-96 rounded-full bg-sp-green/35 blur-[110px]" aria-hidden="true"></div>
 
-        <tbody>
+      <!-- ── Category rail ─────────────────────────────── -->
+      <div class="relative border-b border-white/10 lg:border-b-0 lg:border-r">
+        <div
+          class="grid grid-cols-4 lg:flex lg:h-full lg:flex-col"
+          role="tablist"
+          aria-label="Typical AI vision vs Spatia AssembleX"
+        >
           {
-            rows.map((row) => (
-              <tr class="border-t border-sp-border">
-                <th
-                  scope="row"
-                  class="bg-white px-4 py-5 align-top text-[12.5px] font-semibold text-sp-heading sm:px-6"
-                >
+            rows.map((row, i) => (
+              <button
+                type="button"
+                role="tab"
+                id={`cmp-tab-${i}`}
+                aria-controls={`cmp-panel-${i}`}
+                aria-selected={i === 0 ? 'true' : 'false'}
+                tabindex={i === 0 ? 0 : -1}
+                class:list={['cmp-tab group relative flex flex-col items-start gap-1 px-3 py-4 text-left transition-colors duration-300 sm:px-5 lg:flex-1 lg:justify-center lg:border-b lg:border-white/10 lg:px-8 lg:py-6 lg:last:border-b-0', i === 0 && 'is-active']}
+                data-tab={i}
+              >
+                <span class="cmp-tab-index text-[10px] font-semibold tabular-nums tracking-[0.2em] text-white/30 transition-colors duration-300 sm:text-[11px]">
+                  {pad(i)}
+                </span>
+                <span class="cmp-tab-label text-[13px] font-semibold tracking-[-0.01em] text-white/45 transition-colors duration-300 group-hover:text-white/75 sm:text-[15px] lg:text-[18px]">
                   {row.label}
-                </th>
-                <td class="bg-[#F7FAFA] px-4 py-5 align-top text-[13.5px] leading-[1.6] text-sp-body sm:px-6">
-                  {row.typical}
-                </td>
-                <td class="bg-sp-green-light/50 px-4 py-5 align-top text-[13.5px] font-medium leading-[1.6] text-sp-heading sm:px-6">
-                  {row.spatia}
-                </td>
-              </tr>
+                </span>
+                <span class="absolute inset-x-0 bottom-0 h-[2px] bg-white/[0.06] lg:inset-x-auto lg:inset-y-0 lg:left-0 lg:h-auto lg:w-[2px]" aria-hidden="true">
+                  <span class="cmp-progress absolute bottom-0 left-0 h-full w-0 bg-[#5FD3A5] lg:h-0 lg:w-full lg:top-0"></span>
+                </span>
+              </button>
             ))
           }
-        </tbody>
-      </table>
-    </div>
+        </div>
+      </div>
 
-    <!-- Mobile Card View (< md) -->
-    <div class="reveal md:hidden space-y-4">
-      {
-        rows.map((row) => (
-          <div class="rounded-[20px] border border-sp-border bg-white p-5 shadow-sm">
-            <span class="inline-block px-3 py-1 rounded-full bg-gray-100 text-[11px] font-semibold uppercase tracking-[0.1em] text-sp-heading mb-3.5">
-              {row.label}
-            </span>
-            <div class="space-y-2.5">
-              <div class="rounded-xl bg-[#F7FAFA] p-3.5 border border-sp-border/60">
-                <p class="text-[11px] font-semibold uppercase tracking-wider text-sp-body/70 mb-1">
-                  Typical AI vision
-                </p>
-                <p class="text-[13px] leading-[1.6] text-sp-body">
-                  {row.typical}
-                </p>
+      <!-- ── Stage ─────────────────────────────────────── -->
+      <div class="relative px-5 py-8 sm:px-10 sm:py-10 lg:px-14 lg:py-12">
+        <div class="cmp-scan pointer-events-none absolute inset-x-0 -z-10 h-32" aria-hidden="true"></div>
+        <span class="cmp-corner left-4 top-4 border-l border-t" aria-hidden="true"></span>
+        <span class="cmp-corner right-4 top-4 border-r border-t" aria-hidden="true"></span>
+        <span class="cmp-corner bottom-4 left-4 border-b border-l" aria-hidden="true"></span>
+        <span class="cmp-corner bottom-4 right-4 border-b border-r" aria-hidden="true"></span>
+
+        <div class="grid">
+          {
+            rows.map((row, i) => (
+              <div
+                role="tabpanel"
+                id={`cmp-panel-${i}`}
+                aria-labelledby={`cmp-tab-${i}`}
+                class:list={['cmp-panel [grid-area:1/1]', i === 0 && 'is-active']}
+                data-panel={i}
+                inert={i !== 0}
+              >
+                <!-- HUD strip -->
+                <div class="mb-8 flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.2em] text-[#8FD2D8]/60">
+                  <span><span class="tabular-nums text-[#8FD2D8]">{pad(i)}</span> / {pad(rows.length - 1)} · {row.label}</span>
+                  <span class="flex items-center gap-2" aria-hidden="true">
+                    <span class="relative flex h-1.5 w-1.5">
+                      <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#5FD3A5] opacity-60"></span>
+                      <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#5FD3A5]"></span>
+                    </span>
+                  </span>
+                </div>
+
+                <!-- Before → after visual -->
+                <div class="mb-10 flex items-center justify-center gap-3 sm:gap-6" aria-hidden="true">
+                  <div class="cmp-art-typical relative flex aspect-square w-[42%] max-w-[190px] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.02] p-5 text-white/35">
+                    <span class="absolute -left-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full border border-white/15 bg-[#0B1618] text-white/50">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+                    </span>
+                    <Fragment set:html={row.typicalArt} />
+                  </div>
+
+                  <div class="cmp-link relative h-px w-10 shrink-0 sm:w-20">
+                    <span class="absolute inset-0 bg-gradient-to-r from-white/10 to-[#5FD3A5]/70"></span>
+                    <span class="cmp-pulse absolute top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[#5FD3A5] shadow-[0_0_10px_#5FD3A5]"></span>
+                    <svg class="absolute -right-1 top-1/2 -translate-y-1/2 text-[#5FD3A5]" width="8" height="10" viewBox="0 0 8 10" fill="currentColor"><path d="M0 0l8 5-8 5z"/></svg>
+                  </div>
+
+                  <div class="cmp-art-spatia relative flex aspect-square w-[42%] max-w-[190px] items-center justify-center rounded-2xl border border-[#8FD2D8]/30 bg-sp-green/15 p-5 text-[#8FD2D8] shadow-[0_0_60px_-10px_rgba(95,211,165,0.35),inset_0_0_30px_rgba(30,104,110,0.25)]">
+                    <span class="absolute -left-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-sp-green text-white shadow-[0_0_0_4px_rgba(30,104,110,0.3),0_0_16px_rgba(95,211,165,0.45)]">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </span>
+                    <Fragment set:html={row.spatiaArt} />
+                  </div>
+                </div>
+
+                <!-- Copy -->
+                <div class="grid gap-6 border-t border-white/10 pt-7 md:grid-cols-[1fr_1.35fr] md:gap-10">
+                  <div>
+                    <p class="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/35">Typical AI vision</p>
+                    <p class="text-[16px] leading-[1.7] text-white/45 line-through decoration-white/25">{row.typical}</p>
+                  </div>
+                  <div>
+                    <p class="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5FD3A5]">Spatia AssembleX</p>
+                    <p class="font-semibold leading-[1.3] tracking-[-0.015em] text-white" style="font-size: clamp(20px, 2vw, 26px);">{row.spatia}</p>
+                  </div>
+                </div>
               </div>
-              <div class="rounded-xl bg-sp-green-light/60 p-3.5 border border-sp-green/20">
-                <p class="text-[11px] font-semibold uppercase tracking-wider text-sp-green mb-1 flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-sp-green"></span>
-                  Spatia AssembleX
-                </p>
-                <p class="text-[13px] font-medium leading-[1.6] text-sp-heading">
-                  {row.spatia}
-                </p>
-              </div>
-            </div>
-          </div>
-        ))
-      }
+            ))
+          }
+        </div>
+      </div>
     </div>
 
   </div>
 </section>
+
+<style>
+  .cmp-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(ellipse at 75% 20%, #000 15%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at 75% 20%, #000 15%, transparent 75%);
+  }
+
+  .cmp-corner {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: rgba(143, 210, 216, 0.4);
+    pointer-events: none;
+  }
+
+  /* Tabs */
+  .cmp-tab.is-active { background: rgba(255, 255, 255, 0.03); }
+  .cmp-tab.is-active .cmp-tab-label { color: #fff; }
+  .cmp-tab.is-active .cmp-tab-index { color: #5FD3A5; }
+  .cmp-tab:focus-visible { outline: 2px solid #5FD3A5; outline-offset: -2px; }
+
+  /* Panels */
+  .cmp-panel {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.2s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+  /* Incoming panel waits for the outgoing one to clear, so copy never overlaps */
+  .cmp-panel.is-active {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition: opacity 0.45s ease 0.2s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  }
+  .cmp-panel .cmp-art-spatia {
+    transform: scale(0.92);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+  }
+  .cmp-panel.is-active .cmp-art-spatia { transform: scale(1); }
+  .cmp-art-typical :global(svg),
+  .cmp-art-spatia :global(svg) { width: 100%; height: 100%; }
+  .cmp-art-spatia :global(svg) { filter: drop-shadow(0 0 6px rgba(143, 210, 216, 0.45)); }
+
+  /* Signal travelling from old → new */
+  .cmp-pulse { animation: cmp-pulse 1.8s ease-in-out infinite; }
+  @keyframes cmp-pulse {
+    0%   { left: 0;    opacity: 0; }
+    20%  { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  :global(.cmp-flow) { animation: cmp-flow 1.2s linear infinite; }
+  @keyframes cmp-flow { to { stroke-dashoffset: -14; } }
+
+  /* Inspection scan */
+  .cmp-scan {
+    top: -30%;
+    background: linear-gradient(to bottom, transparent, rgba(95, 211, 165, 0.06) 60%, rgba(95, 211, 165, 0.18) 98%, transparent);
+    animation: cmp-scan 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+  @keyframes cmp-scan {
+    0%   { top: -30%; }
+    100% { top: 110%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cmp-scan, .cmp-pulse { animation: none; opacity: 0; }
+    :global(.cmp-flow) { animation: none; }
+    .cmp-panel, .cmp-panel .cmp-art-spatia { transition: none; }
+  }
+</style>
+
+<script>
+  const DURATION = 6000;
+
+  document.querySelectorAll<HTMLElement>('[data-cmp]').forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-tab]'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-panel]'));
+    const isDesktop = window.matchMedia('(min-width: 1024px)');
+
+    let active = 0;
+    let elapsed = 0;
+    let last = 0;
+    let inView = false;
+
+    const setProgress = (tab: HTMLButtonElement, p: number) => {
+      const bar = tab.querySelector<HTMLElement>('.cmp-progress');
+      if (!bar) return;
+      const pct = `${p * 100}%`;
+      bar.style.width = isDesktop.matches ? '100%' : pct;
+      bar.style.height = isDesktop.matches ? pct : '100%';
+    };
+
+    const go = (n: number, focus = false) => {
+      active = (n + tabs.length) % tabs.length;
+      elapsed = 0;
+      tabs.forEach((t, i) => {
+        const on = i === active;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        setProgress(t, 0);
+      });
+      panels.forEach((p, i) => {
+        const on = i === active;
+        p.classList.toggle('is-active', on);
+        p.inert = !on;
+      });
+      if (focus) tabs[active].focus();
+    };
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => go(i));
+      tab.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); go(active + 1, true); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); go(active - 1, true); }
+      });
+    });
+
+    new IntersectionObserver(([entry]) => (inView = entry.isIntersecting), { threshold: 0.2 }).observe(root);
+
+    const tick = (now: number) => {
+      // Clamp so a backgrounded tab doesn't skip several steps on return
+      const dt = last ? Math.min(now - last, 100) : 0;
+      last = now;
+      if (inView) {
+        elapsed += dt;
+        if (elapsed >= DURATION) go(active + 1);
+        else setProgress(tabs[active], elapsed / DURATION);
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+</script>

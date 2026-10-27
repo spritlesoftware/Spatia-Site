@@ -69,7 +69,7 @@ const badgeTone = {
       </h3>
 
       <p class="mb-4 text-[15px] font-medium leading-[1.6] text-sp-green">{tagline}</p>
-      <p class="text-[14px] leading-[1.75] text-sp-body">{body}</p>
+      <p class="text-[16px] leading-[1.7] text-sp-body">{body}</p>
 
       <a
         href={cta.href}
@@ -109,16 +109,9 @@ const badgeTone = {
   {
     chips.length > 0 && (
       <div class="mt-10 lg:mt-12">
-        <div
-          class:list={[
-            'grid gap-3',
-            chips.some((c) => c.asset || c.scene)
-              ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5'
-              : 'grid-cols-1',
-          ]}
-        >
-          {chips.map((chip) =>
-            chip.asset || chip.scene ? (
+        {chips.some((c) => c.asset || c.scene) ? (
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            {chips.map((chip) => (
               <div class="rounded-[16px] border border-sp-border bg-white p-2">
                 {chip.scene ? (
                   <div
@@ -128,9 +121,9 @@ const badgeTone = {
                     role="img"
                     aria-label={chip.line ?? chip.label}
                   />
-                ) : (
-                  <MediaSlot id={chip.asset!} ratio="4 / 3" class="rounded-[10px]" />
-                )}
+                ) : chip.asset ? (
+                  <MediaSlot id={chip.asset} ratio="4 / 3" class="rounded-[10px]" />
+                ) : null}
                 <p class="mt-2 px-1 text-[12.5px] font-semibold text-sp-heading">{chip.label}</p>
                 {chip.line && <p class="px-1 text-[11.5px] leading-snug text-sp-body">{chip.line}</p>}
               </div>
