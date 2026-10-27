@@ -2,99 +2,141 @@
 const interests = ['Cognitive Assembly', 'Vernier', 'Zero-CAD platform', 'Partnership'];
 const sources = ['Search', 'Event', 'Referral', 'LinkedIn', 'Other'];
 
+// Soft grey filled field; turns white with a teal ring on focus
 const field =
-  'w-full rounded-lg border border-sp-border bg-white px-4 py-3 text-[14px] text-sp-heading outline-none transition-colors duration-150 placeholder:text-sp-body/50 focus:border-sp-green/60';
+  'cf-field block w-full rounded-[10px] border border-[#D5DEE6] bg-[#F3F5F7] px-4 py-3 text-[15px] leading-normal text-sp-heading outline-none transition-all duration-200 placeholder:text-[#8592A3] hover:border-[#B9C6D2] focus:border-sp-green focus:bg-white focus:shadow-[0_0_0_4px_rgba(30,104,110,0.1)]';
+const label = 'mb-2 block text-[13px] font-semibold text-sp-heading';
 ---
 
 <section class="bg-white pb-16 md:pb-[120px]">
   <div class="px-4 sm:px-8 lg:px-16">
-    <div class="reveal mx-auto max-w-[44rem] rounded-[24px] border border-sp-border p-7 sm:p-10">
+    <div class="reveal relative mx-auto max-w-[44rem]">
 
-      <h2
-        class="mb-2 font-inter font-bold leading-[1.12] tracking-[-0.025em] text-sp-heading"
-        style="font-size: clamp(24px, 2.6vw, 36px);"
-      >
-        Request a demo
-      </h2>
-      <p class="mb-8 text-[16px] leading-[1.7] text-sp-body">
-        Tell us about the part and the cell you want to automate.
-      </p>
+      <!-- Backdrop: dot grid + soft glow -->
+      <div class="cf-dots pointer-events-none absolute -inset-x-24 -top-10 bottom-0" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-x-10 top-24 h-2/3 rounded-full bg-sp-green/10 blur-[80px]" aria-hidden="true"></div>
 
-      <form class="grid grid-cols-1 gap-4 sm:grid-cols-2" method="post" action="#" novalidate>
-        <div>
-          <label for="c-name" class="mb-1.5 block text-[12.5px] font-semibold text-sp-heading">
-            Name
-          </label>
-          <input id="c-name" name="name" type="text" autocomplete="name" required class={field} />
-        </div>
+      <div class="relative mb-10 text-center">
+        <h2
+          class="mb-3 font-inter font-bold leading-[1.12] tracking-[-0.025em] text-sp-heading"
+          style="font-size: clamp(24px, 2.6vw, 36px);"
+        >
+          Request a demo
+        </h2>
+        <p class="mx-auto max-w-[26rem] text-[16px] leading-[1.7] text-sp-body">
+          Tell us about the part and the cell you want to automate.
+        </p>
+      </div>
 
-        <div>
-          <label for="c-email" class="mb-1.5 block text-[12.5px] font-semibold text-sp-heading">
-            Work email
-          </label>
-          <input
-            id="c-email"
-            name="email"
-            type="email"
-            autocomplete="email"
-            required
-            class={field}
-          />
-        </div>
+      <!-- Card with a teal-tinted edge -->
+      <div class="relative rounded-[25px] bg-gradient-to-b from-sp-green/35 via-sp-border to-sp-border p-px shadow-[0_1px_2px_rgba(17,24,39,0.04),0_30px_70px_-40px_rgba(17,24,39,0.3)]">
+        <form class="rounded-[24px] bg-white p-6 sm:p-9" method="post" action="#" novalidate>
 
-        <div>
-          <label for="c-company" class="mb-1.5 block text-[12.5px] font-semibold text-sp-heading">
-            Company
-          </label>
-          <input
-            id="c-company"
-            name="company"
-            type="text"
-            autocomplete="organization"
-            required
-            class={field}
-          />
-        </div>
+          <!-- 01 · About you -->
+          <div class="mb-4 flex items-center gap-3">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-sp-green-light font-mono text-[10px] font-semibold text-sp-green">01</span>
+            <span class="text-[13px] font-semibold tracking-[-0.005em] text-sp-heading">About you</span>
+            <span class="h-px flex-1 bg-sp-border"></span>
+          </div>
 
-        <div>
-          <label for="c-interest" class="mb-1.5 block text-[12.5px] font-semibold text-sp-heading">
-            Interest
-          </label>
-          <select id="c-interest" name="interest" class={field}>
-            {interests.map((item) => <option value={item}>{item}</option>)}
-          </select>
-        </div>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label for="c-name" class={label}>Name</label>
+              <input id="c-name" name="name" type="text" autocomplete="name" required class={field} />
+            </div>
 
-        <div class="sm:col-span-2">
-          <label for="c-message" class="mb-1.5 block text-[12.5px] font-semibold text-sp-heading">
-            Message
-          </label>
-          <textarea id="c-message" name="message" rows={4} class={`${field} resize-y`}></textarea>
-        </div>
+            <div>
+              <label for="c-email" class={label}>Work email</label>
+              <input id="c-email" name="email" type="email" autocomplete="email" required class={field} />
+            </div>
 
-        <div class="sm:col-span-2">
-          <label for="c-source" class="mb-1.5 block text-[12.5px] font-semibold text-sp-heading">
-            How did you hear about us?
-          </label>
-          <select id="c-source" name="source" class={field}>
-            {sources.map((item) => <option value={item}>{item}</option>)}
-          </select>
-        </div>
+            <div class="sm:col-span-2">
+              <label for="c-company" class={label}>Company</label>
+              <input id="c-company" name="company" type="text" autocomplete="organization" required class={field} />
+            </div>
+          </div>
 
-        <div class="flex flex-wrap items-center gap-4 sm:col-span-2">
-          <button
-            type="submit"
-            class="rounded-md px-6 py-3 text-[14px] font-semibold text-white transition-all duration-200 active:scale-[0.98]"
-            style="background-color: #111827;"
-          >
-            Request a demo
-          </button>
-          <p class="text-[12px] text-sp-body/60">
-            Form is not connected to a backend yet.
-          </p>
-        </div>
-      </form>
+          <!-- 02 · Your project -->
+          <div class="mb-4 mt-9 flex items-center gap-3">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-sp-green-light font-mono text-[10px] font-semibold text-sp-green">02</span>
+            <span class="text-[13px] font-semibold tracking-[-0.005em] text-sp-heading">Your project</span>
+            <span class="h-px flex-1 bg-sp-border"></span>
+          </div>
+
+          <fieldset>
+            <legend class={label}>Interest</legend>
+            <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+              {interests.map((item, i) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="interest" value={item} checked={i === 0} class="peer sr-only" />
+                  <span class="cf-tile relative flex h-full items-center justify-center rounded-[10px] border border-[#D5DEE6] bg-[#F3F5F7] px-6 py-3 text-center text-[13.5px] font-medium leading-snug text-sp-body transition-all duration-200 hover:border-sp-green/40 hover:text-sp-heading peer-checked:border-sp-green peer-checked:bg-[#F3F8F8] peer-checked:font-semibold peer-checked:text-sp-green peer-checked:shadow-[0_8px_20px_-14px_rgba(30,104,110,0.7)] peer-focus-visible:shadow-[0_0_0_4px_rgba(30,104,110,0.15)]">
+                    {item}
+                    <span class="cf-tick absolute right-2 top-2 flex h-[18px] w-[18px] items-center justify-center rounded-full bg-sp-green text-white" aria-hidden="true">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </span>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <div class="mt-5">
+            <label for="c-message" class={label}>Message</label>
+            <textarea id="c-message" name="message" rows={4} class={`${field} resize-y`}></textarea>
+          </div>
+
+          <div class="mt-5">
+            <label for="c-source" class={label}>How did you hear about us?</label>
+            <div class="relative">
+              <select
+                id="c-source"
+                name="source"
+                class={`${field} h-[50px] cursor-pointer appearance-none py-0 pr-11`}
+              >
+                {sources.map((item) => <option value={item}>{item}</option>)}
+              </select>
+              <svg class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sp-body/50" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <button
+              type="submit"
+              class="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-sp-green px-6 py-4 text-[15px] font-semibold text-white shadow-[0_12px_28px_-14px_rgba(30,104,110,0.8)] transition-all duration-300 hover:bg-[#185A5F] hover:shadow-[0_16px_34px_-14px_rgba(30,104,110,0.9)] active:scale-[0.99]"
+            >
+              Request a demo
+              <svg class="transition-transform duration-300 group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+            </button>
+            <p class="mt-3 text-center text-[12px] text-sp-body/60">
+              Form is not connected to a backend yet.
+            </p>
+          </div>
+        </form>
+      </div>
 
     </div>
   </div>
 </section>
+
+<style>
+  .cf-dots {
+    background-image: radial-gradient(rgba(30, 104, 110, 0.14) 1px, transparent 1px);
+    background-size: 18px 18px;
+    mask-image: radial-gradient(ellipse at 50% 35%, #000 10%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 35%, #000 10%, transparent 70%);
+  }
+
+  /* Only flag errors once the visitor has interacted with the field */
+  .cf-field:user-invalid {
+    border-color: #F87171;
+    box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.1);
+  }
+
+  /* Selected interest tile */
+  .cf-tick {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  input:checked + .cf-tile .cf-tick { opacity: 1; transform: scale(1); }
+</style>

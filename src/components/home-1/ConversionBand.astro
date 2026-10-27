@@ -2,33 +2,76 @@
 import MediaSlot from './MediaSlot.astro';
 ---
 
-<section class="bg-white py-10 md:py-20">
-  <div class="px-4 sm:px-8 lg:px-16">
-    <div class="reveal relative overflow-hidden rounded-[24px] bg-sp-heading">
+<section class="relative isolate overflow-hidden bg-[#070D0E]">
 
-      <!-- Optional background loop, sits behind the copy -->
-      <div class="pointer-events-none absolute inset-0 opacity-25" aria-hidden="true">
-        <MediaSlot id="A19" ratio="16 / 9" class="h-full w-full" fit="contain" />
-      </div>
+  <!-- Background film: the robot loop fills the band -->
+  <div class="pointer-events-none absolute inset-0 -z-30" aria-hidden="true">
+    <MediaSlot id="A19" ratio="auto" class="h-full w-full !bg-transparent opacity-60" fit="cover" />
+  </div>
 
-      <div class="relative z-10 px-6 py-14 text-center sm:px-12 md:py-20">
-        <h2
-          class="mx-auto mb-4 max-w-[30rem] font-inter font-bold leading-[1.12] tracking-[-0.025em] text-white"
-          style="font-size: clamp(24px, 2.9vw, 40px);"
-        >
-          Send us a part. See it handled.
-        </h2>
-        <p class="mx-auto mb-8 max-w-[28rem] text-[16px] leading-[1.7] text-white/70">
-          Share a CAD file and your use case. We'll show you how it runs on your part.
-        </p>
-        <a
-          href="/contact?interest=send-a-part"
-          class="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-[14px] font-semibold text-sp-heading transition-all duration-200 active:scale-[0.98] hover:bg-white/90"
-        >
-          Send us your part
-        </a>
-      </div>
+  <!-- Atmosphere (also carries the band until the video lands) -->
+  <div class="cb-glow pointer-events-none absolute left-1/2 top-[35%] -z-20 h-[38rem] w-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-full" aria-hidden="true"></div>
+  <div class="cb-floor pointer-events-none absolute inset-x-0 bottom-0 -z-20 h-[55%]" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(7,13,14,0.85)_100%)]" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-[#070D0E] to-transparent" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-16 bg-gradient-to-t from-[#070D0E] to-transparent" aria-hidden="true"></div>
 
+  <div class="mx-auto flex min-h-[360px] max-w-[64rem] flex-col items-center justify-center px-6 py-14 text-center md:min-h-[400px] md:py-16">
+
+    <h2
+      class="font-inter font-bold leading-[1.02] tracking-[-0.045em] text-white"
+      style="font-size: clamp(34px, 5vw, 72px);"
+    >
+      <span class="reveal block">Send us a part.</span>
+      <span class="reveal reveal-delay-1 block bg-gradient-to-r from-[#8FD2D8] via-[#5FD3A5] to-[#8FD2D8] bg-clip-text pb-[0.08em] text-transparent">See it handled.</span>
+    </h2>
+
+    <p class="reveal reveal-delay-2 mx-auto mt-7 max-w-[30rem] text-[16px] leading-[1.7] text-white/65 md:text-[18px]">
+      Share a CAD file and your use case. We'll show you how it runs on your part.
+    </p>
+
+    <div class="reveal reveal-delay-3 mt-11">
+      <a
+        href="/contact?interest=send-a-part"
+        class="group relative inline-flex items-center gap-3 rounded-full bg-white py-2.5 pl-8 pr-2.5 text-[15px] font-semibold text-sp-heading shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_20px_50px_-12px_rgba(95,211,165,0.55)] transition-all duration-300 hover:shadow-[0_0_0_6px_rgba(255,255,255,0.08),0_24px_60px_-12px_rgba(95,211,165,0.75)] active:scale-[0.98]"
+      >
+        Send us your part
+        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-sp-green text-white transition-transform duration-300 group-hover:translate-x-1">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+        </span>
+      </a>
     </div>
+
   </div>
 </section>
+
+<style>
+  /* Slow-breathing teal light behind the headline */
+  .cb-glow {
+    background: radial-gradient(closest-side, rgba(30, 104, 110, 0.55), rgba(30, 104, 110, 0.15) 55%, transparent);
+    filter: blur(20px);
+    animation: cb-breathe 9s ease-in-out infinite;
+  }
+  @keyframes cb-breathe {
+    0%, 100% { opacity: 0.75; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.08); }
+  }
+
+  /* Perspective floor grid receding toward the horizon */
+  .cb-floor {
+    background-image:
+      linear-gradient(rgba(143, 210, 216, 0.32) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(143, 210, 216, 0.32) 1px, transparent 1px);
+    background-size: 64px 64px;
+    transform: perspective(520px) rotateX(62deg);
+    transform-origin: bottom center;
+    mask-image: linear-gradient(to top, #000 25%, transparent 90%);
+    -webkit-mask-image: linear-gradient(to top, #000 25%, transparent 90%);
+    animation: cb-drift 14s linear infinite;
+  }
+  @keyframes cb-drift { to { background-position: 0 64px; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cb-glow, .cb-floor { animation: none; }
+  }
+</style>

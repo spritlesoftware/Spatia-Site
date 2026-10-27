@@ -1,26 +1,56 @@
 ---
 const stages = [
   {
+    key: 'see',
     label: 'See',
     body: 'RGB-D camera input',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1.8 12S5.2 5.5 12 5.5 22.2 12 22.2 12 18.8 18.5 12 18.5 1.8 12 1.8 12z"/><circle cx="12" cy="12" r="3"/></svg>`,
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.8 12S5.2 5.5 12 5.5 22.2 12 22.2 12 18.8 18.5 12 18.5 1.8 12 1.8 12z"/><circle cx="12" cy="12" r="3"/></svg>`,
   },
   {
+    key: 'locate',
     label: 'Locate',
     body: 'Exact 6D pose matched to CAD',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="1.6" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22.4"/><line x1="1.6" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22.4" y2="12"/></svg>`,
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="1.6" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22.4"/><line x1="1.6" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22.4" y2="12"/></svg>`,
   },
   {
+    key: 'plan',
     label: 'Plan',
     body: 'IK and collision-aware motion',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="6" r="2.4"/><circle cx="18.5" cy="18" r="2.4"/><path d="M7.9 6h5.6a3.5 3.5 0 0 1 0 7h-3a3.5 3.5 0 0 0 0 7h5.6"/></svg>`,
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="6" r="2.4"/><circle cx="18.5" cy="18" r="2.4"/><path d="M7.9 6h5.6a3.5 3.5 0 0 1 0 7h-3a3.5 3.5 0 0 0 0 7h5.6"/></svg>`,
   },
   {
+    key: 'act',
     label: 'Act',
     body: 'Grasp, place, verify',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6v5.6"/><path d="M6.4 8.2h11.2l-1.6 4.3H8l-1.6-4.3z"/><path d="M9 12.5v4.4M15 12.5v4.4"/><path d="M8.6 19.6h6.8"/></svg>`,
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6v5.6"/><path d="M6.4 8.2h11.2l-1.6 4.3H8l-1.6-4.3z"/><path d="M9 12.5v4.4M15 12.5v4.4"/><path d="M8.6 19.6h6.8"/></svg>`,
   },
 ];
+
+// Depth "point cloud" of a part for the See visual: three visible faces of an
+// isometric block, each shaded by how directly it faces the camera
+type Pt = [number, number];
+const faces: { o: Pt; u: Pt; v: Pt; shade: number }[] = [
+  { o: [100, 22], u: [38, 21], v: [-38, 21], shade: 0.95 }, // top
+  { o: [62, 43], u: [38, 21], v: [0, 36], shade: 0.6 },    // left
+  { o: [100, 64], u: [38, -21], v: [0, 36], shade: 0.32 },  // right
+];
+const cloud: { x: number; y: number; o: number }[] = [];
+let seed = 0;
+for (const f of faces) {
+  for (let a = 0; a <= 1.001; a += 1 / 9) {
+    for (let b = 0; b <= 1.001; b += 1 / 9) {
+      const jx = Math.sin(++seed * 12.9898) * 0.9;
+      const jy = Math.cos(seed * 78.233) * 0.9;
+      cloud.push({
+        x: Math.round((f.o[0] + f.u[0] * a + f.v[0] * b + jx) * 10) / 10,
+        y: Math.round((f.o[1] + f.u[1] * a + f.v[1] * b + jy) * 10) / 10,
+        o: Math.round(f.shade * (0.75 + 0.25 * Math.abs(Math.sin(seed))) * 100) / 100,
+      });
+    }
+  }
+}
+
+const pad = (i: number) => String(i + 1).padStart(2, '0');
 ---
 
 <section class="bg-[#F7FAFA] py-16 md:py-[120px]">
@@ -48,47 +78,108 @@ const stages = [
     </div>
 
     <!-- Pipeline -->
-    <div
-      class="reveal reveal-delay-2 relative mt-14 rounded-[28px] border border-sp-border bg-white p-7 sm:p-10 lg:p-12"
-    >
-      <ol class="grid grid-cols-1 gap-7 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-4 lg:gap-x-7">
-        {
-          stages.map((stage, i) => (
-            <li class="relative flex items-start gap-4 lg:flex-col lg:items-center lg:gap-0 lg:text-center">
-              <span
-                class="flex h-[58px] w-[58px] flex-shrink-0 items-center justify-center rounded-full border border-sp-green/25 bg-sp-green-light"
-                style="color: #1E686E;"
-              >
-                <Fragment set:html={stage.icon} />
-              </span>
+    <ol class="pf reveal reveal-delay-2 relative mt-14 grid grid-cols-1 gap-5 lg:mt-16 lg:grid-cols-4" data-pipeline>
+      {
+        stages.map((stage, i) => (
+          <li
+            class:list={['pf-step group relative grid grid-cols-[44px_1fr] gap-x-4 lg:flex lg:flex-col lg:items-center', i === 0 && 'is-active']}
+            data-step={i}
+          >
+            <!-- Node -->
+            <span class="pf-node relative z-10 flex h-11 w-11 items-center justify-center rounded-full border border-sp-border bg-white text-sp-body/50 transition-all duration-500 lg:mb-6">
+              <span class="pf-ping absolute inset-0 rounded-full bg-sp-green/30" aria-hidden="true"></span>
+              <span class="relative"><Fragment set:html={stage.icon} /></span>
+            </span>
 
-              <div class="pt-1 lg:mt-5 lg:pt-0">
-                <span class="mb-1.5 block font-mono text-[10.5px] font-semibold tracking-[0.12em] text-sp-green/60">
-                  {String(i + 1).padStart(2, '0')}
+            <!-- Connector to the next node -->
+            {i < stages.length - 1 && (
+              <>
+                <span class="absolute left-[calc(50%+30px)] top-[21px] hidden h-[2px] w-[calc(100%-60px+1.25rem)] overflow-hidden rounded-full bg-sp-border lg:block" aria-hidden="true">
+                  <span class="pf-fill-x block h-full w-full origin-left bg-sp-green"></span>
                 </span>
-                <h3
-                  class="mb-1.5 text-[19px] font-semibold leading-tight tracking-[-0.02em] text-sp-heading"
-                >
-                  {stage.label}
-                </h3>
-                <p class="text-[13px] leading-[1.6] text-sp-body">{stage.body}</p>
+                <span class="absolute bottom-[-12px] left-[21px] top-[52px] w-[2px] overflow-hidden rounded-full bg-sp-border lg:hidden" aria-hidden="true">
+                  <span class="pf-fill-y block h-full w-full origin-top bg-sp-green"></span>
+                </span>
+              </>
+            )}
+
+            <!-- Card -->
+            <div class="pf-card overflow-hidden rounded-[20px] border border-sp-border bg-white transition-all duration-500 lg:w-full">
+              <div class="pf-visual relative aspect-[5/3] border-b border-sp-border bg-[#F4F8F8]" aria-hidden="true">
+                <svg class="absolute inset-0 h-full w-full" viewBox="0 0 200 120" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+                  {stage.key === 'see' && (
+                    <g>
+                      <path d="M14 28V14h14M186 28V14h-14M14 92v14h14M186 92v14h-14" stroke="#1E686E" stroke-width="1.4" opacity=".45" />
+                      {cloud.map((p) => <circle cx={p.x} cy={p.y} r="1.25" fill="#1E686E" opacity={p.o} />)}
+                      <rect class="see-scan" x="14" y="14" width="2" height="92" fill="#1E686E" />
+                      <text x="166" y="104" text-anchor="end" font-size="7" font-family="ui-monospace, monospace" letter-spacing="1" fill="#1E686E" opacity=".6">RGB · D</text>
+                    </g>
+                  )}
+
+                  {stage.key === 'locate' && (
+                    <g>
+                      <circle cx="100" cy="61" r="40" stroke="#1E686E" stroke-width="1" stroke-dasharray="2 4" opacity=".35" />
+                      <path d="M100 13v10M100 99v10M52 61h10M138 61h10" stroke="#1E686E" stroke-width="1.2" opacity=".45" />
+                      <g fill="#1E686E" fill-opacity=".1" stroke="#1E686E" stroke-width="1.4">
+                        <path d="M100 38 122 50 100 62 78 50z" />
+                        <path d="M78 50v22l22 12V62zM122 50v22l-22 12V62z" />
+                      </g>
+                      <g class="loc-cad" stroke="#1E686E" stroke-width="1.2" stroke-dasharray="3 3">
+                        <path d="M100 38 122 50 100 62 78 50z M78 50v22l22 12 22-12V50 M100 62v22" />
+                      </g>
+                      <g class="loc-axes" stroke-width="1.6">
+                        <path d="M100 62V24" stroke="#3B82F6" /><path d="M100 62l34 18" stroke="#EF4444" /><path d="M100 62 66 80" stroke="#10B981" />
+                      </g>
+                    </g>
+                  )}
+
+                  {stage.key === 'plan' && (
+                    <g>
+                      <path d="M20 96h160" stroke="#1E686E" stroke-width="1" opacity=".3" />
+                      <rect x="84" y="58" width="32" height="38" rx="3" fill="#1E686E" fill-opacity=".08" stroke="#1E686E" stroke-width="1.2" stroke-dasharray="3 3" opacity=".7" />
+                      <path d="M36 86C50 20 150 20 164 86" stroke="#1E686E" stroke-width="1.2" stroke-dasharray="2 4" opacity=".35" />
+                      <path class="plan-draw" d="M36 86C50 20 150 20 164 86" stroke="#1E686E" stroke-width="1.8" pathLength="1" />
+                      <circle cx="60" cy="49" r="2.2" fill="#1E686E" opacity=".5" />
+                      <circle cx="100" cy="36.5" r="2.2" fill="#1E686E" opacity=".5" />
+                      <circle cx="140" cy="49" r="2.2" fill="#1E686E" opacity=".5" />
+                      <circle cx="36" cy="86" r="4" fill="#1E686E" />
+                      <circle cx="164" cy="86" r="5" stroke="#1E686E" stroke-width="1.4" />
+                      <circle cx="164" cy="86" r="1.8" fill="#1E686E" />
+                      <circle class="plan-dot" r="3.2" fill="#fff" stroke="#1E686E" stroke-width="1.6" />
+                    </g>
+                  )}
+
+                  {stage.key === 'act' && (
+                    <g>
+                      <path d="M30 96h140" stroke="#1E686E" stroke-width="1" opacity=".3" />
+                      <rect class="act-part" x="87" y="80" width="26" height="16" rx="2" fill="#1E686E" fill-opacity=".15" stroke="#1E686E" stroke-width="1.4" />
+                      <g class="act-grip" stroke="#1E686E" stroke-width="1.4">
+                        <path d="M100 4v26" />
+                        <rect x="80" y="30" width="40" height="7" rx="2" fill="#fff" />
+                        <rect class="act-fl" x="80" y="37" width="5" height="22" rx="1.5" fill="#fff" />
+                        <rect class="act-fr" x="115" y="37" width="5" height="22" rx="1.5" fill="#fff" />
+                      </g>
+                      <g class="act-ok">
+                        <circle cx="158" cy="30" r="10" fill="#1E686E" />
+                        <path d="M153.5 30.5l3 3 6-6.5" stroke="#fff" stroke-width="1.8" />
+                      </g>
+                    </g>
+                  )}
+
+                </svg>
               </div>
 
-              {i < stages.length - 1 && (
-                <span
-                  class="pointer-events-none absolute -right-[1.35rem] top-[1.45rem] hidden text-sp-green/45 lg:block"
-                  aria-hidden="true"
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="9 5 16 12 9 19" />
-                  </svg>
-                </span>
-              )}
-            </li>
-          ))
-        }
-      </ol>
-    </div>
+              <div class="p-5 lg:p-6">
+                <span class="mb-1.5 block font-mono text-[11px] font-semibold tracking-[0.14em] text-sp-green/60">{pad(i)}</span>
+                <h3 class="mb-1 text-[19px] font-semibold leading-tight tracking-[-0.02em] text-sp-heading">{stage.label}</h3>
+                <p class="text-[16px] leading-[1.7] text-sp-body">{stage.body}</p>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
 
     <div class="reveal mt-11 flex justify-center">
       <a
@@ -102,3 +193,169 @@ const stages = [
 
   </div>
 </section>
+
+<style>
+  /* ── Rail ───────────────────────────────────────── */
+  .pf-fill-x { transform: scaleX(0); transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1); }
+  .pf-fill-y { transform: scaleY(0); transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1); }
+  .pf-step.is-done .pf-fill-x { transform: scaleX(1); }
+  .pf-step.is-done .pf-fill-y { transform: scaleY(1); }
+
+  .pf-ping { opacity: 0; }
+  .pf-step.is-done .pf-node {
+    border-color: rgba(30, 104, 110, 0.3);
+    background: #E3EFEF;
+    color: #1E686E;
+  }
+  .pf-step.is-active .pf-node {
+    border-color: #1E686E;
+    background: #1E686E;
+    color: #fff;
+    box-shadow: 0 0 0 6px rgba(30, 104, 110, 0.12);
+  }
+  .pf-step.is-active .pf-ping { animation: pf-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite; }
+  @keyframes pf-ping {
+    0%   { transform: scale(1);   opacity: 0.6; }
+    100% { transform: scale(1.9); opacity: 0; }
+  }
+
+  /* ── Cards ──────────────────────────────────────── */
+  .pf-step { cursor: pointer; }
+  .pf-visual {
+    background-image: radial-gradient(rgba(30, 104, 110, 0.12) 1px, transparent 1px);
+    background-size: 14px 14px;
+  }
+  .pf-visual svg { opacity: 0.55; transition: opacity 0.5s ease; }
+  .pf-step.is-done .pf-visual svg { opacity: 0.8; }
+  .pf-step.is-active .pf-visual svg { opacity: 1; }
+  .pf-step.is-active .pf-card {
+    border-color: rgba(30, 104, 110, 0.4);
+    box-shadow: 0 24px 50px -28px rgba(30, 104, 110, 0.5);
+    transform: translateY(-4px);
+  }
+
+  /* See — depth scan sweeps the frame */
+  .see-scan { opacity: 0; }
+  /* One sweep per activation, so a second pass never gets cut off mid-frame */
+  .pf-step.is-active .see-scan { animation: see-scan 2.4s cubic-bezier(0.45, 0, 0.55, 1) 1 forwards; }
+  @keyframes see-scan {
+    0%   { transform: translateX(0);     opacity: 0; }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.7; }
+    100% { transform: translateX(170px); opacity: 0; }
+  }
+
+  /* Locate — CAD wireframe snaps onto the part, pose axes appear */
+  .loc-cad {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: translate(22px, -12px) rotate(-14deg);
+    opacity: 0.55;
+  }
+  .pf-step.is-active .loc-cad {
+    transform: none;
+    opacity: 1;
+    transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, opacity 0.4s ease 0.2s;
+  }
+  .loc-axes { opacity: 0; }
+  .pf-step.is-active .loc-axes { opacity: 1; transition: opacity 0.5s ease 1.2s; }
+
+  /* Plan — trajectory is drawn around the obstacle */
+  .plan-draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .pf-step.is-active .plan-draw { animation: plan-draw 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards; }
+  @keyframes plan-draw { to { stroke-dashoffset: 0; } }
+  .plan-dot { offset-path: path('M36 86C50 20 150 20 164 86'); offset-distance: 0%; opacity: 0; }
+  .pf-step.is-active .plan-dot { animation: plan-dot 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards; }
+  @keyframes plan-dot {
+    0%   { offset-distance: 0%;   opacity: 1; }
+    100% { offset-distance: 100%; opacity: 1; }
+  }
+
+  /* Act — descend, grasp, lift, verify */
+  .act-ok { opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .pf-step.is-active .act-grip { animation: act-grip 2.2s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
+  .pf-step.is-active .act-fl   { animation: act-fl 2.2s ease forwards; }
+  .pf-step.is-active .act-fr   { animation: act-fr 2.2s ease forwards; }
+  .pf-step.is-active .act-part { animation: act-part 2.2s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
+  .pf-step.is-active .act-ok   { animation: act-ok 2.2s ease forwards; }
+  @keyframes act-grip {
+    0%, 5%    { transform: translateY(0); }
+    35%, 55%  { transform: translateY(34px); }
+    85%, 100% { transform: translateY(12px); }
+  }
+  @keyframes act-fl { 0%, 35% { transform: translateX(0); } 48%, 100% { transform: translateX(2px); } }
+  @keyframes act-fr { 0%, 35% { transform: translateX(0); } 48%, 100% { transform: translateX(-2px); } }
+  @keyframes act-part {
+    0%, 55%   { transform: translateY(0); }
+    85%, 100% { transform: translateY(-22px); }
+  }
+  @keyframes act-ok {
+    0%, 82% { opacity: 0; transform: scale(0.6); }
+    100%    { opacity: 1; transform: scale(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pf-step.is-active .see-scan,
+    .pf-step.is-active .pf-ping { animation: none; }
+    .pf-step.is-active .act-grip,
+    .pf-step.is-active .act-fl,
+    .pf-step.is-active .act-fr,
+    .pf-step.is-active .act-part,
+    .pf-step.is-active .plan-draw,
+    .pf-step.is-active .plan-dot,
+    .pf-step.is-active .act-ok { animation-duration: 0.01ms; }
+    .pf-step.is-active .loc-cad, .pf-step.is-active .loc-axes { transition: none; }
+  }
+</style>
+
+<script>
+  const STEP = 2800;  // time on each stage
+  const HOLD = 3800;  // pause on "Act" before the loop restarts
+
+  document.querySelectorAll<HTMLElement>('[data-pipeline]').forEach((root) => {
+    const steps = Array.from(root.querySelectorAll<HTMLElement>('[data-step]'));
+    const last = steps.length - 1;
+    let active = 0;
+    let timer: number | undefined;
+    let inView = false;
+
+    const render = () => {
+      steps.forEach((el, i) => {
+        el.classList.toggle('is-active', i === active);
+        el.classList.toggle('is-done', i < active);
+      });
+    };
+
+    const schedule = () => {
+      window.clearTimeout(timer);
+      if (!inView) return;
+      timer = window.setTimeout(() => {
+        active = active === last ? 0 : active + 1;
+        render();
+        schedule();
+      }, active === last ? HOLD : STEP);
+    };
+
+    const goTo = (i: number) => {
+      if (i === active) return;
+      active = i;
+      render();
+      schedule();
+    };
+
+    steps.forEach((el, i) => {
+      el.addEventListener('click', () => goTo(i));
+      el.addEventListener('mouseenter', () => goTo(i));
+    });
+
+    new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      if (inView) {
+        // Restart the flow from "See" each time the section scrolls into view
+        active = 0;
+        render();
+      }
+      schedule();
+    }, { threshold: 0.25 }).observe(root);
+  });
+</script>
