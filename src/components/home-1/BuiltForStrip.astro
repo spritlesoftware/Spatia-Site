@@ -2,22 +2,24 @@
 const tags = ['CAD-native', 'Robot-agnostic', 'Edge-deployed', 'Lightweight setup'];
 ---
 
-<section class="border-y border-sp-border bg-white py-8 md:py-10">
+<section class="border-y border-sp-border bg-white py-6 md:py-8">
   <div class="px-4 sm:px-8 lg:px-16">
-    <ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 md:gap-x-14">
-      {
-        tags.map((tag) => (
-          <li class="flex items-center gap-2.5">
-            <span
-              class="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-sp-green"
-              aria-hidden="true"
-            />
-            <span class="text-[13px] font-semibold uppercase tracking-[0.1em] text-sp-body">
-              {tag}
-            </span>
-          </li>
-        ))
-      }
-    </ul>
+    <div class="mx-auto max-w-4xl">
+      <ul class="grid grid-cols-2 gap-x-6 gap-y-4 sm:gap-x-10 md:grid-cols-4 md:gap-x-8 items-center">
+        {
+          tags.map((tag) => (
+            <li class="flex items-center justify-start sm:justify-center gap-2.5">
+              <span
+                class="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-sp-green"
+                aria-hidden="true"
+              />
+              <span class="text-[12px] sm:text-[13px] font-semibold uppercase tracking-[0.1em] text-sp-body whitespace-nowrap">
+                {tag}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
 </section>
