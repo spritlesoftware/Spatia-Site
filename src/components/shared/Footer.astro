@@ -21,81 +21,61 @@ const legalLinks = [
 ];
 ---
 
-<footer class="bg-white border-t border-sp-border">
-  <div class="px-4 sm:px-8 lg:px-16 py-10 sm:py-16">
+<footer class="bg-sp-green text-white">
+  <div class="px-4 py-10 sm:px-8 sm:py-16 lg:px-16">
 
-    <!-- Four-column grid -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-4 md:gap-8">
 
-      <!-- Col 1: Brand -->
       <div class="md:col-span-1">
-        <a href="/" class="inline-block mb-5">
-          <img src={logoSpatia.src} alt="Spatia" class="h-10 w-auto" />
+        <a href="/" class="mb-5 inline-block">
+          <img src={logoSpatia.src} alt="Spatia" class="h-10 w-auto brightness-0 invert" />
         </a>
-        <p class="text-[13px] text-sp-body leading-[1.75] max-w-[220px]">
+        <p class="max-w-[220px] text-[13px] leading-[1.75] text-white/75">
           Spatia enables machines to perceive, understand and act in the real world.
           We build the foundation for autonomous intelligence.
         </p>
       </div>
 
-      <!-- Col 2: Explore -->
       <div>
-        <h4 class="section-label mb-5">Explore</h4>
+        <h4 class="section-label mb-5 !text-white/55">Explore</h4>
         <ul class="flex flex-col gap-3.5">
-          {exploreLinks.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                class="text-[14px] text-sp-body hover:text-sp-heading transition-colors duration-150"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {exploreLinks.map((link) => <li><a href={link.href} class="footer-link">{link.label}</a></li>)}
         </ul>
       </div>
 
-      <!-- Col 3: Connect -->
       <div>
-        <h4 class="section-label mb-5">Connect</h4>
+        <h4 class="section-label mb-5 !text-white/55">Connect</h4>
         <ul class="flex flex-col gap-3.5">
-          {connectLinks.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                class="text-[14px] text-sp-body hover:text-sp-heading transition-colors duration-150"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {connectLinks.map((link) => <li><a href={link.href} class="footer-link">{link.label}</a></li>)}
         </ul>
       </div>
 
-      <!-- Col 4: Legal -->
       <div>
-        <h4 class="section-label mb-5">Legal</h4>
+        <h4 class="section-label mb-5 !text-white/55">Legal</h4>
         <ul class="flex flex-col gap-3.5">
-          {legalLinks.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                class="text-[14px] text-sp-body hover:text-sp-heading transition-colors duration-150"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {legalLinks.map((link) => <li><a href={link.href} class="footer-link">{link.label}</a></li>)}
         </ul>
       </div>
 
     </div>
 
-    <!-- Bottom divider + copyright -->
-    <div class="mt-12 pt-6 border-t border-sp-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-      <span class="text-[12px] text-sp-body/60"></span>
-      <span class="text-[12px] text-sp-body/60">© 2026 Spatia. All rights reserved.</span>
+    <div
+      class="mt-12 flex flex-col items-start justify-between gap-2 border-t border-white/15 pt-6 sm:flex-row sm:items-center"
+    >
+      <span class="text-[12px] text-white/60"></span>
+      <span class="text-[12px] text-white/60">&copy; 2026 Spatia. All rights reserved.</span>
     </div>
 
   </div>
 </footer>
+
+<style>
+  .footer-link {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 150ms;
+  }
+  .footer-link:hover {
+    color: #fff;
+  }
+</style>
