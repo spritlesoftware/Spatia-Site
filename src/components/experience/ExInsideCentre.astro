@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import spaceImg from '../../assets/experience-centre-space.webp';
+---
+
+<section class="bg-white pt-16 md:pt-[120px]">
+  <div class="px-4 sm:px-8 lg:px-16">
+
+    <div class="reveal mb-8 flex flex-col gap-3 md:mb-10 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="section-label mb-4">Inside the centre</p>
+        <h2
+          class="font-inter font-bold leading-[1.1] tracking-[-0.025em] text-sp-heading"
+          style="font-size: clamp(26px, 3vw, 44px);"
+        >
+          Where every cell is built and tested.
+        </h2>
+      </div>
+      <p class="max-w-[26rem] text-[16px] leading-[1.7] text-sp-body">
+        The same space our engineers work in every day. Your part runs here, on real hardware.
+      </p>
+    </div>
+
+    <figure class="reveal reveal-delay-1 overflow-hidden rounded-[24px] border border-sp-border">
+      <Image
+        src={spaceImg}
+        alt="The Spatia Experience Centre: engineers working at benches with robot arms, cameras and test equipment"
+        widths={[640, 1024, 1440, 1855]}
+        sizes="(min-width: 1024px) calc(100vw - 8rem), 100vw"
+        class="block aspect-[16/9] w-full object-cover md:aspect-[2.19/1]"
+      />
+    </figure>
+
+  </div>
+</section>

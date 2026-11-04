@@ -1,0 +1,28 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/shared/Navbar.astro';
+import ExHero from '@components/experience/ExHero.astro';
+import ExInsideCentre from '@components/experience/ExInsideCentre.astro';
+import ExWhatYouSee from '@components/experience/ExWhatYouSee.astro';
+import ExHowItWorks from '@components/experience/ExHowItWorks.astro';
+import ExWhoAndFormats from '@components/experience/ExWhoAndFormats.astro';
+import ExBookingForm from '@components/experience/ExBookingForm.astro';
+import Footer from '@components/shared/Footer.astro';
+---
+
+<Layout
+  title="Experience Centre | Spatia Nexa"
+  description="Visit the Spatia Experience Centre and watch Spatia Nexa locate and handle your own part from its CAD model, in person or in a live remote session."
+  keywords="robotics experience centre, robot demo, CAD-based pose estimation demo, fixtureless robot picking, physical AI manufacturing"
+>
+  <Navbar activeLink="experience" />
+  <main class="pt-20 md:pt-24">
+    <ExHero />
+    <ExInsideCentre />
+    <ExWhatYouSee />
+    <ExHowItWorks />
+    <ExWhoAndFormats />
+    <ExBookingForm />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,70 @@
+---
+const audiences = [
+  { title: 'Manufacturers', body: 'See whether your parts and your cell are a fit before committing to a pilot.' },
+  { title: 'System integrators', body: 'Try one CAD-native vision stack you can reuse across customer projects.' },
+  { title: 'Partners', body: 'Explore joint projects, integrations and research with our engineering team.' },
+];
+
+const formats = [
+  {
+    title: 'In person',
+    body: 'Visit the centre, stand at the cell and work through your part with our engineers.',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>`,
+  },
+  {
+    title: 'Live remote session',
+    body: 'Can’t travel? Join a live video session from the cell and watch your part run.',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="m15.5 10.5 6-3.5v10l-6-3.5"/></svg>`,
+  },
+];
+---
+
+<section class="bg-white py-16 md:py-[120px]">
+  <div class="grid grid-cols-1 gap-12 px-4 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:px-16">
+
+    <div>
+      <p class="reveal section-label mb-4">Who it's for</p>
+      <h2
+        class="reveal mb-8 font-inter font-bold leading-[1.1] tracking-[-0.025em] text-sp-heading"
+        style="font-size: clamp(26px, 3vw, 44px);"
+      >
+        Built for the people who'll run it.
+      </h2>
+      <ul class="divide-y divide-sp-border border-y border-sp-border">
+        {audiences.map((a) => (
+          <li class="reveal py-5">
+            <h3 class="mb-1 text-[18px] font-semibold text-sp-heading">{a.title}</h3>
+            <p class="text-[16px] leading-[1.7] text-sp-body">{a.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <p class="reveal section-label mb-4">Ways to visit</p>
+      <h2
+        class="reveal mb-8 font-inter font-bold leading-[1.1] tracking-[-0.025em] text-sp-heading"
+        style="font-size: clamp(26px, 3vw, 44px);"
+      >
+        On site or on screen.
+      </h2>
+      <div class="grid grid-cols-1 gap-4">
+        {formats.map((f, i) => (
+          <div class:list={['reveal flex gap-4 rounded-[20px] border border-sp-border bg-white p-6', `reveal-delay-${i + 1}`]}>
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-[12px] bg-sp-green-light text-sp-green">
+              <Fragment set:html={f.icon} />
+            </span>
+            <div>
+              <h3 class="mb-1 text-[18px] font-semibold text-sp-heading">{f.title}</h3>
+              <p class="text-[16px] leading-[1.7] text-sp-body">{f.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="reveal mt-5 text-[15px] leading-[1.7] text-sp-body/80">
+        We confirm the location, date and what to bring once you book.
+      </p>
+    </div>
+
+  </div>
+</section>

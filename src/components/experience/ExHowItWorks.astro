@@ -1,0 +1,151 @@
+---
+const steps = [
+  {
+    owner: 'You',
+    title: 'Share your part',
+    body: 'Send the CAD model and a short brief: the task, the cell and how parts arrive.',
+    outcome: 'CAD + task brief',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/></svg>`,
+  },
+  {
+    owner: 'Spatia',
+    title: 'We set it up',
+    body: 'Our engineers load the part into Spatia Nexa and prepare the cell before you arrive. No training run.',
+    outcome: 'Cell ready for your part',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.5 17.5l3 3 5.8-5.8a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg>`,
+  },
+  {
+    owner: 'Together',
+    title: 'Watch it run',
+    body: 'See the robot locate and handle your part, with the live pose and every pipeline stage on screen.',
+    outcome: 'Live run on your part',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1.8 12S5.2 5.5 12 5.5 22.2 12 22.2 12 18.8 18.5 12 18.5 1.8 12 1.8 12z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  },
+  {
+    owner: 'Together',
+    title: 'Plan next steps',
+    body: 'Review what worked, what would change on your line, and what a pilot would involve.',
+    outcome: 'A clear next step',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4"/><path d="M4 4h12l-2.5 4L16 12H4"/></svg>`,
+  },
+];
+
+const pad = (i: number) => String(i + 1).padStart(2, '0');
+---
+
+<section id="how" class="scroll-mt-24 relative isolate overflow-hidden bg-[#F7FAFA] py-16 md:py-[120px]">
+  <div class="hw-dots pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
+
+  <div class="px-4 sm:px-8 lg:px-16">
+
+    <div class="reveal mx-auto mb-12 max-w-[48rem] text-center md:mb-20">
+      <p class="section-label mb-4">How a visit works</p>
+      <h2
+        class="mb-5 font-inter font-bold leading-[1.1] tracking-[-0.025em] text-sp-heading"
+        style="font-size: clamp(26px, 3vw, 44px);"
+      >
+        Bring a part. <span class="text-sp-green">Leave with an answer.</span>
+      </h2>
+      <p class="mx-auto max-w-[32rem] text-[17px] leading-[1.7] text-sp-body">
+        Four steps from a CAD file to knowing whether Spatia Nexa fits your line.
+      </p>
+    </div>
+
+    <ol class="hw reveal relative grid grid-cols-1 gap-6 lg:grid-cols-4 lg:gap-6">
+      {steps.map((s, i) => (
+        <li class="hw-step relative grid grid-cols-[48px_1fr] gap-x-5 lg:flex lg:flex-col" style={`--i:${i}`}>
+
+          <!-- Rail: horizontal on desktop, vertical on mobile -->
+          {i < steps.length - 1 && (
+            <>
+              <span class="absolute left-[calc(50%+32px)] top-[23px] hidden h-[2px] w-[calc(100%-64px+1.5rem)] overflow-hidden rounded-full bg-sp-border lg:block" aria-hidden="true">
+                <span class="hw-fill-x block h-full w-full origin-left bg-sp-green"></span>
+              </span>
+              <span class="absolute bottom-[-24px] left-[23px] top-[56px] w-[2px] overflow-hidden rounded-full bg-sp-border lg:hidden" aria-hidden="true">
+                <span class="hw-fill-y block h-full w-full origin-top bg-sp-green"></span>
+              </span>
+            </>
+          )}
+
+          <!-- Node -->
+          <span class="hw-node relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-sp-green bg-white text-sp-green shadow-[0_0_0_6px_#F7FAFA] lg:mx-auto lg:mb-6">
+            <Fragment set:html={s.icon} />
+          </span>
+
+          <!-- Card -->
+          <div class="hw-card group flex flex-col rounded-[20px] lg:flex-1 border border-sp-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-sp-green/30 hover:shadow-[0_24px_50px_-30px_rgba(30,104,110,0.45)] lg:p-7">
+            <div class="mb-4 flex items-center justify-between">
+              <span class="font-mono text-[12px] font-semibold tracking-[0.14em] text-sp-green/60">STEP {pad(i)}</span>
+              <span class:list={[
+                'rounded-full px-2.5 py-0.5 text-[12px] font-semibold',
+                s.owner === 'You' && 'bg-amber-50 text-amber-700',
+                s.owner === 'Spatia' && 'bg-sp-green-light text-sp-green',
+                s.owner === 'Together' && 'bg-sp-green text-white',
+              ]}>{s.owner}</span>
+            </div>
+            <h3 class="mb-2 text-[20px] font-semibold leading-tight tracking-[-0.02em] text-sp-heading">{s.title}</h3>
+            <p class="mb-6 flex-1 text-[16px] leading-[1.7] text-sp-body">{s.body}</p>
+            <div class="flex items-center gap-2 border-t border-dashed border-sp-border pt-4">
+              <svg class="shrink-0 text-sp-green" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12.5 10 17.5 19 7"/></svg>
+              <span class="text-[14px] font-semibold text-sp-heading">{s.outcome}</span>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <div class="reveal mt-12 flex flex-col items-center gap-3 text-center md:mt-16">
+      <a
+        href="#book"
+        class="group inline-flex h-[48px] items-center justify-center gap-2 rounded-full bg-[#123339] px-8 text-[15px] font-semibold text-white shadow-[0_12px_28px_-14px_rgba(18,51,57,0.8)] transition-all duration-300 hover:bg-[#0B2226]"
+      >
+        Book a visit
+        <svg class="transition-transform duration-300 group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+      </a>
+      <p class="text-[14px] text-sp-body/80">All you need to start is the CAD model.</p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hw-dots {
+    background-image: radial-gradient(rgba(30, 104, 110, 0.12) 1px, transparent 1px);
+    background-size: 18px 18px;
+    mask-image: radial-gradient(ellipse at 50% 45%, #000 15%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 45%, #000 15%, transparent 70%);
+  }
+
+  /* Steps light up in order once the timeline scrolls into view */
+  .hw-fill-x { transform: scaleX(0); }
+  .hw-fill-y { transform: scaleY(0); }
+  .hw-node { transform: scale(0.6); opacity: 0; }
+  .hw-card { opacity: 0; translate: 0 12px; }
+
+  .hw.is-visible .hw-node {
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+    transition-delay: calc(var(--i) * 0.45s);
+  }
+  .hw.is-visible .hw-card {
+    opacity: 1;
+    translate: 0 0;
+    transition: opacity 0.5s ease, translate 0.5s ease, transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition-delay: calc(var(--i) * 0.45s + 0.1s), calc(var(--i) * 0.45s + 0.1s), 0s, 0s, 0s;
+  }
+  .hw.is-visible .hw-fill-x,
+  .hw.is-visible .hw-fill-y {
+    transform: none;
+    transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+    transition-delay: calc(var(--i) * 0.45s + 0.3s);
+  }
+
+  /* The list itself shouldn't fade as a block; its steps animate instead */
+  .hw.reveal { opacity: 1 !important; transform: none !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hw-node, .hw-card { opacity: 1; transform: none; translate: none; }
+    .hw-fill-x, .hw-fill-y { transform: none; }
+  }
+</style>

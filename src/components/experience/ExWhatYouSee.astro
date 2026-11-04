@@ -1,0 +1,57 @@
+---
+const demos = [
+  {
+    title: 'Cognitive Assembly',
+    body: 'Parts located straight from their CAD model and handled by the robot, with no fixtures and no training run.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6v5.6"/><path d="M6.4 8.2h11.2l-1.6 4.3H8l-1.6-4.3z"/><path d="M9 12.5v4.4M15 12.5v4.4"/><path d="M8.6 19.6h6.8"/></svg>`,
+  },
+  {
+    title: 'Dynamic Inspection',
+    body: 'An early look at checking parts against their design geometry and flagging deviations.',
+    badge: 'Early access',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20.5 20.5 16 16"/><path d="M8 11h6M11 8v6"/></svg>`,
+  },
+  {
+    title: 'Under the hood',
+    body: 'The live 6D pose on screen, how calibration and grasp offsets are set, and how a failed pick is traced to its cause.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="1.6" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22.4"/><line x1="1.6" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22.4" y2="12"/></svg>`,
+  },
+];
+---
+
+<section class="bg-white py-16 md:py-[120px]">
+  <div class="px-4 sm:px-8 lg:px-16">
+
+    <div class="reveal mb-12 max-w-[44rem] md:mb-16">
+      <p class="section-label mb-4">What you'll see</p>
+      <h2
+        class="mb-5 font-inter font-bold leading-[1.1] tracking-[-0.025em] text-sp-heading"
+        style="font-size: clamp(26px, 3vw, 44px);"
+      >
+        The system working, not a slide about it.
+      </h2>
+      <p class="text-[17px] leading-[1.7] text-sp-body">
+        Every visit runs on real hardware. Ask the engineers anything, and change the setup to
+        see what happens.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+      {demos.map((d, i) => (
+        <div class:list={['reveal rounded-[20px] border border-sp-border bg-white p-6 lg:p-7', `reveal-delay-${i + 1}`]}>
+          <div class="mb-6 flex items-center justify-between">
+            <span class="flex h-11 w-11 items-center justify-center rounded-[12px] bg-sp-green-light text-sp-green">
+              <Fragment set:html={d.icon} />
+            </span>
+            {d.badge && (
+              <span class="rounded-full bg-amber-50 px-3 py-1 text-[13px] font-semibold text-amber-700">{d.badge}</span>
+            )}
+          </div>
+          <h3 class="mb-2 text-[20px] font-semibold leading-tight tracking-[-0.02em] text-sp-heading">{d.title}</h3>
+          <p class="text-[16px] leading-[1.7] text-sp-body">{d.body}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

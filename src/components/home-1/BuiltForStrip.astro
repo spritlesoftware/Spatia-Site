@@ -1,5 +1,22 @@
 ---
-const tags = ['CAD-native', 'Robot-agnostic', 'Edge-deployed', 'Lightweight setup'];
+const tags = [
+  {
+    label: 'CAD-native',
+    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/></svg>`,
+  },
+  {
+    label: 'Robot-agnostic',
+    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21h10"/><path d="M7 21v-3h4v3"/><path d="M9 18V12l6-6 3 3"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="6" r="1.6"/><path d="M18 9l2 1.5M18 9l1.5-2"/></svg>`,
+  },
+  {
+    label: 'Edge-deployed',
+    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 6V3M15 6V3M9 21v-3M15 21v-3M6 9H3M6 15H3M21 9h-3M21 15h-3"/></svg>`,
+  },
+  {
+    label: 'Lightweight setup',
+    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 3.8C13 4 6.5 8.5 5 17.5"/><path d="M20.2 3.8c.4 6.5-3.4 12.4-11.6 13.4"/><path d="M5 17.5 3 21"/><path d="M8.5 13.5h5"/></svg>`,
+  },
+];
 ---
 
 <section class="border-y border-sp-border bg-white py-6 md:py-8">
@@ -10,11 +27,13 @@ const tags = ['CAD-native', 'Robot-agnostic', 'Edge-deployed', 'Lightweight setu
           tags.map((tag) => (
             <li class="flex items-center justify-start sm:justify-center gap-2.5">
               <span
-                class="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-sp-green"
+                class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-sp-green-light text-sp-green"
                 aria-hidden="true"
-              />
+              >
+                <Fragment set:html={tag.icon} />
+              </span>
               <span class="text-[13px] sm:text-[14px] font-semibold uppercase tracking-[0.1em] text-sp-body whitespace-nowrap">
-                {tag}
+                {tag.label}
               </span>
             </li>
           ))
