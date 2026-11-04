@@ -32,7 +32,8 @@ variables → Actions → Variables) to the folder URL, without a trailing slash
 https://media.spatia.com/home
 ```
 
-The next deploy uses it. Leave it unset to serve media from `public/media/home/` instead.
+The next deploy uses it. Left unset, production builds use the `spatia` R2 bucket
+set as `CDN_BASE` in `assets.ts`, and `astro dev` uses `public/media/home/`.
 Locally, copy `.env.example` to `.env` to try the CDN URLs.
 
 ## Suggested CDN setup (Cloudflare R2)

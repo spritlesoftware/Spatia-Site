@@ -40,12 +40,17 @@ export type AssetId = keyof typeof ASSETS;
 
 const MEDIA_DIR = path.resolve(process.cwd(), 'public', 'media', 'home');
 
+/** The `spatia` R2 bucket, used by production builds unless overridden. */
+const CDN_BASE = 'https://pub-eba1cdb8384d4659af0e70f101edceed.r2.dev/home';
+
 /**
- * Where media files are served from. Unset, they come from this site's
- * /media/home/ folder; set PUBLIC_MEDIA_BASE (e.g. https://media.spatia.com/home)
- * to serve them from a CDN instead.
+ * Where media files are served from. PUBLIC_MEDIA_BASE wins when set;
+ * otherwise production builds use the R2 bucket and `astro dev` uses this
+ * site's /media/home/ folder.
  */
-const MEDIA_BASE = (import.meta.env.PUBLIC_MEDIA_BASE || '/media/home').replace(/\/+$/, '');
+const MEDIA_BASE = (
+  import.meta.env.PUBLIC_MEDIA_BASE || (import.meta.env.PROD ? CDN_BASE : '/media/home')
+).replace(/\/+$/, '');
 
 /**
  * Files already uploaded to the media CDN. Videos are git-ignored, so the
