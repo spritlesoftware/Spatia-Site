@@ -77,11 +77,11 @@ export default {
       },
       fontSize: {
         // legacy
-        'mono-technical': ['16px', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '400' }],
-        'label-sm':       ['15px', { lineHeight: '1',   letterSpacing: '0.05em', fontWeight: '500' }],
+        'mono-technical': ['15px', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '400' }],
+        'label-sm':       ['14px', { lineHeight: '1',   letterSpacing: '0.05em', fontWeight: '500' }],
         'headline-md':    ['24px', { lineHeight: '1.3', letterSpacing: '-0.01em', fontWeight: '500' }],
-        'body-lg':        ['20px', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' }],
-        'body-md':        ['18px', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' }],
+        'body-lg':        ['19px', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' }],
+        'body-md':        ['17px', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' }],
         'headline-lg':    ['40px', { lineHeight: '1.2', letterSpacing: '-0.02em', fontWeight: '600' }],
         'display-xl':     ['72px', { lineHeight: '1.1', letterSpacing: '-0.04em', fontWeight: '700' }],
       },

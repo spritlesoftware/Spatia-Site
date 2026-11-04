@@ -31,7 +31,7 @@ const causes = [
       >
         Six numbers, not a confidence score.
       </h2>
-      <p class="reveal mb-10 max-w-[34rem] text-[18px] leading-[1.7] text-white/65">
+      <p class="reveal mb-10 max-w-[34rem] text-[17px] leading-[1.7] text-white/65">
         A 6D pose is the part’s position along three axes and its rotation about each of them.
         It is an explicit, checkable value that motion planning can use directly.
       </p>
@@ -40,8 +40,8 @@ const causes = [
         {pose.map((p) => (
           <div class="rounded-[14px] border border-white/10 bg-white/[0.04] p-4">
             <span class="mb-3 block h-[3px] w-6 rounded-full" style={`background:${p.color}`}></span>
-            <span class="block font-mono text-[20px] font-semibold text-white">{p.k}</span>
-            <span class="block text-[14px] text-white/45">{p.label}</span>
+            <span class="block font-mono text-[19px] font-semibold text-white">{p.k}</span>
+            <span class="block text-[13px] text-white/45">{p.label}</span>
           </div>
         ))}
       </div>
@@ -56,7 +56,7 @@ const causes = [
       >
         Debuggable, not a black box.
       </h3>
-      <p class="reveal mb-8 max-w-[34rem] text-[18px] leading-[1.7] text-white/65">
+      <p class="reveal mb-8 max-w-[34rem] text-[17px] leading-[1.7] text-white/65">
         Because the pose is explicit, a missed pick can be traced to one of a handful of causes,
         each with a clear fix.
       </p>
@@ -64,10 +64,10 @@ const causes = [
       <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {causes.map((c, i) => (
           <div class:list={['reveal rounded-[16px] border border-white/10 bg-white/[0.04] p-5', `reveal-delay-${(i % 2) + 1}`]}>
-            <span class="mb-2 flex items-center gap-2 text-[17px] font-semibold text-white">
+            <span class="mb-2 flex items-center gap-2 text-[16px] font-semibold text-white">
               <span class="h-1.5 w-1.5 rounded-full bg-[#5FD3A5]"></span>{c.title}
             </span>
-            <p class="text-[16px] leading-[1.65] text-white/60">{c.body}</p>
+            <p class="text-[15px] leading-[1.65] text-white/60">{c.body}</p>
           </div>
         ))}
       </div>

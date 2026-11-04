@@ -45,7 +45,7 @@ const bracket = 'M-20 -16h40v12h-26v20h-14z';
           </p>
           <ul class="mt-6 flex flex-wrap gap-2 md:mt-auto md:pt-6" aria-hidden="true">
             {['Images', 'Labels', 'Retraining'].map((t) => (
-              <li class="inline-flex items-center gap-1.5 rounded-full border border-sp-border bg-[#F7FAFA] px-3 py-1 text-[14px] font-medium text-sp-body/60 line-through decoration-sp-body/40">
+              <li class="inline-flex items-center gap-1.5 rounded-full border border-sp-border bg-[#F7FAFA] px-3 py-1 text-[13px] font-medium text-sp-body/60 line-through decoration-sp-body/40">
                 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
                 {t}
               </li>
@@ -94,7 +94,7 @@ const bracket = 'M-20 -16h40v12h-26v20h-14z';
               <path d="M0-5v10M-5 0h10" stroke-width="1.2" />
             </g>
           </svg>
-          <span class="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-white px-2.5 py-1 font-mono text-[12px] font-semibold tracking-[0.12em] text-sp-green shadow-[0_2px_8px_rgba(17,24,39,0.06)]">
+          <span class="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-white px-2.5 py-1 font-mono text-[11px] font-semibold tracking-[0.12em] text-sp-green shadow-[0_2px_8px_rgba(17,24,39,0.06)]">
             <span class="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-[#10B981] align-middle"></span>LOCKED
           </span>
         </div>
@@ -162,8 +162,8 @@ const bracket = 'M-20 -16h40v12h-26v20h-14z';
         <div class="adv-visual order-1 flex items-center justify-center p-5 md:order-2 lg:p-6" aria-hidden="true">
           <div class="relative w-full max-w-[320px] rounded-2xl border border-sp-border bg-white p-4 shadow-[0_18px_40px_-24px_rgba(17,24,39,0.25)]">
             <div class="mb-3 flex items-center justify-between">
-              <span class="font-mono text-[12px] font-semibold tracking-[0.16em] text-sp-body/60">6D POSE</span>
-              <span class="flex items-center gap-1.5 font-mono text-[12px] font-semibold tracking-[0.12em] text-[#10B981]">
+              <span class="font-mono text-[11px] font-semibold tracking-[0.16em] text-sp-body/60">6D POSE</span>
+              <span class="flex items-center gap-1.5 font-mono text-[11px] font-semibold tracking-[0.12em] text-[#10B981]">
                 <span class="relative flex h-1.5 w-1.5">
                   <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#10B981] opacity-60"></span>
                   <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#10B981]"></span>
@@ -174,9 +174,9 @@ const bracket = 'M-20 -16h40v12h-26v20h-14z';
             <div class="grid grid-cols-3 gap-1.5">
               {pose.map((p) => (
                 <div class="rounded-lg bg-[#F7FAFA] px-2.5 py-2">
-                  <div class="font-mono text-[11px] font-semibold tracking-[0.12em] text-sp-body/50">{p.k}</div>
-                  <div class="font-mono text-[15px] font-semibold tabular-nums text-sp-heading">
-                    <span data-pose={p.v}>{p.v}</span><span class="ml-0.5 text-[12px] font-medium text-sp-body/50">{p.u}</span>
+                  <div class="font-mono text-[10px] font-semibold tracking-[0.12em] text-sp-body/50">{p.k}</div>
+                  <div class="font-mono text-[14px] font-semibold tabular-nums text-sp-heading">
+                    <span data-pose={p.v}>{p.v}</span><span class="ml-0.5 text-[11px] font-medium text-sp-body/50">{p.u}</span>
                   </div>
                 </div>
               ))}
@@ -184,8 +184,8 @@ const bracket = 'M-20 -16h40v12h-26v20h-14z';
             <div class="mt-4 space-y-1.5 border-t border-sp-border pt-4">
               {causes.map((c, i) => (
                 <div class="dbg-row flex items-center justify-between rounded-lg px-2.5 py-1.5" data-cause={i}>
-                  <span class="text-[14.5px] font-medium text-sp-heading">{c}</span>
-                  <span class="dbg-status flex items-center gap-1.5 font-mono text-[12px] font-semibold tracking-[0.1em]">
+                  <span class="text-[13.5px] font-medium text-sp-heading">{c}</span>
+                  <span class="dbg-status flex items-center gap-1.5 font-mono text-[11px] font-semibold tracking-[0.1em]">
                     <span class="dbg-dot h-1.5 w-1.5 rounded-full"></span>
                     <span class="dbg-label">OK</span>
                   </span>
@@ -231,14 +231,14 @@ const bracket = 'M-20 -16h40v12h-26v20h-14z';
   }
   .adv-index {
     font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.14em;
     color: rgba(75, 85, 99, 0.5);
   }
   .adv-title {
     margin-top: 1.1rem;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 600;
     line-height: 1.3;
     letter-spacing: -0.02em;
@@ -246,7 +246,7 @@ const bracket = 'M-20 -16h40v12h-26v20h-14z';
   }
   .adv-body {
     margin-top: 0.5rem;
-    font-size: 16.5px;
+    font-size: 15.5px;
     line-height: 1.65;
     color: #4B5563;
   }

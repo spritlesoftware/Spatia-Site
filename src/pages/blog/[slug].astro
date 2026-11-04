@@ -56,7 +56,7 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('en-US', {
         <!-- Back link -->
         <a
           href="/blog"
-          class="inline-flex items-center gap-2 text-sp-body hover:text-sp-heading text-[13px] font-semibold tracking-[0.15em] uppercase transition-colors duration-200 mb-10 reveal"
+          class="inline-flex items-center gap-2 text-sp-body hover:text-sp-heading text-[12px] font-semibold tracking-[0.15em] uppercase transition-colors duration-200 mb-10 reveal"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 12H5M12 5l-7 7 7 7"/>
@@ -78,16 +78,16 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('en-US', {
         <!-- Subtitle -->
         <p
           class="mt-5 text-sp-body leading-[1.7] max-w-[560px] reveal reveal-delay-2"
-          style="font-size: 18px;"
+          style="font-size: 17px;"
         >
           {post.data.description}
         </p>
 
         <!-- Meta -->
         <div class="flex flex-wrap items-center gap-3 mt-8 reveal reveal-delay-3">
-          <span class="text-[14px] font-semibold tracking-[0.08em] text-sp-body">{dateFormatted}</span>
-          <span style="color: #D1D5DB; font-size: 12px;">·</span>
-          <span class="text-[14px] font-medium tracking-[0.04em] text-[#9CA3AF]">{post.data.readTime}</span>
+          <span class="text-[13px] font-semibold tracking-[0.08em] text-sp-body">{dateFormatted}</span>
+          <span style="color: #D1D5DB; font-size: 11px;">·</span>
+          <span class="text-[13px] font-medium tracking-[0.04em] text-[#9CA3AF]">{post.data.readTime}</span>
         </div>
 
       </div>
@@ -113,7 +113,7 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('en-US', {
       <div class="hidden xl:block fixed left-8 top-0 bottom-0 pointer-events-none z-40">
         <div class="sticky top-1/2 -translate-y-1/2 flex flex-col items-center gap-3 pointer-events-auto opacity-0 transition-opacity duration-500" id="share-buttons">
           <span
-            class="text-[11px] font-semibold tracking-[0.2em] uppercase mb-1"
+            class="text-[10px] font-semibold tracking-[0.2em] uppercase mb-1"
             style="color: #667085; writing-mode: vertical-rl; transform: rotate(180deg);"
           >Share</span>
           <button
@@ -185,7 +185,7 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('en-US', {
                 >
                   {r.data.title}
                 </h3>
-                <p class="mt-2 text-sp-body" style="font-size: 18px; line-height: 1.7;">
+                <p class="mt-2 text-sp-body" style="font-size: 17px; line-height: 1.7;">
                   {r.data.description}
                 </p>
               </a>
@@ -222,7 +222,7 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('en-US', {
   }
 
   .blog-content p {
-    font-size: 21px;
+    font-size: 20px;
     line-height: 1.85;
     color: #374151;
     margin-bottom: 1.5rem;
@@ -254,7 +254,7 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('en-US', {
   }
 
   .blog-content li {
-    font-size: 21px;
+    font-size: 20px;
     line-height: 1.85;
     color: #374151;
     margin-bottom: 0.5rem;

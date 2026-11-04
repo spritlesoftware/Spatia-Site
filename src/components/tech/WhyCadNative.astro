@@ -31,7 +31,7 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
       >
         Most factory vision stalls between the demo and the line.
       </h2>
-      <p class="text-[18px] leading-[1.7] text-sp-body">
+      <p class="text-[17px] leading-[1.7] text-sp-body">
         The geometry of every part already exists in your CAD. We built perception that uses it,
         instead of relearning each part from photos.
       </p>
@@ -41,16 +41,16 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
       {problems.map((p, i) => (
         <article class:list={['reveal flex flex-col overflow-hidden rounded-[20px] border border-sp-border bg-white', `reveal-delay-${i + 1}`]}>
           <div class="flex-1 p-6 lg:p-7">
-            <span class="mb-4 block font-mono text-[13px] font-semibold tracking-[0.14em] text-sp-body/50">{pad(i)} · THE PROBLEM</span>
-            <h3 class="mb-2 text-[21px] font-semibold leading-tight tracking-[-0.02em] text-sp-heading">{p.title}</h3>
-            <p class="text-[17px] leading-[1.7] text-sp-body">{p.body}</p>
+            <span class="mb-4 block font-mono text-[12px] font-semibold tracking-[0.14em] text-sp-body/50">{pad(i)} · THE PROBLEM</span>
+            <h3 class="mb-2 text-[20px] font-semibold leading-tight tracking-[-0.02em] text-sp-heading">{p.title}</h3>
+            <p class="text-[16px] leading-[1.7] text-sp-body">{p.body}</p>
           </div>
           <div class="border-t border-sp-border bg-[#F4F8F8] p-6 lg:p-7">
-            <span class="mb-2 flex items-center gap-2 font-mono text-[13px] font-semibold tracking-[0.14em] text-sp-green">
+            <span class="mb-2 flex items-center gap-2 font-mono text-[12px] font-semibold tracking-[0.14em] text-sp-green">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12.5 10 17.5 19 7"/></svg>
               SPATIA NEXA
             </span>
-            <p class="text-[17px] leading-[1.7] text-sp-heading">{p.answer}</p>
+            <p class="text-[16px] leading-[1.7] text-sp-heading">{p.answer}</p>
           </div>
         </article>
       ))}

@@ -26,7 +26,7 @@ const { perspectives } = Astro.props;
       <div>
         <div class="flex items-center gap-3 mb-4">
           <div class="w-8 h-px" style="background: #1F7A5A;"></div>
-          <span class="text-[12px] font-semibold tracking-[0.22em] uppercase" style="color: #1F7A5A;">Continue Reading</span>
+          <span class="text-[11px] font-semibold tracking-[0.22em] uppercase" style="color: #1F7A5A;">Continue Reading</span>
         </div>
         <h2
           class="text-[#111827] font-bold tracking-[-0.025em] leading-[1.1]"
@@ -37,7 +37,7 @@ const { perspectives } = Astro.props;
       </div>
       <a
         href="/humans"
-        class="inline-flex items-center gap-2 text-[15px] font-semibold transition-colors duration-200 flex-shrink-0"
+        class="inline-flex items-center gap-2 text-[14px] font-semibold transition-colors duration-200 flex-shrink-0"
         style="color: #667085;"
         onmouseover="this.style.color='#1F7A5A'"
         onmouseout="this.style.color='#667085'"
@@ -78,22 +78,22 @@ const { perspectives } = Astro.props;
           <div class="p-6 flex flex-col flex-1 gap-3">
             <!-- Role chip -->
             <span
-              class="self-start text-[12px] font-semibold tracking-[0.18em] uppercase px-2.5 py-1 rounded-full"
+              class="self-start text-[11px] font-semibold tracking-[0.18em] uppercase px-2.5 py-1 rounded-full"
               style="color: #1F7A5A; background: #EEF8F2;"
             >
               {p.role}
             </span>
 
             <!-- Headline -->
-            <h3 class="text-[#111827] font-semibold text-[18px] leading-[1.45] tracking-[-0.01em] flex-1">
+            <h3 class="text-[#111827] font-semibold text-[17px] leading-[1.45] tracking-[-0.01em] flex-1">
               {p.heroTitle}
             </h3>
 
             <!-- Footer: name + read time + arrow -->
             <div class="flex items-center justify-between mt-2 pt-4 border-t" style="border-color: #E8ECEF;">
               <div>
-                <p class="text-[15px] font-semibold text-[#111827]">{p.name}</p>
-                <p class="text-[13px] text-[#667085]">{p.readTime}</p>
+                <p class="text-[14px] font-semibold text-[#111827]">{p.name}</p>
+                <p class="text-[12px] text-[#667085]">{p.readTime}</p>
               </div>
               <div
                 class="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"

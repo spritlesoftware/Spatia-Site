@@ -49,7 +49,7 @@ const readout = [
         <span class="block bg-gradient-to-r from-[#8FD2D8] via-[#5FD3A5] to-[#8FD2D8] bg-clip-text pb-[0.08em] text-transparent">a robot that acts.</span>
       </h1>
 
-      <p class="reveal reveal-delay-1 mt-6 max-w-[34rem] text-[18px] leading-[1.7] text-white/70 md:text-[20px]">
+      <p class="reveal reveal-delay-1 mt-6 max-w-[34rem] text-[17px] leading-[1.7] text-white/70 md:text-[19px]">
         Physical AI that is CAD-native, deterministic and needs no training data. Spatia Nexa
         turns the model you already have into an exact 6D pose, then carries that pose all the
         way to robot motion.
@@ -58,14 +58,14 @@ const readout = [
       <div class="reveal reveal-delay-2 mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
         <a
           href="#pipeline"
-          class="inline-flex h-[48px] items-center justify-center gap-2 rounded-full bg-white px-7 text-[17px] font-semibold text-sp-heading transition-shadow duration-300 hover:shadow-[0_0_0_6px_rgba(255,255,255,0.08)]"
+          class="inline-flex h-[48px] items-center justify-center gap-2 rounded-full bg-white px-7 text-[16px] font-semibold text-sp-heading transition-shadow duration-300 hover:shadow-[0_0_0_6px_rgba(255,255,255,0.08)]"
         >
           See how it works
           <span aria-hidden="true">&darr;</span>
         </a>
         <a
           href="/contact?interest=send-a-part"
-          class="inline-flex h-[48px] items-center justify-center rounded-full border border-white/20 px-7 text-[17px] font-semibold text-white transition-colors duration-200 hover:border-white/40 hover:bg-white/5"
+          class="inline-flex h-[48px] items-center justify-center rounded-full border border-white/20 px-7 text-[16px] font-semibold text-white transition-colors duration-200 hover:border-white/40 hover:bg-white/5"
         >
           Send us a part
         </a>
@@ -75,7 +75,7 @@ const readout = [
     <!-- Visual: CAD snaps onto the depth scan -->
     <div class="reveal reveal-delay-2 lg:col-span-6">
       <div class="relative mx-auto max-w-[560px] rounded-[28px] border border-white/10 bg-white/[0.03] p-4 backdrop-blur-sm sm:p-6">
-        <div class="mb-3 flex items-center justify-between font-mono text-[13px] tracking-[0.14em] text-white/45">
+        <div class="mb-3 flex items-center justify-between font-mono text-[12px] tracking-[0.14em] text-white/45">
           <span>RGB-D · SCENE</span>
           <span class="th-lock flex items-center gap-1.5 text-[#5FD3A5]">
             <span class="h-1.5 w-1.5 rounded-full bg-[#5FD3A5]"></span>POSE LOCKED
@@ -111,8 +111,8 @@ const readout = [
         <div class="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-6">
           {readout.map((r) => (
             <div class="rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-2 text-center">
-              <span class="block font-mono text-[14px] font-semibold text-white/85">{r.k}</span>
-              <span class="block font-mono text-[12px] tracking-[0.1em] text-white/40">{r.unit}</span>
+              <span class="block font-mono text-[13px] font-semibold text-white/85">{r.k}</span>
+              <span class="block font-mono text-[11px] tracking-[0.1em] text-white/40">{r.unit}</span>
             </div>
           ))}
         </div>

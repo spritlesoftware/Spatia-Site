@@ -42,7 +42,7 @@ const faqs = [
       >
         Questions engineers ask us.
       </h2>
-      <p class="text-[18px] leading-[1.7] text-sp-body">
+      <p class="text-[17px] leading-[1.7] text-sp-body">
         Something else? <a href="/contact" class="font-semibold text-sp-green underline-offset-4 hover:underline">Get in touch</a>.
       </p>
     </div>
@@ -50,13 +50,13 @@ const faqs = [
     <div class="reveal lg:col-span-8">
       {faqs.map((f, i) => (
         <details class="faq group border-b border-sp-border" open={i === 0}>
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-[19px] font-semibold text-sp-heading">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-[18px] font-semibold text-sp-heading">
             {f.q}
             <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-sp-border text-sp-green transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
             </span>
           </summary>
-          <p class="max-w-[44rem] pb-6 text-[18px] leading-[1.7] text-sp-body">{f.a}</p>
+          <p class="max-w-[44rem] pb-6 text-[17px] leading-[1.7] text-sp-body">{f.a}</p>
         </details>
       ))}
     </div>
