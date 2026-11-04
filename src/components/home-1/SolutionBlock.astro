@@ -21,9 +21,11 @@ interface Props {
   cta: { label: string; href: string };
   /** Alternate the media block between left and right. */
   flip?: boolean;
+  /** Cover the main media with "Coming soon" until its file exists. */
+  mediaComingSoon?: boolean;
 }
 
-const { number, title, tagline, body, main, chips = [], badge, cta, flip = false } = Astro.props;
+const { number, title, tagline, body, main, chips = [], badge, cta, flip = false, mediaComingSoon = false } = Astro.props;
 
 const scenes = [...new Set(chips.flatMap((c) => (c.scene ? [c.scene] : [])))];
 
@@ -44,14 +46,14 @@ const badgeTone = {
     <!-- Copy -->
     <div class="lg:col-span-5">
       <div class="mb-4 flex flex-wrap items-center gap-3">
-        <span class="font-mono text-[12px] font-semibold tracking-[0.1em] text-sp-green/70">
+        <span class="font-mono text-[14px] font-semibold tracking-[0.1em] text-sp-green/70">
           {number}
         </span>
         {
           badge && (
             <span
               class:list={[
-                'rounded-full border px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.08em]',
+                'rounded-full border px-2.5 py-0.5 text-[13px] font-semibold uppercase tracking-[0.08em]',
                 badgeTone[badge.tone],
               ]}
             >
@@ -68,15 +70,15 @@ const badgeTone = {
         {title}
       </h3>
 
-      <p class="mb-4 text-[15px] font-medium leading-[1.6] text-sp-green">{tagline}</p>
-      <p class="text-[16px] leading-[1.7] text-sp-body">{body}</p>
+      <p class="mb-4 text-[17px] font-medium leading-[1.6] text-sp-green">{tagline}</p>
+      <p class="text-[18px] leading-[1.7] text-sp-body">{body}</p>
 
       <a
         href={cta.href}
-        class="mt-7 inline-flex items-center justify-center rounded-md px-6 py-3 text-[14px] font-semibold text-white transition-all duration-200 active:scale-[0.98]"
-        style="background-color: #111827;"
-        onmouseover="this.style.backgroundColor='#000000'"
-        onmouseout="this.style.backgroundColor='#111827'"
+        class="mt-7 inline-flex items-center justify-center rounded-md px-6 py-3 text-[16px] font-semibold text-white transition-all duration-200 active:scale-[0.98]"
+        style="background-color: #1E686E;"
+        onmouseover="this.style.backgroundColor='#17545A'"
+        onmouseout="this.style.backgroundColor='#1E686E'"
       >
         {cta.label}
         <span class="ml-2" aria-hidden="true">&rarr;</span>
@@ -97,6 +99,7 @@ const badgeTone = {
               id={id}
               ratio="16 / 10"
               class="rounded-[20px] border border-sp-border"
+              comingSoon={mediaComingSoon}
             />
           ))
         }
@@ -124,15 +127,15 @@ const badgeTone = {
                 ) : chip.asset ? (
                   <MediaSlot id={chip.asset} ratio="4 / 3" class="rounded-[10px]" />
                 ) : null}
-                <p class="mt-2 px-1 text-[12.5px] font-semibold text-sp-heading">{chip.label}</p>
-                {chip.line && <p class="px-1 text-[11.5px] leading-snug text-sp-body">{chip.line}</p>}
+                <p class="mt-2 px-1 text-[14.5px] font-semibold text-sp-heading">{chip.label}</p>
+                {chip.line && <p class="px-1 text-[13.5px] leading-snug text-sp-body">{chip.line}</p>}
               </div>
             ))}
           </div>
         ) : (
           <div class="flex flex-wrap gap-2.5">
             {chips.map((chip) => (
-              <span class="rounded-full border border-sp-border bg-white px-3.5 py-1.5 text-[12.5px] font-medium text-sp-body">
+              <span class="rounded-full border border-sp-border bg-white px-3.5 py-1.5 text-[14.5px] font-medium text-sp-body">
                 {chip.label}
               </span>
             ))}

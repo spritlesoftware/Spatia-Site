@@ -24,6 +24,10 @@ jobs:
 
       - name: Build Project
         run: npm run build
+        env:
+          # Media CDN base URL, set under Settings → Secrets and variables → Actions → Variables.
+          # Empty means videos are served from the site's own /media/home/ folder.
+          PUBLIC_MEDIA_BASE: ${{ vars.PUBLIC_MEDIA_BASE }}
 
       - name: Upload Build Files
         uses: appleboy/scp-action@v1

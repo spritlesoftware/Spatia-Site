@@ -2,23 +2,31 @@
 import Layout from '@layouts/Layout.astro';
 import Navbar from '@components/shared/Navbar.astro';
 import TechHero from '@components/tech/TechHero.astro';
-import CoreNarrative from '@components/tech/CoreNarrative.astro';
-import ThreeQuestions from '@components/tech/ThreeQuestions.astro';
-import ModelOfReality from '@components/tech/ModelOfReality.astro';
-import ContinuousWorld from '@components/tech/ContinuousWorld.astro';
-import TechIndustryGrid from '@components/tech/TechIndustryGrid.astro';
+import WhyCadNative from '@components/tech/WhyCadNative.astro';
+import Pipeline from '@components/tech/Pipeline.astro';
+import PoseExplained from '@components/tech/PoseExplained.astro';
+import Principles from '@components/tech/Principles.astro';
+import TechSolutions from '@components/tech/TechSolutions.astro';
+import TechFaq from '@components/tech/TechFaq.astro';
+import ConversionBand from '@components/home-1/ConversionBand.astro';
 import Footer from '@components/shared/Footer.astro';
 ---
 
-<Layout title="Technology | Spatia">
+<Layout
+  title="Technology | Spatia AssembleX"
+  description="How Spatia AssembleX turns a CAD model into an exact 6D pose and robot motion. CAD-native, deterministic physical AI with no training data."
+  keywords="CAD-based pose estimation, zero-shot 6D pose, physical AI manufacturing, fixtureless robot picking, RGB-D perception"
+>
   <Navbar activeLink="technology" />
-  <main>
+  <main class="pt-20 md:pt-24">
     <TechHero />
-    <CoreNarrative />
-    <ThreeQuestions />
-    <ModelOfReality />
-    <ContinuousWorld />
-    <TechIndustryGrid />
+    <WhyCadNative />
+    <Pipeline />
+    <PoseExplained />
+    <Principles />
+    <TechSolutions />
+    <TechFaq />
+    <ConversionBand />
   </main>
   <Footer />
 </Layout>

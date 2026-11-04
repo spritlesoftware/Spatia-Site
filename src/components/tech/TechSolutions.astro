@@ -1,0 +1,55 @@
+---
+const solutions = [
+  {
+    number: '01',
+    title: 'Cognitive Assembly',
+    body: 'Finds parts in bins, trays and on conveyors and handles each one, driven straight from your CAD models.',
+    cta: { label: 'See Cognitive Assembly', href: '/#solutions' },
+  },
+  {
+    number: '02',
+    title: 'Dynamic Inspection',
+    body: 'Checks live parts against their design geometry and flags deviations, including on moving parts.',
+    badge: 'Early access',
+    cta: { label: 'Join the early-access list', href: '/contact?interest=dynamic-inspection' },
+  },
+];
+---
+
+<section class="bg-[#F7FAFA] py-16 md:py-[120px]">
+  <div class="px-4 sm:px-8 lg:px-16">
+
+    <div class="reveal mb-12 max-w-[42rem] md:mb-14">
+      <p class="section-label mb-4">Built on AssembleX</p>
+      <h2
+        class="font-inter font-bold leading-[1.1] tracking-[-0.025em] text-sp-heading"
+        style="font-size: clamp(26px, 3vw, 44px);"
+      >
+        One pose engine, applied to the line.
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+      {solutions.map((s, i) => (
+        <a
+          href={s.cta.href}
+          class:list={['reveal group flex flex-col rounded-[24px] border border-sp-border bg-white p-7 transition-all duration-300 hover:border-sp-green/30 hover:shadow-[0_24px_50px_-30px_rgba(30,104,110,0.45)] lg:p-9', `reveal-delay-${i + 1}`]}
+        >
+          <div class="mb-8 flex items-center justify-between">
+            <span class="font-mono text-[14px] font-semibold tracking-[0.14em] text-sp-green/60">{s.number}</span>
+            {s.badge && (
+              <span class="rounded-full bg-amber-50 px-3 py-1 text-[14px] font-semibold text-amber-700">{s.badge}</span>
+            )}
+          </div>
+          <h3 class="mb-3 text-[24px] font-semibold leading-tight tracking-[-0.02em] text-sp-heading">{s.title}</h3>
+          <p class="mb-8 flex-1 text-[18px] leading-[1.7] text-sp-body">{s.body}</p>
+          <span class="inline-flex items-center gap-2 text-[17px] font-semibold text-sp-green">
+            {s.cta.label}
+            <span class="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
+          </span>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>

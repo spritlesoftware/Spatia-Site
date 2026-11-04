@@ -16,13 +16,16 @@ interface Props {
    * so the fallback is only a bridge, never a second source of truth.
    */
   fallback?: string;
+  /** Show a "Coming soon" cover until the asset file exists. */
+  comingSoon?: boolean;
 }
 
-const { id, ratio = '16 / 9', eager = false, fit = 'cover', class: className = '', fallback } = Astro.props;
+const { id, ratio = '16 / 9', eager = false, fit = 'cover', class: className = '', fallback, comingSoon = false } = Astro.props;
 
 const asset = ASSETS[id];
 const shipped = hasAsset(id);
-const wantsVideo = asset.kind === 'video';
+const soon = comingSoon && !shipped;
+const wantsVideo = asset.kind === 'video' && !soon;
 
 // Videos always emit a real <video> pointed at the manifest path, so the
 // structure is final and dropping the file in is all that is needed. Still
@@ -75,15 +78,27 @@ const pending = ready && !shipped;
   }
 
   {
-    !ready && (
+    soon && (
+      <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[#0B1618] px-4 text-center">
+        <span class="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-[#8FD2D8]">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7 4.5 19 12 7 19.5 7 4.5"/></svg>
+        </span>
+        <span class="font-inter text-[22px] font-bold tracking-[-0.02em] text-white md:text-[26px]">Coming soon</span>
+        <span class="text-[15px] text-white/55">{label}</span>
+      </div>
+    )
+  }
+
+  {
+    !ready && !soon && (
       <div class="absolute inset-0 flex flex-col items-center justify-center gap-1.5 border border-dashed border-sp-green/30 px-4 text-center">
         <span
-          class="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-sp-green"
+          class="font-mono text-[12px] font-semibold uppercase tracking-[0.14em] text-sp-green"
         >
           {asset.id}
         </span>
-        <span class="text-[12px] font-medium leading-snug text-sp-heading/80">{label}</span>
-        <span class="font-mono text-[10px] text-sp-body/70">{asset.file}</span>
+        <span class="text-[14px] font-medium leading-snug text-sp-heading/80">{label}</span>
+        <span class="font-mono text-[12px] text-sp-body/70">{asset.file}</span>
       </div>
     )
   }
@@ -93,10 +108,10 @@ const pending = ready && !shipped;
       <span
         class="pointer-events-none absolute left-2.5 top-2.5 z-10 flex max-w-[calc(100%-1.25rem)] items-center gap-1.5 rounded-full border border-white/20 bg-black/55 px-2.5 py-1 backdrop-blur-sm"
       >
-        <span class="font-mono text-[9.5px] font-semibold tracking-[0.1em] text-white/90">
+        <span class="font-mono text-[11.5px] font-semibold tracking-[0.1em] text-white/90">
           {asset.id}
         </span>
-        <span class="truncate font-mono text-[9.5px] text-white/55">{asset.file}</span>
+        <span class="truncate font-mono text-[11.5px] text-white/55">{asset.file}</span>
       </span>
     )
   }

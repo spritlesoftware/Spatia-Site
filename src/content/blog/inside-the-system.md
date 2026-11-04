@@ -8,6 +8,7 @@ imageUrl: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=900&q=
 imageAlt: "Advanced robotics system in operation"
 date: "2026-07-01"
 featured: true
+draft: true
 seoTitle: "Inside the System: How We Build Intelligent Machines"
 seoDescription: "A closer look at how Spatia designs, builds, and refines intelligent systems that perceive, reason, and act in the real world."
 keywords: "intelligent systems, spatial AI, engineering, perception, reasoning"

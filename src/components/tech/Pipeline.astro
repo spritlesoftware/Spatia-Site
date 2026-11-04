@@ -1,0 +1,96 @@
+---
+const stages = [
+  {
+    title: 'Ingest the CAD',
+    body: 'Start from the model you already have. AssembleX reads the part geometry and renders 600 to 1000 synthetic reference views from it automatically. No photos, no labelling, no training run.',
+    io: ['CAD model', 'Reference views'],
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/></svg>`,
+  },
+  {
+    title: 'Sense the scene',
+    body: 'An RGB-D camera captures colour and depth over the bin, tray or conveyor. Depth gives the system real geometry to compare against, not only pixels.',
+    io: ['Camera', 'RGB + depth frame'],
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.8 12S5.2 5.5 12 5.5 22.2 12 22.2 12 18.8 18.5 12 18.5 1.8 12 1.8 12z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  },
+  {
+    title: 'Locate the part',
+    body: 'The scene is matched against the CAD references to estimate each part’s exact 6D pose: where it is and how it is turned. The part is never trained on, so a new part needs no new model.',
+    io: ['Frame + references', '6D pose'],
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="1.6" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22.4"/><line x1="1.6" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22.4" y2="12"/></svg>`,
+  },
+  {
+    title: 'Plan the motion',
+    body: 'Hand-eye calibration carries the pose into the robot’s frame. The grasp offset you set relative to the part becomes a target, and inverse kinematics with collision checks produce a reachable path.',
+    io: ['Pose + grasp offset', 'Trajectory'],
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="6" r="2.4"/><circle cx="18.5" cy="18" r="2.4"/><path d="M7.9 6h5.6a3.5 3.5 0 0 1 0 7h-3a3.5 3.5 0 0 0 0 7h5.6"/></svg>`,
+  },
+  {
+    title: 'Act and verify',
+    body: 'The robot executes the grasp and placement, and the result is checked. Because every stage hands the next an explicit value, a failure points to the stage that caused it.',
+    io: ['Trajectory', 'Grasp · place · verify'],
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6v5.6"/><path d="M6.4 8.2h11.2l-1.6 4.3H8l-1.6-4.3z"/><path d="M9 12.5v4.4M15 12.5v4.4"/><path d="M8.6 19.6h6.8"/></svg>`,
+  },
+];
+
+const pad = (i: number) => String(i + 1).padStart(2, '0');
+---
+
+<section id="pipeline" class="scroll-mt-24 bg-[#F7FAFA] py-16 md:py-[120px]">
+  <div class="grid grid-cols-1 gap-12 px-4 sm:px-8 lg:grid-cols-12 lg:gap-16 lg:px-16">
+
+    <!-- Intro, pinned while the stages scroll past -->
+    <div class="lg:col-span-4">
+      <div class="reveal lg:sticky lg:top-32">
+        <p class="section-label mb-4">How it works</p>
+        <h2
+          class="mb-5 font-inter font-bold leading-[1.1] tracking-[-0.025em] text-sp-heading"
+          style="font-size: clamp(26px, 3vw, 44px);"
+        >
+          Five stages from CAD to motion.
+        </h2>
+        <p class="mb-8 text-[18px] leading-[1.7] text-sp-body">
+          Each stage takes a defined input and hands an explicit output to the next. Nothing in the
+          chain is a guess the next stage has to trust blindly.
+        </p>
+
+        <div class="rounded-[16px] border border-sp-border bg-white p-5">
+          <span class="mb-2 flex items-center gap-2 font-mono text-[13px] font-semibold tracking-[0.14em] text-sp-green">
+            <span class="h-1.5 w-1.5 rounded-full bg-sp-green"></span>
+            VALIDATION STATUS
+          </span>
+          <p class="text-[16px] leading-[1.65] text-sp-body">
+            Zero-shot pose estimation is validated in simulation. Real-rig validation is in progress.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stages -->
+    <ol class="relative lg:col-span-8">
+      {stages.map((s, i) => (
+        <li class="reveal relative grid grid-cols-[44px_1fr] gap-x-5 pb-6 last:pb-0 sm:gap-x-6">
+          {i < stages.length - 1 && (
+            <span class="absolute bottom-0 left-[21px] top-[52px] w-[2px] rounded-full bg-gradient-to-b from-sp-green/40 to-sp-border" aria-hidden="true"></span>
+          )}
+
+          <span class="relative z-10 flex h-11 w-11 items-center justify-center rounded-full border border-sp-green/30 bg-sp-green-light text-sp-green">
+            <Fragment set:html={s.icon} />
+          </span>
+
+          <div class="rounded-[20px] border border-sp-border bg-white p-6 transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgba(30,104,110,0.45)] lg:p-7">
+            <span class="mb-1.5 block font-mono text-[13px] font-semibold tracking-[0.14em] text-sp-green/60">STAGE {pad(i)}</span>
+            <h3 class="mb-2 text-[22px] font-semibold leading-tight tracking-[-0.02em] text-sp-heading">{s.title}</h3>
+            <p class="text-[18px] leading-[1.7] text-sp-body">{s.body}</p>
+
+            <div class="mt-5 flex flex-wrap items-center gap-2 font-mono text-[14px]">
+              <span class="rounded-md bg-[#F4F8F8] px-2.5 py-1 text-sp-body">{s.io[0]}</span>
+              <span class="text-sp-green" aria-label="becomes">&rarr;</span>
+              <span class="rounded-md bg-sp-green-light px-2.5 py-1 font-semibold text-sp-green">{s.io[1]}</span>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+  </div>
+</section>

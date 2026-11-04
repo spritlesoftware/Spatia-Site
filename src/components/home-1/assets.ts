@@ -40,17 +40,40 @@ export type AssetId = keyof typeof ASSETS;
 
 const MEDIA_DIR = path.resolve(process.cwd(), 'public', 'media', 'home');
 
-/** Public-relative URL for an asset. */
-export const mediaUrl = (id: AssetId) => `/media/home/${ASSETS[id].file}`;
-
-/** True once the real file has been dropped into /public/media/home/. */
-export const hasAsset = (id: AssetId) => fs.existsSync(path.join(MEDIA_DIR, ASSETS[id].file));
+/**
+ * Where media files are served from. Unset, they come from this site's
+ * /media/home/ folder; set PUBLIC_MEDIA_BASE (e.g. https://media.spatia.com/home)
+ * to serve them from a CDN instead.
+ */
+const MEDIA_BASE = (import.meta.env.PUBLIC_MEDIA_BASE || '/media/home').replace(/\/+$/, '');
 
 /**
- * Poster frame is optional: `<name>-poster.webp` next to the video.
+ * Files already uploaded to the media CDN. Videos are git-ignored, so the
+ * deploy build can't see them on disk: add a file here once it is uploaded
+ * so its slot renders the real media instead of a placeholder.
+ */
+const PUBLISHED = new Set<string>([
+  'hero-loop.mp4',
+  'hero-loop-poster.jpg',
+  'assembly-overview.mp4',
+  'assembly-overview-poster.jpg',
+]);
+
+const available = (file: string) =>
+  PUBLISHED.has(file) || fs.existsSync(path.join(MEDIA_DIR, file));
+
+/** URL for an asset, on the CDN when PUBLIC_MEDIA_BASE is set. */
+export const mediaUrl = (id: AssetId) => `${MEDIA_BASE}/${ASSETS[id].file}`;
+
+/** True once the file is published to the CDN or dropped into /public/media/home/. */
+export const hasAsset = (id: AssetId) => available(ASSETS[id].file);
+
+/**
+ * Poster frame is optional: `<name>-poster.webp` or `.jpg` next to the video.
  * Returns undefined when absent so we never emit a 404 poster.
  */
 export const posterFor = (id: AssetId) => {
-  const name = ASSETS[id].file.replace(/\.[^.]+$/, '') + '-poster.webp';
-  return fs.existsSync(path.join(MEDIA_DIR, name)) ? `/media/home/${name}` : undefined;
+  const stem = ASSETS[id].file.replace(/\.[^.]+$/, '') + '-poster';
+  const name = ['webp', 'jpg'].map((ext) => `${stem}.${ext}`).find(available);
+  return name ? `${MEDIA_BASE}/${name}` : undefined;
 };

@@ -1,0 +1,88 @@
+---
+const pose = [
+  { k: 'x', label: 'Position', color: '#F87171' },
+  { k: 'y', label: 'Position', color: '#5FD3A5' },
+  { k: 'z', label: 'Position', color: '#60A5FA' },
+  { k: 'roll', label: 'Orientation', color: '#F87171' },
+  { k: 'pitch', label: 'Orientation', color: '#5FD3A5' },
+  { k: 'yaw', label: 'Orientation', color: '#60A5FA' },
+];
+
+const causes = [
+  { title: 'Calibration', body: 'The camera-to-robot transform has drifted, so a correct pose lands in the wrong place.' },
+  { title: 'Occlusion', body: 'Other parts hide too much of the target for a reliable match.' },
+  { title: 'Lighting', body: 'Glare or poor depth return degrades what the camera sees.' },
+  { title: 'Grasp', body: 'The grasp offset or gripper geometry does not suit the part.' },
+];
+---
+
+<section class="relative isolate overflow-hidden bg-[#0B1618] py-16 md:py-[120px]">
+  <div class="pe-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -left-40 top-0 -z-10 h-[28rem] w-[28rem] rounded-full bg-sp-green/30 blur-[120px]" aria-hidden="true"></div>
+
+  <div class="grid grid-cols-1 gap-12 px-4 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:px-16">
+
+    <!-- Six numbers -->
+    <div>
+      <p class="reveal section-label mb-4 !text-[#8FD2D8]">The output</p>
+      <h2
+        class="reveal mb-5 font-inter font-bold leading-[1.1] tracking-[-0.025em] text-white"
+        style="font-size: clamp(26px, 3vw, 44px);"
+      >
+        Six numbers, not a confidence score.
+      </h2>
+      <p class="reveal mb-10 max-w-[34rem] text-[18px] leading-[1.7] text-white/65">
+        A 6D pose is the part’s position along three axes and its rotation about each of them.
+        It is an explicit, checkable value that motion planning can use directly.
+      </p>
+
+      <div class="reveal grid grid-cols-3 gap-3">
+        {pose.map((p) => (
+          <div class="rounded-[14px] border border-white/10 bg-white/[0.04] p-4">
+            <span class="mb-3 block h-[3px] w-6 rounded-full" style={`background:${p.color}`}></span>
+            <span class="block font-mono text-[20px] font-semibold text-white">{p.k}</span>
+            <span class="block text-[14px] text-white/45">{p.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Traceable failures -->
+    <div>
+      <p class="reveal section-label mb-4 !text-[#8FD2D8]">When something fails</p>
+      <h3
+        class="reveal mb-5 font-inter font-bold leading-[1.15] tracking-[-0.02em] text-white"
+        style="font-size: clamp(22px, 2.2vw, 32px);"
+      >
+        Debuggable, not a black box.
+      </h3>
+      <p class="reveal mb-8 max-w-[34rem] text-[18px] leading-[1.7] text-white/65">
+        Because the pose is explicit, a missed pick can be traced to one of a handful of causes,
+        each with a clear fix.
+      </p>
+
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {causes.map((c, i) => (
+          <div class:list={['reveal rounded-[16px] border border-white/10 bg-white/[0.04] p-5', `reveal-delay-${(i % 2) + 1}`]}>
+            <span class="mb-2 flex items-center gap-2 text-[17px] font-semibold text-white">
+              <span class="h-1.5 w-1.5 rounded-full bg-[#5FD3A5]"></span>{c.title}
+            </span>
+            <p class="text-[16px] leading-[1.65] text-white/60">{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .pe-grid {
+    background-image:
+      linear-gradient(rgba(143, 210, 216, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(143, 210, 216, 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+  }
+</style>

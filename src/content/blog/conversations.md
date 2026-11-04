@@ -8,6 +8,7 @@ imageUrl: "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=900&q=
 imageAlt: "Team discussion in a modern research facility"
 date: "2026-06-15"
 featured: true
+draft: true
 seoTitle: "Conversations: Ideas Shaping Spatial Intelligence"
 seoDescription: "We bring together people who ask better questions and challenge assumptions — because understanding is the first step toward building what matters."
 keywords: "conversations, spatial intelligence, ideas, research culture, Spatia"

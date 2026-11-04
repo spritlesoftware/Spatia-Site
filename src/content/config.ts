@@ -16,6 +16,8 @@ const blog = defineCollection({
       imageAlt: z.string(),
       date: z.coerce.date(),
       featured: z.boolean().default(false),
+      // Hidden from every listing and page until switched back to false.
+      draft: z.boolean().default(false),
 
       // SEO
       seoTitle: z.string(),

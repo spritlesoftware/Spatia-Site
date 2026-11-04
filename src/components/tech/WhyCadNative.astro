@@ -1,0 +1,60 @@
+---
+const problems = [
+  {
+    title: 'Every new part is a new dataset',
+    body: 'Learned vision needs images of each part, labelled and retrained. A product change restarts the cycle.',
+    answer: 'AssembleX starts from the CAD model. A new part needs no photos, labels or training run.',
+  },
+  {
+    title: 'Fixtures do the work vision cannot',
+    body: 'When perception cannot find a part reliably, the line holds it in place with custom jigs instead.',
+    answer: 'The system locates the actual part in real time, reducing or removing the need for fixtures.',
+  },
+  {
+    title: 'A black box is hard to fix',
+    body: 'A confidence score does not say why a pick failed, so every failure turns into an investigation.',
+    answer: 'The output is an explicit 6D pose, so a failure traces back to calibration, occlusion, lighting or grasp.',
+  },
+];
+
+const pad = (i: number) => String(i + 1).padStart(2, '0');
+---
+
+<section class="bg-white py-16 md:py-[120px]">
+  <div class="px-4 sm:px-8 lg:px-16">
+
+    <div class="reveal mb-12 max-w-[44rem] md:mb-16">
+      <p class="section-label mb-4">Why CAD-native</p>
+      <h2
+        class="mb-5 font-inter font-bold leading-[1.1] tracking-[-0.025em] text-sp-heading"
+        style="font-size: clamp(26px, 3vw, 44px);"
+      >
+        Most factory vision stalls between the demo and the line.
+      </h2>
+      <p class="text-[18px] leading-[1.7] text-sp-body">
+        The geometry of every part already exists in your CAD. We built perception that uses it,
+        instead of relearning each part from photos.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+      {problems.map((p, i) => (
+        <article class:list={['reveal flex flex-col overflow-hidden rounded-[20px] border border-sp-border bg-white', `reveal-delay-${i + 1}`]}>
+          <div class="flex-1 p-6 lg:p-7">
+            <span class="mb-4 block font-mono text-[13px] font-semibold tracking-[0.14em] text-sp-body/50">{pad(i)} · THE PROBLEM</span>
+            <h3 class="mb-2 text-[21px] font-semibold leading-tight tracking-[-0.02em] text-sp-heading">{p.title}</h3>
+            <p class="text-[17px] leading-[1.7] text-sp-body">{p.body}</p>
+          </div>
+          <div class="border-t border-sp-border bg-[#F4F8F8] p-6 lg:p-7">
+            <span class="mb-2 flex items-center gap-2 font-mono text-[13px] font-semibold tracking-[0.14em] text-sp-green">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12.5 10 17.5 19 7"/></svg>
+              ASSEMBLEX
+            </span>
+            <p class="text-[17px] leading-[1.7] text-sp-heading">{p.answer}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

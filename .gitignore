@@ -3,3 +3,4 @@ dist/
 .astro/
 public/media/home/assembly-overview.mp4
 *.mp4
+.env
