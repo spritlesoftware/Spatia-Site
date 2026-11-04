@@ -2,6 +2,6 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://spatia.com',
+  site: 'https://www.spatia.sg',
   integrations: [tailwind()],
 });
