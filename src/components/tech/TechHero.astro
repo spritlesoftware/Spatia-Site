@@ -29,24 +29,24 @@ const readout = [
 ];
 ---
 
-<section class="relative isolate overflow-hidden bg-[#070D0E]">
+<section class="relative isolate overflow-hidden bg-[#0E1114]">
   <!-- Atmosphere, shared with the "Send us a part" band -->
   <div class="th-glow pointer-events-none absolute left-[70%] top-1/2 -z-20 h-[40rem] w-[52rem] -translate-x-1/2 -translate-y-1/2 rounded-full" aria-hidden="true"></div>
   <div class="th-floor pointer-events-none absolute inset-x-0 bottom-0 -z-20 h-[45%]" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-[#070D0E] to-transparent" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-[#0E1114] to-transparent" aria-hidden="true"></div>
 
   <div class="grid grid-cols-1 items-center gap-12 px-4 py-16 sm:px-8 md:py-24 lg:grid-cols-12 lg:gap-10 lg:px-16 lg:py-28">
 
     <!-- Copy -->
     <div class="lg:col-span-6">
-      <p class="reveal section-label mb-5 !text-[#8FD2D8]">Technology · Spatia Nexa</p>
+      <p class="reveal section-label mb-5 !text-[#B7C5C3]">Technology · Spatia Nexa</p>
 
       <h1
         class="reveal font-inter font-bold leading-[1.04] tracking-[-0.04em] text-white"
         style="font-size: clamp(34px, 4.6vw, 66px);"
       >
         From a CAD file to
-        <span class="block bg-gradient-to-r from-[#8FD2D8] via-[#5FD3A5] to-[#8FD2D8] bg-clip-text pb-[0.08em] text-transparent">a robot that acts.</span>
+        <span class="block bg-gradient-to-r from-[#B7C5C3] via-[#B7C5C3] to-[#B7C5C3] bg-clip-text pb-[0.08em] text-transparent">a robot that acts.</span>
       </h1>
 
       <p class="reveal reveal-delay-1 mt-6 max-w-[34rem] text-[17px] leading-[1.7] text-white/70 md:text-[19px]">
@@ -77,21 +77,21 @@ const readout = [
       <div class="relative mx-auto max-w-[560px] rounded-[28px] border border-white/10 bg-white/[0.03] p-4 backdrop-blur-sm sm:p-6">
         <div class="mb-3 flex items-center justify-between font-mono text-[12px] tracking-[0.14em] text-white/45">
           <span>RGB-D · SCENE</span>
-          <span class="th-lock flex items-center gap-1.5 text-[#5FD3A5]">
-            <span class="h-1.5 w-1.5 rounded-full bg-[#5FD3A5]"></span>POSE LOCKED
+          <span class="th-lock flex items-center gap-1.5 text-[#B7C5C3]">
+            <span class="h-1.5 w-1.5 rounded-full bg-[#B7C5C3]"></span>POSE LOCKED
           </span>
         </div>
 
         <svg class="block w-full" viewBox="0 0 480 360" fill="none" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A CAD wireframe aligning onto a depth scan of a part, with pose axes">
           <!-- Frame corners -->
-          <path d="M20 44V20h24M460 44V20h-24M20 316v24h24M460 316v24h-24" stroke="#8FD2D8" stroke-width="1.4" opacity=".35" />
+          <path d="M20 44V20h24M460 44V20h-24M20 316v24h24M460 316v24h-24" stroke="#B7C5C3" stroke-width="1.4" opacity=".35" />
 
           <!-- Depth points, offset down 0 so the box sits centred -->
           <g transform="translate(0 -20)">
-            {cloud.map((p) => <circle cx={p.x} cy={p.y} r="1.7" fill="#8FD2D8" opacity={p.o} />)}
+            {cloud.map((p) => <circle cx={p.x} cy={p.y} r="1.7" fill="#B7C5C3" opacity={p.o} />)}
 
             <!-- CAD wireframe -->
-            <g class="th-cad" stroke="#5FD3A5" stroke-width="1.6" stroke-dasharray="5 4">
+            <g class="th-cad" stroke="#B7C5C3" stroke-width="1.6" stroke-dasharray="5 4">
               <path d="M240 110 330 160 240 210 150 160z M150 160v90l90 50 90-50v-90 M240 210v90" />
             </g>
 
@@ -104,7 +104,7 @@ const readout = [
             </g>
           </g>
 
-          <rect class="th-scan" x="20" y="20" width="2" height="320" fill="#8FD2D8" />
+          <rect class="th-scan" x="20" y="20" width="2" height="320" fill="#B7C5C3" />
         </svg>
 
         <!-- 6D readout: labels only, the values come from the live system -->
@@ -124,13 +124,13 @@ const readout = [
 
 <style>
   .th-glow {
-    background: radial-gradient(closest-side, rgba(30, 104, 110, 0.55), rgba(30, 104, 110, 0.15) 55%, transparent);
+    background: radial-gradient(closest-side, rgba(15, 74, 70, 0.55), rgba(15, 74, 70, 0.15) 55%, transparent);
     filter: blur(20px);
   }
   .th-floor {
     background-image:
-      linear-gradient(rgba(143, 210, 216, 0.22) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(143, 210, 216, 0.22) 1px, transparent 1px);
+      linear-gradient(rgba(183, 197, 195, 0.22) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(183, 197, 195, 0.22) 1px, transparent 1px);
     background-size: 64px 64px;
     transform: perspective(520px) rotateX(62deg);
     transform-origin: bottom center;

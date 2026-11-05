@@ -35,7 +35,7 @@ const stages = [
 const pad = (i: number) => String(i + 1).padStart(2, '0');
 ---
 
-<section id="pipeline" class="scroll-mt-24 bg-[#F7FAFA] py-16 md:py-[120px]">
+<section id="pipeline" class="scroll-mt-24 bg-[#B7C5C3] py-16 md:py-[120px]">
   <div class="grid grid-cols-1 gap-12 px-4 sm:px-8 lg:grid-cols-12 lg:gap-16 lg:px-16">
 
     <!-- Intro, pinned while the stages scroll past -->
@@ -77,13 +77,13 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
             <Fragment set:html={s.icon} />
           </span>
 
-          <div class="rounded-[20px] border border-sp-border bg-white p-6 transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgba(30,104,110,0.45)] lg:p-7">
+          <div class="rounded-[20px] border border-sp-border bg-white p-6 transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgba(15, 74, 70,0.45)] lg:p-7">
             <span class="mb-1.5 block font-mono text-[12px] font-semibold tracking-[0.14em] text-sp-green/60">STAGE {pad(i)}</span>
             <h3 class="mb-2 text-[22px] font-semibold leading-tight tracking-[-0.02em] text-sp-heading">{s.title}</h3>
             <p class="text-[17px] leading-[1.7] text-sp-body">{s.body}</p>
 
             <div class="mt-5 flex flex-wrap items-center gap-2 font-mono text-[13px]">
-              <span class="rounded-md bg-[#F4F8F8] px-2.5 py-1 text-sp-body">{s.io[0]}</span>
+              <span class="rounded-md bg-[#E6E6EA] px-2.5 py-1 text-sp-body">{s.io[0]}</span>
               <span class="text-sp-green" aria-label="becomes">&rarr;</span>
               <span class="rounded-md bg-sp-green-light px-2.5 py-1 font-semibold text-sp-green">{s.io[1]}</span>
             </div>

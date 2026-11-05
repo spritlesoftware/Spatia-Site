@@ -23,8 +23,8 @@ const principles = [
 
     <!-- Label -->
     <div class="flex items-center gap-3 mb-10 reveal">
-      <div class="w-8 h-px" style="background: #1F7A5A;"></div>
-      <span class="text-[11px] font-semibold tracking-[0.22em] uppercase" style="color: #1F7A5A;">Engineering Principles</span>
+      <div class="w-8 h-px" style="background: #0F4A46;"></div>
+      <span class="text-[11px] font-semibold tracking-[0.22em] uppercase" style="color: #0F4A46;">Engineering Principles</span>
     </div>
 
     <!-- Cards -->
@@ -36,27 +36,27 @@ const principles = [
             'transition-all duration-400 ease-out reveal',
             `reveal-delay-${i + 1}`,
           ]}
-          style="border-color: #E8ECEF; background: #FFFFFF;"
-          onmouseover="this.style.borderColor='#1F7A5A'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(31,122,90,0.10)'"
-          onmouseout="this.style.borderColor='#E8ECEF'; this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+          style="border-color: #E6E6EA; background: #FFFFFF;"
+          onmouseover="this.style.borderColor='#0F4A46'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(15, 74, 70,0.10)'"
+          onmouseout="this.style.borderColor='#E6E6EA'; this.style.transform='translateY(0)'; this.style.boxShadow='none'"
         >
           <!-- Icon -->
           <div
             class="w-10 h-10 rounded-[10px] flex items-center justify-center flex-shrink-0 transition-colors duration-300"
-            style="background: #EEF8F2; color: #1F7A5A;"
+            style="background: #E6E6EA; color: #0F4A46;"
             set:html={p.icon}
           ></div>
 
           <!-- Title -->
-          <h4 class="text-[#111827] font-semibold text-[16px] tracking-[-0.01em]">{p.title}</h4>
+          <h4 class="text-[#0E1114] font-semibold text-[16px] tracking-[-0.01em]">{p.title}</h4>
 
           <!-- Description -->
-          <p class="text-[#667085] text-[17px] leading-[1.7]">{p.description}</p>
+          <p class="text-[#0E1114] text-[17px] leading-[1.7]">{p.description}</p>
 
           <!-- Bottom accent -->
           <div
             class="absolute bottom-0 left-4 right-4 h-[2px] rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-400"
-            style="background: #1F7A5A;"
+            style="background: #0F4A46;"
           ></div>
         </div>
       ))}

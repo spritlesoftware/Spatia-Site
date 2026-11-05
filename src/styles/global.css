@@ -10,7 +10,7 @@
   body {
     font-family: 'Geist', system-ui, sans-serif;
     background-color: #ffffff;
-    color: #111827;
+    color: #0E1114;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -62,6 +62,6 @@
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #1E686E;
+    color: #0F4A46;
   }
 }

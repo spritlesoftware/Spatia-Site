@@ -2,7 +2,7 @@
 import MediaSlot from './MediaSlot.astro';
 ---
 
-<section class="relative isolate overflow-hidden bg-[#070D0E]">
+<section class="relative isolate overflow-hidden bg-[#0E1114]">
 
   <!-- Background film: the robot loop fills the band -->
   <div class="pointer-events-none absolute inset-0 -z-30" aria-hidden="true">
@@ -13,8 +13,8 @@ import MediaSlot from './MediaSlot.astro';
   <div class="cb-glow pointer-events-none absolute left-1/2 top-[35%] -z-20 h-[38rem] w-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-full" aria-hidden="true"></div>
   <div class="cb-floor pointer-events-none absolute inset-x-0 bottom-0 -z-20 h-[55%]" aria-hidden="true"></div>
   <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(7,13,14,0.85)_100%)]" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-[#070D0E] to-transparent" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-16 bg-gradient-to-t from-[#070D0E] to-transparent" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-[#0E1114] to-transparent" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-16 bg-gradient-to-t from-[#0E1114] to-transparent" aria-hidden="true"></div>
 
   <div class="mx-auto flex min-h-[360px] max-w-[64rem] flex-col items-center justify-center px-6 py-14 text-center md:min-h-[400px] md:py-16">
 
@@ -23,7 +23,7 @@ import MediaSlot from './MediaSlot.astro';
       style="font-size: clamp(34px, 5vw, 72px);"
     >
       <span class="reveal block">Send us a part.</span>
-      <span class="reveal reveal-delay-1 block bg-gradient-to-r from-[#8FD2D8] via-[#5FD3A5] to-[#8FD2D8] bg-clip-text pb-[0.08em] text-transparent">See it handled.</span>
+      <span class="reveal reveal-delay-1 block bg-gradient-to-r from-[#B7C5C3] via-[#B7C5C3] to-[#B7C5C3] bg-clip-text pb-[0.08em] text-transparent">See it handled.</span>
     </h2>
 
     <p class="reveal reveal-delay-2 mx-auto mt-7 max-w-[30rem] text-[17px] leading-[1.7] text-white/65 md:text-[19px]">
@@ -48,7 +48,7 @@ import MediaSlot from './MediaSlot.astro';
 <style>
   /* Slow-breathing teal light behind the headline */
   .cb-glow {
-    background: radial-gradient(closest-side, rgba(30, 104, 110, 0.55), rgba(30, 104, 110, 0.15) 55%, transparent);
+    background: radial-gradient(closest-side, rgba(15, 74, 70, 0.55), rgba(15, 74, 70, 0.15) 55%, transparent);
     filter: blur(20px);
     animation: cb-breathe 9s ease-in-out infinite;
   }
@@ -60,8 +60,8 @@ import MediaSlot from './MediaSlot.astro';
   /* Perspective floor grid receding toward the horizon */
   .cb-floor {
     background-image:
-      linear-gradient(rgba(143, 210, 216, 0.32) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(143, 210, 216, 0.32) 1px, transparent 1px);
+      linear-gradient(rgba(183, 197, 195, 0.32) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(183, 197, 195, 0.32) 1px, transparent 1px);
     background-size: 64px 64px;
     transform: perspective(520px) rotateX(62deg);
     transform-origin: bottom center;

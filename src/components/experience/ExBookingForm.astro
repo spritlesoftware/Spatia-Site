@@ -3,11 +3,11 @@ const formats = ['In person', 'Live remote session'];
 
 // Same field styling as the homepage contact form
 const field =
-  'bf-field block w-full rounded-[10px] border border-[#D5DEE6] bg-[#F3F5F7] px-4 py-3 text-[16px] leading-normal text-sp-heading outline-none transition-all duration-200 placeholder:text-[#8592A3] hover:border-[#B9C6D2] focus:border-sp-green focus:bg-white focus:shadow-[0_0_0_4px_rgba(30,104,110,0.1)]';
+  'bf-field block w-full rounded-[10px] border border-[#D5DEE6] bg-[#F3F5F7] px-4 py-3 text-[16px] leading-normal text-sp-heading outline-none transition-all duration-200 placeholder:text-[#8592A3] hover:border-[#B9C6D2] focus:border-sp-green focus:bg-white focus:shadow-[0_0_0_4px_rgba(15, 74, 70,0.1)]';
 const label = 'mb-2 block text-[14px] font-semibold text-sp-heading';
 ---
 
-<section id="book" class="scroll-mt-24 bg-[#F7FAFA] py-16 md:py-[120px]">
+<section id="book" class="scroll-mt-24 bg-[#B7C5C3] py-16 md:py-[120px]">
   <div class="px-4 sm:px-8 lg:px-16">
     <div class="reveal mx-auto max-w-[44rem]">
 
@@ -48,7 +48,7 @@ const label = 'mb-2 block text-[14px] font-semibold text-sp-heading';
             {formats.map((item, i) => (
               <label class="cursor-pointer">
                 <input type="radio" name="format" value={item} checked={i === 0} class="peer sr-only" />
-                <span class="flex items-center justify-center rounded-[10px] border border-[#D5DEE6] bg-[#F3F5F7] px-4 py-3 text-center text-[15px] font-medium text-sp-body transition-all duration-200 hover:border-sp-green/40 hover:text-sp-heading peer-checked:border-sp-green peer-checked:bg-[#F3F8F8] peer-checked:font-semibold peer-checked:text-sp-green peer-focus-visible:shadow-[0_0_0_4px_rgba(30,104,110,0.15)]">
+                <span class="flex items-center justify-center rounded-[10px] border border-[#D5DEE6] bg-[#F3F5F7] px-4 py-3 text-center text-[15px] font-medium text-sp-body transition-all duration-200 hover:border-sp-green/40 hover:text-sp-heading peer-checked:border-sp-green peer-checked:bg-[#E6E6EA] peer-checked:font-semibold peer-checked:text-sp-green peer-focus-visible:shadow-[0_0_0_4px_rgba(15, 74, 70,0.15)]">
                   {item}
                 </span>
               </label>
@@ -75,7 +75,7 @@ const label = 'mb-2 block text-[14px] font-semibold text-sp-heading';
         <div class="mt-8">
           <button
             type="submit"
-            class="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#123339] px-6 py-4 text-[16px] font-semibold text-white shadow-[0_12px_28px_-14px_rgba(18,51,57,0.8)] transition-all duration-300 hover:bg-[#0B2226] active:scale-[0.99]"
+            class="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#0F4A46] px-6 py-4 text-[16px] font-semibold text-white shadow-[0_12px_28px_-14px_rgba(15, 74, 70,0.8)] transition-all duration-300 hover:bg-[#0A3330] active:scale-[0.99]"
           >
             Request a visit
             <svg class="transition-transform duration-300 group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>

@@ -16,7 +16,7 @@ const causes = [
 ];
 ---
 
-<section class="relative isolate overflow-hidden bg-[#0B1618] py-16 md:py-[120px]">
+<section class="relative isolate overflow-hidden bg-[#0E1114] py-16 md:py-[120px]">
   <div class="pe-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
   <div class="pointer-events-none absolute -left-40 top-0 -z-10 h-[28rem] w-[28rem] rounded-full bg-sp-green/30 blur-[120px]" aria-hidden="true"></div>
 
@@ -24,7 +24,7 @@ const causes = [
 
     <!-- Six numbers -->
     <div>
-      <p class="reveal section-label mb-4 !text-[#8FD2D8]">The output</p>
+      <p class="reveal section-label mb-4 !text-[#B7C5C3]">The output</p>
       <h2
         class="reveal mb-5 font-inter font-bold leading-[1.1] tracking-[-0.025em] text-white"
         style="font-size: clamp(26px, 3vw, 44px);"
@@ -49,7 +49,7 @@ const causes = [
 
     <!-- Traceable failures -->
     <div>
-      <p class="reveal section-label mb-4 !text-[#8FD2D8]">When something fails</p>
+      <p class="reveal section-label mb-4 !text-[#B7C5C3]">When something fails</p>
       <h3
         class="reveal mb-5 font-inter font-bold leading-[1.15] tracking-[-0.02em] text-white"
         style="font-size: clamp(22px, 2.2vw, 32px);"
@@ -65,7 +65,7 @@ const causes = [
         {causes.map((c, i) => (
           <div class:list={['reveal rounded-[16px] border border-white/10 bg-white/[0.04] p-5', `reveal-delay-${(i % 2) + 1}`]}>
             <span class="mb-2 flex items-center gap-2 text-[16px] font-semibold text-white">
-              <span class="h-1.5 w-1.5 rounded-full bg-[#5FD3A5]"></span>{c.title}
+              <span class="h-1.5 w-1.5 rounded-full bg-[#B7C5C3]"></span>{c.title}
             </span>
             <p class="text-[15px] leading-[1.65] text-white/60">{c.body}</p>
           </div>
@@ -79,8 +79,8 @@ const causes = [
 <style>
   .pe-grid {
     background-image:
-      linear-gradient(rgba(143, 210, 216, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(143, 210, 216, 0.06) 1px, transparent 1px);
+      linear-gradient(rgba(183, 197, 195, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(183, 197, 195, 0.06) 1px, transparent 1px);
     background-size: 48px 48px;
     mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);

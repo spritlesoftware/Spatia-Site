@@ -38,7 +38,7 @@ const principles = [
 
     <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
       {principles.map((p, i) => (
-        <div class:list={['reveal group rounded-[20px] border border-sp-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-sp-green/30 hover:shadow-[0_24px_50px_-30px_rgba(30,104,110,0.45)] lg:p-7', `reveal-delay-${(i % 3) + 1}`]}>
+        <div class:list={['reveal group rounded-[20px] border border-sp-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-sp-green/30 hover:shadow-[0_24px_50px_-30px_rgba(15, 74, 70,0.45)] lg:p-7', `reveal-delay-${(i % 3) + 1}`]}>
           <span class="mb-6 flex h-11 w-11 items-center justify-center rounded-[12px] bg-sp-green-light text-sp-green transition-colors duration-300 group-hover:bg-sp-green group-hover:text-white">
             <Fragment set:html={p.icon} />
           </span>

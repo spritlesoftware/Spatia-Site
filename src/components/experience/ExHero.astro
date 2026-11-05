@@ -3,22 +3,22 @@ import { Image } from 'astro:assets';
 import heroImg from '../../assets/experience-centre-hero.jpg';
 ---
 
-<section class="relative isolate overflow-hidden bg-[#070D0E]">
+<section class="relative isolate overflow-hidden bg-[#0E1114]">
   <div class="ex-glow pointer-events-none absolute left-[30%] top-1/2 -z-20 h-[40rem] w-[52rem] -translate-x-1/2 -translate-y-1/2 rounded-full" aria-hidden="true"></div>
   <div class="ex-floor pointer-events-none absolute inset-x-0 bottom-0 -z-20 h-[45%]" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-[#070D0E] to-transparent" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-[#0E1114] to-transparent" aria-hidden="true"></div>
 
   <div class="grid grid-cols-1 items-center gap-12 px-4 py-16 sm:px-8 md:py-24 lg:grid-cols-12 lg:gap-12 lg:px-16 lg:py-28">
 
     <div class="lg:col-span-6">
-      <p class="reveal section-label mb-5 !text-[#8FD2D8]">Experience Centre</p>
+      <p class="reveal section-label mb-5 !text-[#B7C5C3]">Experience Centre</p>
 
       <h1
         class="reveal font-inter font-bold leading-[1.04] tracking-[-0.04em] text-white"
         style="font-size: clamp(34px, 4.6vw, 66px);"
       >
         See Spatia Nexa
-        <span class="block bg-gradient-to-r from-[#8FD2D8] via-[#5FD3A5] to-[#8FD2D8] bg-clip-text pb-[0.08em] text-transparent">run on your parts.</span>
+        <span class="block bg-gradient-to-r from-[#B7C5C3] via-[#B7C5C3] to-[#B7C5C3] bg-clip-text pb-[0.08em] text-transparent">run on your parts.</span>
       </h1>
 
       <p class="reveal reveal-delay-1 mt-6 max-w-[34rem] text-[17px] leading-[1.7] text-white/70 md:text-[18px]">
@@ -61,13 +61,13 @@ import heroImg from '../../assets/experience-centre-hero.jpg';
 
 <style>
   .ex-glow {
-    background: radial-gradient(closest-side, rgba(30, 104, 110, 0.55), rgba(30, 104, 110, 0.15) 55%, transparent);
+    background: radial-gradient(closest-side, rgba(15, 74, 70, 0.55), rgba(15, 74, 70, 0.15) 55%, transparent);
     filter: blur(20px);
   }
   .ex-floor {
     background-image:
-      linear-gradient(rgba(143, 210, 216, 0.22) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(143, 210, 216, 0.22) 1px, transparent 1px);
+      linear-gradient(rgba(183, 197, 195, 0.22) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(183, 197, 195, 0.22) 1px, transparent 1px);
     background-size: 64px 64px;
     transform: perspective(520px) rotateX(62deg);
     transform-origin: bottom center;

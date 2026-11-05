@@ -53,7 +53,7 @@ for (const f of faces) {
 const pad = (i: number) => String(i + 1).padStart(2, '0');
 ---
 
-<section class="bg-[#F7FAFA] py-16 md:py-[120px]">
+<section class="bg-[#B7C5C3] py-16 md:py-[120px]">
   <div class="px-4 sm:px-8 lg:px-16">
 
     <div class="reveal mx-auto max-w-[46rem] text-center">
@@ -105,27 +105,27 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
 
             <!-- Card -->
             <div class="pf-card overflow-hidden rounded-[20px] border border-sp-border bg-white transition-all duration-500 lg:w-full">
-              <div class="pf-visual relative aspect-[5/3] border-b border-sp-border bg-[#F4F8F8]" aria-hidden="true">
+              <div class="pf-visual relative aspect-[5/3] border-b border-sp-border bg-[#E6E6EA]" aria-hidden="true">
                 <svg class="absolute inset-0 h-full w-full" viewBox="0 0 200 120" fill="none" stroke-linecap="round" stroke-linejoin="round">
 
                   {stage.key === 'see' && (
                     <g>
-                      <path d="M14 28V14h14M186 28V14h-14M14 92v14h14M186 92v14h-14" stroke="#1E686E" stroke-width="1.4" opacity=".45" />
-                      {cloud.map((p) => <circle cx={p.x} cy={p.y} r="1.25" fill="#1E686E" opacity={p.o} />)}
-                      <rect class="see-scan" x="14" y="14" width="2" height="92" fill="#1E686E" />
-                      <text x="166" y="104" text-anchor="end" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" letter-spacing="1" fill="#1E686E" opacity=".6">RGB · D</text>
+                      <path d="M14 28V14h14M186 28V14h-14M14 92v14h14M186 92v14h-14" stroke="#0F4A46" stroke-width="1.4" opacity=".45" />
+                      {cloud.map((p) => <circle cx={p.x} cy={p.y} r="1.25" fill="#0F4A46" opacity={p.o} />)}
+                      <rect class="see-scan" x="14" y="14" width="2" height="92" fill="#0F4A46" />
+                      <text x="166" y="104" text-anchor="end" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" letter-spacing="1" fill="#0F4A46" opacity=".6">RGB · D</text>
                     </g>
                   )}
 
                   {stage.key === 'locate' && (
                     <g>
-                      <circle cx="100" cy="61" r="40" stroke="#1E686E" stroke-width="1" stroke-dasharray="2 4" opacity=".35" />
-                      <path d="M100 13v10M100 99v10M52 61h10M138 61h10" stroke="#1E686E" stroke-width="1.2" opacity=".45" />
-                      <g fill="#1E686E" fill-opacity=".1" stroke="#1E686E" stroke-width="1.4">
+                      <circle cx="100" cy="61" r="40" stroke="#0F4A46" stroke-width="1" stroke-dasharray="2 4" opacity=".35" />
+                      <path d="M100 13v10M100 99v10M52 61h10M138 61h10" stroke="#0F4A46" stroke-width="1.2" opacity=".45" />
+                      <g fill="#0F4A46" fill-opacity=".1" stroke="#0F4A46" stroke-width="1.4">
                         <path d="M100 38 122 50 100 62 78 50z" />
                         <path d="M78 50v22l22 12V62zM122 50v22l-22 12V62z" />
                       </g>
-                      <g class="loc-cad" stroke="#1E686E" stroke-width="1.2" stroke-dasharray="3 3">
+                      <g class="loc-cad" stroke="#0F4A46" stroke-width="1.2" stroke-dasharray="3 3">
                         <path d="M100 38 122 50 100 62 78 50z M78 50v22l22 12 22-12V50 M100 62v22" />
                       </g>
                       <g class="loc-axes" stroke-width="1.6">
@@ -136,32 +136,32 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
 
                   {stage.key === 'plan' && (
                     <g>
-                      <path d="M20 96h160" stroke="#1E686E" stroke-width="1" opacity=".3" />
-                      <rect x="84" y="58" width="32" height="38" rx="3" fill="#1E686E" fill-opacity=".08" stroke="#1E686E" stroke-width="1.2" stroke-dasharray="3 3" opacity=".7" />
-                      <path d="M36 86C50 20 150 20 164 86" stroke="#1E686E" stroke-width="1.2" stroke-dasharray="2 4" opacity=".35" />
-                      <path class="plan-draw" d="M36 86C50 20 150 20 164 86" stroke="#1E686E" stroke-width="1.8" pathLength="1" />
-                      <circle cx="60" cy="49" r="2.2" fill="#1E686E" opacity=".5" />
-                      <circle cx="100" cy="36.5" r="2.2" fill="#1E686E" opacity=".5" />
-                      <circle cx="140" cy="49" r="2.2" fill="#1E686E" opacity=".5" />
-                      <circle cx="36" cy="86" r="4" fill="#1E686E" />
-                      <circle cx="164" cy="86" r="5" stroke="#1E686E" stroke-width="1.4" />
-                      <circle cx="164" cy="86" r="1.8" fill="#1E686E" />
-                      <circle class="plan-dot" r="3.2" fill="#fff" stroke="#1E686E" stroke-width="1.6" />
+                      <path d="M20 96h160" stroke="#0F4A46" stroke-width="1" opacity=".3" />
+                      <rect x="84" y="58" width="32" height="38" rx="3" fill="#0F4A46" fill-opacity=".08" stroke="#0F4A46" stroke-width="1.2" stroke-dasharray="3 3" opacity=".7" />
+                      <path d="M36 86C50 20 150 20 164 86" stroke="#0F4A46" stroke-width="1.2" stroke-dasharray="2 4" opacity=".35" />
+                      <path class="plan-draw" d="M36 86C50 20 150 20 164 86" stroke="#0F4A46" stroke-width="1.8" pathLength="1" />
+                      <circle cx="60" cy="49" r="2.2" fill="#0F4A46" opacity=".5" />
+                      <circle cx="100" cy="36.5" r="2.2" fill="#0F4A46" opacity=".5" />
+                      <circle cx="140" cy="49" r="2.2" fill="#0F4A46" opacity=".5" />
+                      <circle cx="36" cy="86" r="4" fill="#0F4A46" />
+                      <circle cx="164" cy="86" r="5" stroke="#0F4A46" stroke-width="1.4" />
+                      <circle cx="164" cy="86" r="1.8" fill="#0F4A46" />
+                      <circle class="plan-dot" r="3.2" fill="#fff" stroke="#0F4A46" stroke-width="1.6" />
                     </g>
                   )}
 
                   {stage.key === 'act' && (
                     <g>
-                      <path d="M30 96h140" stroke="#1E686E" stroke-width="1" opacity=".3" />
-                      <rect class="act-part" x="87" y="80" width="26" height="16" rx="2" fill="#1E686E" fill-opacity=".15" stroke="#1E686E" stroke-width="1.4" />
-                      <g class="act-grip" stroke="#1E686E" stroke-width="1.4">
+                      <path d="M30 96h140" stroke="#0F4A46" stroke-width="1" opacity=".3" />
+                      <rect class="act-part" x="87" y="80" width="26" height="16" rx="2" fill="#0F4A46" fill-opacity=".15" stroke="#0F4A46" stroke-width="1.4" />
+                      <g class="act-grip" stroke="#0F4A46" stroke-width="1.4">
                         <path d="M100 4v26" />
                         <rect x="80" y="30" width="40" height="7" rx="2" fill="#fff" />
                         <rect class="act-fl" x="80" y="37" width="5" height="22" rx="1.5" fill="#fff" />
                         <rect class="act-fr" x="115" y="37" width="5" height="22" rx="1.5" fill="#fff" />
                       </g>
                       <g class="act-ok">
-                        <circle cx="158" cy="30" r="10" fill="#1E686E" />
+                        <circle cx="158" cy="30" r="10" fill="#0F4A46" />
                         <path d="M153.5 30.5l3 3 6-6.5" stroke="#fff" stroke-width="1.8" />
                       </g>
                     </g>
@@ -203,15 +203,15 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
 
   .pf-ping { opacity: 0; }
   .pf-step.is-done .pf-node {
-    border-color: rgba(30, 104, 110, 0.3);
-    background: #E3EFEF;
-    color: #1E686E;
+    border-color: rgba(15, 74, 70, 0.3);
+    background: #E6E6EA;
+    color: #0F4A46;
   }
   .pf-step.is-active .pf-node {
-    border-color: #1E686E;
-    background: #1E686E;
+    border-color: #0F4A46;
+    background: #0F4A46;
     color: #fff;
-    box-shadow: 0 0 0 6px rgba(30, 104, 110, 0.12);
+    box-shadow: 0 0 0 6px rgba(15, 74, 70, 0.12);
   }
   .pf-step.is-active .pf-ping { animation: pf-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite; }
   @keyframes pf-ping {
@@ -222,15 +222,15 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
   /* ── Cards ──────────────────────────────────────── */
   .pf-step { cursor: pointer; }
   .pf-visual {
-    background-image: radial-gradient(rgba(30, 104, 110, 0.12) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(15, 74, 70, 0.12) 1px, transparent 1px);
     background-size: 14px 14px;
   }
   .pf-visual svg { opacity: 0.55; transition: opacity 0.5s ease; }
   .pf-step.is-done .pf-visual svg { opacity: 0.8; }
   .pf-step.is-active .pf-visual svg { opacity: 1; }
   .pf-step.is-active .pf-card {
-    border-color: rgba(30, 104, 110, 0.4);
-    box-shadow: 0 24px 50px -28px rgba(30, 104, 110, 0.5);
+    border-color: rgba(15, 74, 70, 0.4);
+    box-shadow: 0 24px 50px -28px rgba(15, 74, 70, 0.5);
     transform: translateY(-4px);
   }
 

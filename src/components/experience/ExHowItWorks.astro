@@ -33,7 +33,7 @@ const steps = [
 const pad = (i: number) => String(i + 1).padStart(2, '0');
 ---
 
-<section id="how" class="scroll-mt-24 relative isolate overflow-hidden bg-[#F7FAFA] py-16 md:py-[120px]">
+<section id="how" class="scroll-mt-24 relative isolate overflow-hidden bg-[#B7C5C3] py-16 md:py-[120px]">
   <div class="hw-dots pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
 
   <div class="px-4 sm:px-8 lg:px-16">
@@ -68,12 +68,12 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
           )}
 
           <!-- Node -->
-          <span class="hw-node relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-sp-green bg-white text-sp-green shadow-[0_0_0_6px_#F7FAFA] lg:mx-auto lg:mb-6">
+          <span class="hw-node relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-sp-green bg-white text-sp-green shadow-[0_0_0_6px_#B7C5C3] lg:mx-auto lg:mb-6">
             <Fragment set:html={s.icon} />
           </span>
 
           <!-- Card -->
-          <div class="hw-card group flex flex-col rounded-[20px] lg:flex-1 border border-sp-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-sp-green/30 hover:shadow-[0_24px_50px_-30px_rgba(30,104,110,0.45)] lg:p-7">
+          <div class="hw-card group flex flex-col rounded-[20px] lg:flex-1 border border-sp-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-sp-green/30 hover:shadow-[0_24px_50px_-30px_rgba(15, 74, 70,0.45)] lg:p-7">
             <div class="mb-4 flex items-center justify-between">
               <span class="font-mono text-[12px] font-semibold tracking-[0.14em] text-sp-green/60">STEP {pad(i)}</span>
               <span class:list={[
@@ -97,7 +97,7 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
     <div class="reveal mt-12 flex flex-col items-center gap-3 text-center md:mt-16">
       <a
         href="#book"
-        class="group inline-flex h-[48px] items-center justify-center gap-2 rounded-full bg-[#123339] px-8 text-[15px] font-semibold text-white shadow-[0_12px_28px_-14px_rgba(18,51,57,0.8)] transition-all duration-300 hover:bg-[#0B2226]"
+        class="group inline-flex h-[48px] items-center justify-center gap-2 rounded-full bg-[#0F4A46] px-8 text-[15px] font-semibold text-white shadow-[0_12px_28px_-14px_rgba(15, 74, 70,0.8)] transition-all duration-300 hover:bg-[#0A3330]"
       >
         Book a visit
         <svg class="transition-transform duration-300 group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
@@ -110,7 +110,7 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
 
 <style>
   .hw-dots {
-    background-image: radial-gradient(rgba(30, 104, 110, 0.12) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(15, 74, 70, 0.12) 1px, transparent 1px);
     background-size: 18px 18px;
     mask-image: radial-gradient(ellipse at 50% 45%, #000 15%, transparent 70%);
     -webkit-mask-image: radial-gradient(ellipse at 50% 45%, #000 15%, transparent 70%);

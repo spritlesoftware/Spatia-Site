@@ -5,12 +5,18 @@ export default {
     extend: {
       colors: {
         // ── Spatia Design System ──────────────────────────────
-        'sp-green':       '#1E686E',
-        'sp-green-light': '#E3EFEF',
-        'sp-green-accent':'#1E686E',
-        'sp-heading':     '#111827',
-        'sp-body':        '#4B5563',
-        'sp-border':      '#E8ECEB',
+        // Brand palette
+        'sp-teal':        '#0F4A46', // main, highlights
+        'sp-fog':         '#B7C5C3', // backgrounds
+        'sp-graphite':    '#0E1114', // running and sub text
+        'sp-stone':       '#E6E6EA', // borders, soft surfaces
+
+        'sp-green':       '#0F4A46',
+        'sp-green-light': '#E6E6EA',
+        'sp-green-accent':'#0F4A46',
+        'sp-heading':     '#0E1114',
+        'sp-body':        '#0E1114',
+        'sp-border':      '#E6E6EA',
 
         // ── Legacy tokens (keep for tech page) ───────────────
         'outline-variant':            '#c6c6cb',

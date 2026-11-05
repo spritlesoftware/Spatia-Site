@@ -57,7 +57,7 @@ const connector = `<svg width="80" height="14" viewBox="0 0 80 14" fill="none" x
 
       <!-- Environment -->
       <div class="flex flex-col items-center">
-        <div class="w-[104px] h-[104px] rounded-xl bg-[#E3EFEF] flex items-center justify-center mb-4 flex-shrink-0" style="color: #1E686E;">
+        <div class="w-[104px] h-[104px] rounded-xl bg-[#E6E6EA] flex items-center justify-center mb-4 flex-shrink-0" style="color: #0F4A46;">
           <Fragment set:html={steps[0].icon} />
         </div>
         <p class="text-[11.5px] font-bold uppercase tracking-[0.12em] text-sp-heading leading-snug text-center">
@@ -72,7 +72,7 @@ const connector = `<svg width="80" height="14" viewBox="0 0 80 14" fill="none" x
 
       <!-- Spatia logo -->
       <div class="flex flex-col items-center">
-        <div class="w-[104px] h-[104px] rounded-xl bg-[#E3EFEF] flex items-center justify-center mb-4 flex-shrink-0 p-2">
+        <div class="w-[104px] h-[104px] rounded-xl bg-[#E6E6EA] flex items-center justify-center mb-4 flex-shrink-0 p-2">
           <img src={spatiaLogo.src} class="w-full h-auto object-contain" alt="Spatia" />
         </div>
         <p class="text-[11.5px] font-bold uppercase tracking-[0.12em] text-sp-heading leading-snug text-center">
@@ -87,7 +87,7 @@ const connector = `<svg width="80" height="14" viewBox="0 0 80 14" fill="none" x
 
       <!-- Understanding -->
       <div class="flex flex-col items-center">
-        <div class="w-[104px] h-[104px] rounded-xl bg-[#E3EFEF] flex items-center justify-center mb-4 flex-shrink-0" style="color: #1E686E;">
+        <div class="w-[104px] h-[104px] rounded-xl bg-[#E6E6EA] flex items-center justify-center mb-4 flex-shrink-0" style="color: #0F4A46;">
           <Fragment set:html={steps[1].icon} />
         </div>
         <p class="text-[11.5px] font-bold uppercase tracking-[0.12em] text-sp-heading leading-snug text-center">
@@ -102,7 +102,7 @@ const connector = `<svg width="80" height="14" viewBox="0 0 80 14" fill="none" x
 
       <!-- Action -->
       <div class="flex flex-col items-center">
-        <div class="w-[104px] h-[104px] rounded-xl bg-[#E3EFEF] flex items-center justify-center mb-4 flex-shrink-0" style="color: #1E686E;">
+        <div class="w-[104px] h-[104px] rounded-xl bg-[#E6E6EA] flex items-center justify-center mb-4 flex-shrink-0" style="color: #0F4A46;">
           <Fragment set:html={steps[2].icon} />
         </div>
         <p class="text-[11.5px] font-bold uppercase tracking-[0.12em] text-sp-heading leading-snug text-center">
@@ -122,7 +122,7 @@ const connector = `<svg width="80" height="14" viewBox="0 0 80 14" fill="none" x
       ].map((item, i, arr) => (
         <>
           <div class="flex flex-col items-center text-center">
-            <div class="w-[104px] h-[104px] rounded-xl bg-[#E3EFEF] flex items-center justify-center mb-3 p-2" style="color: #1E686E;">
+            <div class="w-[104px] h-[104px] rounded-xl bg-[#E6E6EA] flex items-center justify-center mb-3 p-2" style="color: #0F4A46;">
               {item.isLogo
                 ? <img src={spatiaLogo.src} class="w-full h-auto object-contain" alt="Spatia" />
                 : <Fragment set:html={item.icon} />

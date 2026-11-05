@@ -25,13 +25,13 @@ const after = paragraphs.slice(2);
       <!-- Share label -->
       <span
         class="text-[10px] font-semibold tracking-[0.2em] uppercase mb-1"
-        style="color: #667085; writing-mode: vertical-rl; transform: rotate(180deg);"
+        style="color: #0E1114; writing-mode: vertical-rl; transform: rotate(180deg);"
       >Share</span>
 
       <!-- LinkedIn -->
       <button
-        class="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2]"
-        style="border-color: #E8ECEF; color: #667085;"
+        class="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200 hover:border-[#0F4A46] hover:bg-[#E6E6EA]"
+        style="border-color: #E6E6EA; color: #0E1114;"
         title="Share on LinkedIn"
         onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank')"
       >
@@ -44,8 +44,8 @@ const after = paragraphs.slice(2);
 
       <!-- Twitter / X -->
       <button
-        class="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2]"
-        style="border-color: #E8ECEF; color: #667085;"
+        class="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200 hover:border-[#0F4A46] hover:bg-[#E6E6EA]"
+        style="border-color: #E6E6EA; color: #0E1114;"
         title="Share on X"
         onclick="window.open('https://x.com/intent/tweet?url=' + encodeURIComponent(window.location.href), '_blank')"
       >
@@ -56,8 +56,8 @@ const after = paragraphs.slice(2);
 
       <!-- Copy link -->
       <button
-        class="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2]"
-        style="border-color: #E8ECEF; color: #667085;"
+        class="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200 hover:border-[#0F4A46] hover:bg-[#E6E6EA]"
+        style="border-color: #E6E6EA; color: #0E1114;"
         title="Copy link"
         id="copy-link-btn"
       >
@@ -77,7 +77,7 @@ const after = paragraphs.slice(2);
     {before.map((para, i) => (
       <p
         class:list={[
-          'text-[#111827] leading-[1.7] mb-8 reveal',
+          'text-[#0E1114] leading-[1.7] mb-8 reveal',
           i === 0 ? 'drop-cap' : '',
           `reveal-delay-${i + 1}`,
         ]}
@@ -89,9 +89,9 @@ const after = paragraphs.slice(2);
 
     <!-- Subtle section divider -->
     <div class="flex items-center gap-4 my-10 reveal">
-      <div class="h-px flex-1" style="background: #E8ECEF;"></div>
-      <div class="w-1.5 h-1.5 rounded-full" style="background: #1F7A5A;"></div>
-      <div class="h-px flex-1" style="background: #E8ECEF;"></div>
+      <div class="h-px flex-1" style="background: #E6E6EA;"></div>
+      <div class="w-1.5 h-1.5 rounded-full" style="background: #0F4A46;"></div>
+      <div class="h-px flex-1" style="background: #E6E6EA;"></div>
     </div>
 
   </div>
@@ -113,7 +113,7 @@ const after = paragraphs.slice(2);
         height={427}
       />
     </div>
-    <p class="text-center text-[13px] mt-3" style="color: #667085;">
+    <p class="text-center text-[13px] mt-3" style="color: #0E1114;">
       Spatial intelligence deployed in real industrial environments.
     </p>
   </div>
@@ -122,7 +122,7 @@ const after = paragraphs.slice(2);
   <div class="max-w-[760px] mx-auto px-8 lg:px-0 pb-20">
     {after.map((para, i) => (
       <p
-        class:list={['text-[#111827] leading-[1.7] mb-8 reveal', `reveal-delay-${i + 1}`]}
+        class:list={['text-[#0E1114] leading-[1.7] mb-8 reveal', `reveal-delay-${i + 1}`]}
         style="font-size: 17px;"
       >
         {para}
@@ -131,26 +131,26 @@ const after = paragraphs.slice(2);
 
     <!-- Article end marker -->
     <div class="flex items-center gap-4 pt-4 reveal">
-      <div class="h-px flex-1" style="background: #E8ECEF;"></div>
+      <div class="h-px flex-1" style="background: #E6E6EA;"></div>
       <div
         class="px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.18em] uppercase"
-        style="color: #1F7A5A; background: #EEF8F2;"
+        style="color: #0F4A46; background: #E6E6EA;"
       >
         End of Article
       </div>
-      <div class="h-px flex-1" style="background: #E8ECEF;"></div>
+      <div class="h-px flex-1" style="background: #E6E6EA;"></div>
     </div>
 
     <!-- Mobile share row (hidden on xl where sidebar is shown) -->
-    <div class="xl:hidden mt-10 pt-8 border-t reveal" style="border-color: #E8ECEF;">
-      <p class="text-[12px] font-semibold tracking-[0.18em] uppercase mb-4" style="color: #667085;">Share this article</p>
+    <div class="xl:hidden mt-10 pt-8 border-t reveal" style="border-color: #E6E6EA;">
+      <p class="text-[12px] font-semibold tracking-[0.18em] uppercase mb-4" style="color: #0E1114;">Share this article</p>
       <div class="flex flex-wrap items-center gap-2 sm:gap-3">
 
         <!-- LinkedIn -->
         <button
           id="mobile-linkedin-btn"
-          class="inline-flex items-center justify-center gap-2 h-[38px] px-3.5 sm:px-4 rounded-full border text-[13.5px] sm:text-[14px] font-medium transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2] whitespace-nowrap flex-shrink-0"
-          style="border-color: #E8ECEF; color: #374151;"
+          class="inline-flex items-center justify-center gap-2 h-[38px] px-3.5 sm:px-4 rounded-full border text-[13.5px] sm:text-[14px] font-medium transition-all duration-200 hover:border-[#0F4A46] hover:bg-[#E6E6EA] whitespace-nowrap flex-shrink-0"
+          style="border-color: #E6E6EA; color: #0E1114;"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
@@ -163,8 +163,8 @@ const after = paragraphs.slice(2);
         <!-- X / Twitter -->
         <button
           id="mobile-twitter-btn"
-          class="inline-flex items-center justify-center gap-2 h-[38px] px-3.5 sm:px-4 rounded-full border text-[13.5px] sm:text-[14px] font-medium transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2] whitespace-nowrap flex-shrink-0"
-          style="border-color: #E8ECEF; color: #374151;"
+          class="inline-flex items-center justify-center gap-2 h-[38px] px-3.5 sm:px-4 rounded-full border text-[13.5px] sm:text-[14px] font-medium transition-all duration-200 hover:border-[#0F4A46] hover:bg-[#E6E6EA] whitespace-nowrap flex-shrink-0"
+          style="border-color: #E6E6EA; color: #0E1114;"
         >
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.259 5.631ZM17.083 20h1.833L7.084 4.126H5.117Z"/>
@@ -175,8 +175,8 @@ const after = paragraphs.slice(2);
         <!-- Copy link -->
         <button
           id="mobile-copy-btn"
-          class="inline-flex items-center justify-center gap-2 h-[38px] px-3.5 sm:px-4 rounded-full border text-[13.5px] sm:text-[14px] font-medium transition-all duration-200 hover:border-[#1F7A5A] hover:bg-[#EEF8F2] whitespace-nowrap flex-shrink-0"
-          style="border-color: #E8ECEF; color: #374151;"
+          class="inline-flex items-center justify-center gap-2 h-[38px] px-3.5 sm:px-4 rounded-full border text-[13.5px] sm:text-[14px] font-medium transition-all duration-200 hover:border-[#0F4A46] hover:bg-[#E6E6EA] whitespace-nowrap flex-shrink-0"
+          style="border-color: #E6E6EA; color: #0E1114;"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
             <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
@@ -197,7 +197,7 @@ const after = paragraphs.slice(2);
     font-size: 4.6em;
     line-height: 0.78;
     font-weight: 700;
-    color: #1F7A5A;
+    color: #0F4A46;
     padding-right: 0.12em;
     margin-top: 0.06em;
   }
@@ -227,7 +227,7 @@ const after = paragraphs.slice(2);
     copyBtn.addEventListener('click', async () => {
       await navigator.clipboard.writeText(window.location.href).catch(() => {});
       const orig = copyBtn.innerHTML;
-      copyBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F7A5A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+      copyBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F4A46" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
       setTimeout(() => { copyBtn.innerHTML = orig; }, 1800);
     });
   }
@@ -249,8 +249,8 @@ const after = paragraphs.slice(2);
     await navigator.clipboard.writeText(window.location.href).catch(() => {});
     if (mobileCopyLabel) {
       mobileCopyLabel.textContent = 'Copied!';
-      mobileCopyBtn.style.borderColor = '#1F7A5A';
-      mobileCopyBtn.style.color = '#1F7A5A';
+      mobileCopyBtn.style.borderColor = '#0F4A46';
+      mobileCopyBtn.style.color = '#0F4A46';
       setTimeout(() => {
         mobileCopyLabel.textContent = 'Copy link';
         mobileCopyBtn.style.borderColor = '';
