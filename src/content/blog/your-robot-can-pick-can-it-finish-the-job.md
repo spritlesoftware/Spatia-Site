@@ -299,7 +299,7 @@ keywords: "bin picking, pick and place, 3D vision, robot vision, machine tending
 
 <section class="refs">
 <p class="note">Illustrations are concept drawings. They do not show a customer line. Figures for Eureka Robotics and Inbolt are their own published claims, checked on 24 Nov 2026. Links below.</p>
-<h3 style="font-family:Fraunces,Georgia,serif;font-weight:500;color:var(--head);font-size:19px;margin:22px 0 8px">References</h3>
+<h3 style="font-weight:600;color:var(--head);font-size:19px;margin:22px 0 8px">References</h3>
 <ol class="sources">
 <li><a href="https://www.zivid.com/applications/bin-picking" target="_blank" rel="noopener noreferrer">Zivid: bin picking</a></li>
 <li><a href="https://www.cognex.com/en/applications/guidance-and-alignment/vision-guided-robotics-for-industrial-automation" target="_blank" rel="noopener noreferrer">Cognex: vision-guided robotics</a></li>

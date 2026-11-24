@@ -82,10 +82,11 @@
   .wc-article .wide { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
 
   .wc-article h2 {
-    font-family: Fraunces, Georgia, serif;
-    font-weight: 650;
+    font-family: inherit;
+    font-weight: 700;
     font-size: clamp(25px, 3.4vw, 33px);
     line-height: 1.15;
+    letter-spacing: -0.02em;
     color: var(--head);
     margin: 56px 0 14px;
     text-wrap: balance;
@@ -112,17 +113,17 @@
 
   .wc-article .three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .wc-article .three .sheet { margin: 0; }
-  .wc-article .three h3 { font-family: Caveat, cursive; font-size: 27px; font-weight: 700; margin: 6px 0 2px; color: var(--teal); }
+  .wc-article .three h3 { font-family: inherit; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin: 6px 0 2px; color: var(--teal); }
   .wc-article .three p { font-size: 15px; line-height: 1.55; margin: 0; color: #2c3534; }
 
   .wc-article .five { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin: 28px 0 10px; }
   .wc-article .five .sheet { margin: 0; padding: 12px 12px 14px; }
-  .wc-article .five h3 { font-family: Caveat, cursive; font-size: 26px; font-weight: 700; margin: 0; color: var(--teal); line-height: 1; }
+  .wc-article .five h3 { font-family: inherit; font-size: 16px; font-weight: 600; letter-spacing: -0.01em; margin: 0; color: var(--teal); line-height: 1.2; }
   .wc-article .five p { font-size: 14px; line-height: 1.5; margin: 6px 0 0; color: #2c3534; }
 
   .wc-article .dest { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px; align-items: center; }
   .wc-article .checks { list-style: none; padding: 0; margin: 0; }
-  .wc-article .checks li { display: flex; gap: 10px; align-items: center; font-family: Caveat, cursive; font-size: 27px; font-weight: 700; color: var(--teal); margin: 2px 0; }
+  .wc-article .checks li { display: flex; gap: 10px; align-items: center; font-family: inherit; font-size: 20px; font-weight: 600; color: var(--teal); margin: 4px 0; }
   .wc-article .checks svg { width: 30px; height: 30px; flex: none; }
 
   .wc-article .fam { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin: 24px 0 8px; }
@@ -135,12 +136,13 @@
     overflow: hidden;
     background-image: radial-gradient(ellipse 60% 70% at 88% 12%, rgba(1, 172, 149, .20), transparent 70%), radial-gradient(ellipse 50% 40% at 8% 100%, rgba(183, 197, 195, .55), transparent 70%);
   }
-  .wc-article .fam b { display: block; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 17px; line-height: 1.25; color: var(--teal); margin-bottom: 6px; }
+  .wc-article .fam b { display: block; font-family: inherit; font-weight: 600; font-size: 17px; line-height: 1.25; color: var(--teal); margin-bottom: 6px; }
   .wc-article .fam span { font-size: 14.5px; line-height: 1.5; display: block; }
 
   .wc-article .pull {
-    font-family: Fraunces, Georgia, serif;
+    font-family: inherit;
     font-weight: 500;
+    letter-spacing: -0.015em;
     font-size: clamp(21px, 2.6vw, 26px);
     line-height: 1.35;
     color: var(--head);
@@ -172,7 +174,7 @@
   .wc-article .toc a:hover { border-color: var(--acc); }
 
   .wc-article .steps { display: none; list-style: none; padding: 0; margin: 10px 0 0; gap: 6px; flex-wrap: wrap; justify-content: center; }
-  .wc-article .steps li { font-family: Caveat, cursive; font-weight: 700; font-size: 21px; background: #e4ece9; color: var(--teal); padding: 2px 12px; border-radius: 14px; margin: 0; }
+  .wc-article .steps li { font-family: inherit; font-weight: 600; font-size: 14px; background: #e4ece9; color: var(--teal); padding: 4px 12px; border-radius: 14px; margin: 0; }
 
   .wc-article .ask { background: var(--sheet); color: var(--graph); border-radius: 8px; padding: 18px 22px 16px; margin: 10px 0 22px; }
   .wc-article .ask ul { margin: 0 0 12px; }
@@ -206,8 +208,9 @@
     color: #fff;
     display: grid;
     place-items: center;
-    font-family: Fraunces, serif;
+    font-family: inherit;
     font-size: 20px;
+    font-weight: 600;
   }
 
   .wc-article .bloom { transform-box: fill-box; transform-origin: center; opacity: 0; }
