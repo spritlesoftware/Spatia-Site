@@ -1,0 +1,32 @@
+# Spatia
+
+> Spatia is the intelligence layer for robots in manufacturing. OEMs build the arm. Spatia teaches it the job.
+
+Spatia gives industrial robots CAD-native perception and station-level SOP execution for bin picking, dynamic inspection and dynamic torque. It is built for BYOR, bring your own robot, on ROS 2, validated on UR and Flexiv.
+
+## Key pages
+
+- [Home](https://www.spatia.sg/)
+- [Technology](https://www.spatia.sg/technology)
+- [Experience Centre](https://www.spatia.sg/experience-centre)
+- [Blog](https://www.spatia.sg/blog)
+- [H2R](https://www.spatia.sg/h2r)
+- [Contact](https://www.spatia.sg/contact)
+
+## Approved facts
+
+- Seewise.AI live deployments: Panasonic, TVS Lucas, Hyundai, KEC, Airbus and Yamaha.
+- 100% SOP accuracy on Panasonic mixer-grinder assembly (vision).
+- 86% with vision only at TVS Lucas. This is the honest ceiling of vision-only, and the reason robot execution matters.
+- 3,500+ conversations with manufacturers through Seewise.AI.
+- The Experience Centre in Chennai, India, is live.
+- Spritle Software: 17+ years, profitable.
+- Apex Tool Group torque tool integrated; Caterpillar expo demo (October 2026).
+- Spatia is the default distributor for Flexiv in India.
+- Robots: built for BYOR on ROS 2, validated on UR and Flexiv.
+
+## Contact
+
+spatia@spritle.com
+
+Last updated: 2026-11-24

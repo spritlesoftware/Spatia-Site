@@ -22,6 +22,42 @@ const siteBase = Astro.site?.href.replace(/\/$/, '') ?? '';
 const ogImageUrl = ogImage
   ? (ogImage.startsWith('http') ? ogImage : `${siteBase}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`)
   : `${siteBase}/og-default.png`;
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Spatia',
+  url: siteBase,
+  logo: `${siteBase}/logo-spatia.png`,
+  description:
+    'Spatia is the intelligence layer for robots in manufacturing. CAD-native perception and station-level SOP execution for bin picking, dynamic inspection and dynamic torque.',
+  slogan: 'OEMs build the arm. Spatia teaches it the job.',
+  sameAs: [
+    'https://www.linkedin.com/showcase/spatia-intelligence/',
+    'https://www.instagram.com/spatia.sg/',
+    'https://www.youtube.com/@spatia.intelligence',
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Chennai',
+    addressRegion: 'Tamil Nadu',
+    addressCountry: 'IN',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    email: 'spatia@spritle.com',
+    availableLanguage: 'en',
+  },
+};
+
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Spatia',
+  url: siteBase,
+  publisher: { '@type': 'Organization', name: 'Spatia', url: siteBase },
+};
 ---
 
 <!doctype html>
@@ -50,6 +86,9 @@ const ogImageUrl = ogImage
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
 
     <!-- Geist + Geist Mono variable fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

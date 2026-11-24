@@ -1,0 +1,48 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/shared/Navbar.astro';
+import Footer from '@components/shared/Footer.astro';
+---
+
+<Layout
+  title="Page not found | Spatia"
+  description="The page you are looking for is not here."
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex" />
+  </Fragment>
+  <Navbar />
+
+  <main class="min-h-[70vh] flex items-center bg-white px-4 sm:px-8 py-32">
+    <div class="max-w-[640px] mx-auto text-center">
+      <p class="section-label mb-5">404</p>
+      <h1
+        class="text-sp-heading font-bold tracking-[-0.03em]"
+        style="font-size: clamp(40px, 6vw, 72px); line-height: 1.05;"
+      >
+        This page is not here.
+      </h1>
+      <p class="mt-6 text-sp-body leading-[1.7]" style="font-size: 17px;">
+        The link may be old, or the page may have moved.
+      </p>
+      <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a
+          href="/"
+          class="inline-flex h-[46px] items-center justify-center rounded-md px-6 text-[15px] font-semibold text-white transition-colors duration-200"
+          style="background-color: #0F4A46;"
+        >
+          Back to home
+        </a>
+        <a
+          href="/blog"
+          class="inline-flex h-[46px] items-center justify-center rounded-md border px-6 text-[15px] font-semibold transition-colors duration-200"
+          style="border-color: #E6E6EA; color: #0E1114;"
+        >
+          Read the blog
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

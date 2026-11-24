@@ -21,7 +21,19 @@ const faqs = [
     answer: 'We run internship programmes for engineering and research roles throughout the year. Email us with your background, what you\'re working on, and what you\'d like to learn. We take student applicants seriously.',
   },
 ];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
 
 <section class="py-16 md:py-[120px]" style="background: #FAFBFC;">
   <div class="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
