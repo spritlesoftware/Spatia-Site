@@ -20,10 +20,9 @@
   {
     const root = document.querySelector('.wc-article');
     if (root) {
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const figs = root.querySelectorAll('.fig-anim');
 
-      if (reduce || !('IntersectionObserver' in window)) {
+      if (!('IntersectionObserver' in window)) {
         figs.forEach((f) => f.classList.add('on'));
       } else {
         const io = new IntersectionObserver(
@@ -252,13 +251,5 @@
   @media (max-width: 600px) {
     .wc-article .hero-lbl { display: none; }
     .wc-article .steps { display: flex; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .wc-article .bloom { opacity: var(--o, .85) !important; transform: none !important; animation: none !important; }
-    .wc-article .brush { stroke-dashoffset: 0 !important; animation: none !important; }
-    .wc-article .bob { animation: none !important; }
-    .wc-article .drop { animation: none !important; opacity: 1 !important; transform: none !important; }
-    .wc-article .mover { display: none; }
   }
 </style>
