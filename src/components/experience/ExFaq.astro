@@ -1,0 +1,73 @@
+---
+const faqs = [
+  {
+    q: 'What can I see at the Experience Centre?',
+    a: 'A working cell with a 3D camera, a robot arm and Spatia Nexa. You can watch your own part go from CAD to pick and place, with the live pose and pipeline on screen, plus an early look at inspection.',
+  },
+  {
+    q: 'Do I need to bring my own part?',
+    a: 'Yes. Bring the part and its CAD model, plus a short brief on the task and how parts arrive. The session is built around your part, not a standard demo part.',
+  },
+  {
+    q: 'Can I join remotely?',
+    a: 'Yes. The team runs live remote sessions from the cell, so you can watch your part run without travelling.',
+  },
+  {
+    q: 'Where is it?',
+    a: 'The Experience Centre is in Chennai, India. The team confirms the exact address and time when you book.',
+  },
+  {
+    q: 'What if I do not have a CAD model?',
+    a: 'Talk to the team. They will work out the best route for your part before the session.',
+  },
+];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
+<section class="bg-white py-16 md:py-[120px]">
+  <div class="grid grid-cols-1 gap-10 px-4 sm:px-8 lg:grid-cols-12 lg:gap-16 lg:px-16">
+
+    <div class="reveal lg:col-span-4">
+      <p class="section-label mb-4">FAQ</p>
+      <h2
+        class="mb-5 font-inter font-bold leading-[1.1] tracking-[-0.025em] text-sp-heading"
+        style="font-size: clamp(26px, 3vw, 44px);"
+      >
+        Questions before you visit.
+      </h2>
+      <p class="text-[17px] leading-[1.7] text-sp-body">
+        Something else? <a href="/contact" class="font-semibold text-sp-green underline-offset-4 hover:underline">Get in touch</a>.
+      </p>
+    </div>
+
+    <div class="reveal lg:col-span-8">
+      {faqs.map((f, i) => (
+        <details class="faq group border-b border-sp-border" open={i === 0}>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-[18px] font-semibold text-sp-heading">
+            {f.q}
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-sp-border text-sp-green transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </summary>
+          <p class="max-w-[44rem] pb-6 text-[17px] leading-[1.7] text-sp-body">{f.a}</p>
+        </details>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .faq summary::-webkit-details-marker { display: none; }
+</style>

@@ -87,6 +87,14 @@ content:
         options:
           format: yyyy-MM-dd
 
+      - name: updated
+        label: Last Updated
+        type: date
+        required: false
+        description: "Optional. Use when a published post is revised."
+        options:
+          format: yyyy-MM-dd
+
       - name: featured
         label: Featured
         type: boolean

@@ -7,6 +7,7 @@ readTime: "6 min read"
 imageUpload: "/media/pick-place-hero.jpg"
 imageAlt: "A watercolor painting of a robot cell: a bin of parts, a camera above it, a robot arm and a fixture."
 date: "2026-11-24"
+updated: "2026-11-24"
 featured: true
 draft: false
 articleLayout: "watercolor"
@@ -236,6 +237,7 @@ keywords: "bin picking, pick and place, 3D vision, robot vision, machine tending
 <p>Simple maths. 1,000 picks at 99% success is still 10 misses in a shift.</p>
 <p>Some misses the robot can recover. Some need a person. Ask which ones.</p>
 <p class="pull">A demo shows the robot can do the move. A factory also needs to know when it should stop, and how it restarts.</p>
+<p>For the full comparison, read <a href="/guides/picking-cell">How to evaluate a picking cell</a>.</p>
 
 <h2 id="who">Who is solving this today</h2>
 <p>3D vision for bin picking has moved fast in the last two years. Two companies I follow closely, and where Spatia stands.</p>

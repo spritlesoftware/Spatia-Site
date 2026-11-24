@@ -1,0 +1,311 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/shared/Navbar.astro';
+import Footer from '@components/shared/Footer.astro';
+
+const faqs = [
+  {
+    q: 'What is a picking cell?',
+    a: 'A robot, a camera, a gripper and the software that connects them. It picks parts from a bin, tray or conveyor and places them into the next step.',
+  },
+  {
+    q: 'Do I need a fixed fixture?',
+    a: 'Not always. A fixture is the right answer for a stable, high-volume part. Flexible picking is the right answer when the part mix or the presentation changes.',
+  },
+  {
+    q: 'Can I use my existing robot?',
+    a: 'Spatia is built for BYOR on ROS 2 and validated on UR and Flexiv. Tell us what you run and we will confirm fit.',
+  },
+  {
+    q: 'How do I measure success?',
+    a: 'Good parts per hour over a full shift, interventions per shift, and whether the place and verification steps pass. Not the best minute of a demo.',
+  },
+  {
+    q: 'What should I bring to a demo?',
+    a: 'The part and its CAD model, the task and how parts arrive. The Experience Centre in Chennai runs the part on real hardware.',
+  },
+];
+
+const techArticle = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: 'How to evaluate a picking cell',
+  description:
+    "A buyer's guide to picking cells: the full job, vision vs execution, fixed fixtures vs flexible picking, manual vs robot torque, and how to run a pilot.",
+  datePublished: '2026-11-24',
+  dateModified: '2026-11-24',
+  author: { '@type': 'Organization', name: 'Spatia' },
+  publisher: { '@type': 'Organization', name: 'Spatia', url: 'https://www.spatia.sg' },
+  mainEntityOfPage: 'https://www.spatia.sg/guides/picking-cell/',
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="How to evaluate a picking cell | Spatia"
+  description="A buyer's guide to picking cells: the full job, vision vs execution, fixed fixtures vs flexible picking, manual vs robot torque, and how to run a pilot."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(techArticle)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+  </Fragment>
+  <Navbar />
+
+  <main class="bg-white">
+    <section class="pt-36 pb-12 lg:pt-44">
+      <div class="max-w-[1040px] mx-auto px-8">
+        <p class="section-label mb-4 reveal">Buyer guide</p>
+        <h1
+          class="font-inter font-bold leading-[1.06] tracking-[-0.03em] text-sp-heading reveal reveal-delay-1"
+          style="font-size: clamp(40px, 5.5vw, 64px);"
+        >
+          How to evaluate a picking cell.
+        </h1>
+        <p class="mt-6 max-w-[720px] text-[18px] leading-[1.75] text-sp-body reveal reveal-delay-2">
+          A picking cell is judged over a shift, not a demo. The robot has to find the part, pick it, place it correctly and recover when something goes wrong. This guide covers the decisions that matter.
+        </p>
+        <p class="mt-5 text-[14px] text-sp-body/70">Last updated 24 November 2026</p>
+      </div>
+    </section>
+
+    <section class="pb-4">
+      <div class="max-w-[1040px] mx-auto px-8">
+
+        <h2 class="mt-14 mb-4 font-inter font-bold leading-[1.15] tracking-[-0.02em] text-sp-heading" style="font-size: clamp(26px, 3vw, 36px);">
+          Start with the full job
+        </h2>
+        <p class="max-w-[760px] text-[17px] leading-[1.75] text-sp-body">
+          Most demos stop at the pick. A production cell has more stages, and each one can fail.
+        </p>
+
+        <div class="mt-6 overflow-x-auto">
+          <table class="guide-table">
+            <thead>
+              <tr><th>Stage</th><th>Question</th><th>What good looks like</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>See</td><td>Can the camera find the part in a real bin?</td><td>Works with overlap, shine and changing light</td></tr>
+              <tr><td>Pick</td><td>Can the gripper reach and hold it?</td><td>No collision, no dropped part</td></tr>
+              <tr><td>Place</td><td>Is it in the right position and orientation?</td><td>Seated, aligned, ready for the next step</td></tr>
+              <tr><td>Verify</td><td>Did the step actually happen?</td><td>The station confirms the result, not just the motion</td></tr>
+              <tr><td>Recover</td><td>What happens after a miss or a jam?</td><td>A clear stop, a safe retry, a person only when needed</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="mt-16 mb-4 font-inter font-bold leading-[1.15] tracking-[-0.02em] text-sp-heading" style="font-size: clamp(26px, 3vw, 36px);">
+          Vision-only vs robot execution
+        </h2>
+        <p class="max-w-[760px] text-[17px] leading-[1.75] text-sp-body">
+          Vision is the first layer. It finds the part and gives the pose. Execution is the second layer: the robot performs the step and the station confirms it.
+        </p>
+
+        <div class="mt-6 overflow-x-auto">
+          <table class="guide-table">
+            <thead>
+              <tr><th></th><th>Vision-only</th><th>Vision plus execution</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>What it covers</td><td>Find and locate</td><td>Find, act, verify</td></tr>
+              <tr><td>Strong at</td><td>Simple, flat, well-presented parts</td><td>Contact-rich steps, placement, fastening</td></tr>
+              <tr><td>Where it hits a ceiling</td><td>Occlusion, shine, the last inch</td><td>Needs a robot, a cell and a clear SOP</td></tr>
+              <tr><td>Best fit</td><td>Inspection and guidance</td><td>Pick, place, machine loading, torque</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="mt-6 max-w-[760px] text-[17px] leading-[1.75] text-sp-body">
+          Through Seewise.AI, vision alone reached 86% proper SOP at TVS Lucas. That is the honest ceiling of vision-only, not a failure of vision. The remaining 14% is where the robot has to act.
+        </p>
+        <p class="mt-4 max-w-[760px] text-[17px] leading-[1.75] text-sp-body">
+          At Panasonic, vision reached 100% SOP accuracy on mixer-grinder assembly. Vision is not weak. Some steps just need execution.
+        </p>
+
+        <h2 class="mt-16 mb-4 font-inter font-bold leading-[1.15] tracking-[-0.02em] text-sp-heading" style="font-size: clamp(26px, 3vw, 36px);">
+          Fixed fixture vs flexible picking
+        </h2>
+        <p class="max-w-[760px] text-[17px] leading-[1.75] text-sp-body">
+          Sometimes a better fixture solves the problem. Not every problem needs more AI.
+        </p>
+
+        <div class="mt-6 overflow-x-auto">
+          <table class="guide-table">
+            <thead>
+              <tr><th></th><th>Fixed fixture</th><th>Flexible picking</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Part presentation</td><td>One fixture per part</td><td>Bin, tray or conveyor</td></tr>
+              <tr><td>Changeover</td><td>New fixture, new setup</td><td>New CAD model</td></tr>
+              <tr><td>Strength</td><td>Repeatable and fast at high volume</td><td>Handles variation without a fixture per part</td></tr>
+              <tr><td>Limit</td><td>Part-specific and inflexible</td><td>Needs perception, planning and checks</td></tr>
+              <tr><td>Best fit</td><td>Stable, high-volume parts</td><td>Mixed parts, variable presentation, new SKUs</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="mt-16 mb-4 font-inter font-bold leading-[1.15] tracking-[-0.02em] text-sp-heading" style="font-size: clamp(26px, 3vw, 36px);">
+          Manual torque vs robot torque
+        </h2>
+        <p class="max-w-[760px] text-[17px] leading-[1.75] text-sp-body">
+          Vision can confirm placement. It cannot confirm torque. That needs the robot to apply and measure the fastening.
+        </p>
+
+        <div class="mt-6 overflow-x-auto">
+          <table class="guide-table">
+            <thead>
+              <tr><th></th><th>Manual torque</th><th>Robot torque</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Control</td><td>Operator skill</td><td>Programmed tool and SOP</td></tr>
+              <tr><td>Traceability</td><td>Paper or manual log</td><td>Per-fastener record</td></tr>
+              <tr><td>Strength</td><td>Flexible, easy to start</td><td>Repeatable, measurable, no missed fastener</td></tr>
+              <tr><td>Limit</td><td>Missed or under-torqued fasteners</td><td>Needs the right tool and station integration</td></tr>
+              <tr><td>Best fit</td><td>Low volume, unusual access</td><td>Safety-critical, high volume, multi-fastener assemblies</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="mt-16 mb-4 font-inter font-bold leading-[1.15] tracking-[-0.02em] text-sp-heading" style="font-size: clamp(26px, 3vw, 36px);">
+          Build in-house vs system integrator vs Spatia
+        </h2>
+        <p class="max-w-[760px] text-[17px] leading-[1.75] text-sp-body">
+          These are not exclusive. A system integrator can deliver the cell and use Spatia for the perception and SOP layer.
+        </p>
+
+        <div class="mt-6 overflow-x-auto">
+          <table class="guide-table">
+            <thead>
+              <tr><th></th><th>Build in-house</th><th>System integrator</th><th>Spatia</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>What you own</td><td>The full stack</td><td>Integration and project delivery</td><td>The intelligence layer on top of the robot</td></tr>
+              <tr><td>Strength</td><td>Full control, IP stays inside</td><td>One contract for the cell</td><td>CAD-native perception and SOP execution, BYOR</td></tr>
+              <tr><td>Limit</td><td>Specialist skills and time</td><td>The perception layer may be one-off</td><td>You still need a robot and a cell</td></tr>
+              <tr><td>Best fit</td><td>Large teams with a robotics group</td><td>Plants that want one throat to choke</td><td>Manufacturers and SIs reusing the layer across parts and robots</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="mt-16 mb-4 font-inter font-bold leading-[1.15] tracking-[-0.02em] text-sp-heading" style="font-size: clamp(26px, 3vw, 36px);">
+          The questions to ask
+        </h2>
+        <ul class="mt-4 max-w-[760px] list-disc pl-6 text-[17px] leading-[1.75] text-sp-body">
+          <li>How many good parts per hour over a full shift, not the best minute?</li>
+          <li>How often did a person have to step in?</li>
+          <li>Was it tested with a full bin and an almost empty bin?</li>
+          <li>What happens after a jam or a stop?</li>
+          <li>Can it verify the place, not just the pick?</li>
+          <li>Can it work with our robot and camera?</li>
+        </ul>
+        <p class="mt-5 max-w-[760px] text-[17px] leading-[1.75] text-sp-body">
+          The full question list is in
+          <a href="/blog/your-robot-can-pick-can-it-finish-the-job#ask" class="font-semibold text-sp-green underline-offset-4 hover:underline">
+            What to ask before you buy a picking cell
+          </a>.
+        </p>
+
+        <h2 class="mt-16 mb-4 font-inter font-bold leading-[1.15] tracking-[-0.02em] text-sp-heading" style="font-size: clamp(26px, 3vw, 36px);">
+          What a good pilot looks like
+        </h2>
+        <ul class="mt-4 max-w-[760px] list-disc pl-6 text-[17px] leading-[1.75] text-sp-body">
+          <li>One part, one cell, one shift.</li>
+          <li>A full bin and an almost empty bin.</li>
+          <li>At least one planned failure and recovery.</li>
+          <li>A named person on the customer side.</li>
+          <li>A written pass or fail measure before the pilot starts.</li>
+          <li>A clear next step: scale, fix or stop.</li>
+        </ul>
+
+        <h2 class="mt-16 mb-4 font-inter font-bold leading-[1.15] tracking-[-0.02em] text-sp-heading" style="font-size: clamp(26px, 3vw, 36px);">
+          Common questions
+        </h2>
+        <div class="mt-4 max-w-[760px]">
+          {faqs.map((f, i) => (
+            <details class="faq guide-faq group border-b border-sp-border" open={i === 0}>
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-[18px] font-semibold text-sp-heading">
+                {f.q}
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-sp-border text-sp-green transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <p class="max-w-[44rem] pb-6 text-[17px] leading-[1.7] text-sp-body">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24">
+      <div class="max-w-[1040px] mx-auto px-8">
+        <div class="rounded-[20px] p-8 md:p-12" style="background-color: #0F4A46;">
+          <h2 class="font-inter font-bold leading-[1.1] tracking-[-0.02em] text-white" style="font-size: clamp(26px, 3vw, 40px);">
+            Bring your part. We will show you.
+          </h2>
+          <p class="mt-3 max-w-[560px] text-[17px] leading-[1.7]" style="color: #dbe7e5;">
+            Send the CAD, or visit the Experience Centre in Chennai. We will run your part on the robot with you.
+          </p>
+          <a
+            href="/contact"
+            class="mt-7 inline-flex h-[46px] items-center justify-center rounded-md px-6 text-[15px] font-semibold"
+            style="background-color: #ffffff; color: #0F4A46;"
+          >
+            Book a visit
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .guide-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #0E1114;
+  }
+  .guide-table th,
+  .guide-table td {
+    border-bottom: 1px solid #E6E6EA;
+    padding: 14px 14px;
+    vertical-align: top;
+  }
+  .guide-table thead th {
+    background: #F6F3EA;
+    color: #0F4A46;
+    font-weight: 600;
+  }
+  .guide-table tbody td:first-child {
+    font-weight: 600;
+    color: #0F4A46;
+    white-space: nowrap;
+  }
+  .guide-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  .guide-faq summary::-webkit-details-marker {
+    display: none;
+  }
+  @media (max-width: 640px) {
+    .guide-table {
+      font-size: 14px;
+    }
+    .guide-table th,
+    .guide-table td {
+      padding: 12px 10px;
+    }
+  }
+</style>

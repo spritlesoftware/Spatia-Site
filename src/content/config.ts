@@ -19,6 +19,8 @@ const blog = defineCollection({
       imageUpload: z.string().optional(),
       imageAlt: z.string(),
       date: z.coerce.date(),
+      // Optional last-updated date for revised posts.
+      updated: z.coerce.date().optional(),
       featured: z.boolean().default(false),
       // Hidden from every listing and page until switched back to false.
       draft: z.boolean().default(false),

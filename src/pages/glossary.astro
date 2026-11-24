@@ -1,0 +1,149 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/shared/Navbar.astro';
+import Footer from '@components/shared/Footer.astro';
+
+const terms = [
+  {
+    id: 'spatial-intelligence',
+    name: 'Spatial intelligence',
+    definition:
+      "A machine's ability to understand objects, surfaces and its own position in 3D space, and to use that understanding to act.",
+  },
+  {
+    id: 'cad-native-perception',
+    name: 'CAD-native perception',
+    definition:
+      "Perception that uses a part's CAD model as the source of truth, instead of a dataset of labelled images.",
+  },
+  {
+    id: 'zero-shot-6d-pose',
+    name: 'Zero-shot 6D pose estimation',
+    definition:
+      "Finding an object's position and orientation, three position axes and three rotation axes, from its CAD model without training on images of that object.",
+  },
+  {
+    id: 'bin-picking',
+    name: 'Bin picking',
+    definition:
+      'Picking parts from a bin or pile where parts overlap, touch and hide each other.',
+  },
+  {
+    id: 'dynamic-inspection',
+    name: 'Dynamic inspection',
+    definition:
+      'Inspecting parts or assemblies while the line is moving, instead of stopping and staging each part.',
+  },
+  {
+    id: 'dynamic-torque',
+    name: 'Dynamic torque',
+    definition:
+      'Applying and verifying torque during a robot-executed fastening step, with a record for each fastener.',
+  },
+  {
+    id: 'sop-execution',
+    name: 'SOP execution',
+    definition:
+      "Carrying out a station's standard operating procedure in the right order, with checks at each step.",
+  },
+  {
+    id: 'byor',
+    name: 'BYOR',
+    definition:
+      'Bring your own robot. A software layer designed to work across robot brands instead of being tied to one arm.',
+  },
+  {
+    id: 'eye-in-hand',
+    name: 'Eye-in-hand',
+    definition:
+      'A camera mounted on the robot arm, so it moves with the tool and sees the part up close.',
+  },
+  {
+    id: 'eye-to-hand',
+    name: 'Eye-to-hand',
+    definition:
+      'A camera fixed above or beside the cell, looking at the workspace from a stable position.',
+  },
+  {
+    id: 'fixtureless-picking',
+    name: 'Fixtureless picking',
+    definition:
+      'Picking and placing parts without a dedicated fixture for each part, using perception and planning to handle the variation.',
+  },
+  {
+    id: 'the-last-inch',
+    name: 'The last inch',
+    definition:
+      'The gap between knowing where a part is and actually placing, pressing or fastening it correctly.',
+  },
+];
+
+const definedTermSet = {
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTermSet',
+  name: 'Spatia robotics glossary',
+  url: 'https://www.spatia.sg/glossary/',
+  hasDefinedTerm: terms.map((t) => ({
+    '@type': 'DefinedTerm',
+    name: t.name,
+    description: t.definition,
+    url: `https://www.spatia.sg/glossary/#${t.id}`,
+  })),
+};
+---
+
+<Layout
+  title="Robotics glossary | Spatia"
+  description="Definitions of spatial intelligence, CAD-native perception, zero-shot 6D pose, bin picking, dynamic inspection, dynamic torque and SOP execution."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(definedTermSet)} />
+  </Fragment>
+  <Navbar />
+
+  <main class="bg-white">
+    <section class="pt-36 pb-12 lg:pt-44">
+      <div class="max-w-[840px] mx-auto px-8">
+        <p class="section-label mb-4 reveal">Glossary</p>
+        <h1
+          class="font-inter font-bold leading-[1.06] tracking-[-0.03em] text-sp-heading reveal reveal-delay-1"
+          style="font-size: clamp(40px, 5vw, 64px);"
+        >
+          Robotics terms, defined.
+        </h1>
+        <p class="mt-6 max-w-[620px] text-[18px] leading-[1.75] text-sp-body reveal reveal-delay-2">
+          The words that come up when a factory evaluates perception, picking and robot execution.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-24">
+      <div class="max-w-[840px] mx-auto px-8">
+        {terms.map((t) => (
+          <section id={t.id} class="border-t border-sp-border py-8 scroll-mt-32">
+            <h2
+              class="font-inter font-bold leading-[1.2] tracking-[-0.02em] text-sp-heading"
+              style="font-size: 24px;"
+            >
+              {t.name}
+            </h2>
+            <p class="mt-3 max-w-[680px] text-[17px] leading-[1.75] text-sp-body">
+              {t.definition}
+            </p>
+          </section>
+        ))}
+
+        <div class="border-t border-sp-border pt-8">
+          <p class="text-[17px] leading-[1.75] text-sp-body">
+            Want the buyer version? Read
+            <a href="/guides/picking-cell" class="font-semibold text-sp-green underline-offset-4 hover:underline">
+              How to evaluate a picking cell
+            </a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

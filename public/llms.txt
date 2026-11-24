@@ -10,8 +10,17 @@ Spatia gives industrial robots CAD-native perception and station-level SOP execu
 - [Technology](https://www.spatia.sg/technology)
 - [Experience Centre](https://www.spatia.sg/experience-centre)
 - [Blog](https://www.spatia.sg/blog)
+- [Glossary](https://www.spatia.sg/glossary)
+- [How to evaluate a picking cell](https://www.spatia.sg/guides/picking-cell)
 - [H2R](https://www.spatia.sg/h2r)
 - [Contact](https://www.spatia.sg/contact)
+
+## Key definitions
+
+- **Spatial intelligence**: A machine's ability to understand objects, surfaces and its own position in 3D space, and to use that understanding to act.
+- **CAD-native perception**: Perception that uses a part's CAD model as the source of truth, instead of a dataset of labelled images.
+- **Bin picking**: Picking parts from a bin or pile where parts overlap, touch and hide each other.
+- **The last inch**: The gap between knowing where a part is and actually placing, pressing or fastening it correctly.
 
 ## Approved facts
 

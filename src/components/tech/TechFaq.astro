@@ -26,10 +26,22 @@ const faqs = [
   },
   {
     q: 'How mature is it?',
-    a: 'Zero-shot pose estimation is validated in simulation, and real-rig validation is in progress. We share results as they are measured rather than quoting numbers in advance.',
+    a: 'Built for BYOR on ROS 2 and validated on UR and Flexiv. We share results as they are measured rather than quoting numbers in advance.',
   },
 ];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
 
 <section class="bg-white py-16 md:py-[120px]">
   <div class="grid grid-cols-1 gap-10 px-4 sm:px-8 lg:grid-cols-12 lg:gap-16 lg:px-16">
