@@ -238,7 +238,7 @@ keywords: "bin picking, pick and place, 3D vision, robot vision, machine tending
 <p class="pull">A demo shows the robot can do the move. A factory also needs to know when it should stop, and how it restarts.</p>
 
 <h2 id="who">Who is solving this today</h2>
-<p>3D vision for bin picking has moved fast in the last two years. Two companies I follow closely.</p>
+<p>3D vision for bin picking has moved fast in the last two years. Two companies I follow closely, and where Spatia stands.</p>
 </div>
 
 <div class="wide">
@@ -288,11 +288,11 @@ keywords: "bin picking, pick and place, 3D vision, robot vision, machine tending
 <p>It is built for any robot on ROS 2. We call it BYOR, bring your own robot. Today it is validated on UR and Flexiv.</p>
 <p>Our biggest difference is the SOP. We know the station. Which part. Which order. Which face to protect. What to do when something goes wrong. We use this to check the full job, not only the pick.</p>
 <p>Our approach is simple. Watch the station when people run it. Agree what "correct" means. Then hand one task to the robot, only after it passes testing.</p>
-<p>You can see it running at our Experience Center in Chennai, India.</p>
+<p>You can see it running at our Experience Centre in Chennai, India.</p>
 <p>OEMs build the arm. Spatia teaches it the job.</p>
 <div class="cta">
 <h2>Bring your part. We will show you.</h2>
-<p>Send us the CAD. Visit our Experience Center in Chennai, India. We will run your part on the robot with you.</p>
+<p>Send us the CAD. Visit our Experience Centre in Chennai, India. We will run your part on the robot with you.</p>
 <p>Write to <a href="mailto:spatia@spritle.com"><b>spatia@spritle.com</b></a>.</p>
 </div>
 <div class="who"><div class="av" aria-hidden="true">B</div><p style="margin:0">Balaji D Loganathan is the founder of Spatia and Seewise.AI. He has spent the last few years on shop floors with manufacturers, putting vision AI on real assembly lines.</p></div>
