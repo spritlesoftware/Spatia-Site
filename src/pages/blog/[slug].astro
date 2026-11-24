@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 import Navbar from '@components/shared/Navbar.astro';
 import Footer from '@components/shared/Footer.astro';
+import WatercolorArticle from '@components/blog/WatercolorArticle.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -25,6 +26,19 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('en-US', {
   month: 'long',
   day: 'numeric',
 });
+
+const isWatercolor = post.data.articleLayout === 'watercolor';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.seoDescription,
+  image: new URL(post.data.image, Astro.site ?? Astro.url).href,
+  datePublished: post.data.date.toISOString(),
+  author: { '@type': 'Person', name: post.data.author ?? 'Spatia' },
+  publisher: { '@type': 'Organization', name: 'Spatia', url: 'https://www.spatia.sg' },
+  mainEntityOfPage: Astro.url.href,
+};
 ---
 
 <Layout
@@ -34,6 +48,15 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('en-US', {
   ogImage={post.data.image}
   ogType="article"
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {isWatercolor && (
+      <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Caveat:wght@500;700&display=swap"
+        rel="stylesheet"
+      />
+    )}
+  </Fragment>
   <Navbar activeLink="blog" />
 
   <!-- Reading progress bar -->
@@ -85,8 +108,14 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('en-US', {
 
         <!-- Meta -->
         <div class="flex flex-wrap items-center gap-3 mt-8 reveal reveal-delay-3">
+          {post.data.author && (
+            <>
+              <span class="text-[13px] font-semibold tracking-[0.08em] text-sp-body">By {post.data.author}</span>
+              <span class="hidden sm:inline" style="color: #D1D5DB; font-size: 11px;">·</span>
+            </>
+          )}
           <span class="text-[13px] font-semibold tracking-[0.08em] text-sp-body">{dateFormatted}</span>
-          <span style="color: #D1D5DB; font-size: 11px;">·</span>
+          <span class="hidden sm:inline" style="color: #D1D5DB; font-size: 11px;">·</span>
           <span class="text-[13px] font-medium tracking-[0.04em] text-[#9CA3AF]">{post.data.readTime}</span>
         </div>
 
@@ -153,9 +182,15 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('en-US', {
       </div>
 
       <!-- Markdown body -->
-      <div class="max-w-[760px] mx-auto px-8 lg:px-0 py-12 lg:py-16 blog-content">
-        <Content />
-      </div>
+      {isWatercolor ? (
+        <WatercolorArticle>
+          <Content />
+        </WatercolorArticle>
+      ) : (
+        <div class="max-w-[760px] mx-auto px-8 lg:px-0 py-12 lg:py-16 blog-content">
+          <Content />
+        </div>
+      )}
 
     </section>
 

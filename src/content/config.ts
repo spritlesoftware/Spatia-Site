@@ -8,6 +8,10 @@ const blog = defineCollection({
       description: z.string(),
       category: z.string(),
       blogType: z.enum(['tech', 'business']).default('tech'),
+      // Article presentation. `watercolor` uses the illustrated field-note layout.
+      articleLayout: z.enum(['standard', 'watercolor']).default('standard'),
+      // Optional byline, shown in the article meta.
+      author: z.string().optional(),
       readTime: z.string(),
       // Hero image: provide either a remote URL or an uploaded file.
       // `imageUpload` (local) takes precedence over `imageUrl` (remote).

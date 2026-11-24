@@ -42,6 +42,23 @@ content:
             - { value: tech, label: Tech Blogs }
             - { value: business, label: Business Blogs }
 
+      - name: articleLayout
+        label: Article Layout
+        type: select
+        required: false
+        default: standard
+        description: "Standard uses the normal blog template. Watercolor uses the illustrated field-note layout."
+        options:
+          values:
+            - { value: standard, label: Standard }
+            - { value: watercolor, label: Watercolor }
+
+      - name: author
+        label: Author
+        type: string
+        required: false
+        description: "Optional byline shown in the article meta, e.g. Balaji D Loganathan."
+
       - name: readTime
         label: Read Time
         type: string
