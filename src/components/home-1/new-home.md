@@ -14,7 +14,7 @@ Update the existing **Home** page only. Do not change the Technology page yet. B
 - **Platform tagline (use verbatim):** From seeing the part to completing the task, Spatia brings intelligence directly to the robot.
 - **Solutions built on the platform:**
   1. **Cognitive Assembly**
-  2. **Dynamic Inspection, Vernier**
+  2. **Vision Guided Robotic Inspection, Vernier**
   3. **Zero-CAD platform** `[NAME PLACEHOLDER]`
 - The name "AssembleX" now refers to the platform, not to the assembly solution alone.
 - **Always pair "physical AI" with the qualifier:** CAD-native, deterministic, no training data. Do not imply end-to-end learned control.
@@ -53,7 +53,7 @@ Update the existing **Home** page only. Do not change the Technology page yet. B
 
 **H1:** Robots that see, adapt and inspect on the factory floor.
 
-**Subhead:** CAD-native perception for assembly and dynamic inspection. No training data. No custom fixtures.
+**Subhead:** CAD-native perception for assembly and vision guided robotic inspection. No training data. No custom fixtures.
 No CAD? We’ll take it from there.
 
 **Primary CTA:** Book a demo → `/contact`
@@ -148,7 +148,7 @@ Small icon per card. `[MEDIA: A02 icon set]`
 
 **CTA:** Explore Cognitive Assembly → `/cognitive-assembly` `[PAGE TO BE DESIGNED]`
 
-### 02 Dynamic Inspection: Vernier
+### 02 Vision Guided Robotic Inspection: Vernier
 
 **Tagline:** Compare every part to its CAD, in motion.
 
@@ -261,8 +261,8 @@ Keep existing legal links.
 ## SEO
 
 - **Title:** Spatia AssembleX | Spatial Intelligence for Manufacturing
-- **Meta description:** Spatial Intelligence for manufacturing. CAD-native perception for cognitive assembly and dynamic inspection with no training data or custom fixtures.
-- **Primary keywords:** physical AI manufacturing, CAD-based pose estimation, zero-shot 6D pose, robot bin picking, dynamic inspection, fixtureless robot picking
+- **Meta description:** Spatial Intelligence for manufacturing. CAD-native perception for cognitive assembly and vision guided robotic inspection with no training data or custom fixtures.
+- **Primary keywords:** physical AI manufacturing, CAD-based pose estimation, zero-shot 6D pose, robot bin picking, vision guided robotic inspection, fixtureless robot picking
 - **Social share image:** `[MEDIA: A21]` 1200x630
 
 ---

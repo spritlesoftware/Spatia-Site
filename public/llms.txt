@@ -2,7 +2,7 @@
 
 > Spatia is the intelligence layer for robots in manufacturing. OEMs build the arm. Spatia teaches it the job.
 
-Spatia gives industrial robots CAD-native perception and station-level SOP execution for bin picking, dynamic inspection and dynamic torque. It is built for BYOR, bring your own robot, on ROS 2, validated on UR and Flexiv.
+Spatia gives industrial robots CAD-native perception and station-level SOP execution for bin picking, vision guided robotic inspection and dynamic torque. It is built for BYOR, bring your own robot, on ROS 2, validated on UR and Flexiv.
 
 ## Key pages
 
