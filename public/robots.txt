@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /downloads/
 Allow: /
 
 # AI search and answer engines

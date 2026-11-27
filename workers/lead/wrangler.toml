@@ -1,0 +1,20 @@
+name = "spatia-lead"
+main = "src/index.js"
+compatibility_date = "2026-11-27"
+account_id = "eb7a4cccf42141d1169ccd03ae26371d"
+
+# Public configuration only. Secrets go in via:
+#   npx wrangler secret put ZOHO_CLIENT_ID
+#   npx wrangler secret put ZOHO_CLIENT_SECRET
+#   npx wrangler secret put ZOHO_REFRESH_TOKEN
+#   npx wrangler secret put RECAPTCHA_SECRET_KEY
+[vars]
+ALLOWED_ORIGINS = "https://www.spatia.sg,https://spatia.sg,http://localhost:4321"
+ZOHO_ACCOUNTS_BASE = "https://accounts.zoho.in"
+ZOHO_API_BASE = "https://www.zohoapis.in"
+ZOHO_MAIL_BASE = "https://mail.zoho.in"
+ZOHO_MAIL_ACCOUNT_ID = "7843254000000002002"
+FROM_EMAIL = "people@spatia.sg"
+TEAM_EMAIL = "people@spatia.sg"
+PDF_URL = "https://www.spatia.sg/downloads/spatia-vision-guided-robotic-quality-inspection.pdf"
+WHITEPAPER_TITLE = "Vision-guided robotic quality inspection: from a picture to a decision"

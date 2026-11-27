@@ -7,7 +7,10 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
-      filter: (page) => !page.includes('/404') && !page.includes('/index-1'),
+      filter: (page) =>
+        !page.includes('/404') &&
+        !page.includes('/index-1') &&
+        !page.includes('/whitepaper/thank-you'),
     }),
   ],
 });

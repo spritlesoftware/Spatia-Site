@@ -1,0 +1,374 @@
+---
+import { LEAD_ENDPOINT, RECAPTCHA_SITE_KEY } from '../../config/leads';
+
+interface Props {
+  variant: 'whitepaper' | 'contact';
+  submitLabel?: string;
+}
+
+const { variant, submitLabel } = Astro.props;
+const isWhitepaper = variant === 'whitepaper';
+
+const field =
+  'lf-field block w-full rounded-[10px] border border-[#D5DEE6] bg-[#F3F5F7] px-4 py-3 text-[16px] leading-normal text-sp-heading outline-none transition-all duration-200 placeholder:text-[#8592A3] hover:border-[#B9C6D2] focus:border-sp-green focus:bg-white focus:shadow-[0_0_0_4px_rgba(15,74,70,0.1)]';
+const label = 'mb-2 block text-[14px] font-semibold text-sp-heading';
+
+const buttonText = submitLabel ?? (isWhitepaper ? 'Get the whitepaper' : 'Send');
+
+const messageLabel = isWhitepaper ? 'What do you want to solve?' : 'How can we help?';
+const messagePlaceholder = isWhitepaper
+  ? 'Example: torque check on a moving line'
+  : 'Robot, task and plant location';
+const messageRequired = !isWhitepaper;
+
+const consentStart = isWhitepaper
+  ? 'I agree that Spatia can store my details and contact me about this whitepaper and related products.'
+  : 'I agree that Spatia can store my details and contact me about my enquiry.';
+---
+
+<form
+  class="lead-form rounded-[24px] border border-sp-border bg-white p-6 shadow-[0_30px_70px_-40px_rgba(17,24,39,0.3)] sm:p-9"
+  data-lead-form
+  data-variant={variant}
+  data-endpoint={LEAD_ENDPOINT}
+  data-site-key={RECAPTCHA_SITE_KEY}
+  method="post"
+  action={LEAD_ENDPOINT}
+>
+  <!-- Honeypot. Hidden from people, tempting for bots. -->
+  <div class="lf-hp" aria-hidden="true">
+    <label for={`lf-${variant}-website`}>Website</label>
+    <input id={`lf-${variant}-website`} name="website" type="text" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div>
+      <label class={label} for={`lf-${variant}-first`}>First name</label>
+      <input
+        id={`lf-${variant}-first`}
+        name="firstName"
+        type="text"
+        autocomplete="given-name"
+        required
+        maxlength="80"
+        class={field}
+      />
+    </div>
+    <div>
+      <label class={label} for={`lf-${variant}-last`}>Last name</label>
+      <input
+        id={`lf-${variant}-last`}
+        name="lastName"
+        type="text"
+        autocomplete="family-name"
+        required
+        maxlength="80"
+        class={field}
+      />
+    </div>
+    <div class="sm:col-span-2">
+      <label class={label} for={`lf-${variant}-email`}>Work email</label>
+      <input
+        id={`lf-${variant}-email`}
+        name="email"
+        type="email"
+        autocomplete="email"
+        required
+        maxlength="254"
+        class={field}
+      />
+    </div>
+    <div>
+      <label class={label} for={`lf-${variant}-phone`}>
+        Phone (optional)
+      </label>
+      <input
+        id={`lf-${variant}-phone`}
+        name="phone"
+        type="tel"
+        autocomplete="tel"
+        maxlength="40"
+        aria-describedby={`lf-${variant}-phone-hint`}
+        class={field}
+      />
+      <p id={`lf-${variant}-phone-hint`} class="mt-1.5 text-[12.5px] text-sp-body/55">
+        Include country code
+      </p>
+    </div>
+    <div>
+      <label class={label} for={`lf-${variant}-company`}>Company name</label>
+      <input
+        id={`lf-${variant}-company`}
+        name="company"
+        type="text"
+        autocomplete="organization"
+        required
+        maxlength="200"
+        class={field}
+      />
+    </div>
+    <div class="sm:col-span-2">
+      <label class={label} for={`lf-${variant}-message`}>
+        {messageLabel}{!messageRequired && <span class="font-normal text-sp-body/60"> (optional)</span>}
+      </label>
+      <textarea
+        id={`lf-${variant}-message`}
+        name="message"
+        rows="4"
+        required={messageRequired}
+        maxlength="5000"
+        placeholder={messagePlaceholder}
+        class={`${field} resize-y`}
+      ></textarea>
+    </div>
+  </div>
+
+  <label class="mt-6 flex cursor-pointer items-start gap-3 text-[13.5px] leading-[1.6] text-sp-body/80">
+    <input
+      type="checkbox"
+      name="consent"
+      required
+      class="mt-[3px] h-4 w-4 shrink-0 cursor-pointer accent-[#0F4A46]"
+    />
+    <span>
+      {consentStart}
+      I can unsubscribe at any time. See our
+      <a href="/privacy" class="text-sp-green underline underline-offset-4 hover:opacity-70 transition-opacity">Privacy Policy</a>.
+    </span>
+  </label>
+
+  <div class="mt-7">
+    <button
+      type="submit"
+      class="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#0F4A46] px-6 py-4 text-[16px] font-semibold text-white shadow-[0_12px_28px_-14px_rgba(15,74,70,0.8)] transition-all duration-300 hover:bg-[#0A3330] hover:shadow-[0_16px_34px_-14px_rgba(15,74,70,0.9)] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70"
+    >
+      <span data-lead-button-label>{buttonText}</span>
+      <svg
+        class="transition-transform duration-300 group-hover:translate-x-1"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="13 6 19 12 13 18"></polyline>
+      </svg>
+    </button>
+
+    <p
+      data-lead-status
+      role="status"
+      aria-live="polite"
+      class="mt-3 hidden text-center text-[13.5px] leading-[1.5]"
+    ></p>
+  </div>
+
+  <div data-lead-success hidden class="py-6 text-center">
+    <div class="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-[#E6E6EA]">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F4A46" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <h3 class="mb-2 text-[20px] font-semibold tracking-[-0.02em] text-sp-heading">
+      Thank you. We will reply within 1 working day.
+    </h3>
+    <p class="text-[15px] text-sp-body/70">
+      If it is urgent, email <a href="mailto:people@spatia.sg" class="text-sp-green underline underline-offset-4">people@spatia.sg</a>.
+    </p>
+  </div>
+
+  <noscript>
+    <p class="mt-4 text-center text-[13.5px] text-sp-body/70">
+      This form needs JavaScript. Email <a href="mailto:people@spatia.sg" class="text-sp-green underline underline-offset-4">people@spatia.sg</a> instead.
+    </p>
+  </noscript>
+</form>
+
+<style>
+  .lf-hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .lf-field:user-invalid {
+    border-color: #f87171;
+    box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.1);
+  }
+</style>
+
+<script>
+  type Utm = { source: string; medium: string; campaign: string };
+
+  function readUtm(): Utm {
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl: Utm = {
+      source: params.get('utm_source') || '',
+      medium: params.get('utm_medium') || '',
+      campaign: params.get('utm_campaign') || '',
+    };
+
+    try {
+      if (fromUrl.source || fromUrl.medium || fromUrl.campaign) {
+        sessionStorage.setItem('spatia_utm', JSON.stringify(fromUrl));
+        return fromUrl;
+      }
+      const stored = sessionStorage.getItem('spatia_utm');
+      if (stored) return { ...fromUrl, ...(JSON.parse(stored) as Utm) };
+    } catch {
+      // private mode, ignore
+    }
+    return fromUrl;
+  }
+
+  function setStatus(form: HTMLFormElement, message: string, tone: 'error' | 'info') {
+    const el = form.querySelector<HTMLElement>('[data-lead-status]');
+    if (!el) return;
+    el.textContent = message;
+    el.classList.remove('hidden', 'text-red-600', 'text-sp-body/60');
+    el.classList.add(tone === 'error' ? 'text-red-600' : 'text-sp-body/60');
+  }
+
+  function clearStatus(form: HTMLFormElement) {
+    const el = form.querySelector<HTMLElement>('[data-lead-status]');
+    if (!el) return;
+    el.textContent = '';
+    el.classList.add('hidden');
+  }
+
+  async function getRecaptchaToken(siteKey: string): Promise<string> {
+    if (!siteKey) return '';
+
+    await new Promise<void>((resolve) => {
+      if ((window as any).grecaptcha) return resolve();
+      const existing = document.getElementById('recaptcha-v3');
+      if (existing) {
+        existing.addEventListener('load', () => resolve(), { once: true });
+        return;
+      }
+      const script = document.createElement('script');
+      script.id = 'recaptcha-v3';
+      script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+      script.async = true;
+      script.onload = () => resolve();
+      script.onerror = () => resolve();
+      document.head.appendChild(script);
+    });
+
+    const grecaptcha = (window as any).grecaptcha;
+    if (!grecaptcha) return '';
+
+    return new Promise<string>((resolve) => {
+      grecaptcha.ready(() => {
+        grecaptcha.execute(siteKey, { action: 'lead' }).then(resolve).catch(() => resolve(''));
+      });
+    });
+  }
+
+  document.querySelectorAll<HTMLFormElement>('form[data-lead-form]').forEach((form) => {
+    const variant = form.dataset.variant || 'contact';
+    const endpoint = form.dataset.endpoint || '';
+    const siteKey = form.dataset.siteKey || '';
+    const utm = readUtm();
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearStatus(form);
+
+      const data = new FormData(form);
+
+      // Honeypot: pretend success, send nothing.
+      if (String(data.get('website') || '').trim() !== '') {
+        if (variant === 'whitepaper') {
+          window.location.assign('/whitepaper/thank-you');
+        } else {
+          form.querySelector<HTMLElement>('[data-lead-success]')?.removeAttribute('hidden');
+        }
+        return;
+      }
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const buttonLabel = form.querySelector<HTMLElement>('[data-lead-button-label]');
+      const originalLabel = buttonLabel?.textContent || '';
+
+      if (button) button.disabled = true;
+      if (buttonLabel) buttonLabel.textContent = 'Sending...';
+      setStatus(form, 'Sending your details...', 'info');
+
+      try {
+        const recaptchaToken = await getRecaptchaToken(siteKey);
+
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            form: variant,
+            firstName: data.get('firstName'),
+            lastName: data.get('lastName'),
+            email: data.get('email'),
+            phone: data.get('phone'),
+            company: data.get('company'),
+            message: data.get('message'),
+            utm,
+            recaptchaToken,
+            website: data.get('website'),
+          }),
+        });
+
+        const result = await response.json().catch(() => ({ ok: false }));
+
+        if (!response.ok || !result.ok) {
+          if (result.error === 'captcha_low_score' || result.error === 'captcha_failed') {
+            setStatus(
+              form,
+              'We could not verify that this is a human submission. Please try again, or email people@spatia.sg.',
+              'error',
+            );
+          } else if (result.field) {
+            setStatus(form, 'Please check the highlighted fields and try again.', 'error');
+          } else {
+            setStatus(
+              form,
+              'Something went wrong. Please try again, or email people@spatia.sg.',
+              'error',
+            );
+          }
+          if (button) button.disabled = false;
+          if (buttonLabel) buttonLabel.textContent = originalLabel;
+          return;
+        }
+
+        if (variant === 'whitepaper') {
+          window.location.assign('/whitepaper/thank-you');
+          return;
+        }
+
+        form.querySelector<HTMLElement>('[data-lead-success]')?.removeAttribute('hidden');
+        form.querySelectorAll<HTMLElement>('.grid, label, .mt-7').forEach((el) => {
+          if (!el.hasAttribute('data-lead-success')) el.setAttribute('hidden', '');
+        });
+        clearStatus(form);
+      } catch {
+        setStatus(
+          form,
+          'Could not reach the server. Check your connection, or email people@spatia.sg.',
+          'error',
+        );
+        if (button) button.disabled = false;
+        if (buttonLabel) buttonLabel.textContent = originalLabel;
+      }
+    });
+  });
+</script>

@@ -1,0 +1,90 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/shared/Navbar.astro';
+import Footer from '@components/shared/Footer.astro';
+import LeadForm from '@components/forms/LeadForm.astro';
+import { WHITEPAPER } from '../../config/leads';
+
+// DRAFT summary. Replace with Balaji's approved 3 to 5 lines before publishing.
+const summary =
+  'Vision-guided inspection usually stops at detection. This paper follows the rest of the path: from a CAD model and a camera frame, through pose estimation and verification, to a pass or fail decision the line can act on. It covers where vision alone is enough, where it is not, and what has to change when the robot has to make the call.';
+---
+
+<Layout
+  title="Vision-guided robotic quality inspection | Spatia"
+  description="A Spatia whitepaper on vision-guided robotic quality inspection: from a CAD model and a camera frame to a pass or fail decision on the line."
+  ogImage="/og-default.png"
+  ogType="article"
+>
+  <Navbar />
+  <main>
+    <section class="relative overflow-hidden bg-white pb-10 pt-32 md:pt-40">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true"
+        style="background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(15,74,70,0.07) 0%, transparent 70%);"
+      ></div>
+
+      <div class="relative mx-auto max-w-[820px] px-4 text-center sm:px-8">
+        <p class="section-label mb-5">WHITEPAPER</p>
+        <h1
+          class="reveal font-bold leading-[1.08] tracking-[-0.035em] text-sp-heading"
+          style="font-size: clamp(32px, 4.6vw, 56px);"
+        >
+          {WHITEPAPER.title}
+        </h1>
+        <p class="reveal reveal-delay-1 mx-auto mt-6 max-w-[660px] text-[17px] leading-[1.75] text-sp-body/80 md:text-[18px]">
+          {summary}
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-white pb-20 pt-6 md:pb-[120px]">
+      <div class="mx-auto grid max-w-[1120px] grid-cols-1 gap-12 px-4 sm:px-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
+        <!-- Cover placeholder. Swap for the real cover when it exists. -->
+        <div class="reveal mx-auto w-full max-w-[360px] lg:sticky lg:top-28 lg:mx-0">
+          <div class="relative aspect-[3/4] overflow-hidden rounded-[22px] border border-[#0F4A46]/20 shadow-[0_40px_80px_-50px_rgba(15,74,70,0.55)]">
+            <div class="absolute inset-0" style="background: linear-gradient(155deg, #0F4A46 0%, #0A3330 55%, #072624 100%);"></div>
+            <div class="absolute inset-0 opacity-[0.18]" aria-hidden="true"
+              style="background-image: linear-gradient(rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.35) 1px, transparent 1px); background-size: 44px 44px;"
+            ></div>
+            <div class="relative flex h-full flex-col justify-between p-8 text-white sm:p-9">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-[11px] uppercase tracking-[0.28em] text-white/70">Spatia</span>
+                <span class="rounded-full border border-white/25 px-3 py-1 text-[10.5px] uppercase tracking-[0.18em] text-white/75">
+                  Whitepaper
+                </span>
+              </div>
+              <div>
+                <p class="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/55">
+                  Vision guided inspection
+                </p>
+                <p class="text-[24px] font-semibold leading-[1.2] tracking-[-0.02em] sm:text-[27px]">
+                  From a picture to a decision
+                </p>
+              </div>
+              <p class="text-[12px] text-white/55">www.spatia.sg</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <div class="mb-7">
+            <h2 class="text-[24px] font-semibold tracking-[-0.02em] text-sp-heading">
+              Get the whitepaper
+            </h2>
+            <p class="mt-2 text-[16px] leading-[1.7] text-sp-body/70">
+              Enter your details and download it immediately.
+            </p>
+          </div>
+
+          <LeadForm variant="whitepaper" />
+
+          <p class="mt-5 text-[13px] leading-[1.6] text-sp-body/55">
+            We use these details to send the paper and follow up about it, and nothing else.
+            Read the <a href="/privacy" class="underline underline-offset-4 hover:text-sp-green">privacy policy</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -6,6 +6,7 @@ import ContactHero from '@components/contact/ContactHero.astro';
 import InterestCards from '@components/contact/InterestCards.astro';
 import WhyContactUs from '@components/contact/WhyContactUs.astro';
 import ContactMethods from '@components/contact/ContactMethods.astro';
+import LeadForm from '@components/forms/LeadForm.astro';
 import FAQSection from '@components/contact/FAQSection.astro';
 import FinalCTA from '@components/contact/FinalCTA.astro';
 ---
@@ -20,6 +21,23 @@ import FinalCTA from '@components/contact/FinalCTA.astro';
     <InterestCards />
     <WhyContactUs />
     <ContactMethods />
+    <section id="enquiry" class="scroll-mt-24 bg-white py-16 md:py-[120px]">
+      <div class="mx-auto max-w-[44rem] px-4 sm:px-8">
+        <div class="reveal mb-10 text-center">
+          <p class="section-label mb-4">ENQUIRY</p>
+          <h2
+            class="mb-3 font-inter font-bold leading-[1.12] tracking-[-0.025em] text-sp-heading"
+            style="font-size: clamp(26px, 3vw, 40px);"
+          >
+            Tell us what you are working on.
+          </h2>
+          <p class="mx-auto max-w-[30rem] text-[17px] leading-[1.7] text-sp-body/75">
+            A robot, a task and a plant location is enough to start.
+          </p>
+        </div>
+        <LeadForm variant="contact" />
+      </div>
+    </section>
     <FAQSection />
     <FinalCTA />
   </main>

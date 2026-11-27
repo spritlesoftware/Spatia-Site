@@ -4,4 +4,6 @@ dist/
 public/media/home/assembly-overview.mp4
 *.mp4
 .env
+.dev.vars
+.wrangler/
 .DS_Store
