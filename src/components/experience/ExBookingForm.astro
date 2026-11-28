@@ -24,64 +24,111 @@ const label = 'mb-2 block text-[14px] font-semibold text-sp-heading';
         </p>
       </div>
 
-      <form class="rounded-[24px] border border-sp-border bg-white p-6 shadow-[0_30px_70px_-40px_rgba(17,24,39,0.3)] sm:p-9" method="post" action="#" novalidate>
-        <input type="hidden" name="interest" value="Experience Centre" />
+      <form id="visit-form" class="rounded-[24px] border border-sp-border bg-white p-6 shadow-[0_30px_70px_-40px_rgba(17,24,39,0.3)] sm:p-9" method="post" action="#">
 
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div>
-            <label for="b-name" class={label}>Name</label>
-            <input id="b-name" name="name" type="text" autocomplete="name" required class={field} />
+        <div data-form-fields>
+          <!-- Honeypot -->
+          <div class="bf-hp" aria-hidden="true">
+            <label for="visit-website">Website</label>
+            <input id="visit-website" name="website" type="text" tabindex="-1" autocomplete="off" />
           </div>
-          <div>
-            <label for="b-email" class={label}>Work email</label>
-            <input id="b-email" name="email" type="email" autocomplete="email" required class={field} />
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label for="visit-name" class={label}>Name</label>
+              <input id="visit-name" name="name" type="text" autocomplete="name" required maxlength="120" class={field} />
+            </div>
+            <div>
+              <label for="visit-email" class={label}>Work email</label>
+              <input id="visit-email" name="email" type="email" autocomplete="email" required maxlength="254" class={field} />
+            </div>
+            <div class="sm:col-span-2">
+              <label for="visit-company" class={label}>Company</label>
+              <input id="visit-company" name="company" type="text" autocomplete="organization" required maxlength="200" class={field} />
+            </div>
           </div>
-          <div class="sm:col-span-2">
-            <label for="b-company" class={label}>Company</label>
-            <input id="b-company" name="company" type="text" autocomplete="organization" required class={field} />
+
+          <fieldset class="mt-5">
+            <legend class={label}>Visit format</legend>
+            <div class="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+              {formats.map((item, i) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="format" value={item} checked={i === 0} class="peer sr-only" />
+                  <span class="flex items-center justify-center rounded-[10px] border border-[#D5DEE6] bg-[#F3F5F7] px-4 py-3 text-center text-[15px] font-medium text-sp-body transition-all duration-200 hover:border-sp-green/40 hover:text-sp-heading peer-checked:border-sp-green peer-checked:bg-[#E6E6EA] peer-checked:font-semibold peer-checked:text-sp-green peer-focus-visible:shadow-[0_0_0_4px_rgba(15, 74, 70,0.15)]">
+                    {item}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <div class="mt-5">
+            <label for="visit-part" class={label}>Your part and task</label>
+            <textarea
+              id="visit-part"
+              name="message"
+              rows={4}
+              maxlength="5000"
+              placeholder="What the part is, how it arrives (bin, tray, conveyor) and what the robot should do with it."
+              class={`${field} resize-y`}
+            ></textarea>
+          </div>
+
+          <div class="mt-5">
+            <label for="visit-dates" class={label}>Preferred dates <span class="font-normal text-sp-body/70">(optional)</span></label>
+            <input id="visit-dates" name="dates" type="text" maxlength="120" placeholder="e.g. week of 14 December" class={field} />
+          </div>
+
+          <label class="mt-6 flex cursor-pointer items-start gap-3 text-[13.5px] leading-[1.6] text-sp-body/80">
+            <input
+              type="checkbox"
+              name="consent"
+              required
+              class="mt-[3px] h-4 w-4 shrink-0 cursor-pointer accent-[#0F4A46]"
+            />
+            <span>
+              I agree that Spatia can store my details and contact me about my visit. I can unsubscribe at any time. See our
+              <a href="/privacy" class="text-sp-green underline underline-offset-4 hover:opacity-70 transition-opacity">Privacy Policy</a>.
+            </span>
+          </label>
+
+          <div class="mt-8">
+            <button
+              type="submit"
+              class="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#0F4A46] px-6 py-4 text-[16px] font-semibold text-white shadow-[0_12px_28px_-14px_rgba(15, 74, 70,0.8)] transition-all duration-300 hover:bg-[#0A3330] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70"
+            >
+              <span data-lead-button-label>Request a visit</span>
+              <svg class="transition-transform duration-300 group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+            </button>
+
+            <p
+              data-lead-status
+              role="status"
+              aria-live="polite"
+              class="mt-3 hidden text-center text-[13.5px] leading-[1.5]"
+            ></p>
+
+            <p class="mt-3 text-center text-[11.5px] leading-[1.5] text-sp-body/45">
+              This site is protected by reCAPTCHA and the Google
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-sp-green">Privacy Policy</a>
+              and
+              <a href="https://policies.google.com/terms" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-sp-green">Terms of Service</a>
+              apply.
+            </p>
           </div>
         </div>
 
-        <fieldset class="mt-5">
-          <legend class={label}>Visit format</legend>
-          <div class="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-            {formats.map((item, i) => (
-              <label class="cursor-pointer">
-                <input type="radio" name="format" value={item} checked={i === 0} class="peer sr-only" />
-                <span class="flex items-center justify-center rounded-[10px] border border-[#D5DEE6] bg-[#F3F5F7] px-4 py-3 text-center text-[15px] font-medium text-sp-body transition-all duration-200 hover:border-sp-green/40 hover:text-sp-heading peer-checked:border-sp-green peer-checked:bg-[#E6E6EA] peer-checked:font-semibold peer-checked:text-sp-green peer-focus-visible:shadow-[0_0_0_4px_rgba(15, 74, 70,0.15)]">
-                  {item}
-                </span>
-              </label>
-            ))}
+        <div data-lead-success hidden class="py-10 text-center">
+          <div class="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-[#E6E6EA]">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F4A46" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
           </div>
-        </fieldset>
-
-        <div class="mt-5">
-          <label for="b-part" class={label}>Your part and task</label>
-          <textarea
-            id="b-part"
-            name="message"
-            rows={4}
-            placeholder="What the part is, how it arrives (bin, tray, conveyor) and what the robot should do with it."
-            class={`${field} resize-y`}
-          ></textarea>
-        </div>
-
-        <div class="mt-5">
-          <label for="b-dates" class={label}>Preferred dates <span class="font-normal text-sp-body/70">(optional)</span></label>
-          <input id="b-dates" name="dates" type="text" placeholder="e.g. week of 14 December" class={field} />
-        </div>
-
-        <div class="mt-8">
-          <button
-            type="submit"
-            class="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#0F4A46] px-6 py-4 text-[16px] font-semibold text-white shadow-[0_12px_28px_-14px_rgba(15, 74, 70,0.8)] transition-all duration-300 hover:bg-[#0A3330] active:scale-[0.99]"
-          >
-            Request a visit
-            <svg class="transition-transform duration-300 group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
-          </button>
-          <p class="mt-3 text-center text-[13px] text-sp-body/60">
-            Form is not connected to a backend yet.
+          <h3 class="mb-2 text-[20px] font-semibold tracking-[-0.02em] text-sp-heading">
+            Thank you. We will confirm your visit within 1 working day.
+          </h3>
+          <p class="text-[15px] text-sp-body/70">
+            If it is urgent, email <a href="mailto:people@spatia.sg" class="text-sp-green underline underline-offset-4">people@spatia.sg</a>.
           </p>
         </div>
       </form>
@@ -91,8 +138,51 @@ const label = 'mb-2 block text-[14px] font-semibold text-sp-heading';
 </section>
 
 <style>
+  .bf-hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
   .bf-field:user-invalid {
     border-color: #F87171;
     box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.1);
   }
 </style>
+
+<script>
+  import { initLeadForm } from '../../lib/lead-client';
+
+  const form = document.querySelector<HTMLFormElement>('#visit-form');
+
+  if (form) {
+    initLeadForm(form, {
+      buildPayload: (data) => {
+        const parts = String(data.get('name') || '').trim().split(/\s+/).filter(Boolean);
+        const message = [
+          'Interest: Experience Centre',
+          `Visit format: ${data.get('format')}`,
+          data.get('dates') && `Preferred dates: ${data.get('dates')}`,
+          data.get('message') && `Part and task: ${data.get('message')}`,
+        ]
+          .filter(Boolean)
+          .join('\n');
+
+        return {
+          form: 'contact',
+          firstName: parts[0] || 'Website visitor',
+          lastName: parts.slice(1).join(' ') || 'Not provided',
+          email: data.get('email'),
+          company: data.get('company'),
+          message,
+        };
+      },
+      onSuccess: (submitted) => {
+        submitted.querySelector('[data-form-fields]')?.setAttribute('hidden', '');
+        submitted.querySelector('[data-lead-success]')?.removeAttribute('hidden');
+      },
+    });
+  }
+</script>
