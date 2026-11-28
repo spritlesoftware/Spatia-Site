@@ -1,11 +1,20 @@
 ---
 const articles = [
   {
+    date: 'Nov 28, 2026',
+    title: 'Vision-guided robotic quality inspection',
+    description: 'From a picture to a decision: a whitepaper on inspection that ends in a pass or fail.',
+    readTime: 'PDF',
+    category: 'Featured',
+    href: '/whitepaper/vision-guided-robotic-quality-inspection/',
+  },
+  {
     date: 'Apr 24, 2024',
     title: 'The Geometry of Perception',
     description: 'How spatial understanding shapes the way machines see the world.',
     readTime: '8 min read',
     category: 'Research',
+    href: '#',
   },
   {
     date: 'Apr 24, 2024',
@@ -13,6 +22,7 @@ const articles = [
     description: 'Exploring how movement becomes a medium for communication.',
     readTime: '6 min read',
     category: 'Engineering',
+    href: '#',
   },
   {
     date: 'Apr 24, 2024',
@@ -20,6 +30,7 @@ const articles = [
     description: "Reasoning in machines isn't linear-it's layered.",
     readTime: '10 min read',
     category: 'Research',
+    href: '#',
   },
   {
     date: 'Mar 15, 2024',
@@ -27,6 +38,7 @@ const articles = [
     description: 'Building systems that humans can rely on-not just technically, but intuitively.',
     readTime: '7 min read',
     category: 'Featured',
+    href: '#',
   },
   {
     date: 'Feb 28, 2024',
@@ -34,6 +46,7 @@ const articles = [
     description: 'Where physical reality meets the digital model-designing for the gap.',
     readTime: '9 min read',
     category: 'Engineering',
+    href: '#',
   },
 ];
 
@@ -76,7 +89,7 @@ const filters = ['All Topics', 'Featured', 'Research', 'Engineering'];
           class={`lib-row reveal reveal-delay-${Math.min(i + 1, 5)}`}
           data-category={article.category}
         >
-          <a href="#" class="lib-row__inner group">
+          <a href={article.href} class="lib-row__inner group">
             <!-- Date -->
             <span class="lib-row__date">{article.date}</span>
 

@@ -2,7 +2,7 @@
 import logoSpatia from '../../assets/logo-spatia-header.png';
 
 interface Props {
-  activeLink?: 'nexa' | 'technology' | 'experience' | 'humans' | 'blog' | 'h2r';
+  activeLink?: 'nexa' | 'technology' | 'experience' | 'humans' | 'blog' | 'h2r' | 'whitepaper';
 }
 
 const { activeLink } = Astro.props;
@@ -13,6 +13,7 @@ const links = [
   { label: 'Experience Centre', href: '/experience-centre', id: 'experience' },
   { label: 'Humans',     href: '/humans',     id: 'humans'     },
   { label: 'Blogs',      href: '/blog',       id: 'blog'       },
+  { label: 'Whitepaper', href: '/whitepaper/vision-guided-robotic-quality-inspection/', id: 'whitepaper' },
 ];
 ---
 
@@ -28,7 +29,7 @@ const links = [
     </a>
 
     <!-- Nav links (desktop & large tablet) -->
-    <div class="hidden lg:flex items-center gap-7 2xl:gap-10">
+    <div class="hidden lg:flex items-center gap-5 xl:gap-7 2xl:gap-10">
       {links.map((link) => (
         <a
           href={link.href}

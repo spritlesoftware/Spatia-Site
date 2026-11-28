@@ -12,6 +12,7 @@
 - `FAQPage` JSON-LD on `/contact`, `/technology`, `/experience-centre` and `/guides/picking-cell`.
 - `DefinedTermSet` JSON-LD on `/glossary`.
 - `TechArticle` JSON-LD on `/guides/picking-cell`.
+- `TechArticle` and `BreadcrumbList` JSON-LD on the whitepaper landing page.
 - One `H1` on the home page.
 - An answer-first "In short" block on the home page.
 
@@ -24,6 +25,7 @@
 | `/experience-centre` | Visit FAQ with FAQPage schema |
 | `/glossary` | Quotable definitions with DefinedTermSet schema |
 | `/guides/picking-cell` | Buyer guide with comparison tables, FAQPage and TechArticle schema |
+| `/whitepaper/vision-guided-robotic-quality-inspection` | Gated whitepaper landing page with TechArticle and BreadcrumbList schema |
 | `/blog/your-robot-can-pick-can-it-finish-the-job` | Field note with Article, BreadcrumbList and dateModified |
 | `/llms.txt` | Approved facts, key definitions and canonical links for AI crawlers |
 
@@ -80,7 +82,6 @@ Expected: `text/plain`, `application/xml`, `text/plain`, and `404` for the missi
 
 ## What is not done yet
 
-- The nginx 404 rule still needs to be applied on the server.
 - Organization `sameAs` covers LinkedIn, Instagram and YouTube. Add other profiles as they become canonical.
 - No author byline on the older blog posts. Add one only where authorship is confirmed.
 - No analytics IDs or Search Console verification in the code yet.

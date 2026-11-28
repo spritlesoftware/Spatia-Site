@@ -295,7 +295,7 @@ keywords: "bin picking, pick and place, 3D vision, robot vision, machine tending
 <div class="cta">
 <h2>Bring your part. We will show you.</h2>
 <p>Send us the CAD. Visit our Experience Centre in Chennai, India. We will run your part on the robot with you.</p>
-<p>Write to <a href="mailto:spatia@spritle.com"><b>spatia@spritle.com</b></a>.</p>
+<p>Write to <a href="mailto:people@spatia.sg"><b>people@spatia.sg</b></a>.</p>
 </div>
 <div class="who"><div class="av" aria-hidden="true">B</div><p style="margin:0">Balaji D Loganathan is the founder of Spatia and Seewise.AI. He has spent the last few years on shop floors with manufacturers, putting vision AI on real assembly lines.</p></div>
 

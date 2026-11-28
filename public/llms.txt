@@ -12,6 +12,7 @@ Spatia gives industrial robots CAD-native perception and station-level SOP execu
 - [Blog](https://www.spatia.sg/blog)
 - [Glossary](https://www.spatia.sg/glossary)
 - [How to evaluate a picking cell](https://www.spatia.sg/guides/picking-cell)
+- [Whitepaper: vision-guided robotic quality inspection](https://www.spatia.sg/whitepaper/vision-guided-robotic-quality-inspection/)
 - [H2R](https://www.spatia.sg/h2r)
 - [Contact](https://www.spatia.sg/contact)
 
@@ -36,6 +37,6 @@ Spatia gives industrial robots CAD-native perception and station-level SOP execu
 
 ## Contact
 
-spatia@spritle.com
+people@spatia.sg
 
-Last updated: 2026-11-24
+Last updated: 2026-11-28

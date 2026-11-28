@@ -8,6 +8,40 @@ import { WHITEPAPER } from '../../config/leads';
 // DRAFT summary. Replace with Balaji's approved 3 to 5 lines before publishing.
 const summary =
   'Vision-guided inspection usually stops at detection. This paper follows the rest of the path: from a CAD model and a camera frame, through pose estimation and verification, to a pass or fail decision the line can act on. It covers where vision alone is enough, where it is not, and what has to change when the robot has to make the call.';
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: WHITEPAPER.title,
+  description: summary,
+  author: { '@type': 'Person', name: 'Balaji', jobTitle: 'Founder, Spatia' },
+  publisher: { '@type': 'Organization', name: 'Spatia', url: 'https://www.spatia.sg' },
+  datePublished: '2026-11-28',
+  dateModified: '2026-11-28',
+  mainEntityOfPage:
+    'https://www.spatia.sg/whitepaper/vision-guided-robotic-quality-inspection/',
+  inLanguage: 'en',
+  about: [
+    'Vision guided robotic inspection',
+    'CAD-native perception',
+    'Industrial robotics',
+    'Quality inspection',
+  ],
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.spatia.sg/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Whitepaper',
+      item: 'https://www.spatia.sg/whitepaper/vision-guided-robotic-quality-inspection/',
+    },
+  ],
+};
 ---
 
 <Layout
@@ -16,7 +50,9 @@ const summary =
   ogImage="/og-default.png"
   ogType="article"
 >
-  <Navbar />
+  <Navbar activeLink="whitepaper" />
+  <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <main>
     <section class="relative overflow-hidden bg-white pb-10 pt-32 md:pt-40">
       <div class="pointer-events-none absolute inset-0" aria-hidden="true"
