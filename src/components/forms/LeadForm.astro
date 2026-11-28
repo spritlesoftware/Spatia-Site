@@ -1,16 +1,24 @@
 ---
 import { LEAD_ENDPOINT, RECAPTCHA_SITE_KEY } from '../../config/leads';
+import RecaptchaNotice from './RecaptchaNotice.astro';
 
 interface Props {
   variant: 'whitepaper' | 'contact';
   submitLabel?: string;
+  title?: string;
+  subtitle?: string;
+  footnote?: string;
+  compact?: boolean;
+  noticeOutside?: boolean;
+  id?: string;
 }
 
-const { variant, submitLabel } = Astro.props;
+const { variant, submitLabel, title, subtitle, footnote, compact = false, noticeOutside = false, id } = Astro.props;
 const isWhitepaper = variant === 'whitepaper';
 
-const field =
+const fieldBase =
   'lf-field block w-full rounded-[10px] border border-[#D5DEE6] bg-[#F3F5F7] px-4 py-3 text-[16px] leading-normal text-sp-heading outline-none transition-all duration-200 placeholder:text-[#8592A3] hover:border-[#B9C6D2] focus:border-sp-green focus:bg-white focus:shadow-[0_0_0_4px_rgba(15,74,70,0.1)]';
+const field = compact ? fieldBase.replace('py-3', 'py-2.5') : fieldBase;
 const label = 'mb-2 block text-[14px] font-semibold text-sp-heading';
 
 const buttonText = submitLabel ?? (isWhitepaper ? 'Get the whitepaper' : 'Send');
@@ -27,7 +35,11 @@ const consentStart = isWhitepaper
 ---
 
 <form
-  class="lead-form rounded-[24px] border border-sp-border bg-white p-6 shadow-[0_30px_70px_-40px_rgba(17,24,39,0.3)] sm:p-9"
+  id={id}
+  class:list={[
+    'lead-form scroll-mt-28 rounded-[24px] border border-sp-border bg-white shadow-[0_30px_70px_-40px_rgba(17,24,39,0.3)]',
+    compact ? 'p-4' : 'p-6 sm:p-9',
+  ]}
   data-lead-form
   data-variant={variant}
   data-endpoint={LEAD_ENDPOINT}
@@ -35,13 +47,20 @@ const consentStart = isWhitepaper
   method="post"
   action={LEAD_ENDPOINT}
 >
+  {title && (
+    <div class={compact ? 'mb-4' : 'mb-6'}>
+      <h2 class:list={['font-semibold tracking-[-0.02em] text-sp-heading', compact ? 'text-[22px]' : 'text-[24px]']}>{title}</h2>
+      {subtitle && <p class:list={['mt-1.5 leading-[1.6] text-sp-body/70', compact ? 'text-[14px]' : 'text-[15px]']}>{subtitle}</p>}
+    </div>
+  )}
+
   <!-- Honeypot. Hidden from people, tempting for bots. -->
   <div class="lf-hp" aria-hidden="true">
     <label for={`lf-${variant}-website`}>Website</label>
     <input id={`lf-${variant}-website`} name="website" type="text" tabindex="-1" autocomplete="off" />
   </div>
 
-  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+  <div class:list={['grid grid-cols-1 sm:grid-cols-2', compact ? 'gap-2.5' : 'gap-4']}>
     <div>
       <label class={label} for={`lf-${variant}-first`}>First name</label>
       <input
@@ -114,7 +133,7 @@ const consentStart = isWhitepaper
       <textarea
         id={`lf-${variant}-message`}
         name="message"
-        rows="4"
+        rows={compact ? 2 : 4}
         required={messageRequired}
         maxlength="5000"
         placeholder={messagePlaceholder}
@@ -123,7 +142,10 @@ const consentStart = isWhitepaper
     </div>
   </div>
 
-  <label class="mt-6 flex cursor-pointer items-start gap-3 text-[13.5px] leading-[1.6] text-sp-body/80">
+  <label class:list={[
+    'flex cursor-pointer items-start gap-3 text-sp-body/80',
+    compact ? 'mt-4 text-[12.5px] leading-[1.45]' : 'mt-6 text-[13.5px] leading-[1.6]',
+  ]}>
     <input
       type="checkbox"
       name="consent"
@@ -137,10 +159,13 @@ const consentStart = isWhitepaper
     </span>
   </label>
 
-  <div class="mt-7">
+  <div class={compact ? 'mt-4' : 'mt-7'}>
     <button
       type="submit"
-      class="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#0F4A46] px-6 py-4 text-[16px] font-semibold text-white shadow-[0_12px_28px_-14px_rgba(15,74,70,0.8)] transition-all duration-300 hover:bg-[#0A3330] hover:shadow-[0_16px_34px_-14px_rgba(15,74,70,0.9)] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70"
+      class:list={[
+        'group flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#0F4A46] px-6 font-semibold text-white shadow-[0_12px_28px_-14px_rgba(15,74,70,0.8)] transition-all duration-300 hover:bg-[#0A3330] hover:shadow-[0_16px_34px_-14px_rgba(15,74,70,0.9)] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70',
+        compact ? 'py-3.5 text-[15px]' : 'py-4 text-[16px]',
+      ]}
     >
       <span data-lead-button-label>{buttonText}</span>
       <svg
@@ -160,6 +185,10 @@ const consentStart = isWhitepaper
       </svg>
     </button>
 
+    {footnote && (
+      <p class:list={['text-center text-sp-body/55', compact ? 'mt-2 text-[12px] leading-[1.4]' : 'mt-3 text-[12.5px] leading-[1.5]']}>{footnote}</p>
+    )}
+
     <p
       data-lead-status
       role="status"
@@ -167,13 +196,7 @@ const consentStart = isWhitepaper
       class="mt-3 hidden text-center text-[13.5px] leading-[1.5]"
     ></p>
 
-    <p class="mt-3 text-center text-[11.5px] leading-[1.5] text-sp-body/45">
-      This site is protected by reCAPTCHA and the Google
-      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-sp-green">Privacy Policy</a>
-      and
-      <a href="https://policies.google.com/terms" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-sp-green">Terms of Service</a>
-      apply.
-    </p>
+    {!noticeOutside && <RecaptchaNotice compact={compact} />}
   </div>
 
   <div data-lead-success hidden class="py-6 text-center">
@@ -196,6 +219,8 @@ const consentStart = isWhitepaper
     </p>
   </noscript>
 </form>
+
+{noticeOutside && <RecaptchaNotice compact class="mt-3" />}
 
 <style>
   .lf-hp {

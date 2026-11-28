@@ -1,20 +1,83 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import Navbar from '@components/shared/Navbar.astro';
 import Footer from '@components/shared/Footer.astro';
 import LeadForm from '@components/forms/LeadForm.astro';
 import { WHITEPAPER } from '../../config/leads';
+import balajiImg from '../../assets/Balaji.png';
+import mohanImg from '../../assets/Mohankumar.jpg';
+import coverImg from '../../assets/cover-give-the-camera-an-arm.png';
 
-// DRAFT summary. Replace with Balaji's approved 3 to 5 lines before publishing.
-const summary =
-  'Vision-guided inspection usually stops at detection. This paper follows the rest of the path: from a CAD model and a camera frame, through pose estimation and verification, to a pass or fail decision the line can act on. It covers where vision alone is enough, where it is not, and what has to change when the robot has to make the call.';
+const title = 'Vision-guided robotic quality inspection whitepaper | Spatia';
+const description =
+  'Our vision AI reached 86% on a live line. The model was not the problem. Free 12-page whitepaper on robot-held camera inspection, with a decision table and pilot checklist.';
+
+
+const stats = [
+  {
+    value: '100%',
+    text: 'Same AI, fixed station. Panasonic assembly line.',
+    accent: true,
+  },
+  {
+    value: '86.02%',
+    text: 'Same AI, live operator line. Lucas TVS. What went wrong?',
+    accent: false,
+  },
+  {
+    value: '0',
+    text: 'Photos to label for a new part. It starts from the CAD.',
+    accent: false,
+  },
+];
+
+const inside = [
+  'Why the same AI scored 100% on one line and 86% on another',
+  'The one thing that limits vision on a live line. It is not the model.',
+  'Six steps from a CAD file and a camera frame to a pass or fail, with a reason',
+  'What changes when a robot holds the camera, and what does not',
+  'A 7-question table: does your station need a robot at all?',
+  'The 5 numbers to measure in a pilot, including the one most vendors do not publish',
+  'Why you should never show your CFO a plan with 0% defects',
+];
+
+const logos = ['Panasonic', 'Lucas TVS', 'Hyundai', 'KEC', 'Airbus', 'Yamaha'];
+
+const faqs = [
+  {
+    q: 'Is it free?',
+    a: 'Yes. Fill the form and download it right away.',
+  },
+  {
+    q: 'Is this a product brochure?',
+    a: 'No. Section 5 tells you when you do not need a robot. We would rather you buy the right thing.',
+  },
+  {
+    q: 'Is robot inspection in production today?',
+    a: 'The vision side runs on live lines today. The robot-held camera is a proof of concept in our Chennai lab. The paper says exactly what is proven and what is not.',
+  },
+  {
+    q: 'Can I see it on my part?',
+    a: 'Yes. Bring a part and its CAD file to our Experience Centre in Chennai, or write to people@spatia.sg.',
+  },
+];
+
+const faqHtml = (text: string) =>
+  text.replace(
+    'people@spatia.sg',
+    '<a href="mailto:people@spatia.sg" class="text-sp-green underline underline-offset-4 hover:opacity-70 transition-opacity">people@spatia.sg</a>',
+  );
 
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
   headline: WHITEPAPER.title,
-  description: summary,
-  author: { '@type': 'Person', name: 'Balaji', jobTitle: 'Founder, Spatia' },
+  description,
+  author: [
+    { '@type': 'Person', name: 'Balaji', jobTitle: 'Founder, Spatia' },
+    { '@type': 'Person', name: 'Mohankumar', jobTitle: 'Robotics AI Engineer, Spatia' },
+  ],
   publisher: { '@type': 'Organization', name: 'Spatia', url: 'https://www.spatia.sg' },
   datePublished: '2026-11-28',
   dateModified: '2026-11-28',
@@ -23,6 +86,7 @@ const articleJsonLd = {
   inLanguage: 'en',
   about: [
     'Vision guided robotic inspection',
+    'Robot-held camera inspection',
     'CAD-native perception',
     'Industrial robotics',
     'Quality inspection',
@@ -42,85 +106,350 @@ const breadcrumbJsonLd = {
     },
   ],
 };
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: { '@type': 'Answer', text: faq.a },
+  })),
+};
 ---
 
 <Layout
-  title="Vision-guided robotic quality inspection | Spatia"
-  description="A Spatia whitepaper on vision-guided robotic quality inspection: from a CAD model and a camera frame to a pass or fail decision on the line."
-  ogImage="/og-default.png"
+  title={title}
+  description={description}
+  ogTitle="Give the camera an arm."
+  ogDescription="Why the same vision AI scored 100% on one line and 86% on another. Free whitepaper."
+  ogImage="/og/whitepaper-give-the-camera-an-arm.png"
+  ogImageAlt="Give the camera an arm. Free Spatia whitepaper."
   ogType="article"
 >
   <Navbar activeLink="whitepaper" />
   <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
-  <main>
-    <section class="relative overflow-hidden bg-white pb-10 pt-32 md:pt-40">
-      <div class="pointer-events-none absolute inset-0" aria-hidden="true"
-        style="background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(15,74,70,0.07) 0%, transparent 70%);"
-      ></div>
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
 
-      <div class="relative mx-auto max-w-[820px] px-4 text-center sm:px-8">
-        <p class="section-label mb-5">WHITEPAPER</p>
-        <h1
-          class="reveal font-bold leading-[1.08] tracking-[-0.035em] text-sp-heading"
-          style="font-size: clamp(32px, 4.6vw, 56px);"
+  <main>
+    <!-- Hero -->
+    <section class="bg-white pb-14 pt-24 md:pb-20 md:pt-24">
+      <div class="mx-auto max-w-[1280px] px-4 sm:px-8 lg:px-16">
+        <div class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start lg:gap-14">
+          <!-- Left -->
+          <div>
+            <p class="section-label mb-5">FREE WHITEPAPER</p>
+            <h1
+              class="font-bold leading-[1.06] tracking-[-0.035em] text-sp-heading"
+              style="font-size: clamp(34px, 4.2vw, 58px);"
+            >
+              Our vision AI reached 86%. The model was not the problem.
+            </h1>
+
+            <p class="mt-6 max-w-[600px] text-[17px] leading-[1.7] text-sp-body md:text-[18px]">
+              On a live rotor line, the AI could not see what it needed to see. A worker's body was in the way. Parts came in at a different angle each time.
+            </p>
+            <p class="mt-4 max-w-[600px] text-[17px] leading-[1.7] text-sp-body md:text-[18px]">
+              This paper shows what changes when a robot holds the camera. And when you do not need a robot at all.
+            </p>
+
+            <p class="mt-6 font-mono text-[12.5px] leading-[1.6] tracking-[0.02em] text-sp-body/60">
+              12 pages · 15-minute read · For plant heads, quality heads and system integrators
+            </p>
+
+            <!-- Cover -->
+            <div class="mt-10">
+              <Image
+                src={coverImg}
+                alt="Cover of the Spatia whitepaper Give the camera an arm"
+                width={760}
+                height={1075}
+                format="webp"
+                quality={92}
+                class="h-auto w-full max-w-[380px] rounded-[24px] border border-sp-border shadow-[0_40px_80px_-50px_rgba(15,74,70,0.55)]"
+              />
+            </div>
+          </div>
+
+          <!-- Right, sticky form -->
+          <div class="lg:sticky lg:top-28 lg:self-start">
+            <LeadForm
+              variant="whitepaper"
+              id="whitepaper-form"
+              title="Give the camera an arm."
+              subtitle="Free PDF. We also send it to your email."
+              submitLabel="Send me the PDF"
+              footnote="Free. No spam. Unsubscribe at any time."
+              noticeOutside
+              compact
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="bg-white pb-16 md:pb-24">
+      <div class="mx-auto max-w-[1280px] px-4 sm:px-8 lg:px-16">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {stats.map((stat) => (
+            <div class="rounded-[24px] border border-sp-border bg-white p-7 md:p-8">
+              <p
+                class:list={[
+                  'font-bold leading-none tracking-[-0.04em]',
+                  stat.accent ? 'text-[#01AC95]' : 'text-[#0F4A46]',
+                ]}
+                style="font-size: clamp(44px, 5vw, 64px);"
+              >
+                {stat.value}
+              </p>
+              <p class="mt-4 text-[16px] leading-[1.6] text-sp-body">
+                {stat.text}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- What's inside -->
+    <section class="bg-[#E6E6EA]/35 py-16 md:py-24">
+      <div class="mx-auto max-w-[1000px] px-4 sm:px-8 lg:px-16">
+        <h2 class="font-bold leading-[1.1] tracking-[-0.03em] text-sp-heading" style="font-size: clamp(30px, 3.4vw, 46px);">
+          What's inside
+        </h2>
+        <ul class="mt-9 grid gap-4">
+          {inside.map((item) => (
+            <li class="flex items-start gap-3.5">
+              <span class="mt-[9px] h-2 w-2 flex-shrink-0 rounded-full bg-[#01AC95]" aria-hidden="true"></span>
+              <span class="text-[17px] leading-[1.65] text-sp-body">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Demo video -->
+    <section class="bg-white py-16 md:py-24">
+      <div class="mx-auto max-w-[1100px] px-4 sm:px-8 lg:px-16">
+        <video
+          data-demo-video
+          class="h-auto w-full rounded-[24px] border border-sp-border object-cover"
+          muted
+          loop
+          playsinline
+          preload="none"
+          poster="/whitepaper/engine-demo-poster.jpg"
+          width="640"
+          height="360"
+          aria-label="Robot arm carries a camera around an engine block and counts bolts, ports and studs"
         >
-          {WHITEPAPER.title}
-        </h1>
-        <p class="reveal reveal-delay-1 mx-auto mt-6 max-w-[660px] text-[17px] leading-[1.75] text-sp-body/80 md:text-[18px]">
-          {summary}
+          <source src="/whitepaper/engine-demo-loop.webm" type="video/webm" />
+          <source src="/whitepaper/engine-demo-loop.mp4" type="video/mp4" />
+        </video>
+
+        <p class="mt-5 max-w-[780px] text-[14px] leading-[1.65] text-sp-body/70">
+          A Flexiv Rizon 4s carries the camera around a real engine block. Bolts, ports and studs found and counted, face by face. Proof of concept, Spatia lab, Chennai.
         </p>
       </div>
     </section>
 
-    <section class="bg-white pb-20 pt-6 md:pb-[120px]">
-      <div class="mx-auto grid max-w-[1120px] grid-cols-1 gap-12 px-4 sm:px-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
-        <!-- Cover placeholder. Swap for the real cover when it exists. -->
-        <div class="reveal mx-auto w-full max-w-[360px] lg:sticky lg:top-28 lg:mx-0">
-          <div class="relative aspect-[3/4] overflow-hidden rounded-[22px] border border-[#0F4A46]/20 shadow-[0_40px_80px_-50px_rgba(15,74,70,0.55)]">
-            <div class="absolute inset-0" style="background: linear-gradient(155deg, #0F4A46 0%, #0A3330 55%, #072624 100%);"></div>
-            <div class="absolute inset-0 opacity-[0.18]" aria-hidden="true"
-              style="background-image: linear-gradient(rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.35) 1px, transparent 1px); background-size: 44px 44px;"
-            ></div>
-            <div class="relative flex h-full flex-col justify-between p-8 text-white sm:p-9">
-              <div class="flex items-center justify-between">
-                <span class="font-mono text-[11px] uppercase tracking-[0.28em] text-white/70">Spatia</span>
-                <span class="rounded-full border border-white/25 px-3 py-1 text-[10.5px] uppercase tracking-[0.18em] text-white/75">
-                  Whitepaper
-                </span>
-              </div>
-              <div>
-                <p class="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/55">
-                  Vision guided inspection
-                </p>
-                <p class="text-[24px] font-semibold leading-[1.2] tracking-[-0.02em] sm:text-[27px]">
-                  From a picture to a decision
-                </p>
-              </div>
-              <p class="text-[12px] text-white/55">www.spatia.sg</p>
+    <!-- Pull quote -->
+    <section class="bg-[#E6E6EA]/35 py-16 md:py-24">
+      <div class="mx-auto max-w-[920px] px-4 sm:px-8 lg:px-16">
+        <blockquote class="border-l-4 border-[#01AC95] pl-6 md:pl-8">
+          <p class="font-semibold leading-[1.25] tracking-[-0.025em] text-[#0F4A46]" style="font-size: clamp(26px, 3.4vw, 44px);">
+            "A camera can confirm a bolt is in place. It cannot confirm the torque."
+          </p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Who this is for -->
+    <section class="bg-white py-16 md:py-24">
+      <div class="mx-auto max-w-[1100px] px-4 sm:px-8 lg:px-16">
+        <h2 class="font-bold leading-[1.1] tracking-[-0.03em] text-sp-heading" style="font-size: clamp(30px, 3.4vw, 46px);">
+          Who this is for
+        </h2>
+
+        <div class="mt-10 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16">
+          <div>
+            <h3 class="text-[20px] font-semibold tracking-[-0.01em] text-[#01AC95]">Read it if:</h3>
+            <ul class="mt-5 grid gap-3.5">
+              <li class="flex items-start gap-3">
+                <span class="mt-[9px] h-2 w-2 flex-shrink-0 rounded-full bg-[#01AC95]" aria-hidden="true"></span>
+                <span class="text-[17px] leading-[1.65] text-sp-body">Your parts have check points on many faces</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-[9px] h-2 w-2 flex-shrink-0 rounded-full bg-[#01AC95]" aria-hidden="true"></span>
+                <span class="text-[17px] leading-[1.65] text-sp-body">Parts arrive in random positions</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-[9px] h-2 w-2 flex-shrink-0 rounded-full bg-[#01AC95]" aria-hidden="true"></span>
+                <span class="text-[17px] leading-[1.65] text-sp-body">Your vision system works in the demo but not on the line</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-[20px] font-semibold tracking-[-0.01em] text-[#0F4A46]">Skip it if:</h3>
+            <p class="mt-5 text-[17px] leading-[1.65] text-sp-body">
+              Your part sits in a fixture and you check one face. You probably do not need a robot. Well, section 5 explains why.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust strip -->
+    <section class="border-y border-sp-border bg-white py-10 md:py-12">
+      <div class="mx-auto max-w-[1100px] px-4 sm:px-8 lg:px-16">
+        <p class="section-label mb-6 text-center">Our vision AI runs at</p>
+        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:gap-x-12">
+          {logos.map((name) => (
+            <span class="text-[15px] font-semibold uppercase tracking-[0.08em] text-sp-body/55 sm:text-[16px]">
+              {name}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Authors -->
+    <section class="bg-white py-16 md:py-24">
+      <div class="mx-auto max-w-[1000px] px-4 sm:px-8 lg:px-16">
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+          <div class="flex items-center gap-5">
+            <Image
+              src={balajiImg}
+              alt="Balaji"
+              width={96}
+              height={96}
+              class="h-20 w-20 flex-shrink-0 rounded-full object-cover object-top"
+            />
+            <div>
+              <p class="text-[19px] font-semibold tracking-[-0.01em] text-sp-heading">Balaji</p>
+              <p class="mt-1 text-[15px] text-sp-body/70">Founder, Spatia</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-5">
+            <Image
+              src={mohanImg}
+              alt="Mohankumar"
+              width={96}
+              height={96}
+              class="h-20 w-20 flex-shrink-0 rounded-full object-cover object-top"
+            />
+            <div>
+              <p class="text-[19px] font-semibold tracking-[-0.01em] text-sp-heading">Mohankumar</p>
+              <p class="mt-1 text-[15px] text-sp-body/70">Robotics AI Engineer, Spatia</p>
             </div>
           </div>
         </div>
 
-        <div class="reveal reveal-delay-1">
-          <div class="mb-7">
-            <h2 class="text-[24px] font-semibold tracking-[-0.02em] text-sp-heading">
-              Get the whitepaper
-            </h2>
-            <p class="mt-2 text-[16px] leading-[1.7] text-sp-body/70">
-              Enter your details and download it immediately.
-            </p>
-          </div>
-
-          <LeadForm variant="whitepaper" />
-
-          <p class="mt-5 text-[13px] leading-[1.6] text-sp-body/55">
-            We use these details to send the paper and follow up about it, and nothing else.
-            Read the <a href="/privacy" class="underline underline-offset-4 hover:text-sp-green">privacy policy</a>.
+        <blockquote class="mt-12 border-l-4 border-[#01AC95] pl-6">
+          <p class="text-[20px] leading-[1.5] text-sp-body md:text-[23px]">
+            "We wrote this from what we saw on live lines, not from a lab slide."
           </p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Second CTA -->
+    <section class="bg-[#0F4A46] py-16 md:py-20">
+      <div class="mx-auto flex max-w-[1100px] flex-col gap-8 px-4 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-16">
+        <div>
+          <h2 class="font-bold leading-[1.15] tracking-[-0.025em] text-white" style="font-size: clamp(26px, 3vw, 40px);">
+            The 86% story is on page 4.
+          </h2>
+          <p class="mt-2 text-[17px] leading-[1.6] text-white/80">
+            Get the full paper. 12 pages, no fluff.
+          </p>
+        </div>
+        <button
+          type="button"
+          data-cta-scroll
+          class="inline-flex flex-shrink-0 items-center justify-center gap-2.5 rounded-xl bg-white px-7 py-4 text-[16px] font-semibold text-[#0F4A46] transition-all duration-300 hover:bg-[#E6E6EA] active:scale-[0.99]"
+        >
+          Send me the PDF
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="13 6 19 12 13 18"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-white py-16 md:py-24">
+      <div class="mx-auto max-w-[900px] px-4 sm:px-8 lg:px-16">
+        <h2 class="font-bold leading-[1.1] tracking-[-0.03em] text-sp-heading" style="font-size: clamp(30px, 3.4vw, 46px);">
+          Questions
+        </h2>
+
+        <div class="mt-8 border-t border-sp-border">
+          {faqs.map((faq) => (
+            <details class="group border-b border-sp-border py-5">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-[18px] font-semibold tracking-[-0.01em] text-sp-heading [&::-webkit-details-marker]:hidden">
+                <span>{faq.q}</span>
+                <span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-sp-border text-[18px] text-sp-green transition-transform duration-200 group-open:rotate-45" aria-hidden="true">
+                  +
+                </span>
+              </summary>
+              <p class="mt-3 max-w-[760px] text-[16.5px] leading-[1.7] text-sp-body/75">
+                <Fragment set:html={faqHtml(faq.a)} />
+              </p>
+            </details>
+          ))}
         </div>
       </div>
     </section>
   </main>
+
   <Footer />
 </Layout>
+
+<script>
+  const demoVideo = document.querySelector<HTMLVideoElement>('[data-demo-video]');
+  if (demoVideo) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) {
+      demoVideo.removeAttribute('autoplay');
+      demoVideo.pause();
+    } else {
+      let started = false;
+      const start = () => {
+        if (started) return;
+        started = true;
+        demoVideo.autoplay = true;
+        demoVideo.preload = 'metadata';
+        demoVideo.load();
+        demoVideo.play().catch(() => {});
+      };
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              start();
+              observer.disconnect();
+            }
+          },
+          { rootMargin: '200px 0px' },
+        );
+        observer.observe(demoVideo);
+      } else {
+        start();
+      }
+    }
+  }
+
+  const cta = document.querySelector<HTMLButtonElement>('[data-cta-scroll]');
+  cta?.addEventListener('click', () => {
+    document.getElementById('whitepaper-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('lf-whitepaper-first')?.focus({ preventScroll: true });
+  });
+</script>

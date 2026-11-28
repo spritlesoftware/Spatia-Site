@@ -99,7 +99,7 @@ export default {
       if (lead.form === 'whitepaper') {
         emails.visitor = await sendEmail(env, {
           to: lead.email,
-          subject: 'Your copy: Vision-guided robotic quality inspection',
+          subject: 'Your copy: Give the camera an arm',
           html: visitorEmail(lead.firstName, env.PDF_URL),
         });
       }
@@ -357,7 +357,7 @@ function visitorEmail(firstName, pdfUrl) {
   return `
     <div style="font-family:Geist,Arial,sans-serif;font-size:15px;line-height:1.6;color:#0E1114;">
       <p>Hi ${escapeHtml(firstName)}</p>
-      <p>Thank you for downloading "Vision-guided robotic quality inspection: from a picture to a decision".</p>
+      <p>Thank you for downloading "Give the camera an arm".</p>
       <p>Here is your copy: <a href="${pdfUrl}">${pdfUrl}</a></p>
       <p>If you have a use case on your shop floor, kindly reply to this email.<br>Happy to have a short call.</p>
       <p>Thank you.</p>

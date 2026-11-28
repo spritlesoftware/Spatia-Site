@@ -9,7 +9,6 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.includes('/404') &&
-        !page.includes('/index-1') &&
         !page.includes('/whitepaper/thank-you'),
     }),
   ],

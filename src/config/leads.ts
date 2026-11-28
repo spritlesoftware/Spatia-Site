@@ -15,9 +15,8 @@ export const LEAD_ENDPOINT = import.meta.env.DEV
 export const RECAPTCHA_SITE_KEY = '6LdQnTUuAAAAABgA_sXaOF85yrK5R9fs6OpLK_nv';
 
 export const WHITEPAPER = {
-  title: 'Vision-guided robotic quality inspection: from a picture to a decision',
-  slug: 'vision-guided-robotic-quality-inspection',
-  pdf: '/downloads/spatia-vision-guided-robotic-quality-inspection.pdf',
-  pdfUrl:
-    'https://www.spatia.sg/downloads/spatia-vision-guided-robotic-quality-inspection.pdf',
+  title: 'Give the camera an arm.',
+  slug: 'give-the-camera-an-arm',
+  pdf: '/downloads/spatia-give-the-camera-an-arm.pdf',
+  pdfUrl: 'https://www.spatia.sg/downloads/spatia-give-the-camera-an-arm.pdf',
 } as const;

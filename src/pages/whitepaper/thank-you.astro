@@ -7,7 +7,7 @@ import { WHITEPAPER } from '../../config/leads';
 
 <Layout
   title="Thank you | Spatia"
-  description="Your Spatia whitepaper is ready."
+  description="Your whitepaper is ready."
   noindex
 >
   <Navbar />
@@ -25,14 +25,10 @@ import { WHITEPAPER } from '../../config/leads';
 
       <h1
         class="font-bold leading-[1.1] tracking-[-0.03em] text-sp-heading"
-        style="font-size: clamp(30px, 5vw, 48px);"
+        style="font-size: clamp(32px, 5vw, 48px);"
       >
-        Thank you.<br>Your whitepaper is ready.
+        Your whitepaper is ready.
       </h1>
-
-      <p class="mt-5 max-w-[420px] text-[17px] leading-[1.7] text-sp-body/70">
-        {WHITEPAPER.title}
-      </p>
 
       <a
         href={WHITEPAPER.pdf}
@@ -53,14 +49,16 @@ import { WHITEPAPER } from '../../config/leads';
 
       <div class="mt-10 h-px w-16 bg-sp-border"></div>
 
-      <p class="mt-8 text-[15.5px] leading-[1.7] text-sp-body/70">
-        If you have a use case on your shop floor,
-        <a href="/contact" class="text-sp-green underline underline-offset-4 hover:opacity-70 transition-opacity">talk to us</a>.
+      <p class="mt-8 max-w-[460px] text-[16px] leading-[1.7] text-sp-body/75">
+        Want to see it on your own part? Book a 30-minute line review, or visit our Experience Centre in Chennai.
       </p>
 
-      <p class="mt-3 text-[13.5px] text-sp-body/45">
-        The download not starting? <a href={WHITEPAPER.pdf} class="underline underline-offset-4 hover:text-sp-green">Open the PDF directly</a>.
-      </p>
+      <a
+        href="/contact/"
+        class="mt-5 inline-flex items-center justify-center gap-2 rounded-xl border border-[#0F4A46] px-6 py-3.5 text-[15px] font-semibold text-[#0F4A46] transition-all duration-300 hover:bg-[#0F4A46] hover:text-white active:scale-[0.99]"
+      >
+        Book a line review
+      </a>
     </section>
   </main>
   <Footer />

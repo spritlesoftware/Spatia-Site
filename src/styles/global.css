@@ -24,17 +24,30 @@
 }
 
 @layer utilities {
-  /* Scroll reveal animation */
+  /* Scroll reveal animation. Visible by default; hidden only when JS is on. */
   .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .reveal {
     opacity: 0;
     transform: translateY(28px);
     transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .reveal.is-visible {
+  .js .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 
   .reveal-delay-1 { transition-delay: 0.1s; }

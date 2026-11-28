@@ -1,0 +1,22 @@
+---
+interface Props {
+  compact?: boolean;
+  class?: string;
+}
+
+const { compact = false, class: className } = Astro.props;
+---
+
+<p
+  class:list={[
+    'text-center text-sp-body/45',
+    compact ? 'mt-2 text-[11px] leading-[1.4]' : 'mt-3 text-[11.5px] leading-[1.5]',
+    className,
+  ]}
+>
+  This site is protected by reCAPTCHA and the Google
+  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-sp-green">Privacy Policy</a>
+  and
+  <a href="https://policies.google.com/terms" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-sp-green">Terms of Service</a>
+  apply.
+</p>

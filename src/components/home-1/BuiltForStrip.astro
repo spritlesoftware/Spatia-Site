@@ -22,17 +22,17 @@ const tags = [
 <section class="border-y border-sp-border bg-white py-6 md:py-8">
   <div class="px-4 sm:px-8 lg:px-16">
     <div class="mx-auto max-w-4xl">
-      <ul class="grid grid-cols-2 gap-x-6 gap-y-4 sm:gap-x-10 md:grid-cols-4 md:gap-x-8 items-center">
+      <ul class="grid grid-cols-2 gap-x-4 gap-y-4 sm:gap-x-10 md:grid-cols-4 md:gap-x-8 items-center">
         {
           tags.map((tag) => (
-            <li class="flex items-center justify-start sm:justify-center gap-2.5">
+            <li class="flex items-center justify-start sm:justify-center gap-2 sm:gap-2.5">
               <span
-                class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-sp-green-light text-sp-green"
+                class="flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-sp-green-light text-sp-green"
                 aria-hidden="true"
               >
                 <Fragment set:html={tag.icon} />
               </span>
-              <span class="text-[13px] sm:text-[14px] font-semibold uppercase tracking-[0.1em] text-sp-body whitespace-nowrap">
+              <span class="text-[12px] leading-snug sm:text-[14px] font-semibold uppercase tracking-[0.06em] sm:tracking-[0.1em] text-sp-body">
                 {tag.label}
               </span>
             </li>
