@@ -166,6 +166,14 @@ const consentStart = isWhitepaper
       aria-live="polite"
       class="mt-3 hidden text-center text-[13.5px] leading-[1.5]"
     ></p>
+
+    <p class="mt-3 text-center text-[11.5px] leading-[1.5] text-sp-body/45">
+      This site is protected by reCAPTCHA and the Google
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-sp-green">Privacy Policy</a>
+      and
+      <a href="https://policies.google.com/terms" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-sp-green">Terms of Service</a>
+      apply.
+    </p>
   </div>
 
   <div data-lead-success hidden class="py-6 text-center">
@@ -243,16 +251,12 @@ const consentStart = isWhitepaper
     el.classList.add('hidden');
   }
 
-  async function getRecaptchaToken(siteKey: string): Promise<string> {
-    if (!siteKey) return '';
+  let recaptchaLoader: Promise<void> | null = null;
 
-    await new Promise<void>((resolve) => {
+  function loadRecaptcha(siteKey: string): Promise<void> {
+    if (recaptchaLoader) return recaptchaLoader;
+    recaptchaLoader = new Promise<void>((resolve) => {
       if ((window as any).grecaptcha) return resolve();
-      const existing = document.getElementById('recaptcha-v3');
-      if (existing) {
-        existing.addEventListener('load', () => resolve(), { once: true });
-        return;
-      }
       const script = document.createElement('script');
       script.id = 'recaptcha-v3';
       script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
@@ -261,6 +265,13 @@ const consentStart = isWhitepaper
       script.onerror = () => resolve();
       document.head.appendChild(script);
     });
+    return recaptchaLoader;
+  }
+
+  async function getRecaptchaToken(siteKey: string): Promise<string> {
+    if (!siteKey) return '';
+
+    await loadRecaptcha(siteKey);
 
     const grecaptcha = (window as any).grecaptcha;
     if (!grecaptcha) return '';
@@ -277,6 +288,9 @@ const consentStart = isWhitepaper
     const endpoint = form.dataset.endpoint || '';
     const siteKey = form.dataset.siteKey || '';
     const utm = readUtm();
+
+    // Load early so the reCAPTCHA badge is present and the token is ready on submit.
+    if (siteKey) void loadRecaptcha(siteKey);
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
