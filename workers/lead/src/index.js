@@ -91,6 +91,7 @@ export default {
       const emails = { team: false, visitor: false };
       emails.team = await sendEmail(env, {
         to: env.TEAM_EMAIL,
+        cc: env.TEAM_COPY,
         subject: `New Spatia lead: ${lead.formLabel} - ${lead.company}`,
         html: teamEmail(lead, id),
       });
@@ -290,7 +291,7 @@ function descriptionFor(lead, previous) {
 /* Zoho Mail                                                          */
 /* ------------------------------------------------------------------ */
 
-async function sendEmail(env, { to, subject, html }) {
+async function sendEmail(env, { to, cc, subject, html }) {
   try {
     const token = await getAccessToken(env);
     const response = await fetch(
@@ -304,6 +305,7 @@ async function sendEmail(env, { to, subject, html }) {
         body: JSON.stringify({
           fromAddress: env.FROM_EMAIL,
           toAddress: to,
+          ...(cc ? { ccAddress: cc } : {}),
           subject,
           content: html,
           mailFormat: 'html',

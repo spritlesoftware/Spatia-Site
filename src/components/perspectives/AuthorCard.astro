@@ -45,6 +45,7 @@ const { name, role, image, yearsAtSpatia, linkedin, bio } = Astro.props;
           <!-- Name + LinkedIn row -->
           <div class="flex flex-wrap items-center gap-3 mb-1">
             <h3 class="text-[#0E1114] font-bold text-[19px] tracking-[-0.01em]">{name}</h3>
+            {linkedin.startsWith('http') && (
             <a
               href={linkedin}
               target="_blank"
@@ -61,6 +62,7 @@ const { name, role, image, yearsAtSpatia, linkedin, bio } = Astro.props;
               </svg>
               LinkedIn
             </a>
+            )}
           </div>
 
           <!-- Role + Years -->
